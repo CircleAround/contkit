@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "include": [
+    "../server/**/*.ts",
+    "../server/**/*.tsx",
+    "../server/**/*.js",
+    "../universal/**/*.ts",
+    "../universal/**/*.tsx",
+    "../bin/**/*.ts",
+    "./**/*.ts",
+    "**/eslint.config.mjs",
+  ]
+}

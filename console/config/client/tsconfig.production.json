@@ -1,0 +1,13 @@
+{
+  "extends": "../../node_modules/bistrio/config/tsconfig.client.json",
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "paths": {
+      "@/*": ["*"],
+      "@bistrio/*": [".bistrio/*"],
+      "@universal/*": ["universal/*"]
+    },
+    "outDir": "dist/public"
+  },
+  "include": ["../../.bistrio/**/*", "../../universal/**/*"]
+}
