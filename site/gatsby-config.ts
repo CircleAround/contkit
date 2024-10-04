@@ -33,6 +33,21 @@ const config: GatsbyConfig = {
       "path": "./src/pages/"
     },
     __key: "pages"
+  }, {
+    resolve: 'gatsby-firesource',
+    options: {
+      credential: require("../firebase.json"),
+      types: [
+        {
+          type: 'Blog',
+          collection: 'blogs',
+          map: doc => ({
+            body: doc.body,
+            createdAt: doc.createdAt.toDate(),
+          }),
+        },
+      ],
+    },
   }]
 };
 
