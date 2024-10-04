@@ -1,4 +1,4 @@
-import { PageProps, graphql } from 'gatsby'
+import { HeadFC, PageProps, graphql } from 'gatsby'
 import { Markdown } from '../components/Markdown'
 
 const TestPage: React.FC<PageProps<Queries.TestPageQuery>> = ({ data }) => {
@@ -37,4 +37,10 @@ export const query = graphql`
     }
   }
 `
+
+export const Head: HeadFC = () => <>
+  <title>Test Page</title>
+  <meta name="description" content="Test page description" />
+</>
+
 export default TestPage
