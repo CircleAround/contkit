@@ -1,6 +1,8 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
+  // @see https://www.gatsbyjs.com/docs/reference/release-notes/v4.1/#jsx-runtime-options-in-gatsby-configjs
+  jsxRuntime: 'automatic',
   siteMetadata: {
     title: `Starter gatsby firebase site`,
     siteUrl: `https://www.yourdomain.tld`

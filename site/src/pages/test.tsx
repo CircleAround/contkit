@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { PageProps, graphql } from 'gatsby'
 import { Markdown } from '../components/Markdown'
 
