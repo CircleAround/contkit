@@ -1,7 +1,13 @@
 import type { GatsbyConfig, NodeInput } from 'gatsby'
 import * as admin from 'firebase-admin'
 
-type Blog = NodeInput & {
+type Blog = {
+  id: string
+  body: string
+  createdAt: Date
+}
+
+type BlogDoc = NodeInput & {
   body: string
   createdAt: admin.firestore.Timestamp
 }
@@ -58,7 +64,7 @@ const config: GatsbyConfig = {
           {
             type: 'Blog',
             collection: 'blogs',
-            map: (doc: Blog) => ({
+            map: (doc: BlogDoc): Blog => ({
               id: doc.id,
               body: doc.body,
               createdAt: doc.createdAt.toDate(),
