@@ -1,11 +1,7 @@
 import { lazy } from 'react'
 import { RouterSupport, Router, scope, pageSchema, crud } from 'bistrio/client'
-import {
-  taskCreateWithTagsSchema,
-  taskUpdateWithTagsSchema,
-} from '../params'
+import { blogCreateSchema, blogLoadSchema, blogUpdateSchema } from '../params'
 import { Middlewares } from '../middlewares'
-import TaskLayout from '../components/tasks/TaskLayout'
 
 const UserLayout = lazy(() => import(/* webpackMode: "eager" */ '../components/UserLayout'))
 
@@ -15,15 +11,14 @@ export function routes(r: Router, _support: RouterSupport<Middlewares>) {
   r.pages('/', ['/'])
 
   scope(r, (r) => {
-    r = r.layout({ element: TaskLayout }) // set layout
-
-    r.resources('tasks', {
-      name: 'tasks',
+    r.resources('blogs', {
+      name: 'blogs',
       actions: crud(),
       inputs: {
         list: { schema: pageSchema, sources: ['query', 'params'] },
-        create: taskCreateWithTagsSchema,
-        update: taskUpdateWithTagsSchema,
+        load: blogLoadSchema,
+        create: blogCreateSchema,
+        update: blogUpdateSchema,
       },
     })
   })

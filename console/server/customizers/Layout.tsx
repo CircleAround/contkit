@@ -9,7 +9,7 @@ export function Layout({ children, ctx, hydrate }: { children: ReactNode; ctx: A
   return (
     <html lang={lang}>
       <head>
-        <title>Tasks</title>
+        <title>Blogs</title>
         <link type="text/css" rel="stylesheet" href="/css/style.css"></link>
         {process.env.NODE_ENV === 'development' && ctx.res.locals?.webpack ? (
           <DevScripts {...{ ctx, ...scriptProps }} />

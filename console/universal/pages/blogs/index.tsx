@@ -1,10 +1,9 @@
 import { Suspense, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PaginationAttrs, useNavigate, usePagination, useUIEvent } from 'bistrio/client'
-import { Task } from '@prisma/client'
 import { Pagination } from '@/universal/components/Pagination'
 import { useRenderSupport } from '@bistrio/routes/main'
-import { tasks$show, tasks$edit, tasks$build, tasks$index } from '@bistrio/routes/main/named_endpoints'
+import { blogs$show, blogs$edit, blogs$build, blogs$index } from '@bistrio/routes/main/named_endpoints'
 
 export function Index() {
   const rs = useRenderSupport()
@@ -12,26 +11,24 @@ export function Index() {
 
   return (
     <>
-      <h1>{l.t`Task list`}</h1>
-      <Link to={tasks$build.path()}>{l.t`Create new task`}</Link>
+      <h1>{l.t`Blog list`}</h1>
+      <Link to={blogs$build.path()}>{l.t`Create new blog`}</Link>
       <Suspense fallback={<p>{l.t`Loading...`}</p>}>
-        <TaskTable></TaskTable>
+        <BlogTable />
       </Suspense>
     </>
   )
 }
 
-const TaskTable = () => {
+const BlogTable = () => {
   const rs = useRenderSupport()
 
   const limits = [3, 5, 10]
 
-  const { data: tasks, ...paginationAttrs } = usePagination({
-    loader: (pageParams) => rs.suspendedResources().tasks.list(pageParams),
+  const { data: blogs, ...paginationAttrs } = usePagination({
+    loader: (pageParams) => rs.suspendedResources().blogs.list(pageParams),
     limit: limits[1],
   })
-
-  const l = rs.getLocalizer()
 
   return (
     <>
@@ -40,15 +37,15 @@ const TaskTable = () => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>{l.o('models.tasks.done')}</th>
+            <th>DONE</th>
             <th>Title</th>
             <th>Description</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {tasks.map((task) => (
-            <TaskRecord key={task.id} task={task} />
+          {blogs.map((blog) => (
+            <BlogRecord key={blog.id} blog={blog} />
           ))}
         </tbody>
       </table>
@@ -74,64 +71,38 @@ function PageTool({ page, maxPage, limit, limits, navigateTolimitChanged }: Pagi
   )
 }
 
-function TaskRecord({ task: src }: { task: Task }) {
-  const [task, setTask] = useState(src)
+function BlogRecord({ blog: src }: { blog: any }) {
+  const [blog, setBlog] = useState(src)
   const rs = useRenderSupport()
   const l = rs.getLocalizer()
 
   return (
     <tr>
-      <td>{task.id}</td>
+      <td>{blog.id}</td>
+      <td></td>
       <td>
-        <DoneSelector task={task} setTask={setTask} />
+        <Link to={blogs$show.path({ id: blog.id })}>{blog.title}</Link>
       </td>
+      <td>{blog.description}</td>
       <td>
-        <Link to={tasks$show.path({ id: task.id })}>{task.title}</Link>
-      </td>
-      <td>{task.description}</td>
-      <td>
-        <Link to={tasks$edit.path({ id: task.id })}>{l.t`Edit`}</Link>&nbsp;|&nbsp;
-        <Remover task={task} />
+        <Link to={blogs$edit.path({ id: blog.id })}>{l.t`Edit`}</Link>&nbsp;|&nbsp;
+        <Remover blog={blog} />
       </td>
     </tr>
   )
 }
 
-function DoneSelector({ task, setTask }: { task: Task; setTask: (task: Task) => void }) {
-  const rs = useRenderSupport()
-  const l = rs.getLocalizer()
-
-  const { handleEvent: handleDoneClick, pending } = useUIEvent({
-    modifier: () => rs.resources().tasks.done(task),
-    onSuccess: () => setTask({ ...task, done: true }),
-  })
-
-  return (
-    <>
-      {pending ? (
-        '...'
-      ) : task.done ? (
-        l.o('models.tasks.getStatus', task.done)
-      ) : (
-        <a href="#" onClick={handleDoneClick}>
-          {l.o('models.tasks.getStatus', task.done)}
-        </a>
-      )}
-    </>
-  )
-}
-
-function Remover({ task }: { task: Task }) {
+function Remover({ blog }: { blog: any }) {
   const navigate = useNavigate()
   const rs = useRenderSupport()
   const l = rs.getLocalizer()
 
   const { handleEvent: handleDeleteClick, pending } = useUIEvent({
-    modifier: () => rs.resources().tasks.destroy(task),
+    modifier: () => rs.resources().blogs.destroy(blog),
     onSuccess: () => {
-      navigate(tasks$index.path(), {
+      navigate(blogs$index.path(), {
         purge: true,
-        flashMessage: { text: `Task deleted '${task.title}'`, type: 'info' },
+        flashMessage: { text: `Blog deleted '${blog.title}'`, type: 'info' },
       })
     },
   })

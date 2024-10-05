@@ -56,6 +56,7 @@
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.6",
     "express-list-endpoints": "^7.1.0",
+    "firebase-admin": "^12.6.0",
     "http-errors": "~2.0.0",
     "is-object": "^1.0.2",
     "morgan": "~1.10.0",

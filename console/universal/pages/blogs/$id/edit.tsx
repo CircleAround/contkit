@@ -2,23 +2,27 @@ import { Suspense } from 'react'
 
 import { useNavigate } from 'bistrio/client'
 import { useRenderSupport } from '@bistrio/routes/main'
-import { Form, UseSubmitProps, formSchema } from '@/universal/components/tasks/Form'
+import { Form, UseSubmitProps, formSchema } from '@/universal/components/blogs/Form'
 import { useParams } from 'react-router-dom'
-import { tasks$index } from '@/.bistrio/routes/main/named_endpoints'
+import { blogs$index } from '@/.bistrio/routes/main/named_endpoints'
 
 function MyForm() {
   const navigate = useNavigate()
-  const params = useParams()
+  const { id } = useParams()
   const rs = useRenderSupport()
-  const id = Number(params.id)
-  const source = rs.suspendedResources().tasks.load({ id })
+
+  if (id === undefined) {
+    throw new Error('id is required')
+  }
+
+  const source = rs.suspendedResources().blogs.load({ id })
 
   const props: UseSubmitProps = {
-    action: (params) => rs.resources().tasks.update({ done: false, ...params, id }),
+    action: (params) => rs.resources().blogs.update({ ...params, id }),
     onSuccess: (result) =>
-      navigate(tasks$index.path(), {
+      navigate(blogs$index.path(), {
         purge: true,
-        flashMessage: { text: `Task updated '${result.title}'`, type: 'info' },
+        flashMessage: { text: `Blog updated '${result.title}'`, type: 'info' },
       }),
     schema: formSchema,
     source,
@@ -30,7 +34,7 @@ function MyForm() {
 export function Edit() {
   return (
     <>
-      <h2>Update Task</h2>
+      <h2>Update Blog</h2>
       <Suspense fallback={<p>Loading...</p>}>
         <MyForm />
       </Suspense>
