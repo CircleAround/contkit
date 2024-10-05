@@ -16,6 +16,7 @@ const timestampsSchema = object({
 export const blogLoadSchema = idParamSchema
 export const blogCreateSchema = blogCoreSchema
 export const blogUpdateSchema = idParamSchema.merge(blogCoreSchema)
+export const blogDestroySchema = idParamSchema
 
 export const blogSchema = blogUpdateSchema.merge(timestampsSchema)
 export type Blog = zinfer<typeof blogSchema>

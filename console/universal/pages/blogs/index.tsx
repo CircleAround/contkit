@@ -1,9 +1,10 @@
-import { Suspense, useState } from 'react'
+import { Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { PaginationAttrs, useNavigate, usePagination, useUIEvent } from 'bistrio/client'
 import { Pagination } from '@/universal/components/Pagination'
 import { useRenderSupport } from '@bistrio/routes/main'
 import { blogs$show, blogs$edit, blogs$build, blogs$index } from '@bistrio/routes/main/named_endpoints'
+import { Blog } from '@/universal/params'
 
 export function Index() {
   const rs = useRenderSupport()
@@ -37,9 +38,8 @@ const BlogTable = () => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>DONE</th>
             <th>Title</th>
-            <th>Description</th>
+            <th>Body</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -71,19 +71,17 @@ function PageTool({ page, maxPage, limit, limits, navigateTolimitChanged }: Pagi
   )
 }
 
-function BlogRecord({ blog: src }: { blog: any }) {
-  const [blog, setBlog] = useState(src)
+function BlogRecord({ blog }: { blog: Blog }) {
   const rs = useRenderSupport()
   const l = rs.getLocalizer()
 
   return (
     <tr>
       <td>{blog.id}</td>
-      <td></td>
       <td>
         <Link to={blogs$show.path({ id: blog.id })}>{blog.title}</Link>
       </td>
-      <td>{blog.description}</td>
+      <td>{blog.body}</td>
       <td>
         <Link to={blogs$edit.path({ id: blog.id })}>{l.t`Edit`}</Link>&nbsp;|&nbsp;
         <Remover blog={blog} />
@@ -92,7 +90,7 @@ function BlogRecord({ blog: src }: { blog: any }) {
   )
 }
 
-function Remover({ blog }: { blog: any }) {
+function Remover({ blog }: { blog: Blog }) {
   const navigate = useNavigate()
   const rs = useRenderSupport()
   const l = rs.getLocalizer()

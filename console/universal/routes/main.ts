@@ -1,6 +1,6 @@
 import { lazy } from 'react'
 import { RouterSupport, Router, scope, pageSchema, crud } from 'bistrio/client'
-import { blogCreateSchema, blogLoadSchema, blogUpdateSchema } from '../params'
+import { blogCreateSchema, blogDestroySchema, blogLoadSchema, blogUpdateSchema } from '../params'
 import { Middlewares } from '../middlewares'
 
 const UserLayout = lazy(() => import(/* webpackMode: "eager" */ '../components/UserLayout'))
@@ -19,6 +19,7 @@ export function routes(r: Router, _support: RouterSupport<Middlewares>) {
         load: blogLoadSchema,
         create: blogCreateSchema,
         update: blogUpdateSchema,
+        destroy: blogDestroySchema
       },
     })
   })

@@ -71,14 +71,11 @@ export default defineResource(
       },
 
       update: async ({ id, ...attrs }): Promise<Blog> => {
-        const blogDoc = await blogCollection().doc(id).get()
-        if (!blogDoc.exists) {
-          throw new Error('Not found')
-        }
-        await blogDoc.ref.update({ ...attrs, updatedAt: FieldValue.serverTimestamp() })
-        return toBlog(blogDoc)
+        const blogRef = blogCollection().doc(id)
+        await blogRef.update({ ...attrs, updatedAt: FieldValue.serverTimestamp() })
+        return toBlog(await blogRef.get())
       },
 
-      destroy: async () => Promise.resolve({ test: true }),
+      destroy: async (): Promise<void> => {},
     }) as const satisfies BlogsResource<CustomActionOptions>,
 )
