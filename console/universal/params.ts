@@ -3,6 +3,7 @@ import { string, object, infer as zinfer, date } from 'zod'
 export const idSchema = string()
 
 export const blogCoreSchema = object({
+  slug: string().min(3).max(255),
   title: string().min(3).max(255),
   body: string(),
 })

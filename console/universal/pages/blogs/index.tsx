@@ -38,6 +38,7 @@ const BlogTable = () => {
         <thead>
           <tr>
             <th>ID</th>
+            <th>Slug</th>
             <th>Title</th>
             <th>Body</th>
             <th>Actions</th>
@@ -78,6 +79,7 @@ function BlogRecord({ blog }: { blog: Blog }) {
   return (
     <tr>
       <td>{blog.id}</td>
+      <td>{blog.slug}</td>
       <td>
         <Link to={blogs$show.path({ id: blog.id })}>{blog.title}</Link>
       </td>

@@ -13,6 +13,7 @@ const db = getFirestore(app)
 type BlogDoc = {
   createdAt: FirebaseFirestore.Timestamp
   updatedAt: FirebaseFirestore.Timestamp
+  slug: string
   title: string
   body: string
 }

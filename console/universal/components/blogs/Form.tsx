@@ -6,7 +6,7 @@ export const formSchema = blogCreateSchema
 export type FormAttrs = typeof formSchema
 export type UseSubmitProps = TUseSubmitProps<FormAttrs, Blog>
 
-export function Form({ source = { title: '', body: '' }, ...props }: UseSubmitProps) {
+export function Form({ source = { slug: '', title: '', body: '' }, ...props }: UseSubmitProps) {
   const { handleSubmit, invalid, pending } = useSubmit<FormAttrs, Blog>(props)
 
   return (
@@ -14,6 +14,9 @@ export function Form({ source = { title: '', body: '' }, ...props }: UseSubmitPr
       {invalid && <ErrorPanel err={invalid}></ErrorPanel>}
       <form onSubmit={handleSubmit}>
         <fieldset disabled={pending}>
+          <div>
+            <input name="slug" defaultValue={source.slug}></input>
+          </div>
           <div>
             <input name="title" defaultValue={source.title}></input>
           </div>
