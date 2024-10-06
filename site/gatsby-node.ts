@@ -6,9 +6,9 @@ const blogPostPath = resolve('./src/templates/blog-post.tsx')
 exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) => {
   const { createPage } = actions
 
-  const result = await graphql<{allBlog: {nodes: {title:string, slug:string}[]}}>(
+  const result = await graphql<Queries.GetAllBlogPostsQuery>(
     `
-      {
+      query GetAllBlogPosts {
         allBlog {
           nodes {
             title
