@@ -63,7 +63,6 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-firesource',
       options: {
-        credential: require('../firebase.json'),
         types: [
           {
             type: 'Blog',
