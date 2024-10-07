@@ -1,13 +1,19 @@
 import { defineResource, Paginated } from 'bistrio'
 import { CustomActionOptions } from '@/server/customizers'
 import { BlogsResource } from '@bistrio/resources'
-import { initializeApp, cert } from 'firebase-admin/app'
+import { initializeApp, getApps, getApp, App } from 'firebase-admin/app'
 import { FieldValue, getFirestore } from 'firebase-admin/firestore'
-import { join } from 'path'
 import { Blog } from '@/universal/params'
 
-const serviceAccountKeyPath = join(__dirname, '../../../firebase.json')
-const app = initializeApp({ credential: cert(serviceAccountKeyPath) })
+let app: App
+const appName = 'starter-gatsby-firestore'
+
+if(!getApps() || !getApps().length) {
+  app = initializeApp({}, appName)
+} else {
+  app = getApp(appName)
+}
+
 const db = getFirestore(app)
 
 type BlogDoc = {
