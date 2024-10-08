@@ -9,7 +9,7 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
   const result = await graphql<Queries.GetAllBlogPostsQuery>(
     `
       query GetAllBlogPosts {
-        allBlog {
+        allBlog(sort: { createdAt:DESC }) {
           nodes {
             title
             slug
@@ -27,22 +27,19 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
   }
 
   const posts = result.data!.allBlog.nodes
+  posts.forEach((post, index) => {
+    const previousPostSlug = index === 0 ? null : posts[index - 1].slug
+    const nextPostSlug =
+      index === posts.length - 1 ? null : posts[index + 1].slug
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostSlug = index === 0 ? null : posts[index - 1].slug
-      const nextPostSlug =
-        index === posts.length - 1 ? null : posts[index + 1].slug
-
-      createPage({
-        path: `/blog/${post.slug}/`,
-        component: blogPostPath,
-        context: {
-          slug: post.slug,
-          previousPostSlug,
-          nextPostSlug,
-        },
-      })
+    createPage({
+      path: `/blogs/${post.slug}/`,
+      component: blogPostPath,
+      context: {
+        slug: post.slug,
+        previousPostSlug,
+        nextPostSlug,
+      },
     })
-  }
+  })
 }
