@@ -3,8 +3,7 @@ import { Link, PageProps, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import { Markdown } from '../components/Markdown'
-//import * as styles from './blog-post.module.css'
-const styles = {}
+import * as styles from './blog-post.module.css'
 
 interface BlogPost {
   slug: string
