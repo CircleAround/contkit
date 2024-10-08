@@ -1,25 +1,12 @@
 import { FC } from 'react'
 import { Link, PageProps, graphql } from 'gatsby'
-
 import Layout from '../components/layout'
 import { Markdown } from '../components/Markdown'
 import * as styles from './blog-post.module.css'
 
-interface BlogPost {
-  slug: string
-  title: string
-  body: string
-}
-
-interface BlogPostTemplateProps extends PageProps {
-  data: {
-    blog: BlogPost
-    previous?: BlogPost
-    next?: BlogPost
-  }
-}
-
-const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ data: { blog: post, previous, next }, location }) => {
+const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
+  data: { blog: post, previous, next }
+}) => {
   const body = post?.body ?? ''
 
   return (
@@ -27,22 +14,20 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ data: { blog: post, previ
       <div className={styles.container}>
         <h1>{post?.title ?? 'Untitled'}</h1>
         <div className={styles.article}>
-          <div className={styles.body}>
-            {body && <Markdown text={body} />}
-          </div>
+          <div className={styles.body}>{body && <Markdown text={body} />}</div>
           {(previous || next) && (
             <nav>
               <ul className={styles.articleNavigation}>
                 {previous && (
                   <li>
-                    <Link to={`/blog/${previous.slug}`} rel="prev">
+                    <Link to={`/blog/${previous.slug}`} rel='prev'>
                       ← {previous.title}
                     </Link>
                   </li>
                 )}
                 {next && (
                   <li>
-                    <Link to={`/blog/${next.slug}`} rel="next">
+                    <Link to={`/blog/${next.slug}`} rel='next'>
                       {next.title} →
                     </Link>
                   </li>
