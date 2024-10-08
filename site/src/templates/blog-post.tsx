@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Link, PageProps, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
+import { Markdown } from '../components/Markdown'
 //import * as styles from './blog-post.module.css'
 const styles = {}
 
@@ -28,8 +29,7 @@ const BlogPostTemplate: FC<BlogPostTemplateProps> = ({ data: { blog: post, previ
         <h1>{post?.title ?? 'Untitled'}</h1>
         <div className={styles.article}>
           <div className={styles.body}>
-            {/* Render the body content as text or HTML */}
-            <div dangerouslySetInnerHTML={{ __html: body }} />
+            {body && <Markdown text={body} />}
           </div>
           {(previous || next) && (
             <nav>
