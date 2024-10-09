@@ -3,6 +3,7 @@ import { Link, PageProps, graphql } from 'gatsby'
 import Layout from '@/components/layout'
 import { Markdown } from '@/components/Markdown'
 import * as styles from './blog-post.module.css'
+import { SectionTitle } from '../components/SectionTitle'
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   data: { blog: post, previous, next }
@@ -12,7 +13,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   return (
     <Layout>
       <div className={styles.container}>
-        <h1>{post?.title ?? 'Untitled'}</h1>
+        <SectionTitle variant='plain'>{post?.title ?? 'Untitled'}</SectionTitle>
         <div className={styles.article}>
           <div className={styles.body}>{body && <Markdown text={body} />}</div>
           {(previous || next) && (
