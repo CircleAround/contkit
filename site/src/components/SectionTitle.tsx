@@ -2,20 +2,21 @@ import { ReactNode } from 'react'
 
 type SectionTitleProps = {
   children: ReactNode
-  variant?: 'plain' | 'underline' | 'background'
+  variant?: 'plain' | 'underline' | 'solid'
   className?: string
 }
 
 const SectionTitle = ({ children, variant = 'plain', className }: SectionTitleProps) => {
   const baseCn = 'text-zinc-900 text-2xl font-bold tracking-tight lg:text-3xl'
   const underlineCn = 'pb-2 border-b-2 border-blue-900'
-  const backgroundColorCn = 'p-2 bg-blue-200 text-white'
+  const solidCn = 'p-2 bg-blue-200 text-white'
+
 
   const selectCn = cn(
     baseCn,
     variant === 'plain' && '',
     variant === 'underline' && underlineCn,
-    variant === 'background' && backgroundColorCn,
+    variant === 'solid' && solidCn,
     className
   )
 

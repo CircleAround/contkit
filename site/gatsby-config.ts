@@ -49,6 +49,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-firesource',
       options: firestoreOptions,
     },
+    'gatsby-plugin-postcss',
   ],
 }
 
