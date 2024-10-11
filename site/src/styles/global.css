@@ -1,4 +1,9 @@
-@font-face {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ↓一旦非表示 完全に不要になったら消去 */
+/* @font-face {
   font-family: 'Inter var';
   font-weight: 100 900;
   font-display: swap;
@@ -98,4 +103,4 @@ tt:after {
 pre,
 code {
   font-family: var(--font-monospace);
-}
+} */

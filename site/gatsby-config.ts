@@ -78,6 +78,7 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    'gatsby-plugin-postcss',
   ],
 }
 
