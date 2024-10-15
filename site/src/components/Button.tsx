@@ -3,7 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
 const buttonStyles = cva(
-  'py-2 px-4 text-zinc-900 font-semibold text-sm text-center transition-colors',
+  'py-2 px-4 text-zinc-900 font-semibold text-sm text-center transition duration-300 ease-in-out hover:opacity-75',
   {
     variants: {
       variant: {
