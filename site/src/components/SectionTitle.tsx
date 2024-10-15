@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 const sectionTitleStyles = cva(
   // ベースのスタイル
-  'text-zinc-900 font-bold tracking-tight',
+  'text-zinc-900 font-bold text-xl tracking-tight',
   {
     variants: {
       variant: {
@@ -15,13 +15,13 @@ const sectionTitleStyles = cva(
         solid: 'inline-block px-4 py-2 bg-gray-300',
       },
       size: {
-        xl2: 'text-xl lg:text-2xl',
-        xl3: 'text-xl lg:text-3xl',
+        large: 'lg:text-2xl',
+        xlarge: 'lg:text-4xl',
       },
     },
     defaultVariants: {
       variant: 'plain',
-      size: 'xl2',
+      size: 'large',
     },
   }
 );
