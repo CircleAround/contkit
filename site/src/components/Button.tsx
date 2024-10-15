@@ -19,7 +19,7 @@ const buttonStyles = cva(
       },
       state: {
         default: '',
-        disabled: '',
+        disabled: 'opacity-25 cursor-not-allowed pointer-events-none',
       },
       size: {
         large: '',
