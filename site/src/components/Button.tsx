@@ -18,18 +18,19 @@ const buttonStyles = cva(
         full: 'rounded-full',
       },
       state: {
-        default: 'transition duration-300 ease-in-out hover:opacity-75',
+        default: 'transition duration-300 ease-in-out hover:opacity-50',
         disabled: 'opacity-25 cursor-not-allowed pointer-events-none',
       },
       size: {
         small: 'px-5 py-3 text-sm leading-none',
         medium: 'px-5 py-3 text-base leading-none',
         large: 'px-6 py-4 text-lg leading-none',
-        icon : 'w-14 h-14',
+        iconOnly: 'w-14 h-14',
       },
-      withIcon: {
-        on: 'space-x-2',
-        off: '',
+      iconPosition: {
+        row: 'flex-row space-x-2',
+        col: 'flex-col space-y-2',
+        none: '',
       },
     },
     defaultVariants: {
@@ -37,7 +38,7 @@ const buttonStyles = cva(
       state: 'default',
       rounded: 'large',
       size: 'medium',
-      withIcon: 'off'
+      iconPosition: 'none'
     },
   }
 );
@@ -51,11 +52,11 @@ type ButtonProps = ComponentProps< 'button' > & BaseButtonProps
 type AnchorButtonProps = ComponentProps< 'a' > & BaseButtonProps
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, state, rounded, size, withIcon, className, children, ...others }, ref) => {
+  ({ variant, state, rounded, size, iconPosition, className, children, ...others }, ref) => {
 
     return (
       <button
-        className={twMerge(buttonStyles({ variant, state, rounded, size, withIcon }), className)}
+        className={twMerge(buttonStyles({ variant, state, rounded, size, iconPosition }), className)}
         {...others}
         ref={ref}
         disabled={state === 'disabled'}
@@ -68,11 +69,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 )
 
 const AnchorButton = forwardRef<HTMLAnchorElement, AnchorButtonProps>(
-  ({ variant, state, rounded, size, withIcon, className, children, ...others }, ref) => {
+  ({ variant, state, rounded, size, iconPosition, className, children, ...others }, ref) => {
 
     return (
       <a
-        className={twMerge(buttonStyles({ variant, state, rounded, size, withIcon }), className)}
+        className={twMerge(buttonStyles({ variant, state, rounded, size, iconPosition }), className)}
         {...others}
         ref={ref}
         aria-disabled={state === 'disabled' ? 'true' : undefined}
