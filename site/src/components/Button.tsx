@@ -51,11 +51,11 @@ type ButtonProps = ComponentProps< 'button' > & BaseButtonProps
 type AnchorButtonProps = ComponentProps< 'a' > & BaseButtonProps
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, state, rounded, size, icon, className, children, ...others }, ref) => {
+  ({ variant, state, rounded, size, withIcon, className, children, ...others }, ref) => {
 
     return (
       <button
-        className={twMerge(buttonStyles({ variant, state, rounded, size, icon }), className)}
+        className={twMerge(buttonStyles({ variant, state, rounded, size, withIcon }), className)}
         {...others}
         ref={ref}
         disabled={state === 'disabled'}
@@ -68,11 +68,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 )
 
 const AnchorButton = forwardRef<HTMLAnchorElement, AnchorButtonProps>(
-  ({ variant, state, rounded, size, icon, className, children, ...others }, ref) => {
+  ({ variant, state, rounded, size, withIcon, className, children, ...others }, ref) => {
 
     return (
       <a
-        className={twMerge(buttonStyles({ variant, state, rounded, size, icon }), className)}
+        className={twMerge(buttonStyles({ variant, state, rounded, size, withIcon }), className)}
         {...others}
         ref={ref}
         aria-disabled={state === 'disabled' ? 'true' : undefined}
