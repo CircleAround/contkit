@@ -59,8 +59,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={twMerge(buttonStyles({ variant, state, rounded, size, iconPosition }), className)}
         {...others}
         ref={ref}
-        disabled={state === 'disabled'}
-        aria-disabled={state === 'disabled' ? 'true' : undefined}
       >
         {children}
       </button>
@@ -77,8 +75,6 @@ const AnchorButton = forwardRef<HTMLAnchorElement, AnchorButtonProps>(
         className={twMerge(buttonStyles({ variant, state, rounded, size, iconPosition }), className)}
         {...others}
         ref={ref}
-        aria-disabled={state === 'disabled' ? 'true' : undefined}
-        tabIndex={state === 'disabled' ? -1 : undefined}
       >
         {children}
       </a>
