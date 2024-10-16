@@ -20,6 +20,7 @@
   "dependencies": {
     "@mdx-js/react": "^2.3.0",
     "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "gatsby": "^5.13.7",
     "gatsby-firebase": "^1.0.4",
     "gatsby-firesource": "github:ms2sato/gatsby-firesource",
@@ -30,12 +31,14 @@
     "gatsby-plugin-sitemap": "^6.13.1",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
+    "lucide-react": "^0.453.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
     "remark-html": "^16.0.1",
-    "tailwind-merge": "^2.5.3"
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
