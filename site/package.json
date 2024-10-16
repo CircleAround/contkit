@@ -15,7 +15,8 @@
     "clean": "gatsby clean",
     "predeploy": "npm run build",
     "deploy": "firebase deploy --only hosting",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "eslint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@mdx-js/react": "^2.3.0",
@@ -45,6 +46,7 @@
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.20",
     "dotenv-cli": "^7.4.2",
+    "eslint-config-react-app": "^7.0.1",
     "firebase-tools": "^13.21.0",
     "gatsby-plugin-postcss": "^6.13.1",
     "postcss": "^8.4.47",
