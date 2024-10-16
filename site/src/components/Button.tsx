@@ -25,8 +25,9 @@ const buttonStyles = cva(
         small: 'px-5 py-3 text-sm leading-none',
         medium: 'px-5 py-3 text-base leading-none',
         large: 'px-6 py-4 text-lg leading-none',
+        icon : 'w-14 h-14',
       },
-      icon: {
+      withIcon: {
         on: 'space-x-2',
         off: '',
       },
@@ -36,7 +37,7 @@ const buttonStyles = cva(
       state: 'default',
       rounded: 'large',
       size: 'medium',
-      icon: 'off'
+      withIcon: 'off'
     },
   }
 );
