@@ -104,3 +104,8 @@ pre,
 code {
   font-family: var(--font-monospace);
 } */
+@layer base {
+  :root {
+    --radius: 0.5rem
+  }
+}
