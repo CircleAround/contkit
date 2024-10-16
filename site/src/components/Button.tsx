@@ -3,7 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
 const buttonStyles = cva(
-  'inline-flex justify-center items-center min-h-11 text-zinc-900 font-semibold text-center align-middle',
+  'inline-flex min-h-11 items-center justify-center text-center align-middle font-semibold text-zinc-900',
   {
     variants: {
       variant: {
@@ -19,13 +19,13 @@ const buttonStyles = cva(
       },
       state: {
         default: 'transition duration-300 ease-in-out hover:opacity-50',
-        disabled: 'opacity-25 cursor-not-allowed pointer-events-none',
+        disabled: 'pointer-events-none cursor-not-allowed opacity-25',
       },
       size: {
         small: 'px-5 py-3 text-sm leading-none',
         medium: 'px-5 py-3 text-base leading-none',
         large: 'px-6 py-4 text-lg leading-none',
-        iconOnly: 'w-14 h-14',
+        iconOnly: 'size-14',
       },
       iconPosition: {
         row: 'flex-row space-x-2',
