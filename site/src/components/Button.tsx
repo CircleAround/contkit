@@ -73,6 +73,7 @@ const AnchorButton = forwardRef<HTMLAnchorElement, AnchorButtonProps>(
 
     return (
       <a
+        role="button"
         className={twMerge(buttonStyles({ variant, state, rounded, size, iconPosition }), className)}
         {...others}
         ref={ref}
