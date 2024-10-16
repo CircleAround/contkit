@@ -1,4 +1,6 @@
 import type { HeadFC, PageProps } from "gatsby"
+import { SectionTitle } from '../components/SectionTitle'
+import { Button, AnchorButton } from '../components/Button'
 
 const pageStyles = {
   color: "#232129",
@@ -147,7 +149,15 @@ const IndexPage: React.FC<PageProps> = () => {
         Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
         update in real-time. 😎
       </p>
-      <ul style={doclistStyles}>
+
+      <SectionTitle shape="plain">セクションタイトル</SectionTitle>
+
+      <div className="mt-10 space-x-6">
+        <Button variant="primary" type="button" >ボタン</Button>
+        <AnchorButton variant="secondary" href="/blogs/test1/">ボタン</AnchorButton>
+      </div>
+
+      <ul style={doclistStyles} className="mt-10">
         {docLinks.map(doc => (
           <li key={doc.url} style={docLinkStyle}>
             <a
