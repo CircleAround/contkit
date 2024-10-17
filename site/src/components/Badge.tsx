@@ -17,7 +17,7 @@ const BadgeVariants = cva(
         warning: "pointer-events-none border-none bg-yellow-400 text-zinc-900 transition-none",
         danger: "pointer-events-none border-none bg-red-500 text-white transition-none",
       },
-      rounded: {
+      shape: {
         none: 'rounded-none	',
         small: 'rounded-sm',
         medium: 'rounded-md',
@@ -28,16 +28,16 @@ const BadgeVariants = cva(
     defaultVariants: {
       variant: "primary",
       state: "default",
-      rounded: "full",
+      shape: "full",
     },
   }
 )
 
 type BadgeProps = React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof BadgeVariants>
 
-function Badge({ className, variant, state, rounded,  children, ...others }: BadgeProps) {
+function Badge({ className, variant, state, shape,  children, ...others }: BadgeProps) {
   return (
-    <div className={twMerge(BadgeVariants({ variant, state, rounded }), className)} {...others}>
+    <div className={twMerge(BadgeVariants({ variant, state, shape }), className)} {...others}>
       {children}
     </div>
   )
