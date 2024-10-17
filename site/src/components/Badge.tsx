@@ -1,7 +1,7 @@
 import * as React from "react"
 import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
-import { badgeVariants as UIBadgeVariants } from "./ui/badge"
+import { badgeVariants as UIBadgeVariants } from "@/components/ui/badge"
 
 const BadgeVariants = cva(
   UIBadgeVariants(), // 既存のバリエーションを継承
