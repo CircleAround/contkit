@@ -10,7 +10,7 @@ const buttonStyles = cva(
         primary: 'bg-zinc-900 text-white',
         secondary: 'border-2 border-zinc-900'
       },
-      rounded: {
+      shape: {
         none: '',
         small: 'rounded-sm',
         medium: 'rounded-md',
@@ -36,7 +36,7 @@ const buttonStyles = cva(
     defaultVariants: {
       variant: 'primary',
       state: 'default',
-      rounded: 'large',
+      shape: 'large',
       size: 'medium',
       iconPosition: 'none'
     },
@@ -52,11 +52,11 @@ type ButtonProps = ComponentProps< 'button' > & BaseButtonProps
 type AnchorButtonProps = ComponentProps< 'a' > & BaseButtonProps
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, state, rounded, size, iconPosition, className, children, ...others }, ref) => {
+  ({ variant, state, shape, size, iconPosition, className, children, ...others }, ref) => {
 
     return (
       <button
-        className={twMerge(buttonStyles({ variant, state, rounded, size, iconPosition }), className)}
+        className={twMerge(buttonStyles({ variant, state, shape, size, iconPosition }), className)}
         {...others}
         ref={ref}
       >
@@ -67,12 +67,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 )
 
 const AnchorButton = forwardRef<HTMLAnchorElement, AnchorButtonProps>(
-  ({ variant, state, rounded, size, iconPosition, className, children, ...others }, ref) => {
+  ({ variant, state, shape, size, iconPosition, className, children, ...others }, ref) => {
 
     return (
       <a
         role="button"
-        className={twMerge(buttonStyles({ variant, state, rounded, size, iconPosition }), className)}
+        className={twMerge(buttonStyles({ variant, state, shape, size, iconPosition }), className)}
         {...others}
         ref={ref}
       >
