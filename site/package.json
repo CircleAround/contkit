@@ -16,7 +16,9 @@
     "predeploy": "npm run build",
     "deploy": "firebase deploy --only hosting",
     "typecheck": "tsc --noEmit",
-    "eslint:fix": "eslint . --fix"
+    "eslint:fix": "eslint . --fix",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
   },
   "dependencies": {
     "@mdx-js/react": "^2.3.0",
