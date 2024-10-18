@@ -13,12 +13,12 @@ const BadgeVariants = cva(
       },
       state: {
         default: 'pointer-events-none transition-none',
-        success: "pointer-events-none border-none bg-green-500 text-white transition-none",
+        success: "pointer-events-none border-none bg-green-600 text-white transition-none",
         warning: "pointer-events-none border-none bg-yellow-400 text-zinc-900 transition-none",
         danger: "pointer-events-none border-none bg-red-500 text-white transition-none",
       },
       shape: {
-        none: 'rounded-none	',
+        none: 'rounded-none',
         small: 'rounded-sm',
         medium: 'rounded-md',
         large: 'rounded-lg',

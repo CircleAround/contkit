@@ -1,7 +1,7 @@
 import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle'
 import { Button, AnchorButton } from '../components/Button/Button'
-import { Badge } from '../components/Badge'
+import { Badge } from '../components/Badge/Badge'
 import { Header } from '../components/Header'
 
 const pageStyles = {
@@ -9,24 +9,6 @@ const pageStyles = {
   padding: 40,
   paddingTop: 80,
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
 }
 const listStyles = {
   marginBottom: 96,

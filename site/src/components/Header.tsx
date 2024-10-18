@@ -45,7 +45,7 @@ const Header = ({children} : {children: ReactNode}) => {
 
         {/* Hamburger Icon for Mobile */}
         <div className="fixed right-6 top-4 z-50 md:hidden">
-          <button type="button" onClick={toggleMenu} aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"} className={`flex flex-col items-center justify-center rounded-full w-12 h-12 bg-zinc-900 ${isMenuOpen ? 'justify-center' : ''}`}>
+          <button type="button" onClick={toggleMenu} aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"} className={`flex size-12 flex-col items-center justify-center rounded-full bg-zinc-900 ${isMenuOpen ? 'justify-center' : ''}`}>
             <div className={`h-1 w-6 bg-white transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-2 rotate-45' : ''}`}></div>
             <div className={`my-1 h-1 w-6 bg-white transition-opacity duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : ''}`}></div>
             <div className={`h-1 w-6 bg-white transition-transform duration-300 ease-in-out ${isMenuOpen ? '-translate-y-2 -rotate-45' : ''}`}></div>
