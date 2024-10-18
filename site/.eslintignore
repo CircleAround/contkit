@@ -8,3 +8,5 @@ config
 tailwind.config.js
 
 /components/ui
+.storybook/
+.storybook-static/
