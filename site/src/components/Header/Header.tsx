@@ -108,29 +108,33 @@ const HamburgerIcon = ({ isMenuOpen, toggleMenu, className }: { isMenuOpen: bool
 const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks: NavLink[], isMenuOpen: boolean, ctaChildren: ReactNode, className?: string }) => {
   return (
     <>
-      {isMenuOpen && (
-        <div className={twMerge('fixed left-0 top-0 flex w-full flex-col justify-start bg-zinc-100 px-6 md:hidden', className)}>
-          <div className='py-20 pb-6'>
-            <NavigationMenu className="">
-              <NavigationMenuList className="flex flex-col items-start space-x-0 space-y-6">
-                <NavigationMenuItem className="text-xl font-semibold text-zinc-900">
-                  <Link to="/" className="transition duration-300 ease-in-out hover:opacity-50">Home</Link>
+      <div
+        className={twMerge(
+          'fixed left-0 top-0 flex w-full h-screen flex-col justify-start bg-zinc-100 px-6 md:hidden transition-transform duration-500 ease-in-out',
+          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-80',
+          className
+        )}
+      >
+        <div className="py-20 pb-6">
+          <NavigationMenu>
+            <NavigationMenuList className="flex flex-col items-start space-x-0 space-y-6">
+              <NavigationMenuItem className="text-xl font-semibold text-zinc-900">
+                <Link to="/" className="transition duration-300 ease-in-out hover:opacity-50">Home</Link>
+              </NavigationMenuItem>
+              {navLinks.map((navLink, index) => (
+                <NavigationMenuItem key={index} className="text-xl font-semibold text-zinc-900">
+                  <Link to={navLink.href} className="transition duration-300 ease-in-out hover:opacity-50">
+                    {navLink.label}
+                  </Link>
                 </NavigationMenuItem>
-                {navLinks.map((navLink, index) => (
-                  <NavigationMenuItem key={index} className="text-xl font-semibold text-zinc-900">
-                    <Link to={navLink.href} className="transition duration-300 ease-in-out hover:opacity-50">
-                      {navLink.label}
-                    </Link>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-            <div className='mt-6'>
-              <AnchorButton variant="primary" href={''}>{ctaChildren}</AnchorButton>
-            </div>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+          <div className="mt-6">
+            <AnchorButton variant="primary" href="">{ctaChildren}</AnchorButton>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };
