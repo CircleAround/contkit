@@ -2,7 +2,7 @@ import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Button, AnchorButton } from '../components/Button/Button'
 import { Badge } from '../components/Badge/Badge'
-import { Header } from '../components/Header'
+import {  Header } from '../components/Header'; // 各コンポーネントをインポート
 
 const pageStyles = {
   color: "#232129",
@@ -122,10 +122,21 @@ const links = [
   },
 ]
 
+const navLinks = [
+  { label: 'About', href: '/' },
+  { label: 'Service', href: '/' },
+  { label: 'Company', href: '/' },
+  { label: 'Blog', href: '/blogs/test1' },
+];
+
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
-      <Header>サイト名</Header>
+      <Header
+        logoChildren="My Website"
+        ctaChildren="お問い合わせ"
+        navLinks={navLinks}
+      />
 
       <main style={pageStyles}>
         <SectionTitle shape="plain">セクションタイトル</SectionTitle>
