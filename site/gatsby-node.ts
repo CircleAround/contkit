@@ -13,6 +13,7 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ act
       alias: {
         "@": resolve(__dirname, "src")
       },
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
   })
 }
