@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentProps, ReactNode, forwardRef } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
