@@ -31,13 +31,17 @@ const Header = ({
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <HeaderLayout className={className}>
       <HomeLink className={className}>{HomeLinkChildren}</HomeLink>
       <PcNavigation navLinks={navLinks} className={className} />
       <HeaderButton className={className} ctaChildren={ctaChildren} />
       <HamburgerIcon isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} className={className} />
-      <MobileMenu navLinks={navLinks} isMenuOpen={isMenuOpen} ctaChildren={ctaChildren} className={className} />
+      <MobileMenu navLinks={navLinks} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} ctaChildren={ctaChildren} className={className} />
     </HeaderLayout>
   );
 };
@@ -105,7 +109,7 @@ const HamburgerIcon = ({ isMenuOpen, toggleMenu, className }: { isMenuOpen: bool
   );
 };
 
-const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks: NavLink[], isMenuOpen: boolean, ctaChildren: ReactNode, className?: string }) => {
+const MobileMenu = ({ navLinks, isMenuOpen, toggleMenu, ctaChildren, className }: { navLinks: NavLink[], isMenuOpen: boolean, toggleMenu: () => void, ctaChildren: ReactNode, className?: string }) => {
   return (
     <>
       <div
@@ -119,11 +123,11 @@ const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks
           <NavigationMenu>
             <NavigationMenuList className="flex flex-col items-start space-x-0 space-y-6">
               <NavigationMenuItem className="text-xl font-semibold text-zinc-900">
-                <Link to="/" className="transition duration-300 ease-in-out hover:opacity-50">Home</Link>
+                <Link to="/" onClick={toggleMenu}  className="transition duration-300 ease-in-out hover:opacity-50">Home</Link>
               </NavigationMenuItem>
               {navLinks.map((navLink, index) => (
                 <NavigationMenuItem key={index} className="text-xl font-semibold text-zinc-900">
-                  <Link to={navLink.href} className="transition duration-300 ease-in-out hover:opacity-50">
+                  <Link to={navLink.href} onClick={toggleMenu} className="transition duration-300 ease-in-out hover:opacity-50">
                     {navLink.label}
                   </Link>
                 </NavigationMenuItem>
@@ -131,7 +135,7 @@ const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks
             </NavigationMenuList>
           </NavigationMenu>
           <div className="mt-6">
-            <AnchorButton variant="primary" href="">{ctaChildren}</AnchorButton>
+            <AnchorButton variant="primary" href="" onClick={toggleMenu}>{ctaChildren}</AnchorButton>
           </div>
         </div>
       </div>
