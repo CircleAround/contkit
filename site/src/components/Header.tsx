@@ -3,7 +3,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu'
-import { AnchorButton } from './Button'
+import { AnchorButton } from '../components/Button/Button'
 import { ReactNode, useState } from 'react';
 
 const navLinks = [
