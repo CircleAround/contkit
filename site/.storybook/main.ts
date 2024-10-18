@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
+const path = require('path');
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -30,12 +31,12 @@ const config: StorybookConfig = {
     if (!config.module) {
       config.module = { rules: [] };
     }
-  
+
     // config.module.rules が未定義の場合に初期化
     if (!config.module.rules) {
       config.module.rules = [];
     }
-  
+
     // Babelの設定を追加
     config.module.rules.push({
       test: /\.(js|jsx|ts|tsx)$/,
@@ -51,7 +52,23 @@ const config: StorybookConfig = {
         },
       ],
     });
-  
+
+    // Webpack の alias 設定を追加
+    if (!config.resolve) {
+      config.resolve = {};
+    }
+
+    if (!config.resolve.alias) {
+      config.resolve.alias = {};
+    }
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@/components": path.resolve(__dirname, "../src/components"),
+      "@/lib/utils": path.resolve(__dirname, "../src/lib/utils"),
+      "@/components/ui": path.resolve(__dirname, "../src/components/ui"),
+    };
+
     return config;
   }
 };
