@@ -1,9 +1,10 @@
+import React from 'react';
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
-import { AnchorButton } from '../components/Button/Button';
+import { AnchorButton } from '../Button/Button';
 import { ReactNode, useState } from 'react';
 import { Link } from 'gatsby';
 import { twMerge } from 'tailwind-merge';
@@ -11,6 +12,44 @@ import { twMerge } from 'tailwind-merge';
 type NavLink = {
   label: string;
   href: string;
+};
+
+const Header = ({
+  HomeLinkChildren: HomeLinkChildren,
+  ctaChildren,
+  navLinks,
+  className
+}: {
+  HomeLinkChildren: ReactNode,
+  ctaChildren: ReactNode,
+  navLinks: NavLink[],
+  className?: string
+}) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <HeaderLayout className={className}>
+      <HomeLink className={className}>{HomeLinkChildren}</HomeLink>
+      <PcNavigation navLinks={navLinks} className={className} />
+      <HeaderButton className={className} ctaChildren={ctaChildren} />
+      <HamburgerIcon isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} className={className} />
+      <MobileMenu navLinks={navLinks} isMenuOpen={isMenuOpen} ctaChildren={ctaChildren} className={className} />
+    </HeaderLayout>
+  );
+};
+
+const HeaderLayout = ({ children, className }: { children: ReactNode, className?: string }) => {
+  return (
+    <header className={twMerge('w-full h-20 px-6 pt-6 md:fixed md:z-50 md:pt-6', className)}>
+      <div className="flex items-center justify-between">
+        {children}
+      </div>
+    </header>
+  );
 };
 
 const HomeLink = ({children, className}: {children: ReactNode, className?: string}) => {
@@ -47,7 +86,7 @@ const HeaderButton = ({ className, ctaChildren }: { className?: string, ctaChild
 
 const HamburgerIcon = ({ isMenuOpen, toggleMenu, className }: { isMenuOpen: boolean, toggleMenu: () => void, className?: string }) => {
   return (
-    <div className={twMerge("fixed right-6 top-4 z-50 md:hidden", className)}>
+    <div className={twMerge("fixed right-6 top-6 z-50 md:hidden", className)}>
       <button
         type="button"
         onClick={toggleMenu}
@@ -96,49 +135,12 @@ const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks
   );
 };
 
-const HeaderLayout = ({ children, className }: { children: ReactNode, className?: string }) => {
-  return (
-    <header className={twMerge('w-full px-6 pt-7 md:fixed md:z-50 md:pt-6', className)}>
-      <div className="flex items-center justify-between">
-        {children}
-      </div>
-    </header>
-  );
-};
-
-const Header = ({
-  logoChildren,
-  ctaChildren,
-  navLinks,
-  className
-}: {
-  logoChildren: ReactNode,
-  ctaChildren: ReactNode,
-  navLinks: NavLink[],
-  className?: string
-}) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  return (
-    <HeaderLayout className={className}>
-      <HomeLink className={className}>{logoChildren}</HomeLink>
-      <PcNavigation navLinks={navLinks} className={className} />
-      <HeaderButton className={className} ctaChildren={ctaChildren} />
-      <HamburgerIcon isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} className={className} />
-      <MobileMenu navLinks={navLinks} isMenuOpen={isMenuOpen} ctaChildren={ctaChildren} className={className} />
-    </HeaderLayout>
-  );
-};
-
 Header.displayName = 'Header';
+HeaderLayout.displayName = 'HeaderLayout';
 HomeLink.displayName = 'HomeLink';
 PcNavigation.displayName = 'PcNavigation';
 HeaderButton.displayName = 'HeaderButton';
 HamburgerIcon.displayName = 'HamburgerIcon';
 MobileMenu.displayName = 'MobileMenu';
 
-export { Header, HomeLink, PcNavigation, HeaderButton, HamburgerIcon, MobileMenu };
+export { Header, HeaderLayout, HomeLink, PcNavigation, HeaderButton, HamburgerIcon, MobileMenu };
