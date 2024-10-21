@@ -15,7 +15,7 @@ type NavLink = {
 };
 
 const Header = ({
-  HomeLinkChildren: HomeLinkChildren,
+  HomeLinkChildren,
   ctaChildren,
   navLinks,
   className
@@ -31,10 +31,6 @@ const Header = ({
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
   return (
     <HeaderLayout className={className}>
       <HomeLink className={className}>{HomeLinkChildren}</HomeLink>
@@ -48,7 +44,7 @@ const Header = ({
 
 const HeaderLayout = ({ children, className }: { children: ReactNode, className?: string }) => {
   return (
-    <header className={twMerge('w-full h-20 px-6 pt-6 md:fixed md:z-50 md:pt-6', className)}>
+    <header className={twMerge('fixed top-6 z-40 px-6 w-full md:px-10', className)}>
       <div className="flex items-center justify-between">
         {children}
       </div>
@@ -90,7 +86,7 @@ const HeaderButton = ({ className, ctaChildren }: { className?: string, ctaChild
 
 const HamburgerIcon = ({ isMenuOpen, toggleMenu, className }: { isMenuOpen: boolean, toggleMenu: () => void, className?: string }) => {
   return (
-    <div className={twMerge("fixed right-6 top-6 z-50 md:hidden", className)}>
+    <div className={twMerge("z-50 md:hidden", className)}>
       <button
         type="button"
         onClick={toggleMenu}
