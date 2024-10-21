@@ -44,7 +44,7 @@ const Header = ({
 
 const HeaderLayout = ({ children, className }: { children: ReactNode, className?: string }) => {
   return (
-    <header className={twMerge('fixed top-6 z-40 px-6 w-full md:px-10', className)}>
+    <header className={twMerge('fixed top-6 left-0 z-40 px-6 w-full md:px-10', className)}>
       <div className="flex items-center justify-between">
         {children}
       </div>
@@ -110,7 +110,7 @@ const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks
     <>
       <div
         className={twMerge(
-          'fixed left-0 top-0 flex w-full h-screen flex-col justify-start bg-zinc-100 px-6 md:hidden transition-transform duration-500 ease-in-out',
+          'fixed left-0 top-0 flex w-full h-screen flex-col justify-start bg-zinc-100 px-6 md:hidden transition-all duration-500 ease-in-out',
           isMenuOpen ? '-translate-x-0 opacity-100' : 'translate-x-full opacity-0',
           className
         )}
