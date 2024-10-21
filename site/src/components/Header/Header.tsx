@@ -34,10 +34,10 @@ const Header = ({
   return (
     <HeaderLayout className={className}>
       <HomeLink className={className}>{HomeLinkChildren}</HomeLink>
-      <PcNavigation navLinks={navLinks} className={className} />
+      <Navigation navLinks={navLinks} className={className} />
       <HeaderButton className={className} ctaChildren={ctaChildren} />
       <HamburgerIcon isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} className={className} />
-      <MobileMenu navLinks={navLinks} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} ctaChildren={ctaChildren} className={className} />
+      <MobileMenu navLinks={navLinks} isMenuOpen={isMenuOpen} ctaChildren={ctaChildren} className={className} />
     </HeaderLayout>
   );
 };
@@ -54,13 +54,13 @@ const HeaderLayout = ({ children, className }: { children: ReactNode, className?
 
 const HomeLink = ({children, className}: {children: ReactNode, className?: string}) => {
   return (
-    <Link to='/' aria-label="ホームへ戻る" className={twMerge("text-xl font-bold", className)}>
+    <Link to='/' aria-label="ホームへ戻る" className={twMerge("relative z-50 text-xl font-bold", className)}>
       {children}
     </Link>
   );
 };
 
-const PcNavigation = ({ navLinks, className }: { navLinks: NavLink[], className?: string }) => {
+const Navigation = ({ navLinks, className }: { navLinks: NavLink[], className?: string }) => {
   return (
     <NavigationMenu className={twMerge("hidden md:flex lg:w-full", className)}>
       <NavigationMenuList className="flex justify-start space-x-4">
@@ -105,33 +105,20 @@ const HamburgerIcon = ({ isMenuOpen, toggleMenu, className }: { isMenuOpen: bool
   );
 };
 
-const MobileMenu = ({ navLinks, isMenuOpen, toggleMenu, ctaChildren, className }: { navLinks: NavLink[], isMenuOpen: boolean, toggleMenu: () => void, ctaChildren: ReactNode, className?: string }) => {
+const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks: NavLink[], isMenuOpen: boolean, ctaChildren: ReactNode, className?: string }) => {
   return (
     <>
       <div
         className={twMerge(
           'fixed left-0 top-0 flex w-full h-screen flex-col justify-start bg-zinc-100 px-6 md:hidden transition-transform duration-500 ease-in-out',
-          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-80',
+          isMenuOpen ? '-translate-x-0 opacity-100' : 'translate-x-full opacity-0',
           className
         )}
       >
         <div className="py-20 pb-6">
-          <NavigationMenu>
-            <NavigationMenuList className="flex flex-col items-start space-x-0 space-y-6">
-              <NavigationMenuItem className="text-xl font-semibold text-zinc-900">
-                <Link to="/" onClick={toggleMenu}  className="transition duration-300 ease-in-out hover:opacity-50">Home</Link>
-              </NavigationMenuItem>
-              {navLinks.map((navLink, index) => (
-                <NavigationMenuItem key={index} className="text-xl font-semibold text-zinc-900">
-                  <Link to={navLink.href} onClick={toggleMenu} className="transition duration-300 ease-in-out hover:opacity-50">
-                    {navLink.label}
-                  </Link>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+          <Navigation navLinks={navLinks} className='flex md:hidden [&_li]:text-xl [&_ul]:flex-col [&_ul]:items-start [&_ul]:space-x-0 [&_ul]:space-y-4'/>
           <div className="mt-6">
-            <AnchorButton variant="primary" href="" onClick={toggleMenu}>{ctaChildren}</AnchorButton>
+            <HeaderButton ctaChildren={ctaChildren} className='block'/>
           </div>
         </div>
       </div>
@@ -142,9 +129,9 @@ const MobileMenu = ({ navLinks, isMenuOpen, toggleMenu, ctaChildren, className }
 Header.displayName = 'Header';
 HeaderLayout.displayName = 'HeaderLayout';
 HomeLink.displayName = 'HomeLink';
-PcNavigation.displayName = 'PcNavigation';
+Navigation.displayName = 'PcNavigation';
 HeaderButton.displayName = 'HeaderButton';
 HamburgerIcon.displayName = 'HamburgerIcon';
 MobileMenu.displayName = 'MobileMenu';
 
-export { Header, HeaderLayout, HomeLink, PcNavigation, HeaderButton, HamburgerIcon, MobileMenu };
+export { Header, HeaderLayout, HomeLink, Navigation, HeaderButton, HamburgerIcon, MobileMenu };
