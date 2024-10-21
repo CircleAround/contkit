@@ -15,12 +15,12 @@ type NavLink = {
 };
 
 const Header = ({
-  HomeLinkChildren,
+  homeLinkChildren,
   ctaChildren,
   navLinks,
   className
 }: {
-  HomeLinkChildren: ReactNode,
+  homeLinkChildren: ReactNode,
   ctaChildren: ReactNode,
   navLinks: NavLink[],
   className?: string
@@ -33,7 +33,7 @@ const Header = ({
 
   return (
     <HeaderLayout className={className}>
-      <HomeLink className={className}>{HomeLinkChildren}</HomeLink>
+      <HomeLink className={className}>{homeLinkChildren}</HomeLink>
       <Navigation navLinks={navLinks} className={className} />
       <HeaderButton className={className} ctaChildren={ctaChildren} />
       <HamburgerIcon isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} className={className} />
