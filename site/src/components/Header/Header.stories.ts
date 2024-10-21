@@ -6,7 +6,7 @@ const meta: Meta<typeof Header> = {
   title: 'Header',
   component: Header,
   argTypes: {
-    HomeLinkChildren: { control: 'text' },
+    homeLinkChildren: { control: 'text' },
     ctaChildren: { control: 'text' },
     navLinks: { control: 'object' },
   },
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof Header>;
 // Header全体のストーリー
 export const DefaultHeader: Story = {
   args: {
-    HomeLinkChildren: 'My Logo',
+    homeLinkChildren: 'My Logo',
     ctaChildren: 'Contact',
     navLinks: [
       { label: 'About', href: '/' },
