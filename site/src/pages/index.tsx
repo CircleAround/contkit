@@ -1,8 +1,7 @@
 import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Button, AnchorButton } from '../components/Button/Button'
-import { Badge } from '../components/Badge/Badge'
-import {  Header } from '../components/Header/Header'; // 各コンポーネントをインポート
+import {  Header } from '../components/Header/Header';
 
 const pageStyles = {
   color: "#232129",
@@ -138,10 +137,19 @@ const IndexPage: React.FC<PageProps> = () => {
         navLinks={navLinks}
       />
 
+      {/* <Header
+        HomeLinkChildren={
+          <HomeLink>
+            <img src="/path/to/logo.png" alt="Home Logo" style={{ width: '100px', height: 'auto' }} />
+          </HomeLink>
+        }
+        ctaChildren="お問い合わせ"
+        navLinks={navLinks}
+      />
+ */}
+
       <main style={pageStyles}>
         <SectionTitle shape="plain">セクションタイトル</SectionTitle>
-
-        <Badge>バッジ</Badge>
 
         <div className="mt-10 space-x-6">
           <Button variant="primary" type="button" >ボタン</Button>
