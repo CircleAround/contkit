@@ -25,6 +25,7 @@
   "dependencies": {
     "@mdx-js/react": "^2.3.0",
     "@radix-ui/react-navigation-menu": "^1.2.1",
+    "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "gatsby": "^5.13.7",
