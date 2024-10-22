@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import {
   Card as UICard,
@@ -7,6 +7,7 @@ import {
 } from '@/components/ui/card';
 import { Link } from 'gatsby';
 import { twMerge } from 'tailwind-merge';
+import { Badge } from '../Badge/Badge';
 
 const cardVariants = cva(
   'relative flex size-full gap-4 bg-white text-zinc-900',
@@ -65,11 +66,11 @@ const imageVariants = cva(
 type CardProps = {
   className?: string;
   link?: string;
+  badge?: { label: string, className?: string,}[];
   title?: string;
   description?: string;
   imgSrc?: string;
   imgAlt?: string;
-  children: React.ReactNode;
 } & VariantProps<typeof cardVariants>
 
 const Card: React.FC<CardProps> = ({
@@ -82,9 +83,9 @@ const Card: React.FC<CardProps> = ({
   link,
   imgSrc,
   imgAlt,
-  children,
   title,
   description,
+  badge
 }) => {
   return (
     <UICard className={twMerge(cardVariants({ variant, stlye, state, size, shape }), className)}>
@@ -99,7 +100,15 @@ const Card: React.FC<CardProps> = ({
           <UICardTitle className="text-lg font-semibold">{title}</UICardTitle>
         )}
         {description && <p className="text-sm">{description}</p>}
-        {children}
+        {badge && (
+          <ul className="flex gap-2">
+            {badge.map((item, index) => (
+              <li key={index}>
+                <Badge shape="sm" className={item.className}>{item.label}</Badge>
+              </li>
+            ))}
+          </ul>
+        )}
       </UICardContent>
     </UICard>
   );
