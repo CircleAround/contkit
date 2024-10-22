@@ -3,7 +3,6 @@ import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Button, AnchorButton } from '../components/Button/Button'
 import { Header } from '../components/Header/Header';
 import { Card } from '../components/Card/Card';
-import { Badge } from '../components/Badge/Badge';
 
 const listStyles = {
   marginBottom: 96,
@@ -54,6 +53,13 @@ const docLinks = [
     color: "#8954A8",
   }
 ]
+
+const navLinks = [
+  { label: 'About', href: '/' },
+  { label: 'Service', href: '/' },
+  { label: 'Company', href: '/' },
+  { label: 'Blog', href: '/blogs/test1' },
+];
 
 const badgeStyle = {
   color: "#fff",
@@ -117,38 +123,6 @@ const links = [
   },
 ]
 
-const navLinks = [
-  { label: 'About', href: '/' },
-  { label: 'Service', href: '/' },
-  { label: 'Company', href: '/' },
-  { label: 'Blog', href: '/blogs/test1' },
-];
-
-const cards = [
-  {
-    link: '/',
-    imgSrc: 'https://images.unsplash.com/photo-1573495612077-a689b084faab?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imgAlt: '',
-    title: '会社紹介の AI ガイドを作成しました',
-    description: '先日発表された Open AI 社の GPTs に大変可能性を感じたので、とりあえず何か作ってみるべく弊社の会社紹介用の オリジナル GPT を作成しました。'
-  },
-  {
-    link: '/blogs/test1',
-    imgSrc: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?q=80&w=1921&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imgAlt: '',
-    title: '2023年新年のご挨拶',
-    description: '代表の佐藤です。謹んで新年のお慶びを申し上げます。'
-  },
-  {
-    link: '/blogs/test1',
-    imgSrc: 'https://images.unsplash.com/photo-1532243705460-7c3bb6bf310e?q=80&w=1977&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imgAlt: '',
-    badge: 'NEW',
-    title: '書籍「ステップアップJavaScript」を執筆いたしました',
-    description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております'
-  },
-];
-
 const informations = [
   {
     link: '/',
@@ -172,6 +146,16 @@ const informations = [
     title: '書籍「ステップアップJavaScript」を執筆いたしました',
     description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております'
   },
+];
+
+const blogs = [
+  {
+    link: '/',
+    imgSrc: 'https://images.unsplash.com/photo-1573495612077-a689b084faab?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgAlt: '',
+    title: '会社紹介の AI ガイドを作成しました',
+    description: '先日発表された Open AI 社の GPTs に大変可能性を感じたので、とりあえず何か作ってみるべく弊社の会社紹介用の オリジナル GPT を作成しました。'
+  },
   {
     link: '/blogs/test1',
     imgSrc: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?q=80&w=1921&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -183,7 +167,20 @@ const informations = [
     link: '/blogs/test1',
     imgSrc: 'https://images.unsplash.com/photo-1532243705460-7c3bb6bf310e?q=80&w=1977&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imgAlt: '',
-    badge: 'NEW',
+    title: '書籍「ステップアップJavaScript」を執筆いたしました',
+    description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております'
+  },
+  {
+    link: '/blogs/test1',
+    imgSrc: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?q=80&w=1921&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgAlt: '',
+    title: '2023年新年のご挨拶',
+    description: '代表の佐藤です。謹んで新年のお慶びを申し上げます。'
+  },
+  {
+    link: '/blogs/test1',
+    imgSrc: 'https://images.unsplash.com/photo-1532243705460-7c3bb6bf310e?q=80&w=1977&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgAlt: '',
     title: '書籍「ステップアップJavaScript」を執筆いたしました',
     description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております'
   },
@@ -212,9 +209,10 @@ const IndexPage: React.FC<PageProps> = () => {
       <main className="container mx-auto px-6 pt-24 md:px-10 md:pt-28">
         <SectionTitle shape="plain">ニュース</SectionTitle>
         <ul className="mt-10 flex flex-col justify-between space-y-6">
-          {cards.map((card, index) => (
+          {informations.map((information, index) => (
             <li key={index}>
-              <Card variant="row" state="hover" link={card.link} imgSrc={card.imgSrc} title={card.title} description={card.description}>
+              <Card variant="row" state="hover" link={information.link} imgSrc={information.imgSrc} title={information.title} description={information.description}>
+              {/* <time>2024/01/02</time> */}
               </Card>
             </li>
           ))}
@@ -222,11 +220,11 @@ const IndexPage: React.FC<PageProps> = () => {
 
         <div className="mt-20">
           <SectionTitle shape="plain">ブログ</SectionTitle>
-          <ul className="mt-10 grid grid-cols-3 gap-4">
-            {informations.map((information, index) => (
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {blogs.map((blog, index) => (
               <li key={index}>
-                <Card state="hover" link={information.link} imgSrc={information.imgSrc} title={information.title} description={information.description}>
-                  {/* <Badge className="flex">{card.badge}</Badge> */}
+                <Card state="hover" link={blog.link} imgSrc={blog.imgSrc} title={blog.title} description={blog.description}>
+                  {/* <Badge className="">{blog.badge}</Badge> */}
                 </Card>
               </li>
             ))}

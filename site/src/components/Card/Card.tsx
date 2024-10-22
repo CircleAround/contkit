@@ -2,25 +2,30 @@ import React from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import {
   Card as UICard,
-  CardTitle as UICardTitle,
   CardContent as UICardContent,
+  CardTitle as UICardTitle,
 } from '@/components/ui/card';
 import { Link } from 'gatsby';
 import { twMerge } from 'tailwind-merge';
 
 const cardVariants = cva(
-  'relative flex size-full gap-4 rounded-lg bg-white text-zinc-900 shadow-sm',
+  'relative flex size-full gap-4 bg-white text-zinc-900',
   {
     variants: {
       variant: {
         row: 'flex-col md:flex-row',
         col: 'flex-col',
       },
+      stlye: {
+        none: 'border-none shadow-none',
+        border: 'border border-slate-200 shadow-sm',
+      },
       state: {
         default: '',
         hover: 'group',
       },
       size: {
+        none: 'p-0',
         sm: 'p-2',
         md: 'p-4',
         lg: 'p-6',
@@ -34,6 +39,7 @@ const cardVariants = cva(
     },
     defaultVariants: {
       variant: 'col',
+      stlye: 'border',
       state: 'default',
       size: 'md',
       shape: 'md',
@@ -69,6 +75,7 @@ type CardProps = {
 const Card: React.FC<CardProps> = ({
   variant,
   state,
+  stlye,
   size,
   shape,
   className,
@@ -80,19 +87,19 @@ const Card: React.FC<CardProps> = ({
   description,
 }) => {
   return (
-    <UICard className={twMerge(cardVariants({ variant, state, size, shape }), className)}>
+    <UICard className={twMerge(cardVariants({ variant, stlye, state, size, shape }), className)}>
       {link && <Link to={link} className="absolute left-0 top-0 z-10 size-full" />}
       {imgSrc && (
         <div className={twMerge(imageVariants({ variant }), 'aspect-video')}>
           <img src={imgSrc} alt={imgAlt} className="size-full rounded-lg object-cover object-center transition-transform duration-1000 group-hover:scale-125" />
         </div>
       )}
-      <UICardContent className="flex flex-col flex-1 gap-2 p-0">
-        {children}
+      <UICardContent className="flex grow flex-col gap-2 p-0">
         {title && (
-          <UICardTitle className="text-xl font-semibold">{title}</UICardTitle>
+          <UICardTitle className="text-lg font-semibold">{title}</UICardTitle>
         )}
-        {description && <p className="mt-0 text-sm">{description}</p>}
+        {description && <p className="text-sm">{description}</p>}
+        {children}
       </UICardContent>
     </UICard>
   );
