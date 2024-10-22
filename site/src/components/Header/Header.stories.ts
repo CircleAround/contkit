@@ -3,7 +3,7 @@ import { Header } from './Header';
 
 // ストーリーのメタデータを定義
 const meta: Meta<typeof Header> = {
-  title: 'Header',
+  title: 'Components/Header',
   component: Header,
   argTypes: {
     homeLinkChildren: { control: 'text' },
