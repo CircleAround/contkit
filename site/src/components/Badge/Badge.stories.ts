@@ -8,7 +8,7 @@ const badgeMeta = {
   argTypes: {
     variant: { control: 'select', options: ['primary', 'secondary'] },
     state: { control: 'select', options: ['default', 'success', 'warning', 'danger'] },
-    shape: { control: 'select', options: ['none', 'small', 'medium', 'large', 'full'] },
+    shape: { control: 'select', options: ['none', 'sm', 'md', 'lg', 'full'] },
   },
 } as Meta<typeof Badge>;
 

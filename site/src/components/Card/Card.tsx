@@ -9,12 +9,12 @@ import { Link } from 'gatsby';
 import { twMerge } from 'tailwind-merge';
 
 const cardVariants = cva(
-  'relative w-full h-full rounded-lg bg-white text-zinc-900 shadow-sm',
+  'relative flex size-full gap-4 rounded-lg bg-white text-zinc-900 shadow-sm',
   {
     variants: {
       variant: {
-        row: 'flex flex-col md:flex-row gap-4',
-        col: 'flex flex-col',
+        row: 'flex-col md:flex-row',
+        col: 'flex-col',
       },
       state: {
         default: '',
@@ -25,7 +25,7 @@ const cardVariants = cva(
         md: 'p-4',
         lg: 'p-6',
       },
-      rounded: {
+      shape: {
         none: 'rounded-none',
         sm: 'rounded-sm',
         md: 'rounded-md',
@@ -36,7 +36,7 @@ const cardVariants = cva(
       variant: 'col',
       state: 'default',
       size: 'md',
-      rounded: 'md',
+      shape: 'md',
     },
   }
 );
@@ -46,8 +46,8 @@ const imageVariants = cva(
   {
     variants: {
       variant: {
-        row: 'w-full h-auto md:max-w-60',
-        col: 'w-full h-auto',
+        row: 'h-auto w-full md:max-w-60',
+        col: 'h-auto w-full',
       },
     },
     defaultVariants: {
@@ -70,7 +70,7 @@ const Card: React.FC<CardProps> = ({
   variant,
   state,
   size,
-  rounded,
+  shape,
   className,
   link,
   title,
@@ -80,7 +80,7 @@ const Card: React.FC<CardProps> = ({
   children,
 }) => {
   return (
-    <UICard className={twMerge(cardVariants({ variant, state, size, rounded }), className)}>
+    <UICard className={twMerge(cardVariants({ variant, state, size, shape }), className)}>
       {link && <Link to={link} className="absolute left-0 top-0 z-10 size-full" />}
       {imgSrc && (
         <div className={twMerge(imageVariants({ variant }), 'aspect-video')}>

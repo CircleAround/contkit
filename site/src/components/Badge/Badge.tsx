@@ -19,9 +19,9 @@ const BadgeVariants = cva(
       },
       shape: {
         none: 'rounded-none',
-        small: 'rounded-sm',
-        medium: 'rounded-md',
-        large: 'rounded-lg',
+        sm: 'rounded-sm',
+        md: 'rounded-md',
+        lg: 'rounded-lg',
         full: 'rounded-full',
       },
     },
