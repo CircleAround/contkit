@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
-const sectionTitleStyles = cva(
+const sectionTitleVariants = cva(
   // ベースのスタイル
   'text-xl font-bold leading-none tracking-tight text-zinc-900',
   {
@@ -16,13 +16,13 @@ const sectionTitleStyles = cva(
         solid: 'inline-block bg-gray-300 px-4 py-2',
       },
       size: {
-        large: 'lg:text-2xl lg:leading-none',
-        xlarge: 'lg:text-4xl lg:leading-none',
+        xxl: 'lg:text-2xl lg:leading-none',
+        xxxxl: 'lg:text-4xl lg:leading-none',
       },
     },
     defaultVariants: {
       shape: 'plain',
-      size: 'large',
+      size: 'xxl',
     },
   }
 );
@@ -30,10 +30,10 @@ const sectionTitleStyles = cva(
 type SectionTitleProps = {
   children: ReactNode;
   className?: string;
-} & VariantProps<typeof sectionTitleStyles>;
+} & VariantProps<typeof sectionTitleVariants>;
 
 const SectionTitle = ({ children, shape, size, className }: SectionTitleProps) => {
-  return <h2 className={twMerge(sectionTitleStyles({ shape, size }), className)}>{children}</h2>;
+  return <h2 className={twMerge(sectionTitleVariants({ shape, size }), className)}>{children}</h2>;
 };
 
 SectionTitle.displayName = 'SectionTitle';

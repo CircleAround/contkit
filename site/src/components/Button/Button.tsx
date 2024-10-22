@@ -3,7 +3,7 @@ import { ComponentProps, ReactNode, forwardRef } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
-const buttonStyles = cva(
+const buttonVariants = cva(
   'inline-flex min-h-11 items-center justify-center text-center align-middle font-semibold text-zinc-900',
   {
     variants: {
@@ -12,10 +12,10 @@ const buttonStyles = cva(
         secondary: 'border-2 border-zinc-900'
       },
       shape: {
-        none: '',
-        small: 'rounded-sm',
-        medium: 'rounded-md',
-        large: 'rounded-lg',
+        none: 'rounded-none',
+        sm: 'rounded-sm',
+        md: 'rounded-md',
+        lg: 'rounded-lg',
         full: 'rounded-full',
       },
       state: {
@@ -23,9 +23,9 @@ const buttonStyles = cva(
         disabled: 'pointer-events-none cursor-not-allowed opacity-25',
       },
       size: {
-        small: 'px-5 py-3 text-sm leading-none',
-        medium: 'px-5 py-3 text-base leading-none',
-        large: 'px-6 py-4 text-lg leading-none',
+        sm: 'px-5 py-3 text-sm leading-none',
+        md: 'px-5 py-3 text-base leading-none',
+        lg: 'px-6 py-4 text-lg leading-none',
         iconOnly: 'size-14',
       },
       iconPosition: {
@@ -37,8 +37,8 @@ const buttonStyles = cva(
     defaultVariants: {
       variant: 'primary',
       state: 'default',
-      shape: 'large',
-      size: 'medium',
+      shape: 'lg',
+      size: 'md',
       iconPosition: 'none'
     },
   }
@@ -47,7 +47,7 @@ const buttonStyles = cva(
 type BaseButtonProps = {
   children: ReactNode;
   className?: string;
-} & VariantProps<typeof buttonStyles>
+} & VariantProps<typeof buttonVariants>
 
 type ButtonProps = ComponentProps< 'button' > & BaseButtonProps
 type AnchorButtonProps = ComponentProps< 'a' > & BaseButtonProps
@@ -57,7 +57,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
-        className={twMerge(buttonStyles({ variant, state, shape, size, iconPosition }), className)}
+        className={twMerge(buttonVariants({ variant, state, shape, size, iconPosition }), className)}
         {...others}
         ref={ref}
       >
@@ -73,7 +73,7 @@ const AnchorButton = forwardRef<HTMLAnchorElement, AnchorButtonProps>(
     return (
       <a
         role="button"
-        className={twMerge(buttonStyles({ variant, state, shape, size, iconPosition }), className)}
+        className={twMerge(buttonVariants({ variant, state, shape, size, iconPosition }), className)}
         {...others}
         ref={ref}
       >
