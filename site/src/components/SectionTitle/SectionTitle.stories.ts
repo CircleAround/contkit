@@ -3,7 +3,7 @@ import { SectionTitle } from './SectionTitle';
 
 // Storybookのメタ情報
 const meta: Meta<typeof SectionTitle> = {
-  title: 'SectionTitle',
+  title: 'Components/SectionTitle',
   component: SectionTitle,
   argTypes: {
     shape: {
