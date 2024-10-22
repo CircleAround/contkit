@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import {
   Card as UICard,
@@ -67,6 +67,7 @@ type CardProps = {
   className?: string;
   link?: string;
   badge?: { label: string, className?: string,}[];
+  date?: string;
   title?: string;
   description?: string;
   imgSrc?: string;
@@ -75,14 +76,15 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({
   variant,
-  state,
   stlye,
+  state,
   size,
   shape,
   className,
   link,
   imgSrc,
   imgAlt,
+  date,
   title,
   description,
   badge
@@ -96,6 +98,9 @@ const Card: React.FC<CardProps> = ({
         </div>
       )}
       <UICardContent className="flex grow flex-col gap-2 p-0">
+        {date && (
+          <p className="text-sm text-zinc-600">{date}</p>
+        )}
         {title && (
           <UICardTitle className="text-lg font-semibold">{title}</UICardTitle>
         )}
