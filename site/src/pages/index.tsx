@@ -213,10 +213,10 @@ const IndexPage: React.FC<PageProps> = () => {
 
       <main className="container mx-auto px-6 pt-24 md:px-10 md:pt-28">
         <SectionTitle shape="plain">ニュース</SectionTitle>
-        <ul className="mt-10 flex flex-col justify-between space-y-6">
+        <ul className="mt-10 flex flex-col justify-between gap-y-4 divide-y">
           {informations.map((information, index) => (
-            <li key={index}>
-              <Card variant="row" state="hover" link={information.link} imgSrc={information.imgSrc} date={information.date} title={information.title} description={information.description} badge={information.badge} />
+            <li key={index} className="pt-4">
+              <Card variant="row" stlye="none" size="none" state="hover" link={information.link} imgSrc={information.imgSrc} date={information.date} title={information.title} description={information.description} badge={information.badge} />
             </li>
           ))}
         </ul>
