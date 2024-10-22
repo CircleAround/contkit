@@ -12,7 +12,7 @@ const meta: Meta<typeof SectionTitle> = {
     },
     size: {
       control: { type: 'select' },
-      options: ['large', 'xlarge'],
+      options: ['xxl', 'xxxxl'],
     },
   },
 };
@@ -25,7 +25,7 @@ type Story = StoryObj<typeof SectionTitle>;
 export const Plain: Story = {
   args: {
     shape: 'plain',
-    size: 'large',
+    size: 'xxl',
     children: 'Plain Section Title',
   },
 };
@@ -33,7 +33,7 @@ export const Plain: Story = {
 export const UnderLine: Story = {
   args: {
     shape: 'underLine',
-    size: 'large',
+    size: 'xxl',
     children: 'UnderLine Section Title',
   },
 };
@@ -41,7 +41,7 @@ export const UnderLine: Story = {
 export const SideLine: Story = {
   args: {
     shape: 'sideLine',
-    size: 'large',
+    size: 'xxl',
     children: 'SideLine Section Title',
   },
 };
@@ -49,7 +49,7 @@ export const SideLine: Story = {
 export const SpeechBubble: Story = {
   args: {
     shape: 'speechBubble',
-    size: 'large',
+    size: 'xxl',
     children: 'SpeechBubble Section Title',
   },
 };
@@ -57,7 +57,7 @@ export const SpeechBubble: Story = {
 export const Solid: Story = {
   args: {
     shape: 'solid',
-    size: 'large',
+    size: 'xxl',
     children: 'Solid Section Title',
   },
 };
