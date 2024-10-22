@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 // ストーリーのメタ情報を定義
 const buttonMeta = {
-  title: "Button",// ストーリーのタイトル
+  title: "Components/Button",// ストーリーのタイトル
   component: Button, // ストーリーで使用するコンポーネント
   argTypes: {
     variant: { control: 'select', options: ['primary', 'secondary'] },
