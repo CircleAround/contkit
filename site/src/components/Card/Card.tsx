@@ -46,8 +46,8 @@ const imageVariants = cva(
   {
     variants: {
       variant: {
-        row: 'h-auto w-full md:max-w-60',
-        col: 'h-auto w-full',
+        row: 'w-full md:max-w-60',
+        col: 'w-full',
       },
     },
     defaultVariants: {
@@ -73,11 +73,11 @@ const Card: React.FC<CardProps> = ({
   shape,
   className,
   link,
-  title,
-  description,
   imgSrc,
   imgAlt,
   children,
+  title,
+  description,
 }) => {
   return (
     <UICard className={twMerge(cardVariants({ variant, state, size, shape }), className)}>
@@ -87,12 +87,12 @@ const Card: React.FC<CardProps> = ({
           <img src={imgSrc} alt={imgAlt} className="size-full rounded-lg object-cover object-center transition-transform duration-1000 group-hover:scale-125" />
         </div>
       )}
-      <UICardContent className="flex flex-col gap-2 p-0">
+      <UICardContent className="flex flex-col flex-1 gap-2 p-0">
         {children}
         {title && (
           <UICardTitle className="text-xl font-semibold">{title}</UICardTitle>
         )}
-        {description && <p className="text-sm">{description}</p>}
+        {description && <p className="mt-0 text-sm">{description}</p>}
       </UICardContent>
     </UICard>
   );
