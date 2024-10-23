@@ -17,9 +17,9 @@ type BreadcrumbProps = {
   breadcrumb: { href: string, label: string }[];
 }
 
-const Breadcrumb = ({ breadcrumb }: BreadcrumbProps) => {
+const Breadcrumb = ({ className, breadcrumb }: BreadcrumbProps) => {
   return (
-    <UIBreadcrumb>
+    <UIBreadcrumb  className={className}>
       <UIBreadcrumbList>
         {breadcrumb.map((crumb, index) => (
           <UIBreadcrumbItem key={index}>
