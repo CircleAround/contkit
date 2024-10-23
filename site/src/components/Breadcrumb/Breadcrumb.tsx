@@ -14,23 +14,24 @@ import { twMerge } from 'tailwind-merge';
 type BreadcrumbProps = {
   children: React.ReactNode;
   className?: string;
-  breadcrumb: { href: string, label: string }[];
+  breadcrumbs: { href: string, label: string }[];
 }
 
-const Breadcrumb = ({ className, breadcrumb }: BreadcrumbProps) => {
+const Breadcrumb = ({ className, breadcrumbs }: BreadcrumbProps) => {
+
   return (
     <UIBreadcrumb  className={className}>
       <UIBreadcrumbList>
-        {breadcrumb.map((crumb, index) => (
+        {breadcrumbs.map((breadcrumb, index) => (
           <UIBreadcrumbItem key={index}>
-            {index === breadcrumb.length - 1 ? (
-              <UIBreadcrumbPage className='text-zinc-900 font-semibold pointer-events-none'>{crumb.label}</UIBreadcrumbPage>
+            {index === breadcrumbs.length - 1 ? (
+              <UIBreadcrumbPage className='text-zinc-900 font-semibold pointer-events-none'>{breadcrumb.label}</UIBreadcrumbPage>
             ) : (
-              <BreadcrumbLink href={crumb.href}>
-                {crumb.label}
+              <BreadcrumbLink href={breadcrumb.href}>
+                {breadcrumb.label}
               </BreadcrumbLink>
             )}
-            {index < breadcrumb.length - 1 && (
+            {index < breadcrumbs.length - 1 && (
               <UIBreadcrumbSeparator>
                 <Slash />
               </UIBreadcrumbSeparator>
