@@ -1,6 +1,5 @@
 import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
-import { Button, AnchorButton } from '../components/Button/Button'
 import { Card } from '../components/Card/Card'
 import  Template  from '../components/layout'
 

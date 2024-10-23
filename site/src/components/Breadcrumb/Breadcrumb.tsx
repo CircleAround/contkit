@@ -48,7 +48,7 @@ const Breadcrumb = ({ className, breadcrumbs }: BreadcrumbProps) => {
         {dynamicBreadcrumbs.map((breadcrumb, index) => (
           <UIBreadcrumbItem key={index}>
             {index === dynamicBreadcrumbs.length - 1 ? (
-              <UIBreadcrumbPage className='text-zinc-900 font-semibold pointer-events-none'>{breadcrumb.name}</UIBreadcrumbPage>
+              <UIBreadcrumbPage className='pointer-events-none font-semibold text-zinc-900'>{breadcrumb.name}</UIBreadcrumbPage>
             ) : (
               <BreadcrumbLink href={breadcrumb.href}>
                 {breadcrumb.name}
