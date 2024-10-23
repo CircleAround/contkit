@@ -42,11 +42,11 @@ type BreadcrumbLinkProps = ComponentProps<typeof UIBreadcrumbLink>
 
 const BreadcrumbLink = forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
   ({ className, children, 'aria-current': ariaCurrent, ...others }, ref) => {
-    const underlineCn = ariaCurrent === 'page' ? 'no-underline' : 'underline';
+    const currentPageCn = ariaCurrent === 'page' ? 'text-zinc-900 no-underline pointer-events-none' : 'text-zinc-400 hover:text-zinc-900 underline';
 
     return (
       <UIBreadcrumbLink
-        className={twMerge(underlineCn, 'hover:text-zinc-900', className)}
+        className={twMerge(currentPageCn, className)}
         {...others}
         ref={ref}
       >
