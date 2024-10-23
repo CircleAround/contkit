@@ -48,28 +48,29 @@ const Breadcrumb = ({ className, breadcrumbs }: BreadcrumbProps) => {
       <UIBreadcrumbList>
         <UIBreadcrumbItem key="home">
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          {dynamicBreadcrumbs.length > 0 && (
-            <UIBreadcrumbSeparator>
-              <Slash />
-            </UIBreadcrumbSeparator>
-          )}
         </UIBreadcrumbItem>
-
+        {dynamicBreadcrumbs.length > 0 && (
+          <UIBreadcrumbSeparator>
+            <Slash />
+          </UIBreadcrumbSeparator>
+        )}
         {dynamicBreadcrumbs.map((breadcrumb, index) => (
-          <UIBreadcrumbItem key={index}>
-            {index === dynamicBreadcrumbs.length - 1 ? (
-              <UIBreadcrumbPage className='pointer-events-none font-semibold text-zinc-900'>{breadcrumb.name}</UIBreadcrumbPage>
-            ) : (
-              <BreadcrumbLink href={breadcrumb.href}>
-                {breadcrumb.name}
-              </BreadcrumbLink>
-            )}
+          <React.Fragment key={index}>
+            <UIBreadcrumbItem>
+              {index === dynamicBreadcrumbs.length - 1 ? (
+                <UIBreadcrumbPage className='pointer-events-none font-semibold text-zinc-900'>{breadcrumb.name}</UIBreadcrumbPage>
+              ) : (
+                <BreadcrumbLink href={breadcrumb.href}>
+                  {breadcrumb.name}
+                </BreadcrumbLink>
+              )}
+            </UIBreadcrumbItem>
             {index < dynamicBreadcrumbs.length - 1 && (
               <UIBreadcrumbSeparator>
                 <Slash />
               </UIBreadcrumbSeparator>
             )}
-          </UIBreadcrumbItem>
+          </React.Fragment>
         ))}
       </UIBreadcrumbList>
     </UIBreadcrumb>
