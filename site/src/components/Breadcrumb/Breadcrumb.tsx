@@ -8,7 +8,7 @@ import {
   BreadcrumbSeparator as UIBreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { Slash } from "lucide-react"
-import { ComponentProps, ReactNode, forwardRef } from 'react';
+import { ComponentProps, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type BreadcrumbProps = {
@@ -23,7 +23,13 @@ const Breadcrumb = ({ className, breadcrumb }: BreadcrumbProps) => {
       <UIBreadcrumbList>
         {breadcrumb.map((crumb, index) => (
           <UIBreadcrumbItem key={index}>
-            <BreadcrumbLink href={crumb.href}>{crumb.label}</BreadcrumbLink>
+            {index === breadcrumb.length - 1 ? (
+              <UIBreadcrumbPage className='text-zinc-900 font-semibold pointer-events-none'>{crumb.label}</UIBreadcrumbPage>
+            ) : (
+              <BreadcrumbLink href={crumb.href}>
+                {crumb.label}
+              </BreadcrumbLink>
+            )}
             {index < breadcrumb.length - 1 && (
               <UIBreadcrumbSeparator>
                 <Slash />
@@ -40,12 +46,11 @@ const Breadcrumb = ({ className, breadcrumb }: BreadcrumbProps) => {
 type BreadcrumbLinkProps = ComponentProps<typeof UIBreadcrumbLink>
 
 const BreadcrumbLink = forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
-  ({ className, children, 'aria-current': ariaCurrent, ...others }, ref) => {
-    const currentPageCn = ariaCurrent === 'page' ? 'text-zinc-900 no-underline pointer-events-none' : 'text-zinc-400 hover:text-zinc-900 underline';
+  ({ className, children, ...others }, ref) => {
 
     return (
       <UIBreadcrumbLink
-        className={twMerge(currentPageCn, 'font-semibold', className)}
+        className={twMerge('font-semibold', className)}
         {...others}
         ref={ref}
       >
