@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from '@reach/router';
+// import { useLocation } from '@reach/router';
 import {
   Breadcrumb as UIBreadcrumb,
   BreadcrumbList as UIBreadcrumbList,
@@ -11,6 +11,16 @@ import {
 import { Slash } from "lucide-react"
 import { ComponentProps, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
+
+// 条件に基づいて useLocation を切り替える
+let useLocation: () => { pathname: string };
+if (process.env.STORYBOOK) {
+  // Storybook ではダミーの useLocation を使う
+  useLocation = () => ({ pathname: '/blog/current' });
+} else {
+  // 通常は @reach/router の useLocation を使う
+  useLocation = require('@reach/router').useLocation;
+}
 
 type BreadcrumbItem = {
   name: string;
