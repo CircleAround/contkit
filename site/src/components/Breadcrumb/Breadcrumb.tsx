@@ -58,7 +58,7 @@ const Breadcrumb = ({ className, breadcrumbs }: BreadcrumbProps) => {
           <React.Fragment key={index}>
             <UIBreadcrumbItem>
               {index === dynamicBreadcrumbs.length - 1 ? (
-                <UIBreadcrumbPage className='pointer-events-none font-semibold text-zinc-900'>{breadcrumb.name}</UIBreadcrumbPage>
+                <BreadcrumbPage>{breadcrumb.name}</BreadcrumbPage>
               ) : (
                 <BreadcrumbLink href={breadcrumb.href}>
                   {breadcrumb.name}
@@ -95,7 +95,27 @@ const BreadcrumbLink = forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
   },
 )
 
+//BreadcrumbPage
+type BreadcrumbPageProps = ComponentProps<typeof UIBreadcrumbPage>
+
+const BreadcrumbPage = forwardRef<HTMLSpanElement, BreadcrumbPageProps>(
+  ({ className, children, ...others }, ref) => {
+
+    return (
+      <UIBreadcrumbPage
+        className={twMerge('pointer-events-none font-semibold text-zinc-900', className)}
+        {...others}
+        ref={ref}
+      >
+        {children}
+      </UIBreadcrumbPage>
+    )
+  },
+)
+
+
 Breadcrumb.displayName = 'Breadcrumb';
 BreadcrumbLink.displayName = 'BreadcrumbLink';
+BreadcrumbPage.displayName = 'BreadcrumbPage';
 
-export { Breadcrumb, BreadcrumbLink };
+export { Breadcrumb, BreadcrumbLink, BreadcrumbPage };
