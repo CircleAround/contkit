@@ -6,7 +6,6 @@ import {
   BreadcrumbLink as UIBreadcrumbLink,
   BreadcrumbPage as UIBreadcrumbPage,
   BreadcrumbSeparator as UIBreadcrumbSeparator,
-  BreadcrumbEllipsis as UIBreadcrumbEllipsis,
 } from '@/components/ui/breadcrumb';
 import { Slash } from "lucide-react"
 import { ComponentProps, ReactNode, forwardRef } from 'react';
@@ -18,7 +17,7 @@ type BreadcrumbProps = {
   breadcrumb: { href: string, label: string }[];
 }
 
-const Breadcrumb = ({ className, breadcrumb }: BreadcrumbProps) => {
+const Breadcrumb = ({ breadcrumb }: BreadcrumbProps) => {
   return (
     <UIBreadcrumb>
       <UIBreadcrumbList>
@@ -46,7 +45,7 @@ const BreadcrumbLink = forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
 
     return (
       <UIBreadcrumbLink
-        className={twMerge(currentPageCn, className)}
+        className={twMerge(currentPageCn, 'font-semibold', className)}
         {...others}
         ref={ref}
       >
