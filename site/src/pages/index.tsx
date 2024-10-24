@@ -106,8 +106,8 @@ const IndexPage: React.FC<PageProps> = () => {
             <FormInput id="name" type="text" placeholder="田中 太郎"/>
           </div>
           <div className="mt-8 space-y-2">
-            <FormLabel>住所</FormLabel>
-            <FormInput placeholder="東京都千代田区霞が関"/>
+            <FormLabel htmlFor="address">住所</FormLabel>
+            <FormInput id="address" type="text" placeholder="東京都千代田区霞が関"/>
           </div>
 
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
