@@ -14,14 +14,14 @@ const FormLabelVariants = cva(
         required: 'flex items-center space-x-2',
       },
       size: {
-        sm: '',
-        md: '',
-        lg: '',
+        sm: 'text-sm',
+        md: 'text-md',
+        lg: 'text-lg',
       },
     },
     defaultVariants: {
       state: 'default',
-      size: 'md',
+      size: 'sm',
     },
   }
 );
@@ -38,7 +38,7 @@ const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(({ state, size, c
       >
         <span>{children}</span>
         {state === 'required' && (
-          <Badge shape="full" state="success">必須</Badge>
+          <Badge shape="full" state="danger">必須</Badge>
         )}
       </UILabel>
     )
