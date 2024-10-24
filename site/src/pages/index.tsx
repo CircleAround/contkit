@@ -2,6 +2,7 @@ import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Card } from '../components/Card/Card'
 import  Template  from '../components/layout'
+import { FormInput } from '../components/Form/FormInput'
 
 const informations = [
   {
@@ -75,7 +76,7 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <Template>
-        <div className="mt-10">
+        <div className="mt-40">
           <SectionTitle shape="plain">ニュース</SectionTitle>
           <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y">
             {informations.map((information, index) => (
@@ -86,7 +87,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </ul>
         </div>
 
-        <div className="mt-20">
+        <div className="mt-40">
           <SectionTitle shape="plain">ブログ</SectionTitle>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {blogs.map((blog, index) => (
@@ -95,6 +96,12 @@ const IndexPage: React.FC<PageProps> = () => {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="mt-40">
+          <SectionTitle shape="plain">お問い合わせ</SectionTitle>
+          <div className="mt-8"></div>
+          <FormInput placeholder="placeholder"/>
         </div>
       </Template>
     </>
