@@ -8,8 +8,8 @@ const BadgeVariants = cva(
   {
     variants: {
       variant: {
-        primary: "w-fit bg-zinc-900 py-1 text-white",
-        secondary: "w-fit border-2 border-zinc-900 bg-white py-1 text-zinc-900",
+        primary: "w-fit bg-zinc-900 py-1 text-white font-medium",
+        secondary: "w-fit border-2 border-zinc-900 bg-white py-1 text-zinc-900 font-medium",
       },
       state: {
         default: 'pointer-events-none transition-none',
