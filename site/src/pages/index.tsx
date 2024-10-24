@@ -78,7 +78,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Template>
         <div className="mt-40">
           <SectionTitle shape="plain">ニュース</SectionTitle>
-          <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y">
+          <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
             {informations.map((information, index) => (
               <li key={index} className="pt-4">
                 <Card variant="row" stlye="none" size="none" state="hover" link={information.link} imgSrc={information.imgSrc} date={information.date} title={information.title} description={information.description} badge={information.badge} />
@@ -102,6 +102,14 @@ const IndexPage: React.FC<PageProps> = () => {
           <SectionTitle shape="plain">お問い合わせ</SectionTitle>
           <div className="mt-8"></div>
           <FormInput placeholder="placeholder"/>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {blogs.map((blog, index) => (
+              <li key={index}>
+                <Card state="hover" link={blog.link} imgSrc={blog.imgSrc} date={blog.date} title={blog.title} description={blog.description} badge={blog.badge} />
+              </li>
+            ))}
+          </ul>
+
         </div>
       </Template>
     </>
