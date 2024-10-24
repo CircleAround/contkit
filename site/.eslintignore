@@ -7,6 +7,6 @@ config
 .eslintrc.js
 tailwind.config.js
 
-/components/ui
+ui
 .storybook/
 .storybook-static/
