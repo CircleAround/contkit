@@ -19,7 +19,7 @@ const cardVariants = cva(
       },
       stlye: {
         none: 'border-none shadow-none',
-        border: 'border border-slate-200 shadow-sm',
+        border: 'border border-zinc-200 shadow-sm',
       },
       state: {
         default: '',
