@@ -3,6 +3,7 @@ import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Card } from '../components/Card/Card'
 import  Template  from '../components/layout'
 import { FormInput } from '../components/Form/FormInput'
+import { FormLabel } from '../components/Form/FormLabel'
 
 const informations = [
   {
@@ -100,8 +101,15 @@ const IndexPage: React.FC<PageProps> = () => {
 
         <div className="mt-40">
           <SectionTitle shape="plain">お問い合わせ</SectionTitle>
-          <div className="mt-8"></div>
-          <FormInput placeholder="placeholder"/>
+          <div className="mt-8 space-y-2">
+            <FormLabel htmlFor="name" state="required">お名前</FormLabel>
+            <FormInput id="name" type="text" placeholder="田中 太郎"/>
+          </div>
+          <div className="mt-8 space-y-2">
+            <FormLabel>住所</FormLabel>
+            <FormInput placeholder="東京都千代田区霞が関"/>
+          </div>
+
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {blogs.map((blog, index) => (
               <li key={index}>
