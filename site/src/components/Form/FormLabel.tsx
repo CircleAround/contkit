@@ -6,7 +6,7 @@ import { FormLabel as UIFormLabel } from '@/components/ui/form';
 import { Badge } from '../Badge/Badge'
 
 const FormLabelVariants = cva(
-  'text-zinc-900 font-semibold',
+  'font-semibold text-zinc-900',
   {
     variants: {
       state: {
@@ -15,7 +15,7 @@ const FormLabelVariants = cva(
       },
       size: {
         sm: 'text-sm',
-        md: 'text-md',
+        md: 'text-base',
         lg: 'text-lg',
       },
     },
