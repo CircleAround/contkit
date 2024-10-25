@@ -31,6 +31,7 @@ export function ContactForm() {
       defaultValues: {
         username: "",
         email: "",
+        description: "",
       },
     })
 
