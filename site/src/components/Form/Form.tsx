@@ -4,14 +4,13 @@ import { z } from "zod"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
-  FormMessage,
 } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { FormLabel } from "@/components/Form/FormLabel"
+import { FormInput } from "@/components/Form/FormInput"
+import { FormMessage } from "@/components/Form/FormMessage"
+import { Button } from "@/components/Button/Button"
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -39,17 +38,29 @@ export function ProfileForm() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel state="required">お名前</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <FormInput placeholder="田中 太郎" {...field} />
                 </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
+
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel state="required">メールアドレス</FormLabel>
+                <FormControl>
+                  <FormInput placeholder="example@example.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <Button type="submit">Submit</Button>
         </form>
       </Form>
