@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentProps, forwardRef } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
-import { Label as UILabel } from '@/components/ui/label';
+import { FormLabel as UIFormLabel } from '@/components/ui/form';
 import { Badge } from '../Badge/Badge'
 
 const FormLabelVariants = cva(
@@ -26,12 +26,12 @@ const FormLabelVariants = cva(
   }
 );
 
-type FormLabelProps = ComponentProps<typeof UILabel> & VariantProps<typeof FormLabelVariants>
+type FormLabelProps = ComponentProps<typeof UIFormLabel> & VariantProps<typeof FormLabelVariants>
 
 const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(({ state, size, className, children, ...others }, ref) => {
 
     return (
-      <UILabel
+      <UIFormLabel
         className={twMerge(FormLabelVariants({ state, size }), className)}
         {...others}
         ref={ref}
@@ -40,7 +40,7 @@ const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(({ state, size, c
         {state === 'required' && (
           <Badge shape="full" state="danger">必須</Badge>
         )}
-      </UILabel>
+      </UIFormLabel>
     )
   },
 )
