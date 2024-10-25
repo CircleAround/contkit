@@ -1,9 +1,10 @@
 import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Card } from '../components/Card/Card'
-import  Template  from '../components/layout'
+import  Layout  from '../components/layout'
 import { FormInput } from '../components/Form/FormInput'
 import { FormLabel } from '../components/Form/FormLabel'
+import { ProfileForm } from '../components/Form/Form'
 
 const informations = [
   {
@@ -73,11 +74,32 @@ const blogs = [
   },
 ];
 
+// const formProperties = [
+//   {
+//     required: true,
+//     name: 'username',
+//     label: 'お名前',
+//     placeholder: '田中 太郎',
+//   },
+//   {
+//     required: true,
+//     name: 'address',
+//     label: '住所',
+//     placeholder: '東京都千代田区霞が関',
+//   },
+//   {
+//     required: false,
+//     name: 'email',
+//     label: 'メールアドレス',
+//     placeholder: 'example@example.co.jp',
+//   },
+// ]
+
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
-      <Template>
-        <div className="mt-40">
+      <Layout>
+        <div className="py-20">
           <SectionTitle shape="plain">ニュース</SectionTitle>
           <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
             {informations.map((information, index) => (
@@ -88,7 +110,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </ul>
         </div>
 
-        <div className="mt-40">
+        <div className="py-20">
           <SectionTitle shape="plain">ブログ</SectionTitle>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {blogs.map((blog, index) => (
@@ -99,8 +121,12 @@ const IndexPage: React.FC<PageProps> = () => {
           </ul>
         </div>
 
-        <div className="mt-40">
+        <div className="py-20">
           <SectionTitle shape="plain">お問い合わせ</SectionTitle>
+          {/* <div className="mt-10">
+            <ProfileForm formProperties={formProperties}/>
+          </div> */}
+
           <div className="mt-8 space-y-2">
             <FormLabel htmlFor="name" state="required">お名前</FormLabel>
             <FormInput id="name" type="text" placeholder="田中 太郎"/>
@@ -109,17 +135,8 @@ const IndexPage: React.FC<PageProps> = () => {
             <FormLabel htmlFor="address">住所</FormLabel>
             <FormInput id="address" type="text" placeholder="東京都千代田区霞が関"/>
           </div>
-
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {blogs.map((blog, index) => (
-              <li key={index}>
-                <Card state="hover" link={blog.link} imgSrc={blog.imgSrc} date={blog.date} title={blog.title} description={blog.description} badge={blog.badge} />
-              </li>
-            ))}
-          </ul>
-
         </div>
-      </Template>
+      </Layout>
     </>
   )
 }
