@@ -10,9 +10,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { FormInput } from './FormInput'
-import { Button } from "@/components/Button/Button"
-import { Badge } from '../Badge/Badge'
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -32,30 +31,27 @@ export function ProfileForm() {
       console.log(values)
     }
 
-  return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <div className="flex items-center space-x-2">
-                <FormLabel>お名前</FormLabel>
+    return (
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input placeholder="shadcn" {...field} />
+                </FormControl>
                 <FormDescription>
-                  <Badge shape="full" state="danger">必須</Badge>
+                  This is your public display name.
                 </FormDescription>
-              </div>
-              <FormControl>
-                <FormInput placeholder="田中 太郎" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button type="submit">送信</Button>
-      </form>
-    </Form>
-  )
-}
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Submit</Button>
+        </form>
+      </Form>
+    )
+  }
