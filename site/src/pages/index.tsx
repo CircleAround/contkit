@@ -2,7 +2,7 @@ import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Card } from '../components/Card/Card'
 import  Layout  from '../components/layout'
-import { ProfileForm } from '../components/Form/Form'
+import { ContactForm } from '../components/Form/Form'
 
 const informations = [
   {
@@ -102,17 +102,8 @@ const IndexPage: React.FC<PageProps> = () => {
         <div className="py-20">
           <SectionTitle shape="plain">お問い合わせ</SectionTitle>
           <div className="mt-10">
-            <ProfileForm/>
+            <ContactForm/>
           </div>
-
-          {/* <div className="mt-8 space-y-2">
-            <FormLabel htmlFor="name" state="required">お名前</FormLabel>
-            <FormInput id="name" type="text" placeholder="田中 太郎"/>
-          </div>
-          <div className="mt-8 space-y-2">
-            <FormLabel htmlFor="address">住所</FormLabel>
-            <FormInput id="address" type="text" placeholder="東京都千代田区霞が関"/>
-          </div> */}
         </div>
       </Layout>
     </>
