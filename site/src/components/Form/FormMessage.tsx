@@ -4,9 +4,9 @@ import { twMerge } from 'tailwind-merge';
 import { FormMessage as UIFormMessage } from '@/components/ui/form';
 
 
-type FormLabelProps = ComponentProps<typeof UIFormMessage>
+type FormMessageProps = ComponentProps<typeof UIFormMessage>
 
-const FormMessage = forwardRef<HTMLParagraphElement, FormLabelProps>(({ className, children, ...others }, ref) => {
+const FormMessage = forwardRef<HTMLParagraphElement, FormMessageProps>(({ className, children, ...others }, ref) => {
     const baseCn = 'text-red-500'
 
     return (
