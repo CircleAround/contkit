@@ -11,7 +11,21 @@ import { FormLabel } from "@/components/Form/FormLabel"
 import { FormInput } from "@/components/Form/FormInput/FormInput"
 import { FormTextarea } from "@/components/Form/FormTextarea/FormTextarea"
 import { FormMessage } from "@/components/Form/FormMessage"
+import { Select } from "@/components/Form/FormSelect/Select"
 import { Button } from "@/components/Button/Button"
+
+//「ご用件」の選択肢
+const selects = [
+  {
+    value: '資料請求',
+    name: '資料請求',
+  },
+  {
+    value: '見積もり',
+    name: '見積もり',
+  },
+];
+
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -75,6 +89,20 @@ export function ContactForm() {
             name="description"
             render={({ field }) => (
               <FormItem>
+                <FormLabel state="required">ご用件</FormLabel>
+                <FormControl>
+                  <Select selects={selects} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
                 <FormLabel>ご内容</FormLabel>
                 <FormControl>
                   <FormTextarea placeholder="お問い合わせ内容をご記入ください。例：導入をご検討の背景や、具体的な課題について" {...field} />
@@ -82,6 +110,7 @@ export function ContactForm() {
               </FormItem>
             )}
           />
+
           <Button type="submit">Submit</Button>
         </form>
       </Form>
