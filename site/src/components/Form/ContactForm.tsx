@@ -7,11 +7,11 @@ import {
   FormField,
   FormItem,
 } from "@/components/ui/form"
-import { FormLabel } from "@/components/Form/FormLabel"
-import { FormInput } from "@/components/Form/FormInput/FormInput"
-import { FormTextarea } from "@/components/Form/FormTextarea/FormTextarea"
-import { FormMessage } from "@/components/Form/FormMessage"
-import { Select } from "@/components/Form/FormSelect/Select"
+import { Label } from "@/components/Form/Label"
+import { Input } from "@/components/Form/Input/Input"
+import { Textarea } from "@/components/Form/Textarea/Textarea"
+import { FormMessage } from "@/components/Form/Message"
+import { Select } from "@/components/Form/Select/Select"
 import { Button } from "@/components/Button/Button"
 
 //「ご用件」の選択肢
@@ -61,9 +61,9 @@ export function ContactForm() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel state="required">お名前</FormLabel>
+                <Label state="required">お名前</Label>
                 <FormControl>
-                  <FormInput placeholder="田中 太郎" {...field} />
+                  <Input placeholder="田中 太郎" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -75,9 +75,9 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel state="required">メールアドレス</FormLabel>
+                <Label state="required">メールアドレス</Label>
                 <FormControl>
-                  <FormInput placeholder="example@example.com" {...field} />
+                  <Input placeholder="example@example.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -89,7 +89,7 @@ export function ContactForm() {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel state="required">ご用件</FormLabel>
+                <Label state="required">ご用件</Label>
                 <FormControl>
                   <Select selects={selects} />
                 </FormControl>
@@ -103,9 +103,9 @@ export function ContactForm() {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>ご内容</FormLabel>
+                <Label>ご内容</Label>
                 <FormControl>
-                  <FormTextarea placeholder="お問い合わせ内容をご記入ください。例：導入をご検討の背景や、具体的な課題について" {...field} />
+                  <Textarea placeholder="お問い合わせ内容をご記入ください。例：導入をご検討の背景や、具体的な課題について" {...field} />
                 </FormControl>
               </FormItem>
             )}
