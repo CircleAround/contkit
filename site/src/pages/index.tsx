@@ -101,7 +101,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
         <div className="py-20">
           <SectionTitle shape="plain">お問い合わせ</SectionTitle>
-          <div className="mx-auto mt-10 max-w-2xl w-full">
+          <div className="mx-auto mt-10 w-full max-w-2xl">
             <ContactForm/>
           </div>
         </div>
