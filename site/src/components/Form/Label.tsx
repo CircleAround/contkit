@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import { FormLabel as UIFormLabel } from '@/components/ui/form';
 import { Badge } from '../Badge/Badge'
 
-const FormLabelVariants = cva(
+const LabelVariants = cva(
   'font-semibold text-zinc-900',
   {
     variants: {
@@ -26,13 +26,13 @@ const FormLabelVariants = cva(
   }
 );
 
-type FormLabelProps = ComponentProps<typeof UIFormLabel> & VariantProps<typeof FormLabelVariants>
+type LabelProps = ComponentProps<typeof UIFormLabel> & VariantProps<typeof LabelVariants>
 
-const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(({ state, size, className, children, ...others }, ref) => {
+const Label = forwardRef<HTMLLabelElement, LabelProps>(({ state, size, className, children, ...others }, ref) => {
 
     return (
       <UIFormLabel
-        className={twMerge(FormLabelVariants({ state, size }), className)}
+        className={twMerge(LabelVariants({ state, size }), className)}
         {...others}
         ref={ref}
       >
@@ -45,6 +45,6 @@ const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(({ state, size, c
   },
 )
 
-FormLabel.displayName = 'FormLabel'
+Label.displayName = 'Label'
 
-export { FormLabel }
+export { Label }

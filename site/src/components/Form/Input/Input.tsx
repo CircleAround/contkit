@@ -3,9 +3,9 @@ import { ComponentProps, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { Input as UIInput } from '@/components/ui/input';
 
-type FormInputProps = ComponentProps<typeof UIInput>
+type InputProps = ComponentProps<typeof UIInput>
 
-const FormInput = forwardRef<HTMLInputElement, FormInputProps>(({ className, children, ...others }, ref) => {
+const Input = forwardRef<HTMLInputElement, InputProps>(({ className, children, ...others }, ref) => {
   const baseCn = 'border-zinc-300 h-11 text-zinc-900 focus-visible:ring-1 focus-visible:ring-blue-600 focus-visible:ring-offset-0 placeholder:text-zinc-400'
 
     return (
@@ -18,6 +18,6 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(({ className, chi
   },
 )
 
-FormInput.displayName = 'FormInput'
+Input.displayName = 'Input'
 
-export { FormInput }
+export { Input }

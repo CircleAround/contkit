@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { FormTextarea } from './FormTextarea';
+import { Textarea } from './Textarea';
 
 // Storybook のメタ情報
-const meta: Meta<typeof FormTextarea> = {
-  title: 'Components/Form/FormTextarea',
-  component: FormTextarea,
+const meta: Meta<typeof Textarea> = {
+  title: 'Components/Form/Textarea',
+  component: Textarea,
   argTypes: {
     className: {
       control: 'text',
@@ -29,7 +29,7 @@ const meta: Meta<typeof FormTextarea> = {
 
 export default meta;
 
-type Story = StoryObj<typeof FormTextarea>;
+type Story = StoryObj<typeof Textarea>;
 
 // 各ストーリーの定義
 
