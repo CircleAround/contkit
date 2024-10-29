@@ -2,6 +2,7 @@ import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Card } from '../components/Card/Card'
 import  Layout  from '../components/layout'
+import  SectionInner  from '../components/SectionInner'
 import { ContactForm } from '../components/Form/ContactForm'
 
 const informations = [
@@ -73,43 +74,139 @@ const blogs = [
 ];
 
 
+const testimonials = [
+  {
+    name: "株式会社A",
+    title: "導入後に効率が飛躍的に向上しました",
+    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
+    alt: "株式会社Aのイメージ画像",
+    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
+  },
+  {
+    name: "株式会社B",
+    title: "導入後に効率が飛躍的に向上しました",
+    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
+    alt: "株式会社Aのイメージ画像",
+    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
+  },
+  {
+    name: "株式会社C",
+    title: "導入後に効率が飛躍的に向上しました",
+    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
+    alt: "株式会社Aのイメージ画像",
+    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
+  },
+  // 他の事例追加可能
+];
+
+const features = [
+  { title: "コスト削減", description: "弊社のサービスで作業効率が上がり、経費が削減されます。" },
+  { title: "高い導入実績", description: "多くの企業に採用されており、確かな信頼性があります。" },
+  { title: "カスタマイズ可能", description: "お客様のニーズに合わせて柔軟に対応します。" },
+];
+
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <Layout>
-        <div className="py-20">
-          <SectionTitle shape="plain">ニュース</SectionTitle>
-          <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
-            {informations.map((information, index) => (
-              <li key={index} className="pt-4">
-                <Card variant="row" stlye="none" size="none" state="hover" link={information.link} imgSrc={information.imgSrc} date={information.date} title={information.title} description={information.description} badge={information.badge} />
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* 特長セクション */}
+        <section className="py-20 bg-gray-100">
+          <SectionInner>
+            <SectionTitle shape="plain" className="text-center">サービスの特長</SectionTitle>
+            <ul className="mt-8 grid gap-6 md:grid-cols-3">
+              {features.map((feature, index) => (
+                <li key={index} className="text-center p-6 bg-white shadow rounded">
+                  <h3 className="text-lg font-semibold">{feature.title}</h3>
+                  <p className="mt-2 text-gray-600">{feature.description}</p>
+                </li>
+              ))}
+            </ul>
+          </SectionInner>
+        </section>
 
-        <div className="py-20">
-          <SectionTitle shape="plain">ブログ</SectionTitle>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {blogs.map((blog, index) => (
-              <li key={index}>
-                <Card state="hover" link={blog.link} imgSrc={blog.imgSrc} date={blog.date} title={blog.title} description={blog.description} badge={blog.badge} />
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* ニュースセクション */}
+        <section className="py-20">
+          <SectionInner>
+            <SectionTitle shape="plain" className="text-center">ニュース</SectionTitle>
+            <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
+              {informations.map((information, index) => (
+                <li key={index} className="pt-4">
+                  <Card
+                    variant="row"
+                    stlye="none"
+                    size="none"
+                    state="hover"
+                    link={information.link}
+                    imgSrc={information.imgSrc}
+                    date={information.date}
+                    title={information.title}
+                    description={information.description}
+                    badge={information.badge} />
+                </li>
+              ))}
+            </ul>
+          </SectionInner>
+        </section>
 
-        <div className="py-20">
-          <SectionTitle shape="plain">お問い合わせ</SectionTitle>
-          <div className="mx-auto mt-10 w-full max-w-2xl">
-            <ContactForm/>
-          </div>
-        </div>
+
+        {/* お客様の声セクション */}
+        <section className="py-20">
+          <SectionInner>
+            <SectionTitle shape="plain" className="text-center">お客様の声</SectionTitle>
+            <ul className="mt-8 grid gap-6 md:grid-cols-3">
+              {testimonials.map((testimonial, index) => (
+                <li key={index} className="text-center">
+                  <Card
+                    stlye="none"
+                    imgSrc={testimonial.imgSrc}
+                    imgAlt={testimonial.alt}
+                    name={testimonial.name}
+                    title={testimonial.title}
+                    description={testimonial.description}
+                  />
+                </li>
+              ))}
+            </ul>
+          </SectionInner>
+        </section>
+
+        {/* お問い合わせセクション */}
+        <section className="py-20">
+          <SectionInner>
+            <SectionTitle shape="plain" className="text-center">お問い合わせ</SectionTitle>
+            <div className="mx-auto mt-10 w-full max-w-2xl">
+              <ContactForm/>
+            </div>
+          </SectionInner>
+        </section>
+
+        {/* ブログセクション */}
+        <section className="py-20">
+          <SectionInner>
+            <SectionTitle shape="plain" className="text-center">ブログ</SectionTitle>
+            <div className="mt-8 overflow-x-auto">
+              <ul className="flex gap-4">
+                {blogs.map((blog, index) => (
+                  <li key={index} className="min-w-[300px]">
+                    <Card
+                      state="hover"
+                      link={blog.link}
+                      imgSrc={blog.imgSrc}
+                      date={blog.date}
+                      title={blog.title}
+                      description={blog.description}
+                      badge={blog.badge}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </SectionInner>
+        </section>
       </Layout>
     </>
   )
 }
-
 export default IndexPage
 
 export const Head: HeadFC = () => <title>Home Page</title>
