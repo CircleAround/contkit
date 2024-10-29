@@ -52,6 +52,12 @@ const formSchema = z.object({
   description: z.string().min(2, {
     message: "",
   }),
+  multipleSelection: z.string().min(2, {
+    message: "",
+  }),
+  agreePrivacyPolicy: z.string().min(2, {
+    message: "プライバシーポリシーへの同意が必須です",
+  }),
 })
 
 export function ContactForm() {
@@ -62,6 +68,8 @@ export function ContactForm() {
         email: "",
         purpose: "",
         description: "",
+        multipleSelection: "",
+        agreePrivacyPolicy: "",
       },
     })
 
@@ -123,29 +131,43 @@ export function ContactForm() {
             name="description"
             render={({ field }) => (
               <FormItem>
+                <Label>ご内容</Label>
+                <FormControl>
+                  <Textarea placeholder="お問い合わせ内容をご記入ください。例：導入をご検討の背景や、具体的な課題について" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+
+          <FormField
+            control={form.control}
+            name="multipleSelection"
+            render={({ field }) => (
+              <FormItem>
                 <Label>サービスを知ったきっかけ</Label>
                 <FormControl>
                   <ul className="space-y-1">
                     <li>
-                      <Checkbox checkboxCaption="ウェブ検索（Google、Bingなど）" {...field} />
+                      <Checkbox caption="ウェブ検索（Google、Bingなど）" {...field} />
                     </li>
                     <li>
-                      <Checkbox checkboxCaption="SNS（X、Facebookなど）" {...field} />
+                      <Checkbox caption="SNS（X、Facebookなど）" {...field} />
                     </li>
                     <li>
-                      <Checkbox checkboxCaption="業界関連のセミナーや展示会" {...field} />
+                      <Checkbox caption="業界関連のセミナーや展示会" {...field} />
                     </li>
                     <li>
-                      <Checkbox checkboxCaption="メールマガジン・ニュースレター" {...field} />
+                      <Checkbox caption="メールマガジン・ニュースレター" {...field} />
                     </li>
                     <li>
-                      <Checkbox checkboxCaption="広告（オンライン広告、リスティング広告、雑誌広告など）" {...field} />
+                      <Checkbox caption="広告（オンライン広告、リスティング広告、雑誌広告など）" {...field} />
                     </li>
                     <li>
-                      <Checkbox checkboxCaption="口コミ・紹介" {...field} />
+                      <Checkbox caption="口コミ・紹介" {...field} />
                     </li>
                     <li>
-                      <Checkbox checkboxCaption="業界専門誌やメディア記事" {...field} />
+                      <Checkbox caption="業界専門誌やメディア記事" {...field} />
                     </li>
                   </ul>
                 </FormControl>
@@ -153,19 +175,25 @@ export function ContactForm() {
             )}
           />
 
+          <div className="flex justify-center mt-11">
+            <span className="text-xs"><a href="http://" target="_blank" rel="noopener noreferrer" className="text-blue-500 font-medium underline">プライバシーポリシー</a>に同意の上、送信してください。</span>
+          </div>
+
           <FormField
             control={form.control}
-            name="description"
+            name="agreePrivacyPolicy"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex justify-center">
                 <FormControl>
-                  <Checkbox checkboxCaption="Recents" {...field} />
+                  <Checkbox required caption="個人情報の取り扱いに同意する" {...field} />
                 </FormControl>
               </FormItem>
             )}
           />
 
-          <Button type="submit">Submit</Button>
+          <div className="flex justify-center mt-10">
+            <Button type="submit">同意の上、入力内容を送信</Button>
+          </div>
         </form>
       </Form>
     )
