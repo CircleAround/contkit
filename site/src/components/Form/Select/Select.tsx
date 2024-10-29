@@ -10,15 +10,16 @@ import {
 } from "@/components/ui/select"
 
 type SelectProps = ComponentProps<typeof UISelect> & {
+  onValueChange?: (value: string) => void;
   className?: string;
   selects?: { value: string, name: string }[];
 }
 
-const Select = forwardRef<HTMLButtonElement, SelectProps>(({ selects = [], className, ...others }, ref) => {
+const Select = forwardRef<HTMLButtonElement, SelectProps>(({ onValueChange, selects = [], className, ...others }, ref) => {
   const baseCn = 'border-zinc-300 h-11 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-600 focus-visible:ring-offset-0';
 
     return (
-      <UISelect>
+      <UISelect onValueChange={onValueChange}>
         <SelectTrigger
           className={twMerge(baseCn, className)}
           {...others}
