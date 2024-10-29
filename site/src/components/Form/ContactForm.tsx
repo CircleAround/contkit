@@ -185,7 +185,7 @@ export function ContactForm() {
             render={({ field }) => (
               <FormItem className="flex justify-center">
                 <FormControl>
-                  <Checkbox required caption="個人情報の取り扱いに同意する" {...field} />
+                  <Checkbox required caption="プライバシーポリシーに同意する" {...field} />
                 </FormControl>
               </FormItem>
             )}
