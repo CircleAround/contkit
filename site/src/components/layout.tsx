@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 import { Breadcrumb } from '../components/Breadcrumb/Breadcrumb'
 import { Header } from '../components/Header/Header';
+import  SectionInner  from '../components/SectionInner'
 
 const navLinks = [
   { label: 'About', href: '/' },
@@ -19,7 +20,9 @@ const Layout:FC<PropsWithChildren> = ({ children }) => {
       />
 
       <main className='pt-24 md:pt-28'>
-        <Breadcrumb/>
+        <SectionInner>
+          <Breadcrumb/>
+        </SectionInner>
         {children}
       </main>
     </>
