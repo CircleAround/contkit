@@ -12,6 +12,7 @@ import { Input } from "@/components/Form/Input/Input"
 import { Textarea } from "@/components/Form/Textarea/Textarea"
 import { FormMessage } from "@/components/Form/Message"
 import { Select } from "@/components/Form/Select/Select"
+import { Checkbox } from "@/components/Form/Checkbox/Checkbox"
 import { Button } from "@/components/Button/Button"
 
 //「ご用件」の選択肢
@@ -37,7 +38,6 @@ const selects = [
     name: 'その他',
   },
 ];
-
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -123,9 +123,43 @@ export function ContactForm() {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <Label>ご内容</Label>
+                <Label>サービスを知ったきっかけ</Label>
                 <FormControl>
-                  <Textarea placeholder="お問い合わせ内容をご記入ください。例：導入をご検討の背景や、具体的な課題について" {...field} />
+                  <ul className="space-y-1">
+                    <li>
+                      <Checkbox checkboxCaption="ウェブ検索（Google、Bingなど）" {...field} />
+                    </li>
+                    <li>
+                      <Checkbox checkboxCaption="SNS（X、Facebookなど）" {...field} />
+                    </li>
+                    <li>
+                      <Checkbox checkboxCaption="業界関連のセミナーや展示会" {...field} />
+                    </li>
+                    <li>
+                      <Checkbox checkboxCaption="メールマガジン・ニュースレター" {...field} />
+                    </li>
+                    <li>
+                      <Checkbox checkboxCaption="広告（オンライン広告、リスティング広告、雑誌広告など）" {...field} />
+                    </li>
+                    <li>
+                      <Checkbox checkboxCaption="口コミ・紹介" {...field} />
+                    </li>
+                    <li>
+                      <Checkbox checkboxCaption="業界専門誌やメディア記事" {...field} />
+                    </li>
+                  </ul>
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Checkbox checkboxCaption="Recents" {...field} />
                 </FormControl>
               </FormItem>
             )}
