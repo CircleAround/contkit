@@ -68,6 +68,7 @@ type CardProps = {
   link?: string;
   badge?: { label: string, className?: string,}[];
   date?: string;
+  name?: string;
   title?: string;
   description?: string;
   imgSrc?: string;
@@ -85,6 +86,7 @@ const Card: React.FC<CardProps> = ({
   imgSrc,
   imgAlt,
   date,
+  name,
   title,
   description,
   badge
@@ -100,6 +102,9 @@ const Card: React.FC<CardProps> = ({
       <UICardContent className="flex grow flex-col gap-2 p-0">
         {date && (
           <p className="text-sm text-zinc-600">{date}</p>
+        )}
+        {name && (
+          <p className="text-base font-semibold">{name}</p>
         )}
         {title && (
           <UICardTitle className="text-lg font-semibold">{title}</UICardTitle>
