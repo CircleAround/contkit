@@ -17,12 +17,24 @@ import { Button } from "@/components/Button/Button"
 //「ご用件」の選択肢
 const selects = [
   {
-    value: '資料請求',
-    name: '資料請求',
+    value: '導入について相談したい',
+    name: '導入について相談したい',
   },
   {
-    value: '見積もり',
-    name: '見積もり',
+    value: '価格について知りたい',
+    name: '価格について知りたい',
+  },
+  {
+    value: '製品についての詳細説明を希望',
+    name: '製品についての詳細説明を希望',
+  },
+  {
+    value: '見積もりを希望',
+    name: '見積もりを希望',
+  },
+  {
+    value: 'その他',
+    name: 'その他',
   },
 ];
 
@@ -34,8 +46,11 @@ const formSchema = z.object({
   email: z.string().email({
     message: "メールアドレスは必須項目です",
   }),
+  purpose: z.string().min(2, {
+    message: "ご要件は必須項目です",
+  }),
   description: z.string().min(2, {
-    message: "ご内容は必須項目です",
+    message: "",
   }),
 })
 
@@ -45,6 +60,7 @@ export function ContactForm() {
       defaultValues: {
         username: "",
         email: "",
+        purpose: "",
         description: "",
       },
     })
@@ -86,12 +102,16 @@ export function ContactForm() {
 
           <FormField
             control={form.control}
-            name="description"
+            name="purpose"
             render={({ field }) => (
               <FormItem>
                 <Label state="required">ご用件</Label>
                 <FormControl>
-                  <Select selects={selects} />
+                  <Select
+                    selects={selects}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
