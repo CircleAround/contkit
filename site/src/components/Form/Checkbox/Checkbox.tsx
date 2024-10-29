@@ -14,7 +14,7 @@ const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(({ id, className, 
       <label className="flex items-center space-x-2 cursor-pointer">
         <UICheckbox ref={ref} className={twMerge(baseCn, className)} {...others} />
         {checkboxCaption &&
-          <span className="block text-zinc-900 text-sm cursor-pointer">{checkboxCaption}</span>
+          <span className="text-zinc-900 text-sm cursor-pointer">{checkboxCaption}</span>
         }
       </label>
     )
