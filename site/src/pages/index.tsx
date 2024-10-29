@@ -5,6 +5,13 @@ import  Layout  from '../components/layout'
 import  SectionInner  from '../components/SectionInner'
 import { ContactForm } from '../components/Form/ContactForm'
 
+const features = [
+  { title: "コスト削減", description: "弊社のサービスで作業効率が上がり、経費が削減されます。" },
+  { title: "高い導入実績", description: "多くの企業に採用されており、確かな信頼性があります。" },
+  { title: "カスタマイズ可能", description: "お客様のニーズに合わせて柔軟に対応します。" },
+];
+
+
 const informations = [
   {
     link: '/',
@@ -73,7 +80,6 @@ const blogs = [
   },
 ];
 
-
 const testimonials = [
   {
     name: "株式会社A",
@@ -96,13 +102,6 @@ const testimonials = [
     alt: "株式会社Aのイメージ画像",
     description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
   },
-  // 他の事例追加可能
-];
-
-const features = [
-  { title: "コスト削減", description: "弊社のサービスで作業効率が上がり、経費が削減されます。" },
-  { title: "高い導入実績", description: "多くの企業に採用されており、確かな信頼性があります。" },
-  { title: "カスタマイズ可能", description: "お客様のニーズに合わせて柔軟に対応します。" },
 ];
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -110,12 +109,12 @@ const IndexPage: React.FC<PageProps> = () => {
     <>
       <Layout>
         {/* 特長セクション */}
-        <section className="py-20 bg-gray-100">
+        <section className="bg-gray-100 py-20">
           <SectionInner>
             <SectionTitle shape="plain" className="text-center">サービスの特長</SectionTitle>
             <ul className="mt-8 grid gap-6 md:grid-cols-3">
               {features.map((feature, index) => (
-                <li key={index} className="text-center p-6 bg-white shadow rounded">
+                <li key={index} className="rounded bg-white p-6 text-center shadow">
                   <h3 className="text-lg font-semibold">{feature.title}</h3>
                   <p className="mt-2 text-gray-600">{feature.description}</p>
                 </li>
