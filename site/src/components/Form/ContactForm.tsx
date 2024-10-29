@@ -175,8 +175,8 @@ export function ContactForm() {
             )}
           />
 
-          <div className="flex justify-center mt-11">
-            <span className="text-xs"><a href="http://" target="_blank" rel="noopener noreferrer" className="text-blue-500 font-medium underline">プライバシーポリシー</a>に同意の上、送信してください。</span>
+          <div className="mt-11 flex justify-center">
+            <span className="text-xs"><a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">プライバシーポリシー</a>に同意の上、送信してください。</span>
           </div>
 
           <FormField
@@ -191,7 +191,7 @@ export function ContactForm() {
             )}
           />
 
-          <div className="flex justify-center mt-10">
+          <div className="mt-10 flex justify-center">
             <Button type="submit">同意の上、入力内容を送信</Button>
           </div>
         </form>
