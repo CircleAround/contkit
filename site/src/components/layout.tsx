@@ -18,7 +18,7 @@ const Layout:FC<PropsWithChildren> = ({ children }) => {
         navLinks={navLinks}
       />
 
-      <main className='container mx-auto px-6 pt-24 md:px-10 md:pt-28'>
+      <main className='pt-24 md:pt-28'>
         <Breadcrumb/>
         {children}
       </main>
