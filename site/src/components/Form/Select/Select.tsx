@@ -16,7 +16,7 @@ type SelectProps = ComponentProps<typeof UISelect> & {
 }
 
 const Select = forwardRef<HTMLButtonElement, SelectProps>(({ onValueChange, selects = [], className, ...others }, ref) => {
-  const baseCn = 'border-zinc-300 h-11 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-600 focus-visible:ring-offset-0';
+  const baseCn = 'border-zinc-300 h-11 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:ring-offset-0 focus-visible:ring-1 focus-visible:ring-blue-600 focus-visible:ring-offset-0';
 
     return (
       <UISelect onValueChange={onValueChange}>
