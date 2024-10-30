@@ -217,7 +217,7 @@ export function ContactForm() {
                 <span className="mt-8 text-xs">
                   <a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">
                     プライバシーポリシー
-                  </a>に同意の上、お進みください。
+                  </a>をお読みいただき、同意いただける場合は次へ進んでください
                 </span>
               </FormItem>
             )}
