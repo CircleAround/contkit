@@ -175,18 +175,17 @@ export function ContactForm() {
             )}
           />
 
-          <div className="mt-11 flex justify-center">
-            <span className="text-xs"><a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">プライバシーポリシー</a>に同意の上、送信してください。</span>
-          </div>
-
           <FormField
             control={form.control}
             name="agreePrivacyPolicy"
             render={({ field }) => (
-              <FormItem className="flex justify-center">
+              <FormItem>
+                <Label state="required">プライバシーポリシー</Label>
                 <FormControl>
-                  <Checkbox required caption="プライバシーポリシーに同意する" {...field} />
+                  <Checkbox caption="同意する" {...field} />
                 </FormControl>
+                <FormMessage state="danger"/>
+                <span className="text-xs mt-8"><a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">プライバシーポリシー</a>に同意の上、お進みください。</span>
               </FormItem>
             )}
           />

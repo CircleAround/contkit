@@ -38,7 +38,7 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>(({ state, size, className
       >
         <span>{children}</span>
         {state === 'required' && (
-          <Badge shape="full" state="danger">必須</Badge>
+          <Badge shape="sm" state="danger">必須</Badge>
         )}
       </UIFormLabel>
     )
