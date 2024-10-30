@@ -6,9 +6,21 @@ import  SectionInner  from '../components/SectionInner'
 import { ContactForm } from '../components/Form/ContactForm'
 
 const features = [
-  { title: "コスト削減", description: "弊社のサービスで作業効率が上がり、経費が削減されます。" },
-  { title: "高い導入実績", description: "多くの企業に採用されており、確かな信頼性があります。" },
-  { title: "カスタマイズ可能", description: "お客様のニーズに合わせて柔軟に対応します。" },
+  {
+    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
+    title: "コスト削減",
+    description: "弊社のサービスで作業効率が上がり、経費が削減されます。"
+  },
+  {
+    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
+    title: "高い導入実績",
+    description: "多くの企業に採用されており、確かな信頼性があります。"
+  },
+  {
+    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
+    title: "カスタマイズ可能",
+    description: "お客様のニーズに合わせて柔軟に対応します。"
+  },
 ];
 
 
@@ -114,9 +126,14 @@ const IndexPage: React.FC<PageProps> = () => {
             <SectionTitle shape="plain" className="text-center">サービスの特長</SectionTitle>
             <ul className="mt-8 grid gap-6 md:grid-cols-3">
               {features.map((feature, index) => (
-                <li key={index} className="rounded bg-white p-6 text-center shadow">
-                  <h3 className="text-lg font-semibold">{feature.title}</h3>
-                  <p className="mt-2 text-gray-600">{feature.description}</p>
+                <li key={index} className="text-center">
+                  <Card
+                    imgSrc={feature.imgSrc}
+                    title={feature.title}
+                    description={feature.description}
+                    className="[&_i]"
+                  />
+
                 </li>
               ))}
             </ul>
@@ -152,7 +169,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="py-20">
           <SectionInner>
             <SectionTitle shape="plain" className="text-center">お客様の声</SectionTitle>
-            <ul className="mt-8 grid gap-6 md:grid-cols-3">
+            <ul className="mt-8 grid gap-8 md:grid-cols-3">
               {testimonials.map((testimonial, index) => (
                 <li key={index} className="text-center">
                   <Card
@@ -162,6 +179,7 @@ const IndexPage: React.FC<PageProps> = () => {
                     name={testimonial.name}
                     title={testimonial.title}
                     description={testimonial.description}
+                    className="p-0"
                   />
                 </li>
               ))}

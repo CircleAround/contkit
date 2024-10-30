@@ -5,11 +5,11 @@ import { twMerge } from 'tailwind-merge';
 import { FormMessage as UIFormMessage } from '@/components/ui/form';
 
 const FormMessageVariants = cva(
-  '',
+  'text-zinc-900',
   {
     variants: {
       state: {
-        default: 'text-zinc-900',
+        default: '',
         danger: 'text-red-500',
       },
     },
