@@ -33,7 +33,7 @@ const FormMessage = forwardRef<HTMLParagraphElement, FormMessageProps>(({ state,
 
     return (
       <div className='flex items-center'>
-        {state === 'danger' && <TriangleAlert className='mr-1 w-6 h-6 stroke-red-500'/>}
+        {state === 'danger' && <TriangleAlert className='mr-1 size-6 stroke-red-500'/>}
         <UIFormMessage
         className={twMerge(FormMessageVariants({ state }), className)}
           id={formMessageId}
