@@ -57,8 +57,7 @@ const checkItems = [
     id: 'newsletter',
     label: 'メールマガジン・ニュースレター'
   },
-  { id:
-    'ad',
+  { id:'ad',
     label: '広告（オンライン広告、リスティング広告、雑誌広告など）'
   },
   {
@@ -79,7 +78,7 @@ const formSchema = z.object({
     message: "メールアドレスは必須項目です",
   }),
   purpose: z.string().min(2, {
-    message: "ご要件は必須項目です",
+    message: "ご用件は必須項目です",
   }),
   description: z.string().min(2, {
     message: "",
