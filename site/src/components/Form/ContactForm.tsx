@@ -10,7 +10,7 @@ import {
 import { Label } from "@/components/Form/Label"
 import { Input } from "@/components/Form/Input/Input"
 import { Textarea } from "@/components/Form/Textarea/Textarea"
-import { FormMessage } from "@/components/Form/Message"
+import { FormMessage } from "@/components/Form/FormMessage/FormMessage"
 import { Select } from "@/components/Form/Select/Select"
 import { Checkbox } from "@/components/Form/Checkbox/Checkbox"
 import { Button } from "@/components/Button/Button"
@@ -39,6 +39,38 @@ const selects = [
   },
 ];
 
+//「サービスを知ったきっかけ」の選択肢
+const checkItems = [
+  {
+    id: 'web-search',
+    label: 'ウェブ検索（Google、Bingなど）'
+  },
+  {
+    id: 'sns',
+    label: 'SNS（X、Facebookなど）'
+  },
+  {
+    id: 'seminar',
+    label: '業界関連のセミナーや展示会'
+  },
+  {
+    id: 'newsletter',
+    label: 'メールマガジン・ニュースレター'
+  },
+  { id:
+    'ad',
+    label: '広告（オンライン広告、リスティング広告、雑誌広告など）'
+  },
+  {
+    id: 'recommendation',
+    label: '口コミ・紹介'
+  },
+  {
+    id: 'media',
+    label: '業界専門誌やメディア記事'
+  },
+]
+
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "お名前は必須項目です",
@@ -52,10 +84,10 @@ const formSchema = z.object({
   description: z.string().min(2, {
     message: "",
   }),
-  multipleSelection: z.string().min(2, {
-    message: "",
+  multipleSelection: z.array(z.string()).min(1, {
+    message: "少なくとも1つの項目を選択してください",
   }),
-  agreePrivacyPolicy: z.string().min(2, {
+  agreePrivacyPolicy: z.boolean().refine((value) => value === true, {
     message: "プライバシーポリシーへの同意が必須です",
   }),
 })
@@ -68,8 +100,8 @@ export function ContactForm() {
         email: "",
         purpose: "",
         description: "",
-        multipleSelection: "",
-        agreePrivacyPolicy: "",
+        multipleSelection: [],
+        agreePrivacyPolicy: false,
       },
     })
 
@@ -139,38 +171,31 @@ export function ContactForm() {
             )}
           />
 
-
           <FormField
             control={form.control}
             name="multipleSelection"
             render={({ field }) => (
               <FormItem>
-                <Label>サービスを知ったきっかけ</Label>
+                <Label state="required">サービスを知ったきっかけ</Label>
                 <FormControl>
                   <ul className="space-y-1">
-                    <li>
-                      <Checkbox caption="ウェブ検索（Google、Bingなど）" {...field} />
-                    </li>
-                    <li>
-                      <Checkbox caption="SNS（X、Facebookなど）" {...field} />
-                    </li>
-                    <li>
-                      <Checkbox caption="業界関連のセミナーや展示会" {...field} />
-                    </li>
-                    <li>
-                      <Checkbox caption="メールマガジン・ニュースレター" {...field} />
-                    </li>
-                    <li>
-                      <Checkbox caption="広告（オンライン広告、リスティング広告、雑誌広告など）" {...field} />
-                    </li>
-                    <li>
-                      <Checkbox caption="口コミ・紹介" {...field} />
-                    </li>
-                    <li>
-                      <Checkbox caption="業界専門誌やメディア記事" {...field} />
-                    </li>
+                    {checkItems.map((checkItem) => (
+                      <li key={checkItem.id}>
+                        <Checkbox
+                          caption={checkItem.label}
+                          checked={field.value.includes(checkItem.id)} // 選択状態をチェック
+                          onCheckedChange={(checked) => {
+                            const newValue = checked
+                              ? [...field.value, checkItem.id]
+                              : field.value.filter((value) => value !== checkItem.id);
+                            field.onChange(newValue); // 配列を更新
+                          }}
+                        />
+                      </li>
+                    ))}
                   </ul>
                 </FormControl>
+                <FormMessage state="danger" />
               </FormItem>
             )}
           />
@@ -182,10 +207,18 @@ export function ContactForm() {
               <FormItem>
                 <Label state="required">プライバシーポリシー</Label>
                 <FormControl>
-                  <Checkbox caption="同意する" {...field} />
+                  <Checkbox
+                    caption="同意する"
+                    checked={field.value}
+                    onCheckedChange={field.onChange} // チェック状態の変更を onCheckedChange に渡す
+                  />
                 </FormControl>
-                <FormMessage state="danger"/>
-                <span className="text-xs mt-8"><a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">プライバシーポリシー</a>に同意の上、お進みください。</span>
+                <FormMessage state="danger" />
+                <span className="mt-8 text-xs">
+                  <a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">
+                    プライバシーポリシー
+                  </a>に同意の上、お進みください。
+                </span>
               </FormItem>
             )}
           />
