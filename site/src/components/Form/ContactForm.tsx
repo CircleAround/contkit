@@ -89,7 +89,7 @@ export function ContactForm() {
                 <FormControl>
                   <Input placeholder="田中 太郎" {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage state="danger"/>
               </FormItem>
             )}
           />
@@ -103,7 +103,7 @@ export function ContactForm() {
                 <FormControl>
                   <Input placeholder="example@example.com" {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage state="danger"/>
               </FormItem>
             )}
           />
@@ -121,7 +121,7 @@ export function ContactForm() {
                     value={field.value}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage state="danger"/>
               </FormItem>
             )}
           />
