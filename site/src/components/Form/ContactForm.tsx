@@ -170,47 +170,54 @@ export function ContactForm() {
             )}
           />
 
-        <FormField
-          control={form.control}
-          name="multipleSelections"
-          render={() => (
-            <FormItem>
-              <Label>サービスを知ったきっかけ</Label>
-              {multipleSelections.map((multipleSelection) => (
-                <FormField
-                  key={multipleSelection.id}
-                  control={form.control}
-                  name="multipleSelections"
-                  render={({ field }) => {
-                    return (
-                      <FormItem
-                        key={multipleSelection.id}
-                        className="flex flex-row items-start space-x-3 space-y-0"
-                      >
-                        <FormControl>
-                          <Checkbox
-                            caption={multipleSelection.caption}
-                            checked={field.value?.includes(multipleSelection.id)}
-                            onCheckedChange={(checked) => {
-                              return checked
-                                ? field.onChange([...field.value, multipleSelection.id])
-                                : field.onChange(
-                                    field.value?.filter(
-                                      (value) => value !== multipleSelection.id
+          <FormField
+            control={form.control}
+            name="multipleSelections"
+            render={() => (
+              <FormItem>
+                <Label state="required">サービスを知ったきっかけ</Label>
+                {multipleSelections.map((multipleSelection) => (
+                  <FormField
+                    key={multipleSelection.id}
+                    control={form.control}
+                    name="multipleSelections"
+                    render={({ field }) => {
+                      return (
+                        <FormItem
+                          key={multipleSelection.id}
+                          className="flex flex-row items-start space-x-3 space-y-0"
+                        >
+                          <FormControl>
+                            <Checkbox
+                              caption={multipleSelection.caption}
+                              checked={field.value?.includes(multipleSelection.id)}
+                              onCheckedChange={(checked) => {
+                                return checked
+                                  ? field.onChange([...field.value, multipleSelection.id])
+                                  : field.onChange(
+                                      field.value?.filter(
+                                        (value) => value !== multipleSelection.id
+                                      )
                                     )
-                                  )
-                            }}
-                          />
-                        </FormControl>
-                      </FormItem>
-                    );
-                  }}
-                />
-              ))}
-              <FormMessage state="danger" />
-            </FormItem>
-          )}
-        />
+                              }}
+                            />
+                          </FormControl>
+                        </FormItem>
+                      );
+                    }}
+                  />
+                ))}
+                <FormMessage state="danger" />
+              </FormItem>
+            )}
+          />
+
+          <div className="text-sm">
+            <a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">
+              プライバシーポリシー
+            </a>をお読みいただき、同意いただける場合は次へ進んでください
+          </div>
+
 
           <FormField
             control={form.control}
@@ -226,11 +233,6 @@ export function ContactForm() {
                   />
                 </FormControl>
                 <FormMessage state="danger" />
-                <div className="mt-8 text-xs">
-                  <a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">
-                    プライバシーポリシー
-                  </a>をお読みいただき、同意いただける場合は次へ進んでください
-                </div>
               </FormItem>
             )}
           />
