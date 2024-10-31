@@ -11,7 +11,7 @@ const LabelVariants = cva(
     variants: {
       state: {
         default: '',
-        required: 'flex items-center space-x-2',
+        required: 'flex items-center',
       },
       size: {
         sm: 'text-sm',
@@ -36,9 +36,11 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>(({ state, size, className
         {...others}
         ref={ref}
       >
-        <span>{children}</span>
+        {children}
         {state === 'required' && (
-          <Badge shape="sm" state="danger">必須</Badge>
+          <>
+            <Badge shape="sm" state="danger" className='ms-2'>必須</Badge>
+          </>
         )}
       </UIFormLabel>
     )
