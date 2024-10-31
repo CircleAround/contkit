@@ -40,33 +40,33 @@ const selects = [
 ];
 
 //「サービスを知ったきっかけ」の選択肢
-const checkItems = [
+const multipleSelections = [
   {
     id: 'web-search',
-    label: 'ウェブ検索（Google、Bingなど）'
+    caption: 'ウェブ検索（Google、Bingなど）'
   },
   {
     id: 'sns',
-    label: 'SNS（X、Facebookなど）'
+    caption: 'SNS（X、Facebookなど）'
   },
   {
     id: 'seminar',
-    label: '業界関連のセミナーや展示会'
+    caption: '業界関連のセミナーや展示会'
   },
   {
     id: 'newsletter',
-    label: 'メールマガジン・ニュースレター'
+    caption: 'メールマガジン・ニュースレター'
   },
   { id:'ad',
-    label: '広告（オンライン広告、リスティング広告、雑誌広告など）'
+    caption: '広告（オンライン広告、リスティング広告、雑誌広告など）'
   },
   {
     id: 'recommendation',
-    label: '口コミ・紹介'
+    caption: '口コミ・紹介'
   },
   {
     id: 'media',
-    label: '業界専門誌やメディア記事'
+    caption: '業界専門誌やメディア記事'
   },
 ]
 
@@ -83,7 +83,7 @@ const formSchema = z.object({
   description: z.string().min(2, {
     message: "",
   }),
-  multipleSelection: z.array(z.string()).min(1, {
+  multipleSelections: z.array(z.string()).min(1, {
     message: "少なくとも1つの項目を選択してください",
   }),
   agreePrivacyPolicy: z.boolean().refine((value) => value === true, {
@@ -99,7 +99,7 @@ export function ContactForm() {
         email: "",
         purpose: "",
         description: "",
-        multipleSelection: [],
+        multipleSelections: [],
         agreePrivacyPolicy: false,
       },
     })
@@ -170,34 +170,47 @@ export function ContactForm() {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="multipleSelection"
-            render={({ field }) => (
-              <FormItem>
-                <Label state="required">サービスを知ったきっかけ</Label>
-                <FormControl>
-                  <ul className="space-y-1">
-                    {checkItems.map((checkItem) => (
-                      <li key={checkItem.id}>
-                        <Checkbox
-                          caption={checkItem.label}
-                          checked={field.value.includes(checkItem.id)} // 選択状態をチェック
-                          onCheckedChange={(checked) => {
-                            const newValue = checked
-                              ? [...field.value, checkItem.id]
-                              : field.value.filter((value) => value !== checkItem.id);
-                            field.onChange(newValue); // 配列を更新
-                          }}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </FormControl>
-                <FormMessage state="danger" />
-              </FormItem>
-            )}
-          />
+        <FormField
+          control={form.control}
+          name="multipleSelections"
+          render={() => (
+            <FormItem>
+              <Label>サービスを知ったきっかけ</Label>
+              {multipleSelections.map((multipleSelection) => (
+                <FormField
+                  key={multipleSelection.id}
+                  control={form.control}
+                  name="multipleSelections"
+                  render={({ field }) => {
+                    return (
+                      <FormItem
+                        key={multipleSelection.id}
+                        className="flex flex-row items-start space-x-3 space-y-0"
+                      >
+                        <FormControl>
+                          <Checkbox
+                            caption={multipleSelection.caption}
+                            checked={field.value?.includes(multipleSelection.id)}
+                            onCheckedChange={(checked) => {
+                              return checked
+                                ? field.onChange([...field.value, multipleSelection.id])
+                                : field.onChange(
+                                    field.value?.filter(
+                                      (value) => value !== multipleSelection.id
+                                    )
+                                  )
+                            }}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    );
+                  }}
+                />
+              ))}
+              <FormMessage state="danger" />
+            </FormItem>
+          )}
+        />
 
           <FormField
             control={form.control}
@@ -209,15 +222,15 @@ export function ContactForm() {
                   <Checkbox
                     caption="同意する"
                     checked={field.value}
-                    onCheckedChange={field.onChange} // チェック状態の変更を onCheckedChange に渡す
+                    onCheckedChange={field.onChange}
                   />
                 </FormControl>
                 <FormMessage state="danger" />
-                <span className="mt-8 text-xs">
+                <div className="mt-8 text-xs">
                   <a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">
                     プライバシーポリシー
                   </a>をお読みいただき、同意いただける場合は次へ進んでください
-                </span>
+                </div>
               </FormItem>
             )}
           />
