@@ -14,6 +14,7 @@ import { FormMessage } from "@/components/Form/FormMessage/FormMessage"
 import { Select } from "@/components/Form/Select/Select"
 import { Checkbox } from "@/components/Form/Checkbox/Checkbox"
 import { Button } from "@/components/Button/Button"
+import { ExternalLink } from 'lucide-react';
 
 //「ご用件」の選択肢
 const selects = [
@@ -213,9 +214,10 @@ export function ContactForm() {
           />
 
           <div className="text-sm">
-            <a href="http://" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-500 underline">
+            <a href="http://" target="_blank" rel="noopener noreferrer" className="inline-flex items-center font-medium text-blue-500 underline">
               プライバシーポリシー
-            </a>をお読みいただき、同意いただける場合は次へ進んでください
+              <ExternalLink className="shrink-0 w-4 h-4"/>
+            </a>をお読みいただき、<span className="inline-block">同意いただける場合は次へ進んでください</span>
           </div>
 
 
