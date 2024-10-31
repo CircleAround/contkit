@@ -21,7 +21,7 @@ const LabelVariants = cva(
     },
     defaultVariants: {
       state: 'default',
-      size: 'sm',
+      size: 'md',
     },
   }
 );
