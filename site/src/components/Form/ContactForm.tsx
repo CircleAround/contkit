@@ -203,7 +203,7 @@ export function ContactForm() {
                               }}
                             />
                           </FormControl>
-                          <FormLabel size="sm" className="cursor-pointer font-normal">{multipleSelection.caption}</FormLabel>
+                          <FormLabel>{multipleSelection.caption}</FormLabel>
                         </FormItem>
                       );
                     }}
@@ -226,7 +226,7 @@ export function ContactForm() {
             name="agreePrivacyPolicy"
             render={({ field }) => (
               <FormItem>
-                <FormLabel state="required">プライバシーポリシー</FormLabel>
+                <FormHeading state="required">プライバシーポリシー</FormHeading>
                 <div className="flex items-center space-x-2">
                   <FormControl>
                     <Checkbox
@@ -234,7 +234,7 @@ export function ContactForm() {
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <FormLabel size="sm" className="cursor-pointer font-normal">同意する</FormLabel>
+                  <FormLabel>同意する</FormLabel>
                 </div>
                 <FormMessage state="danger" />
               </FormItem>
