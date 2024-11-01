@@ -7,7 +7,7 @@ import {
   FormField,
   FormItem,
 } from "@/components/ui/form"
-import { Label } from "@/components/Form/Label"
+import { Label } from "@/components/Form/Label/Label"
 import { Input } from "@/components/Form/Input/Input"
 import { Textarea } from "@/components/Form/Textarea/Textarea"
 import { FormMessage } from "@/components/Form/FormMessage/FormMessage"
