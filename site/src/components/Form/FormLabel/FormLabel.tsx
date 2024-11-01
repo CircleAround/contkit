@@ -28,7 +28,7 @@ const LabelVariants = cva(
 
 type LabelProps = ComponentProps<typeof UIFormLabel> & VariantProps<typeof LabelVariants>
 
-const Label = forwardRef<HTMLLabelElement, LabelProps>(({ state, size, className, children, ...others }, ref) => {
+const FormLabel = forwardRef<HTMLLabelElement, LabelProps>(({ state, size, className, children, ...others }, ref) => {
 
     return (
       <UIFormLabel
@@ -47,6 +47,6 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>(({ state, size, className
   },
 )
 
-Label.displayName = 'Label'
+FormLabel.displayName = 'FormLabel'
 
-export { Label }
+export { FormLabel }
