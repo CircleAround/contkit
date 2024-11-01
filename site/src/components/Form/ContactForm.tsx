@@ -7,7 +7,7 @@ import {
   FormField,
   FormItem,
 } from "@/components/ui/form"
-import { Label } from "@/components/Form/Label/Label"
+import { FormLabel } from "@/components/Form/FormLabel/FormLabel"
 import { Input } from "@/components/Form/Input/Input"
 import { Textarea } from "@/components/Form/Textarea/Textarea"
 import { FormMessage } from "@/components/Form/FormMessage/FormMessage"
@@ -117,7 +117,7 @@ export function ContactForm() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <Label state="required">お名前</Label>
+                <FormLabel state="required">お名前</FormLabel>
                 <FormControl>
                   <Input placeholder="田中 太郎" {...field} />
                 </FormControl>
@@ -131,7 +131,7 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <Label state="required">メールアドレス</Label>
+                <FormLabel state="required">メールアドレス</FormLabel>
                 <FormControl>
                   <Input placeholder="example@example.com" {...field} />
                 </FormControl>
@@ -145,7 +145,7 @@ export function ContactForm() {
             name="purpose"
             render={({ field }) => (
               <FormItem>
-                <Label state="required">ご用件</Label>
+                <FormLabel state="required">ご用件</FormLabel>
                 <FormControl>
                   <Select
                     selects={selects}
@@ -163,7 +163,7 @@ export function ContactForm() {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <Label>ご内容</Label>
+                <FormLabel>ご内容</FormLabel>
                 <FormControl>
                   <Textarea placeholder="お問い合わせ内容をご記入ください。例：導入をご検討の背景や、具体的な課題について" {...field} />
                 </FormControl>
@@ -176,7 +176,7 @@ export function ContactForm() {
             name="multipleSelections"
             render={() => (
               <FormItem>
-                <Label state="required">サービスを知ったきっかけ</Label>
+                <FormLabel state="required">サービスを知ったきっかけ</FormLabel>
                 {multipleSelections.map((multipleSelection) => (
                   <FormField
                     key={multipleSelection.id}
@@ -186,11 +186,10 @@ export function ContactForm() {
                       return (
                         <FormItem
                           key={multipleSelection.id}
-                          className="flex flex-row items-start space-x-3 space-y-0"
+                          className="flex items-start space-x-2 space-y-0"
                         >
                           <FormControl>
                             <Checkbox
-                              caption={multipleSelection.caption}
                               checked={field.value?.includes(multipleSelection.id)}
                               onCheckedChange={(checked) => {
                                 return checked
@@ -203,6 +202,7 @@ export function ContactForm() {
                               }}
                             />
                           </FormControl>
+                          <FormLabel size="sm" className="font-normal">{multipleSelection.caption}</FormLabel>
                         </FormItem>
                       );
                     }}
@@ -216,7 +216,7 @@ export function ContactForm() {
           <div className="text-sm">
             <a href="http://" target="_blank" rel="noopener noreferrer" className="inline-flex items-center font-medium text-blue-500 underline">
               プライバシーポリシー
-              <ExternalLink className="shrink-0 w-4 h-4"/>
+              <ExternalLink className="size-4 shrink-0"/>
             </a>をお読みいただき、<span className="inline-block">同意いただける場合は次へ進んでください</span>
           </div>
 
@@ -226,14 +226,16 @@ export function ContactForm() {
             name="agreePrivacyPolicy"
             render={({ field }) => (
               <FormItem>
-                <Label state="required">プライバシーポリシー</Label>
-                <FormControl>
-                  <Checkbox
-                    caption="同意する"
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
+                <FormLabel state="required">プライバシーポリシー</FormLabel>
+                <div className="flex items-center space-x-2">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel size="sm" className="font-normal">同意する</FormLabel>
+                </div>
                 <FormMessage state="danger" />
               </FormItem>
             )}
