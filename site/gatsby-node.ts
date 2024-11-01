@@ -1,5 +1,6 @@
 import { CreatePagesArgs } from 'gatsby'
 import { resolve } from 'path'
+import { GatsbyNode } from 'gatsby'
 
 const blogPostPath = resolve('./src/templates/blog-post.tsx')
 
@@ -41,5 +42,15 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
         nextPostSlug,
       },
     })
+  })
+}
+
+export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "@": resolve(__dirname, "src")
+      },
+    },
   })
 }
