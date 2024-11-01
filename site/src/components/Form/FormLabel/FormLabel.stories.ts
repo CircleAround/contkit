@@ -6,17 +6,19 @@ const meta: Meta<typeof FormLabel> = {
   title: 'Components/Form/FormLabel',
   component: FormLabel,
   argTypes: {
-    state: {
-      control: { type: 'select' },
-      options: ['default', 'required'],
-    },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
+      description: 'ラベルのサイズ',
     },
     children: {
       control: 'text',
       defaultValue: 'ラベルテキスト',
+      description: 'ラベルに表示するテキスト',
+    },
+    className: {
+      control: 'text',
+      description: '追加のカスタムクラス名',
     },
   },
   decorators: [withRHF(false)],
@@ -26,18 +28,25 @@ export default meta;
 
 type Story = StoryObj<typeof FormLabel>;
 
-export const Default: Story = {
+// 各バリエーションのストーリー
+
+export const Small: Story = {
   args: {
-    state: 'default',
-    size: 'md',
-    children: 'ラベルテキスト',
+    size: 'sm',
+    children: 'デフォルトのラベル',
   },
 };
 
-export const Required: Story = {
+export const Medium: Story = {
   args: {
-    state: 'required',
     size: 'md',
-    children: 'ラベルテキスト',
+    children: '中くらいのラベル',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'lg',
+    children: '大きいラベル',
   },
 };
