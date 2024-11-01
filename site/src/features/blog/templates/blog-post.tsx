@@ -20,14 +20,14 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
               <ul className={styles.articleNavigation}>
                 {previous && (
                   <li>
-                    <Link to={`/blog/${previous.slug}`} rel='prev'>
+                    <Link to={`/blogs/${previous.slug}`} rel='prev'>
                       ← {previous.title}
                     </Link>
                   </li>
                 )}
                 {next && (
                   <li>
-                    <Link to={`/blog/${next.slug}`} rel='next'>
+                    <Link to={`/blogs/${next.slug}`} rel='next'>
                       {next.title} →
                     </Link>
                   </li>
