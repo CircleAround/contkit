@@ -43,7 +43,7 @@ const selects = [
 //「サービスを知ったきっかけ」の選択肢
 const multipleSelections = [
   {
-    id: 'web-search',
+    id: 'webSearch',
     caption: 'ウェブ検索（Google、Bingなど）'
   },
   {
@@ -171,6 +171,7 @@ export function ContactForm() {
             )}
           />
 
+{/* shadcnのコードを利用した場合 */}
           <FormField
             control={form.control}
             name="multipleSelections"
@@ -212,6 +213,67 @@ export function ContactForm() {
               </FormItem>
             )}
           />
+{/* shadcnのコードを利用した場合 */}
+
+{/* mapを使わない場合 */}
+          <FormField
+            control={form.control}
+            name="multipleSelections"
+            render={(field) => (
+              <FormItem>
+                <FormLabel state="required">サービスを知ったきっかけ</FormLabel>
+                <FormField
+                  control={form.control}
+                  name="multipleSelections"
+                  render={({ field }) => {
+                    return (
+                      <FormItem className="flex items-start space-x-2 space-y-0">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value?.includes("webSearch")}
+                            onCheckedChange={(checked) => {
+                              return checked
+                                ? field.onChange([...field.value, "webSearch"])
+                                : field.onChange(
+                                    field.value?.filter((value) => value !== "webSearch")
+                                  );
+                            }}
+                          />
+                        </FormControl>
+                        <FormLabel size="sm" className="font-normal cursor-pointer">ウェブ検索（Google、Bingなど）</FormLabel>
+                      </FormItem>
+                    );
+                  }}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="multipleSelections"
+                  render={({ field }) => {
+                    return (
+                      <FormItem className="flex items-start space-x-2 space-y-0">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value?.includes("sns")}
+                            onCheckedChange={(checked) => {
+                              return checked
+                                ? field.onChange([...field.value, "sns"])
+                                : field.onChange(
+                                    field.value?.filter((value) => value !== "sns")
+                                  );
+                            }}
+                          />
+                        </FormControl>
+                        <FormLabel  size="sm" className="font-normal cursor-pointer">SNS（X、Facebookなど）</FormLabel>
+                      </FormItem>
+                    );
+                  }}
+                />
+                <FormMessage state="danger" />
+              </FormItem>
+            )}
+          />
+{/* mapを使わない場合 */}
 
           <div className="text-sm">
             <a href="http://" target="_blank" rel="noopener noreferrer" className="inline-flex items-center font-medium text-blue-500 underline">
