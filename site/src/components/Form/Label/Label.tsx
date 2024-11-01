@@ -3,7 +3,7 @@ import { ComponentProps, forwardRef } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 import { FormLabel as UIFormLabel } from '@/components/ui/form';
-import { Badge } from '../Badge/Badge'
+import { Badge } from '../../Badge/Badge'
 
 const LabelVariants = cva(
   'font-semibold text-zinc-900',
