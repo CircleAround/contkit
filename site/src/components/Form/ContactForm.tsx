@@ -15,6 +15,7 @@ import { Select } from "@/components/Form/Select/Select"
 import { Checkbox } from "@/components/Form/Checkbox/Checkbox"
 import { Button } from "@/components/Button/Button"
 import { ExternalLink } from 'lucide-react';
+import { FormHeading } from "@/components/Form/FormHeading/FormHeading"
 
 //「ご用件」の選択肢
 const selects = [
@@ -117,7 +118,7 @@ export function ContactForm() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel state="required">お名前</FormLabel>
+                <FormHeading state="required">お名前</FormHeading>
                 <FormControl>
                   <Input placeholder="田中 太郎" {...field} />
                 </FormControl>
@@ -131,7 +132,7 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel state="required">メールアドレス</FormLabel>
+                <FormHeading state="required">メールアドレス</FormHeading>
                 <FormControl>
                   <Input placeholder="example@example.com" {...field} />
                 </FormControl>
@@ -145,7 +146,7 @@ export function ContactForm() {
             name="purpose"
             render={({ field }) => (
               <FormItem>
-                <FormLabel state="required">ご用件</FormLabel>
+                <FormHeading state="required">ご用件</FormHeading>
                 <FormControl>
                   <Select
                     selects={selects}
@@ -163,7 +164,7 @@ export function ContactForm() {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>ご内容</FormLabel>
+                <FormHeading>ご内容</FormHeading>
                 <FormControl>
                   <Textarea placeholder="お問い合わせ内容をご記入ください。例：導入をご検討の背景や、具体的な課題について" {...field} />
                 </FormControl>
@@ -171,13 +172,12 @@ export function ContactForm() {
             )}
           />
 
-{/* shadcnのコードを利用した場合 */}
           <FormField
             control={form.control}
             name="multipleSelections"
             render={() => (
               <FormItem>
-                <FormLabel state="required">サービスを知ったきっかけ</FormLabel>
+                <FormHeading state="required">サービスを知ったきっかけ</FormHeading>
                 {multipleSelections.map((multipleSelection) => (
                   <FormField
                     key={multipleSelection.id}
@@ -203,7 +203,7 @@ export function ContactForm() {
                               }}
                             />
                           </FormControl>
-                          <FormLabel size="sm" className="font-normal cursor-pointer">{multipleSelection.caption}</FormLabel>
+                          <FormLabel size="sm" className="cursor-pointer font-normal">{multipleSelection.caption}</FormLabel>
                         </FormItem>
                       );
                     }}
@@ -213,67 +213,6 @@ export function ContactForm() {
               </FormItem>
             )}
           />
-{/* shadcnのコードを利用した場合 */}
-
-{/* mapを使わない場合 */}
-          <FormField
-            control={form.control}
-            name="multipleSelections"
-            render={(field) => (
-              <FormItem>
-                <FormLabel state="required">サービスを知ったきっかけ</FormLabel>
-                <FormField
-                  control={form.control}
-                  name="multipleSelections"
-                  render={({ field }) => {
-                    return (
-                      <FormItem className="flex items-start space-x-2 space-y-0">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes("webSearch")}
-                            onCheckedChange={(checked) => {
-                              return checked
-                                ? field.onChange([...field.value, "webSearch"])
-                                : field.onChange(
-                                    field.value?.filter((value) => value !== "webSearch")
-                                  );
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel size="sm" className="font-normal cursor-pointer">ウェブ検索（Google、Bingなど）</FormLabel>
-                      </FormItem>
-                    );
-                  }}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="multipleSelections"
-                  render={({ field }) => {
-                    return (
-                      <FormItem className="flex items-start space-x-2 space-y-0">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes("sns")}
-                            onCheckedChange={(checked) => {
-                              return checked
-                                ? field.onChange([...field.value, "sns"])
-                                : field.onChange(
-                                    field.value?.filter((value) => value !== "sns")
-                                  );
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel  size="sm" className="font-normal cursor-pointer">SNS（X、Facebookなど）</FormLabel>
-                      </FormItem>
-                    );
-                  }}
-                />
-                <FormMessage state="danger" />
-              </FormItem>
-            )}
-          />
-{/* mapを使わない場合 */}
 
           <div className="text-sm">
             <a href="http://" target="_blank" rel="noopener noreferrer" className="inline-flex items-center font-medium text-blue-500 underline">
@@ -281,7 +220,6 @@ export function ContactForm() {
               <ExternalLink className="size-4 shrink-0"/>
             </a>をお読みいただき、<span className="inline-block">同意いただける場合は次へ進んでください</span>
           </div>
-
 
           <FormField
             control={form.control}
@@ -296,7 +234,7 @@ export function ContactForm() {
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <FormLabel size="sm" className="font-normal cursor-pointer">同意する</FormLabel>
+                  <FormLabel size="sm" className="cursor-pointer font-normal">同意する</FormLabel>
                 </div>
                 <FormMessage state="danger" />
               </FormItem>
