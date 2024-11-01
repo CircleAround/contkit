@@ -2,7 +2,7 @@ import { CreatePagesArgs } from 'gatsby'
 import { resolve } from 'path'
 import { GatsbyNode } from 'gatsby'
 
-const blogPostPath = resolve('./src/templates/blog-post.tsx')
+const blogPostPath = resolve('./src/features/blog/templates/blog-post.tsx')
 
 exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) => {
   const { createPage } = actions
