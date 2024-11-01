@@ -1,5 +1,7 @@
+import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { FormLabel } from './FormLabel';
+import withRHF from '../../withRHF'
 
 const meta: Meta<typeof FormLabel> = {
   title: 'Components/Form/FormLabel',
@@ -18,6 +20,7 @@ const meta: Meta<typeof FormLabel> = {
       defaultValue: 'ラベルテキスト',
     },
   },
+  decorators: [withRHF(false)],
 };
 
 export default meta;
