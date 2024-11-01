@@ -202,7 +202,7 @@ export function ContactForm() {
                               }}
                             />
                           </FormControl>
-                          <FormLabel size="sm" className="font-normal">{multipleSelection.caption}</FormLabel>
+                          <FormLabel size="sm" className="font-normal cursor-pointer">{multipleSelection.caption}</FormLabel>
                         </FormItem>
                       );
                     }}
@@ -234,7 +234,7 @@ export function ContactForm() {
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <FormLabel size="sm" className="font-normal">同意する</FormLabel>
+                  <FormLabel size="sm" className="font-normal cursor-pointer">同意する</FormLabel>
                 </div>
                 <FormMessage state="danger" />
               </FormItem>
