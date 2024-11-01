@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Label } from './Label';
+import { FormLabel } from './FormLabel';
 
-const meta: Meta<typeof Label> = {
-  title: 'Components/Form/Label',
-  component: Label,
+const meta: Meta<typeof FormLabel> = {
+  title: 'Components/Form/FormLabel',
+  component: FormLabel,
   argTypes: {
     state: {
       control: { type: 'select' },
@@ -22,7 +22,7 @@ const meta: Meta<typeof Label> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Label>;
+type Story = StoryObj<typeof FormLabel>;
 
 export const Default: Story = {
   args: {
