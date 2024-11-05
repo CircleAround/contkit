@@ -4,7 +4,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
 const buttonVariants = cva(
-  'inline-flex min-h-11 items-center justify-center text-center align-middle font-semibold text-zinc-900',
+  'inline-flex min-h-11 items-center justify-center text-center align-middle font-semibold text-zinc-900  focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2',
   {
     variants: {
       variant: {

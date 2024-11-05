@@ -120,7 +120,7 @@ export function ContactForm() {
               <FormItem>
                 <FormHeading state="required">お名前</FormHeading>
                 <FormControl>
-                  <Input placeholder="田中 太郎" {...field} />
+                  <Input aria-required="true" placeholder="田中 太郎" {...field} />
                 </FormControl>
                 <FormMessage state="danger"/>
               </FormItem>
@@ -134,7 +134,7 @@ export function ContactForm() {
               <FormItem>
                 <FormHeading state="required">メールアドレス</FormHeading>
                 <FormControl>
-                  <Input placeholder="example@example.com" {...field} />
+                  <Input aria-required="true"  placeholder="example@example.com" {...field} />
                 </FormControl>
                 <FormMessage state="danger"/>
               </FormItem>
@@ -149,6 +149,7 @@ export function ContactForm() {
                 <FormHeading state="required">ご用件</FormHeading>
                 <FormControl>
                   <Select
+                    aria-required="true"
                     selects={selects}
                     onValueChange={field.onChange}
                     value={field.value}
@@ -191,6 +192,7 @@ export function ContactForm() {
                         >
                           <FormControl>
                             <Checkbox
+                              aria-required="true"
                               checked={field.value?.includes(multipleSelection.id)}
                               onCheckedChange={(checked) => {
                                 return checked
@@ -215,7 +217,13 @@ export function ContactForm() {
           />
 
           <div className="text-sm">
-            <a href="http://" target="_blank" rel="noopener noreferrer" className="inline-flex items-center font-medium text-blue-500 underline">
+            <a
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center font-medium text-blue-500 underline"
+              aria-label="プライバシーポリシー（外部リンク）"
+            >
               プライバシーポリシー
               <ExternalLink className="size-4 shrink-0"/>
             </a>をお読みいただき、<span className="inline-block">同意いただける場合は次へ進んでください</span>
@@ -230,6 +238,7 @@ export function ContactForm() {
                 <div className="flex items-center space-x-2">
                   <FormControl>
                     <Checkbox
+                      aria-required="true"
                       checked={field.value}
                       onCheckedChange={field.onChange}
                     />
