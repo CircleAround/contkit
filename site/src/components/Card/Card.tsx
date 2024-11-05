@@ -17,7 +17,7 @@ const cardVariants = cva(
         row: 'flex-col md:flex-row',
         col: 'flex-col',
       },
-      stlye: {
+      style: {
         none: 'border-none shadow-none',
         border: 'border border-zinc-200 shadow-sm',
       },
@@ -40,7 +40,7 @@ const cardVariants = cva(
     },
     defaultVariants: {
       variant: 'col',
-      stlye: 'border',
+      style: 'border',
       state: 'default',
       size: 'md',
       shape: 'md',
@@ -49,7 +49,7 @@ const cardVariants = cva(
 );
 
 const imageVariants = cva(
-  'overflow-hidden rounded-lg',
+  'aspect-video overflow-hidden rounded-lg',
   {
     variants: {
       variant: {
@@ -77,7 +77,7 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({
   variant,
-  stlye,
+  style,
   state,
   size,
   shape,
@@ -92,10 +92,10 @@ const Card: React.FC<CardProps> = ({
   badge
 }) => {
   return (
-    <UICard className={twMerge(cardVariants({ variant, stlye, state, size, shape }), className)}>
+    <UICard className={twMerge(cardVariants({ variant, style, state, size, shape }), className)}>
       {link && <Link to={link} className="absolute left-0 top-0 z-10 size-full" />}
       {imgSrc && (
-        <div className={twMerge(imageVariants({ variant }), 'aspect-video')}>
+        <div className={twMerge(imageVariants({ variant }))}>
           <img src={imgSrc} alt={imgAlt} className="size-full rounded-lg object-cover object-center transition-transform duration-1000 group-hover:scale-125" />
         </div>
       )}
@@ -107,7 +107,7 @@ const Card: React.FC<CardProps> = ({
           <p className="text-base font-semibold">{name}</p>
         )}
         {title && (
-          <UICardTitle className="text-lg font-semibold">{title}</UICardTitle>
+          <UICardTitle className="text-lg font-semibold group-hover:underline">{title}</UICardTitle>
         )}
         {description && <p className="text-sm">{description}</p>}
         {badge && (
