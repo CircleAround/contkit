@@ -8,11 +8,19 @@ const meta: Meta<typeof SectionTitle> = {
   argTypes: {
     shape: {
       control: { type: 'select' },
-      options: ['plain', 'underLine', 'sideLine', 'speechBubble', 'solid'],
+      options: ['plain', 'underLine', 'sideLine', 'speechBubble', 'solid', 'widthSubtitle'],
     },
     size: {
       control: { type: 'select' },
       options: ['xxl', 'xxxxl'],
+    },
+    subtitle: {
+      control: 'text',
+      description: 'サブタイトルとして表示するテキスト',
+    },
+    children: {
+      control: 'text',
+      defaultValue: 'セクションタイトル',
     },
   },
 };
@@ -21,7 +29,8 @@ export default meta;
 
 type Story = StoryObj<typeof SectionTitle>;
 
-// SectionTitleの各バリエーションのストーリー
+// 各バリエーションのストーリー
+
 export const Plain: Story = {
   args: {
     shape: 'plain',
@@ -59,5 +68,14 @@ export const Solid: Story = {
     shape: 'solid',
     size: 'xxl',
     children: 'Solid Section Title',
+  },
+};
+
+export const WidthSubtitle: Story = {
+  args: {
+    shape: 'widthSubtitle',
+    size: 'xxl',
+    children: 'Section Title with Subtitle',
+    subtitle: 'This is a subtitle',
   },
 };
