@@ -4,6 +4,31 @@ import { Card } from '../components/Card/Card'
 import  Layout  from '../components/layout'
 import  SectionInner  from '../components/SectionInner'
 import { ContactForm } from '../components/Form/ContactForm'
+import { AnchorButton } from '../components/Button/Button'
+import { Download } from 'lucide-react';
+
+const clients = [
+  {
+    imgSrc: "https://placehold.jp/120x85.png",
+    alt: "クライアントA",
+  },
+  {
+    imgSrc: "https://placehold.jp/120x85.png",
+    alt: "クライアントB",
+  },
+  {
+    imgSrc: "https://placehold.jp/120x85.png",
+    alt: "クライアントC",
+  },
+  {
+    imgSrc: "https://placehold.jp/120x85.png",
+    alt: "クライアントD",
+  },
+  {
+    imgSrc: "https://placehold.jp/120x85.png",
+    alt: "クライアントE",
+  },
+];
 
 const features = [
   {
@@ -23,11 +48,43 @@ const features = [
   },
 ];
 
+const functionLists = [
+  {
+    icon: <Download className="size-10 text-4xl text-blue-500" />,
+    title: "高いカスタマイズ性",
+    description: "お客様のニーズに合わせて、柔軟にカスタマイズ可能な機能を提供します。"
+  },
+  {
+    icon: <Download className="size-10 text-4xl text-green-500" />,
+    title: "パフォーマンス向上",
+    description: "高速な処理性能で業務効率を向上し、最大限のパフォーマンスを発揮します。"
+  },
+  {
+    icon: <Download className="size-10 text-4xl text-red-500" />,
+    title: "高度なセキュリティ",
+    description: "最新のセキュリティ基準を満たし、安心してご利用いただけます。"
+  },
+  {
+    icon: <Download className="size-10 text-4xl text-purple-500" />,
+    title: "ユーザープロテクション",
+    description: "ユーザー情報を保護し、安全な環境を提供します。"
+  },
+  {
+    icon: <Download className="size-10 text-4xl text-teal-500" />,
+    title: "モバイル対応",
+    description: "モバイルデバイスに最適化されたUIで、どこでもアクセス可能です。"
+  },
+  {
+    icon: <Download className="size-10 text-4xl text-orange-500" />,
+    title: "優れたサポート",
+    description: "専任のサポートチームが導入から運用までをサポートします。"
+  }
+];
 
 const informations = [
   {
     link: '/',
-    imgSrc: 'https://images.unsplash.com/photo-1573495612077-a689b084faab?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
     imgAlt: '',
     date: '2023/10/22',
     title: '会社紹介の AI ガイドを作成しました',
@@ -36,64 +93,27 @@ const informations = [
   },
   {
     link: '/blogs/test1',
-    imgSrc: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?q=80&w=1921&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
     imgAlt: '',
+    date: '2023/10/22',
     title: '2023年新年のご挨拶',
     description: '代表の佐藤です。謹んで新年のお慶びを申し上げます。',
+    badge: [{ label: 'web', className: '' }],
   },
   {
     link: '/blogs/test1',
-    imgSrc: 'https://images.unsplash.com/photo-1532243705460-7c3bb6bf310e?q=80&w=1977&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
     imgAlt: '',
+    date: '2023/10/22',
     title: '書籍「ステップアップJavaScript」を執筆いたしました',
     description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております',
     badge: [{ label: 'book' }, { label: 'JavaScript', className: 'bg-yellow-600' }, { label: 'training' }],
   },
 ];
 
-const blogs = [
-  {
-    link: '/',
-    imgSrc: 'https://images.unsplash.com/photo-1573495612077-a689b084faab?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imgAlt: '',
-    title: '会社紹介の AI ガイドを作成しました',
-    description: '先日発表された Open AI 社の GPTs に大変可能性を感じたので、とりあえず何か作ってみるべく弊社の会社紹介用の オリジナル GPT を作成しました。',
-    badge: [{ label: 'web', className: '' }, { label: 'AI', state: '' }],
-  },
-  {
-    link: '/blogs/test1',
-    imgSrc: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?q=80&w=1921&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imgAlt: '',
-    title: '2023年新年のご挨拶',
-    description: '代表の佐藤です。謹んで新年のお慶びを申し上げます。'
-  },
-  {
-    link: '/blogs/test1',
-    imgSrc: 'https://images.unsplash.com/photo-1532243705460-7c3bb6bf310e?q=80&w=1977&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imgAlt: '',
-    title: '書籍「ステップアップJavaScript」を執筆いたしました',
-    description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております'
-  },
-  {
-    link: '/blogs/test1',
-    imgSrc: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?q=80&w=1921&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imgAlt: '',
-    date: '2023/10/23',
-    title: '2023年新年のご挨拶',
-    description: '代表の佐藤です。謹んで新年のお慶びを申し上げます。'
-  },
-  {
-    link: '/blogs/test1',
-    imgSrc: 'https://images.unsplash.com/photo-1532243705460-7c3bb6bf310e?q=80&w=1977&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    imgAlt: '',
-    date: '2023/10/24',
-    title: '書籍「ステップアップJavaScript」を執筆いたしました',
-    description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております'
-  },
-];
-
 const testimonials = [
   {
+    link: '/',
     name: "株式会社A",
     title: "導入後に効率が飛躍的に向上しました",
     imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
@@ -101,6 +121,7 @@ const testimonials = [
     description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
   },
   {
+    link: '/',
     name: "株式会社B",
     title: "導入後に効率が飛躍的に向上しました",
     imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
@@ -108,6 +129,7 @@ const testimonials = [
     description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
   },
   {
+    link: '/',
     name: "株式会社C",
     title: "導入後に効率が飛躍的に向上しました",
     imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
@@ -120,36 +142,97 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <Layout>
-        {/* 特長セクション */}
-        <section className="bg-gray-100 py-20">
+        <section className="bg-white pb-20 pt-40">
           <SectionInner>
-            <SectionTitle shape="plain" className="text-center">サービスの特長</SectionTitle>
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:space-x-10">
+              <div className="lg:w-1/2">
+                <div className="flex flex-col space-y-6">
+                  <h1 className="text-4xl font-bold leading-tight text-zinc-900 md:text-5xl">成果につながる<br/>Webサイト制作</h1>
+                  <p className="mt-6 text-base text-zinc-900">コンバージョン率の向上を実現するBtoBサイト・コーポレートサイト制作</p>
+                  <div className="flex items-center space-x-4">
+                    <dl>
+                      <dt className="text-sm text-zinc-900">対応満足度</dt>
+                      <dd className="text-3xl font-bold text-red-500">98%</dd>
+                    </dl>
+                    <dl>
+                      <dt className="text-sm text-zinc-900">導入企業者数</dt>
+                      <dd className="text-3xl font-bold text-red-500">100社以上</dd>
+                    </dl>
+                  </div>
+                </div>
+                <div className="mt-10 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                  <AnchorButton href=""  className="">お問い合わせ</AnchorButton>
+                  <AnchorButton variant="secondary" href=""  className="flex space-x-2">
+                    <span>資料ダウンロード</span>
+                    <Download /></AnchorButton>
+                </div>
+              </div>
+
+              <div className="mt-8 lg:mt-0 lg:w-1/2">
+                <img src="https://placehold.jp/320x240.png" alt="" className="size-full rounded-lg object-cover object-center" />
+              </div>
+            </div>
+          </SectionInner>
+        </section>
+
+        <div className="bg-gray-100 py-10">
+          <SectionInner>
+            <ul className="flex flex-wrap items-center justify-center gap-4">
+              {clients.map((client, index) => (
+                <li key={index} className="text-center">
+                  <img src={client.imgSrc} alt={client.alt} className="size-full rounded-lg object-cover object-center" />
+                </li>
+              ))}
+            </ul>
+          </SectionInner>
+        </div>
+
+        {/* 特長セクション */}
+        <section className="py-20">
+          <SectionInner>
+            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="service">サービスの特長</SectionTitle>
             <ul className="mt-8 grid gap-6 md:grid-cols-3">
               {features.map((feature, index) => (
-                <li key={index} className="text-center">
-                  <Card
-                    imgSrc={feature.imgSrc}
-                    title={feature.title}
-                    description={feature.description}
-                    className="[&_i]"
-                  />
-
+                <li key={index} className="flex flex-col items-center">
+                  <div className="w-40">
+                    <img src={feature.imgSrc} alt="" className="size-full rounded-full object-cover object-center"/>
+                  </div>
+                  <dl className="mt-6 text-center">
+                    <dt className="text-lg font-semibold">{feature.title}</dt>
+                    <dd className="mt-2 text-gray-600">{feature.description}</dd>
+                  </dl>
                 </li>
               ))}
             </ul>
           </SectionInner>
         </section>
 
+        {/* サービスの機能紹介セクション */}
+        <div className="bg-gray-100 py-20">
+          <SectionInner>
+            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="function">機能紹介</SectionTitle>
+            <ul className="mt-8 grid gap-6 md:grid-cols-3 lg:grid-cols-3">
+              {functionLists.map((functionList, index) => (
+                <li key={index} className="rounded bg-white p-6 text-center shadow">
+                  <div className="mb-4 flex justify-center">{functionList.icon}</div>
+                  <h3 className="text-lg font-semibold">{functionList.title}</h3>
+                  <p className="mt-2 text-gray-600">{functionList.description}</p>
+                </li>
+              ))}
+            </ul>
+          </SectionInner>
+        </div>
+
         {/* ニュースセクション */}
         <section className="py-20">
           <SectionInner>
-            <SectionTitle shape="plain" className="text-center">ニュース</SectionTitle>
+            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="information">最新情報</SectionTitle>
             <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
               {informations.map((information, index) => (
                 <li key={index} className="pt-4">
                   <Card
                     variant="row"
-                    stlye="none"
+                    style="none"
                     size="none"
                     state="hover"
                     link={information.link}
@@ -157,69 +240,60 @@ const IndexPage: React.FC<PageProps> = () => {
                     date={information.date}
                     title={information.title}
                     description={information.description}
-                    badge={information.badge} />
+                    badge={information.badge}
+                  />
                 </li>
               ))}
             </ul>
+
+            <div className="mt-10 flex justify-end">
+              <AnchorButton href="/">全て見る</AnchorButton>
+            </div>
           </SectionInner>
         </section>
 
-
         {/* お客様の声セクション */}
-        <section className="py-20">
+        <section className="bg-gray-100 py-20 ">
           <SectionInner>
-            <SectionTitle shape="plain" className="text-center">お客様の声</SectionTitle>
+            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="voice">お客様の声</SectionTitle>
             <ul className="mt-8 grid gap-8 md:grid-cols-3">
               {testimonials.map((testimonial, index) => (
                 <li key={index} className="text-center">
                   <Card
-                    stlye="none"
+                    state="hover"
+                    link={testimonial.link}
                     imgSrc={testimonial.imgSrc}
                     imgAlt={testimonial.alt}
                     name={testimonial.name}
                     title={testimonial.title}
                     description={testimonial.description}
-                    className="p-0"
                   />
                 </li>
               ))}
             </ul>
+            <div className="mt-10 flex justify-end">
+              <AnchorButton href="/">全て見る</AnchorButton>
+            </div>
           </SectionInner>
         </section>
 
         {/* お問い合わせセクション */}
         <section className="py-20">
           <SectionInner>
-            <SectionTitle shape="plain" className="text-center">お問い合わせ</SectionTitle>
+            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="contact">お問い合わせ</SectionTitle>
             <div className="mx-auto mt-10 w-full max-w-2xl">
               <ContactForm/>
             </div>
           </SectionInner>
         </section>
 
-        {/* ブログセクション */}
-        <section className="py-20">
+        <footer className="bg-zinc-900 py-8">
           <SectionInner>
-            <SectionTitle shape="plain" className="text-center">ブログ</SectionTitle>
-            <div className="mt-8 overflow-x-auto">
-              <ul className="flex gap-4">
-                {blogs.map((blog, index) => (
-                  <li key={index} className="min-w-[300px]">
-                    <Card
-                      state="hover"
-                      link={blog.link}
-                      imgSrc={blog.imgSrc}
-                      date={blog.date}
-                      title={blog.title}
-                      description={blog.description}
-                      badge={blog.badge}
-                    />
-                  </li>
-                ))}
-              </ul>
+            <div className="text-center">
+              <small className="text-zinc-400">© 2024 CIRCLE AROUND Inc.</small>
             </div>
           </SectionInner>
-        </section>
+        </footer>
       </Layout>
     </>
   )
