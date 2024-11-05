@@ -15,7 +15,7 @@ const BadgeVariants = cva(
         default: 'pointer-events-none transition-none',
         success: "pointer-events-none border-none bg-green-600 text-white transition-none",
         warning: "pointer-events-none border-none bg-yellow-400 text-zinc-900 transition-none",
-        danger: "pointer-events-none border-none bg-red-500 text-white transition-none",
+        danger: "pointer-events-none border-none bg-red-600 text-white transition-none",
       },
       shape: {
         none: 'rounded-none',
