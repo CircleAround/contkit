@@ -9,7 +9,7 @@ const meta: Meta<typeof Card> = {
       control: { type: 'select' },
       options: ['row', 'col'],
     },
-    stlye: {
+    style: {
       control: { type: 'select' },
       options: ['none', 'border'],
     },
@@ -63,7 +63,7 @@ type Story = StoryObj<typeof Card>;
 export const Default: Story = {
   args: {
     variant: 'col',
-    stlye: 'border',
+    style: 'border',
     state: 'default',
     size: 'md',
     shape: 'md',
@@ -79,7 +79,7 @@ export const Default: Story = {
 export const NoBorder: Story = {
   args: {
     variant: 'col',
-    stlye: 'none',
+    style: 'none',
     state: 'default',
     size: 'md',
     shape: 'lg',
@@ -95,7 +95,7 @@ export const NoBorder: Story = {
 export const RowLayout: Story = {
   args: {
     variant: 'row',
-    stlye: 'border',
+    style: 'border',
     state: 'default',
     size: 'md',
     shape: 'md',
@@ -111,7 +111,7 @@ export const RowLayout: Story = {
 export const HoverEffect: Story = {
   args: {
     variant: 'col',
-    stlye: 'border',
+    style: 'border',
     state: 'hover',
     size: 'md',
     shape: 'md',
@@ -127,7 +127,7 @@ export const HoverEffect: Story = {
 export const NoImage: Story = {
   args: {
     variant: 'col',
-    stlye: 'border',
+    style: 'border',
     state: 'default',
     size: 'md',
     shape: 'md',
@@ -143,7 +143,7 @@ export const NoImage: Story = {
 export const NoDate: Story = {
   args: {
     variant: 'col',
-    stlye: 'border',
+    style: 'border',
     state: 'default',
     size: 'md',
     shape: 'md',
@@ -159,7 +159,7 @@ export const NoDate: Story = {
 export const NoBadgee: Story = {
   args: {
     variant: 'col',
-    stlye: 'border',
+    style: 'border',
     state: 'default',
     size: 'md',
     shape: 'md',
