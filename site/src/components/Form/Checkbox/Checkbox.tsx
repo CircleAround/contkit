@@ -8,7 +8,7 @@ type CheckboxProps = ComponentProps<typeof UICheckbox> & {
 };
 
 const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(({ className, checked, onCheckedChange, ...others }, ref) => {
-  const baseCn = 'border-zinc-400 w-5 h-5 data-[state=checked]:bg-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:ring-offset-0 focus-visible:ring-1 focus-visible:ring-blue-600 focus-visible:ring-offset-0';
+  const baseCn = 'border-zinc-400 w-5 h-5 data-[state=checked]:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2';
 
   return (
     <UICheckbox
