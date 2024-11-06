@@ -93,7 +93,7 @@ const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks
           className
         )}
       >
-        <div className="py-20 pb-6">
+        <div className="pt-24 pb-6">
           <Navigation navLinks={navLinks} className='flex md:hidden [&_li]:text-xl [&_ul]:flex-col [&_ul]:items-start [&_ul]:space-x-0 [&_ul]:space-y-4'/>
           <div className="mt-6">
             <HeaderButton ctaChildren={ctaChildren} className='block'/>
