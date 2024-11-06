@@ -5,3 +5,4 @@ service_account_key.json
 
 site/.firebase
 .firebaserc
+node_modules
