@@ -33,9 +33,19 @@ const meta: Meta<typeof Footer> = {
       control: 'object',
       description: 'ナビゲーションリンクのリスト',
     },
+    copyright: {
+      control: 'text',
+      description: 'フッターの著作権表示',
+      defaultValue: '© 2024 CIRCLE AROUND Inc.',
+    },
   },
   args: {
-    navLinks: defaultNavLinks,
+    navLinks: [
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about' },
+      { label: 'Services', href: '/services' },
+      { label: 'Contact', href: '/contact' },
+    ],
   },
 };
 
@@ -43,19 +53,24 @@ export default meta;
 
 type Story = StoryObj<typeof Footer>;
 
-export const TextLogo: Story = {
+// Footerのテキストロゴバリエーションのストーリー
+export const TextLogoFooter: Story = {
   args: {
     logoLinkVariant: 'text',
     logoText: 'Company Name',
-    navLinks: defaultNavLinks
+    navLinks: defaultNavLinks,
+    copyright: '© 2024 CIRCLE AROUND Inc.',
   },
 };
 
-export const ImageLogo: Story = {
+// Footerの画像ロゴバリエーションのストーリー
+export const ImageLogoFooter: Story = {
   args: {
     logoLinkVariant: 'image',
     logoImgSrc: 'https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image',
     imgAlt: 'Company Logo',
     navLinks: defaultNavLinks,
+    copyright: '© 2024 CIRCLE AROUND Inc.',
   },
 };
+
