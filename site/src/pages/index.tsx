@@ -286,14 +286,6 @@ const IndexPage: React.FC<PageProps> = () => {
             </div>
           </SectionInner>
         </section>
-
-        <footer className="bg-zinc-900 py-8">
-          <SectionInner>
-            <div className="text-center">
-              <small className="text-zinc-400">© 2024 CIRCLE AROUND Inc.</small>
-            </div>
-          </SectionInner>
-        </footer>
       </Layout>
     </>
   )
