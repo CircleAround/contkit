@@ -27,7 +27,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
       <Footer
         logoLinkVariant="image"
         logoImgSrc="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image"
-        imgAlt="logo image"
+        logoimgAlt="logo image"
         navLinks={navLinks}
         copyright="© 2024 CIRCLE AROUND Inc."
       />
