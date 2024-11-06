@@ -2,7 +2,7 @@ import React from 'react';
 import { forwardRef, ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { Navigation } from '../Navigation/Navigation';
-import  SectionInner  from '../SectionInner'
+import SectionInner from '../SectionInner';
 import { LogoLink } from '../LogoLink';
 
 type NavLink = {
@@ -11,12 +11,16 @@ type NavLink = {
 };
 
 type FooterProps = ComponentProps<'footer'> & {
-  logoLinkChildren: React.ReactNode;
+  logoLinkVariant: 'text' | 'image';
+  logoText?: string;
+  logoImgSrc?: string;
+  imgAlt?: string;
   navLinks: NavLink[];
-}
+};
 
-const Footer = forwardRef<HTMLElement, FooterProps>(({ logoLinkChildren, navLinks, className, ...others }, ref) => {
-  const baseCn = 'py-10 bg-zinc-900 text-zinc-400'
+const Footer = forwardRef<HTMLElement, FooterProps>(
+  ({ logoLinkVariant, logoText, logoImgSrc, navLinks, className, ...others }, ref) => {
+    const baseCn = 'py-10 bg-zinc-900 text-zinc-400';
 
     return (
       <footer
@@ -25,17 +29,24 @@ const Footer = forwardRef<HTMLElement, FooterProps>(({ logoLinkChildren, navLink
         ref={ref}
       >
         <SectionInner>
-          <div className="divide-y-2 divide-zinc-700">
-            <div className="flex justify-between">
-              <LogoLink className={className}>{logoLinkChildren}</LogoLink>
+          <div className="space-y-6">
+            <div className="flex flex-col justify-between space-y-6 md:flex-row md:space-y-0">
+              <LogoLink
+                variant={logoLinkVariant}
+                text={logoText}
+                imgSrc={logoImgSrc}
+                className="text-zinc-400"
+              />
               <Navigation
                 variant="footer"
                 navLinks={navLinks}
-                className={className}
+                className='[&_li]:text-xl [&_li]:md:text-sm [&_ul]:flex [&_ul]:flex-col [&_ul]:items-start [&_ul]:space-x-0 [&_ul]:space-y-4 [&_ul]:md:flex-row [&_ul]:md:space-x-4 [&_ul]:md:space-y-0'
               />
             </div>
 
-            <div className="text-center">
+            <hr className='border border-zinc-700' />
+
+            <div className="mt-6 text-center">
               <small>© 2024 CIRCLE AROUND Inc.</small>
             </div>
           </div>
