@@ -1,6 +1,6 @@
-import { FC, PropsWithChildren } from 'react'
+import { FC, PropsWithChildren } from 'react';
 import { Header } from '../components/Header/Header';
-import { Footer } from '../components/Footer/Footer'
+import { Footer } from '../components/Footer/Footer';
 
 const navLinks = [
   { label: 'About', href: '/' },
@@ -9,13 +9,15 @@ const navLinks = [
   { label: 'Blog', href: '/blogs/test1' },
 ];
 
-const Layout:FC<PropsWithChildren> = ({ children }) => {
+const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Header
-        logoLinkChildren="My Website"
-        ctaChildren="お問い合わせ"
+        logoLinkVariant="text"
+        logoText='Logo'
+        logoImgSrc="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image"
         navLinks={navLinks}
+        ctaChildren="お問い合わせ"
       />
 
       <main>
@@ -23,11 +25,13 @@ const Layout:FC<PropsWithChildren> = ({ children }) => {
       </main>
 
       <Footer
-        logoLinkChildren="My Website"
+        logoLinkVariant="image"
+        logoImgSrc="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image"
+        imgAlt="logo image"
         navLinks={navLinks}
       />
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

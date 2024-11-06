@@ -11,12 +11,18 @@ type NavLink = {
 };
 
 const Header = ({
-  logoLinkChildren,
+  logoLinkVariant,
   ctaChildren,
+  logoText,
+  logoImgSrc,
+  imgAlt,
   navLinks,
   className
 }: {
-  logoLinkChildren: ReactNode,
+  logoLinkVariant: 'text' | 'image';
+  logoText?: string;
+  logoImgSrc?: string;
+  imgAlt?: string;
   ctaChildren: ReactNode,
   navLinks: NavLink[],
   className?: string
@@ -29,7 +35,7 @@ const Header = ({
 
   return (
     <HeaderLayout className={className}>
-      <LogoLink className={className}>{logoLinkChildren}</LogoLink>
+      <LogoLink variant={logoLinkVariant} imgSrc={logoImgSrc} imgAlt={imgAlt} text={logoText} className={className}/>
       <Navigation navLinks={navLinks} className={className} />
       <HeaderButton className={className} ctaChildren={ctaChildren} />
       <HamburgerIcon isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} className={className} />
