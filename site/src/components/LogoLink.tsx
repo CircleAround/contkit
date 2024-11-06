@@ -28,7 +28,7 @@ const LogoLink = forwardRef<HTMLAnchorElement, LogoLinkProps>(
   ({ variant, text, imgSrc, imgAlt, href, className, ...others }, ref) => {
     return (
       <a
-        href={href}
+        href="/"
         aria-label="ホームへ戻る"
         className={twMerge(LogoLinkVariants({ variant }), className)}
         {...others}
