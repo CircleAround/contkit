@@ -1,9 +1,9 @@
 import React from 'react';
 import { AnchorButton } from '../Button/Button';
 import { ReactNode, useState } from 'react';
-import { Link } from 'gatsby';
 import { twMerge } from 'tailwind-merge';
 import { Navigation } from '../Navigation/Navigation';
+import { LogoLink } from '../LogoLink';
 
 type NavLink = {
   label: string;
@@ -11,12 +11,12 @@ type NavLink = {
 };
 
 const Header = ({
-  homeLinkChildren,
+  logoLinkChildren,
   ctaChildren,
   navLinks,
   className
 }: {
-  homeLinkChildren: ReactNode,
+  logoLinkChildren: ReactNode,
   ctaChildren: ReactNode,
   navLinks: NavLink[],
   className?: string
@@ -29,7 +29,7 @@ const Header = ({
 
   return (
     <HeaderLayout className={className}>
-      <HomeLink className={className}>{homeLinkChildren}</HomeLink>
+      <LogoLink className={className}>{logoLinkChildren}</LogoLink>
       <Navigation navLinks={navLinks} className={className} />
       <HeaderButton className={className} ctaChildren={ctaChildren} />
       <HamburgerIcon isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} className={className} />
@@ -45,14 +45,6 @@ const HeaderLayout = ({ children, className }: { children: ReactNode, className?
         {children}
       </div>
     </header>
-  );
-};
-
-const HomeLink = ({children, className}: {children: ReactNode, className?: string}) => {
-  return (
-    <Link to='/' aria-label="ホームへ戻る" className={twMerge("relative z-50 text-xl font-bold", className)}>
-      {children}
-    </Link>
   );
 };
 
@@ -108,9 +100,8 @@ const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks
 
 Header.displayName = 'Header';
 HeaderLayout.displayName = 'HeaderLayout';
-HomeLink.displayName = 'HomeLink';
 HeaderButton.displayName = 'HeaderButton';
 HamburgerIcon.displayName = 'HamburgerIcon';
 MobileMenu.displayName = 'MobileMenu';
 
-export { Header, HeaderLayout, HomeLink, HeaderButton, HamburgerIcon, MobileMenu };
+export { Header, HeaderLayout, HeaderButton, HamburgerIcon, MobileMenu };
