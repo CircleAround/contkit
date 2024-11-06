@@ -16,10 +16,11 @@ type FooterProps = ComponentProps<'footer'> & {
   logoImgSrc?: string;
   imgAlt?: string;
   navLinks: NavLink[];
+  copyright?: string;
 };
 
 const Footer = forwardRef<HTMLElement, FooterProps>(
-  ({ logoLinkVariant, logoText, logoImgSrc, navLinks, className, ...others }, ref) => {
+  ({ logoLinkVariant, logoText, logoImgSrc, navLinks, className, copyright, ...others }, ref) => {
     const baseCn = 'py-10 bg-zinc-900 text-zinc-400';
 
     return (
@@ -47,7 +48,7 @@ const Footer = forwardRef<HTMLElement, FooterProps>(
             <hr className='border border-zinc-700' />
 
             <div className="mt-6 text-center">
-              <small>© 2024 CIRCLE AROUND Inc.</small>
+              <small>{copyright}</small>
             </div>
           </div>
         </SectionInner>
