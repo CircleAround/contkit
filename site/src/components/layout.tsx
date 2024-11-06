@@ -29,6 +29,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
         logoImgSrc="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image"
         imgAlt="logo image"
         navLinks={navLinks}
+        copyright="© 2024 CIRCLE AROUND Inc."
       />
     </>
   );
