@@ -14,13 +14,13 @@ type FooterProps = ComponentProps<'footer'> & {
   logoLinkVariant: 'text' | 'image';
   logoText?: string;
   logoImgSrc?: string;
-  imgAlt?: string;
+  logoimgAlt?: string;
   navLinks: NavLink[];
   copyright?: string;
 };
 
 const Footer = forwardRef<HTMLElement, FooterProps>(
-  ({ logoLinkVariant, logoText, logoImgSrc, navLinks, className, copyright, ...others }, ref) => {
+  ({ logoLinkVariant, logoText, logoImgSrc, logoimgAlt, navLinks, className, copyright, ...others }, ref) => {
     const baseCn = 'py-10 bg-zinc-900 text-zinc-400';
 
     return (
@@ -36,6 +36,7 @@ const Footer = forwardRef<HTMLElement, FooterProps>(
                 variant={logoLinkVariant}
                 text={logoText}
                 imgSrc={logoImgSrc}
+                imgAlt={logoimgAlt}
                 className="text-zinc-400"
               />
               <Navigation
