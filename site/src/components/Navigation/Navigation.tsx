@@ -5,8 +5,24 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
-import { Link } from 'gatsby';
 import { twMerge } from 'tailwind-merge';
+import { cva, VariantProps } from 'class-variance-authority';
+import { Link } from 'gatsby';
+
+const NavigationVariants = cva(
+  'text-sm font-semibold',
+  {
+    variants: {
+      variant: {
+        header: "hidden md:flex lg:w-full lg:text-zinc-900",
+        footer: "text-zinc-400",
+      },
+    },
+    defaultVariants: {
+      variant: "header",
+    },
+  }
+)
 
 type NavLink = {
   label: string;
@@ -15,20 +31,23 @@ type NavLink = {
 
 type NavigationMenuProps = ComponentProps<typeof NavigationMenu> & {
   navLinks: NavLink[];
-};
+} & VariantProps<typeof NavigationVariants>;
 
 const Navigation = forwardRef<HTMLElement, NavigationMenuProps>(
-  ({ navLinks, className, ...others }, ref) => {
+  ({ variant, navLinks, className, ...others }, ref) => {
     return (
       <NavigationMenu
-        className={twMerge("hidden md:flex lg:w-full", className)}
+        className={twMerge(NavigationVariants({ variant }), className)}
         {...others}
         ref={ref}
       >
         <NavigationMenuList className="flex justify-start space-x-4">
           {navLinks.map((navLink, index) => (
-            <NavigationMenuItem key={index} className="text-sm font-semibold text-zinc-900">
-              <Link to={navLink.href} className="transition duration-300 ease-in-out hover:opacity-50">
+            <NavigationMenuItem key={index}>
+              <Link
+                to={navLink.href}
+                className="relative transition duration-1000 ease-in-out pb-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+              >
                 {navLink.label}
               </Link>
             </NavigationMenuItem>
