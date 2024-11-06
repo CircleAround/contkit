@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Link, PageProps, graphql } from 'gatsby'
-import Layout from '../components/layout'
-import { Markdown } from '../components/Markdown'
+import Layout from '@/components/layout'
+import { Markdown } from '@/components/Markdown'
 import * as styles from './blog-post.module.css'
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
@@ -20,14 +20,14 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
               <ul className={styles.articleNavigation}>
                 {previous && (
                   <li>
-                    <Link to={`/blog/${previous.slug}`} rel='prev'>
+                    <Link to={`/blogs/${previous.slug}`} rel='prev'>
                       ← {previous.title}
                     </Link>
                   </li>
                 )}
                 {next && (
                   <li>
-                    <Link to={`/blog/${next.slug}`} rel='next'>
+                    <Link to={`/blogs/${next.slug}`} rel='next'>
                       {next.title} →
                     </Link>
                   </li>
