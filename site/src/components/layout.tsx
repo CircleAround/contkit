@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 import { Header } from '../components/Header/Header';
+import { Footer } from '../components/Footer/Footer'
 
 const navLinks = [
   { label: 'About', href: '/' },
@@ -12,7 +13,7 @@ const Layout:FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Header
-        homeLinkChildren="My Website"
+        logoLinkChildren="My Website"
         ctaChildren="お問い合わせ"
         navLinks={navLinks}
       />
@@ -20,6 +21,11 @@ const Layout:FC<PropsWithChildren> = ({ children }) => {
       <main>
         {children}
       </main>
+
+      <Footer
+        logoLinkChildren="My Website"
+        navLinks={navLinks}
+      />
     </>
   )
 }
