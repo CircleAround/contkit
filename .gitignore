@@ -1,6 +1,7 @@
 service_account_key.json
 .env
 .env.*
+!.env.sample
 
 site/.firebase
 .firebaserc
