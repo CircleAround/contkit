@@ -1,3 +1,4 @@
+import React from 'react';
 import { FC, PropsWithChildren } from 'react'
 
 const SectionInner:FC<PropsWithChildren> = ({ children }) => {
