@@ -25,7 +25,7 @@ const meta: Meta<typeof Footer> = {
       control: 'text',
       description: '画像形式のロゴリンクの画像ソース',
     },
-    imgAlt: {
+    logoimgAlt: {
       control: 'text',
       description: 'ロゴ画像の代替テキスト',
     },
@@ -68,7 +68,7 @@ export const ImageLogoFooter: Story = {
   args: {
     logoLinkVariant: 'image',
     logoImgSrc: 'https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image',
-    imgAlt: 'Company Logo',
+    logoimgAlt: 'Company Logo',
     navLinks: defaultNavLinks,
     copyright: '© 2024 CIRCLE AROUND Inc.',
   },
