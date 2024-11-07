@@ -50,6 +50,13 @@ const config: GatsbyConfig = {
       options: firestoreOptions,
     },
     'gatsby-plugin-postcss',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/static`,
+        name: 'static',
+      },
+    }
   ],
 }
 
