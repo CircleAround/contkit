@@ -160,22 +160,6 @@ const IndexPage: React.FC<PageProps> = () => {
                 <div className="flex flex-col space-y-6">
                   <h1 className="text-4xl font-bold leading-tight text-zinc-900 md:text-5xl">成果につながる<br/>Webサイト制作</h1>
                   <p className="mt-6 text-base text-zinc-900">コンバージョン率の向上を実現するBtoBサイト・コーポレートサイト制作</p>
-                  <div className="flex items-center space-x-4">
-                    <dl>
-                      <dt className="text-sm text-zinc-900">対応満足度</dt>
-                      <dd className="text-3xl font-bold text-red-500">98%</dd>
-                    </dl>
-                    <dl>
-                      <dt className="text-sm text-zinc-900">導入企業者数</dt>
-                      <dd className="text-3xl font-bold text-red-500">100社以上</dd>
-                    </dl>
-                  </div>
-                </div>
-                <div className="mt-10 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <AnchorButton href=""  className="">お問い合わせ</AnchorButton>
-                  <AnchorButton variant="secondary" href=""  className="flex space-x-2">
-                    <span>資料ダウンロード</span>
-                    <Download /></AnchorButton>
                 </div>
               </div>
 
@@ -185,60 +169,6 @@ const IndexPage: React.FC<PageProps> = () => {
             </div>
           </SectionInner>
         </section>
-
-        <div className="bg-gray-100 py-10">
-          <SectionInner>
-            <ul className="flex flex-wrap items-center justify-center gap-4">
-              {clients.map((client, index) => (
-                <li key={index} className="text-center">
-                  <img src={client.imgSrc} alt={client.alt} className="size-full rounded-lg object-cover object-center" />
-                </li>
-              ))}
-            </ul>
-          </SectionInner>
-        </div>
-
-        {/* 特長セクション */}
-        <section className="py-20">
-          <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle className="mb-2">service</SectionSubTitle>
-              サービスの特長
-            </SectionTitle>
-            <ul className="mt-8 grid gap-6 md:grid-cols-3">
-              {features.map((feature, index) => (
-                <li key={index} className="flex flex-col items-center">
-                  <div className="w-40">
-                    <img src={feature.imgSrc} alt="" className="size-full rounded-full object-cover object-center"/>
-                  </div>
-                  <dl className="mt-6 text-center">
-                    <dt className="text-lg font-semibold">{feature.title}</dt>
-                    <dd className="mt-2 text-gray-600">{feature.description}</dd>
-                  </dl>
-                </li>
-              ))}
-            </ul>
-          </SectionInner>
-        </section>
-
-        {/* サービスの機能紹介セクション */}
-        <div className="bg-gray-100 py-20">
-          <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle className="mb-2">function</SectionSubTitle>
-              機能紹介
-            </SectionTitle>
-            <ul className="mt-8 grid gap-6 md:grid-cols-3 lg:grid-cols-3">
-              {functionLists.map((functionList, index) => (
-                <li key={index} className="rounded bg-white p-6 text-center shadow">
-                  <div className="mb-4 flex justify-center">{functionList.icon}</div>
-                  <h3 className="text-lg font-semibold">{functionList.title}</h3>
-                  <p className="mt-2 text-gray-600">{functionList.description}</p>
-                </li>
-              ))}
-            </ul>
-          </SectionInner>
-        </div>
 
         {/* ニュースセクション */}
         <section className="py-20">
@@ -251,9 +181,9 @@ const IndexPage: React.FC<PageProps> = () => {
               {informations.map((information, index) => (
                 <li key={index} className="pt-4">
                   <Card
-                    variant="row"
-                    style="none"
-                    size="none"
+                    variant="col"
+                    style="border"
+                    size="md"
                     state="hover"
                     link={information.link}
                   >
@@ -275,49 +205,6 @@ const IndexPage: React.FC<PageProps> = () => {
 
             <div className="mt-10 flex justify-end">
               <AnchorButton href="/">全て見る</AnchorButton>
-            </div>
-          </SectionInner>
-        </section>
-
-        {/* お客様の声セクション */}
-        <section className="bg-gray-100 py-20 ">
-          <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle className="mb-2">voice</SectionSubTitle>
-              お客様の声
-            </SectionTitle>
-            <ul className="mt-8 grid gap-8 md:grid-cols-3">
-              {testimonials.map((testimonial, index) => (
-                <li key={index}>
-                  <Card
-                    state="hover"
-                    link={testimonial.link}
-                  >
-                    <CardImage imgSrc={testimonial.imgSrc} imgAlt={testimonial.imgAlt}/>
-                    <CardContent>
-                      <p className="text-zinc-600">{testimonial.name}</p>
-                      <CardTitle>{testimonial.title}</CardTitle>
-                      <CardDescription>{testimonial.description}</CardDescription>
-                    </CardContent>
-                  </Card>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10 flex justify-end">
-              <AnchorButton href="/">全て見る</AnchorButton>
-            </div>
-          </SectionInner>
-        </section>
-
-        {/* お問い合わせセクション */}
-        <section className="py-20">
-          <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle className="mb-2">contact</SectionSubTitle>
-              お問い合わせ
-            </SectionTitle>
-            <div className="mx-auto mt-10 w-full max-w-2xl">
-              <ContactForm/>
             </div>
           </SectionInner>
         </section>
