@@ -5,7 +5,6 @@ import {
 } from '../components/SectionTitle/SectionTitle'
 import  Layout  from '../components/layout'
 import { SectionInner } from '../components/SectionInner';
-import { ContactForm } from '../components/Form/ContactForm'
 import { AnchorButton } from '../components/Button/Button'
 import { Download } from 'lucide-react';
 import {
@@ -95,7 +94,7 @@ const functionLists = [
 const informations = [
   {
     link: '/',
-    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
+    imgSrc: '../images/ogp_bg.jpg',
     imgAlt: '',
     date: '2023/10/22',
     title: '会社紹介の AI ガイドを作成しました',
@@ -104,7 +103,7 @@ const informations = [
   },
   {
     link: '/blogs/test1',
-    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
+    imgSrc: '../images/ogp_bg.jpg',
     imgAlt: '',
     date: '2023/10/22',
     title: '2023年新年のご挨拶',
@@ -113,39 +112,12 @@ const informations = [
   },
   {
     link: '/blogs/test1',
-    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
+    imgSrc: '../images/ogp_bg.jpg',
     imgAlt: '',
     date: '2023/10/22',
     title: '書籍「ステップアップJavaScript」を執筆いたしました',
     description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております',
-    badge: [{ label: 'book' }, { label: 'JavaScript', className: 'bg-yellow-600' }, { label: 'training' }],
-  },
-];
-
-const testimonials = [
-  {
-    link: '/',
-    name: "株式会社A",
-    title: "導入後に効率が飛躍的に向上しました",
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    imgAlt: "株式会社Aのイメージ画像",
-    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
-  },
-  {
-    link: '/',
-    name: "株式会社B",
-    title: "導入後に効率が飛躍的に向上しました",
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    imgAlt: "株式会社Aのイメージ画像",
-    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
-  },
-  {
-    link: '/',
-    name: "株式会社C",
-    title: "導入後に効率が飛躍的に向上しました",
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    imgAlt: "株式会社Aのイメージ画像",
-    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
+    badge: [{ label: 'book' }, { label: 'JavaScript' }, { label: 'training' }],
   },
 ];
 
@@ -182,8 +154,8 @@ const IndexPage: React.FC<PageProps> = () => {
                 <li key={index} className="pt-4">
                   <Card
                     variant="col"
-                    style="border"
-                    size="md"
+                    style="none"
+                    size="none"
                     state="hover"
                     link={information.link}
                   >
