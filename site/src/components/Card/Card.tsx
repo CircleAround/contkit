@@ -11,7 +11,7 @@ import { twMerge } from 'tailwind-merge';
 import { forwardRef, ComponentProps } from 'react';
 
 const cardVariants = cva(
-  'relative flex size-full gap-4 bg-white text-zinc-900',
+  'relative flex size-full bg-white text-zinc-900',
   {
     variants: {
       variant: {
