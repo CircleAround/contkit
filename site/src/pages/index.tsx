@@ -3,88 +3,12 @@ import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import { Card } from '../components/Card/Card'
 import  Layout  from '../components/layout'
 import  SectionInner  from '../components/SectionInner'
-import { ContactForm } from '../components/Form/ContactForm'
 import { AnchorButton } from '../components/Button/Button'
-import { Download } from 'lucide-react';
-
-const clients = [
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントA",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントB",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントC",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントD",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントE",
-  },
-];
-
-const features = [
-  {
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    title: "コスト削減",
-    description: "弊社のサービスで作業効率が上がり、経費が削減されます。"
-  },
-  {
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    title: "高い導入実績",
-    description: "多くの企業に採用されており、確かな信頼性があります。"
-  },
-  {
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    title: "カスタマイズ可能",
-    description: "お客様のニーズに合わせて柔軟に対応します。"
-  },
-];
-
-const functionLists = [
-  {
-    icon: <Download className="size-10 text-4xl text-blue-500" />,
-    title: "高いカスタマイズ性",
-    description: "お客様のニーズに合わせて、柔軟にカスタマイズ可能な機能を提供します。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-green-500" />,
-    title: "パフォーマンス向上",
-    description: "高速な処理性能で業務効率を向上し、最大限のパフォーマンスを発揮します。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-red-500" />,
-    title: "高度なセキュリティ",
-    description: "最新のセキュリティ基準を満たし、安心してご利用いただけます。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-purple-500" />,
-    title: "ユーザープロテクション",
-    description: "ユーザー情報を保護し、安全な環境を提供します。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-teal-500" />,
-    title: "モバイル対応",
-    description: "モバイルデバイスに最適化されたUIで、どこでもアクセス可能です。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-orange-500" />,
-    title: "優れたサポート",
-    description: "専任のサポートチームが導入から運用までをサポートします。"
-  }
-];
 
 const informations = [
   {
     link: '/',
-    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
+    imgSrc: '../images/ogp_bg.jpg',
     imgAlt: '',
     date: '2023/10/22',
     title: '会社紹介の AI ガイドを作成しました',
@@ -93,7 +17,7 @@ const informations = [
   },
   {
     link: '/blogs/test1',
-    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
+    imgSrc: '../images/ogp_bg.jpg',
     imgAlt: '',
     date: '2023/10/22',
     title: '2023年新年のご挨拶',
@@ -102,39 +26,12 @@ const informations = [
   },
   {
     link: '/blogs/test1',
-    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
+    imgSrc: '../images/ogp_bg.jpg',
     imgAlt: '',
     date: '2023/10/22',
     title: '書籍「ステップアップJavaScript」を執筆いたしました',
     description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております',
-    badge: [{ label: 'book' }, { label: 'JavaScript', className: 'bg-yellow-600' }, { label: 'training' }],
-  },
-];
-
-const testimonials = [
-  {
-    link: '/',
-    name: "株式会社A",
-    title: "導入後に効率が飛躍的に向上しました",
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    alt: "株式会社Aのイメージ画像",
-    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
-  },
-  {
-    link: '/',
-    name: "株式会社B",
-    title: "導入後に効率が飛躍的に向上しました",
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    alt: "株式会社Aのイメージ画像",
-    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
-  },
-  {
-    link: '/',
-    name: "株式会社C",
-    title: "導入後に効率が飛躍的に向上しました",
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    alt: "株式会社Aのイメージ画像",
-    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
+    badge: [{ label: 'book' }, { label: 'JavaScript' }, { label: 'training' }],
   },
 ];
 
@@ -168,8 +65,8 @@ const IndexPage: React.FC<PageProps> = () => {
                 <li key={index} className="pt-4">
                   <Card
                     variant="col"
-                    style="border"
-                    size="md"
+                    style="none"
+                    size="none"
                     state="hover"
                     link={information.link}
                     imgSrc={information.imgSrc}

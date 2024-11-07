@@ -10,7 +10,7 @@ import { twMerge } from 'tailwind-merge';
 import { Badge } from '../Badge/Badge';
 
 const cardVariants = cva(
-  'relative flex size-full gap-4 bg-white text-zinc-900',
+  'relative flex size-full bg-white text-zinc-900',
   {
     variants: {
       variant: {
@@ -49,7 +49,7 @@ const cardVariants = cva(
 );
 
 const imageVariants = cva(
-  'aspect-video overflow-hidden rounded-lg',
+  'aspect-video overflow-hidden',
   {
     variants: {
       variant: {
@@ -96,22 +96,12 @@ const Card: React.FC<CardProps> = ({
       {link && <Link to={link} className="absolute left-0 top-0 z-10 size-full" />}
       {imgSrc && (
         <div className={twMerge(imageVariants({ variant }))}>
-          <img src={imgSrc} alt={imgAlt} className="size-full rounded-lg object-cover object-center transition-transform duration-1000 group-hover:scale-125" />
+          <img src={imgSrc} alt={imgAlt} className="size-full object-cover object-center transition-transform duration-1000 group-hover:scale-125" />
         </div>
       )}
-      <UICardContent className="flex grow flex-col gap-2 p-0">
-        {date && (
-          <p className="text-sm text-zinc-600">{date}</p>
-        )}
-        {name && (
-          <p className="text-base font-semibold">{name}</p>
-        )}
-        {title && (
-          <UICardTitle className="text-lg font-semibold group-hover:underline">{title}</UICardTitle>
-        )}
-        {description && <p className="text-sm">{description}</p>}
+      <UICardContent className="flex grow flex-col gap-2 p-4 bg-zinc-50">
         {badge && (
-          <ul className="flex gap-2">
+          <ul className="flex flex-wrap gap-1">
             {badge.map((item, index) => (
               <li key={index}>
                 <Badge shape="sm" className={item.className}>{item.label}</Badge>
@@ -119,6 +109,20 @@ const Card: React.FC<CardProps> = ({
             ))}
           </ul>
         )}
+        <div className="flex flex-col grow gap-2">
+          {name && (
+            <p className="text-base font-semibold">{name}</p>
+          )}
+          {title && (
+            <UICardTitle className="text-lg font-semibold group-hover:underline">{title}</UICardTitle>
+          )}
+          {description && <p className="text-sm">{description}</p>}
+          {date && (
+            <div className="mt-auto">
+              <p className="text-sm text-zinc-900">{date}</p>
+            </div>
+          )}
+        </div>
       </UICardContent>
     </UICard>
   );
