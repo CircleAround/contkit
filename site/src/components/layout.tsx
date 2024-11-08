@@ -16,6 +16,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Header
+        imgComponent={<img src="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image" alt="" className='h-auto w-full object-cover object-center' />}
         navLinks={navLinks}
         ctaChildren="お問い合わせ"
       />
