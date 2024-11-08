@@ -20,6 +20,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
         imgComponent={<img src="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image" alt="" className='h-auto w-full object-cover object-center' />}
         navLinks={navLinks}
         ctaChildren="お問い合わせ"
+        className='text-zinc-900'
       />
 
       <main>
@@ -33,7 +34,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
               <img src="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image" alt="" className='h-auto w-full object-cover object-center' />
             </LogoLink>
             <Navigation
-              variant="footer"
+              variant="static"
               navLinks={navLinks}
               className='text-zinc-400 [&_li]:text-xl [&_li]:md:text-sm [&_ul]:flex [&_ul]:flex-col [&_ul]:items-start [&_ul]:space-x-0 [&_ul]:space-y-4 [&_ul]:md:flex-row [&_ul]:md:space-x-4 [&_ul]:md:space-y-0'
             />
