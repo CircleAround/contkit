@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import { Header } from '../components/Header/Header';
-import { Footer } from '../components/Footer/Footer';
+import { Footer } from './Footer';
 import  SectionInner from '../components/SectionInner';
 import { LogoLink } from '../components/LogoLink';
 import { Navigation } from '../components/Navigation/Navigation';
