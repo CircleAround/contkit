@@ -39,9 +39,9 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
             />
           </div>
 
-            <div className="mt-6 text-center">
-              <small className='text-zinc-400'>© 2024 CIRCLE AROUND Inc.</small>
-            </div>
+          <div className="mt-6 text-center">
+            <small className='text-zinc-400'>© 2024 CIRCLE AROUND Inc.</small>
+          </div>
         </SectionInner>
       </Footer>
     </>
