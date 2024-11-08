@@ -28,10 +28,9 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
       <Footer>
         <SectionInner>
           <div className="flex flex-col justify-between space-y-6 md:flex-row md:space-y-0">
-            <LogoLink
-              variant="image"
-              imgComponent={<img src="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image" alt="" className='h-auto w-full object-cover object-center' />}
-            />
+            <LogoLink href='/'>
+              <img src="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image" alt="" className='h-auto w-full object-cover object-center' />
+            </LogoLink>
             <Navigation
               variant="footer"
               navLinks={navLinks}
