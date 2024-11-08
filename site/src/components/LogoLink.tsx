@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import { cva, VariantProps } from 'class-variance-authority';
 
 const LogoLinkVariants = cva(
-  'relative z-50 transition duration-300 ease-in-out hover:opacity-50',
+  'transition duration-300 ease-in-out hover:opacity-50',
   {
     variants: {
       variant: {
