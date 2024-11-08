@@ -15,12 +15,14 @@ const Header = ({
   href,
   ctaChildren,
   navLinks,
+  navClassName,
   className
 }: {
   imgComponent: ReactNode,
   href: string,
   ctaChildren: ReactNode,
   navLinks: NavLink[],
+  navClassName?: string,
   className?: string
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +34,7 @@ const Header = ({
   return (
     <HeaderLayout className={className}>
       <LogoLink href={href}>{imgComponent}</LogoLink>
-      <Navigation navLinks={navLinks} className={className} />
+      <Navigation navLinks={navLinks} className={navClassName} />
       <HeaderButton className={className} ctaChildren={ctaChildren} />
       <HamburgerIcon isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} className={className} />
       <MobileMenu navLinks={navLinks} isMenuOpen={isMenuOpen} ctaChildren={ctaChildren} className={className} />
