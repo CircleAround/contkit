@@ -20,12 +20,11 @@ const LogoLinkVariants = cva(
 
 type LogoLinkProps = ComponentProps<'a'> & {
   text?: string;
-  imgSrc?: string;
-  imgAlt?: string;
+  imgComponent?: React.ReactNode;
 } & VariantProps<typeof LogoLinkVariants>;
 
 const LogoLink = forwardRef<HTMLAnchorElement, LogoLinkProps>(
-  ({ variant, text, imgSrc, imgAlt, href, className, ...others }, ref) => {
+  ({ variant, text, imgComponent, href, className, ...others }, ref) => {
     return (
       <a
         href="/"
@@ -35,9 +34,7 @@ const LogoLink = forwardRef<HTMLAnchorElement, LogoLinkProps>(
         ref={ref}
       >
         {variant === 'text' && text}
-        {variant === 'image' && imgSrc && (
-          <img src={imgSrc} alt={imgAlt} className=" size-full shrink-0 object-cover object-center" />
-        )}
+        {variant === 'image' && imgComponent }
       </a>
     );
   }
