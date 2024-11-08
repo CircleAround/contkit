@@ -14,12 +14,12 @@ const NavigationVariants = cva(
   {
     variants: {
       variant: {
-        header: "hidden md:flex lg:w-full lg:text-zinc-900",
-        footer: "text-zinc-400",
+        responsive: "hidden md:block",
+        static: "",
       },
     },
     defaultVariants: {
-      variant: "header",
+      variant: "responsive",
     },
   }
 )
