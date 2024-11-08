@@ -1,4 +1,3 @@
-import React from 'react';
 import { forwardRef, ComponentProps } from 'react';
 import {
   NavigationMenu,
@@ -6,23 +5,7 @@ import {
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
 import { twMerge } from 'tailwind-merge';
-import { cva, VariantProps } from 'class-variance-authority';
 import { Link } from 'gatsby';
-
-const NavigationVariants = cva(
-  'text-sm font-semibold',
-  {
-    variants: {
-      variant: {
-        responsive: "hidden md:block",
-        static: "",
-      },
-    },
-    defaultVariants: {
-      variant: "responsive",
-    },
-  }
-)
 
 type NavLink = {
   label: string;
@@ -31,13 +14,15 @@ type NavLink = {
 
 type NavigationMenuProps = ComponentProps<typeof NavigationMenu> & {
   navLinks: NavLink[];
-} & VariantProps<typeof NavigationVariants>;
+}
 
 const Navigation = forwardRef<HTMLElement, NavigationMenuProps>(
-  ({ variant, navLinks, className, ...others }, ref) => {
+  ({ navLinks, className, ...others }, ref) => {
+    const baseCn = 'text-sm font-semibold';
+
     return (
       <NavigationMenu
-        className={twMerge(NavigationVariants({ variant }), className)}
+        className={twMerge(baseCn, className)}
         {...others}
         ref={ref}
       >
