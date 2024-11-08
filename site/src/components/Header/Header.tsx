@@ -11,18 +11,12 @@ type NavLink = {
 };
 
 const Header = ({
-  logoLinkVariant,
+  imgComponent,
   ctaChildren,
-  logoText,
-  logoImgSrc,
-  imgAlt,
   navLinks,
   className
 }: {
-  logoLinkVariant: 'text' | 'image';
-  logoText?: string;
-  logoImgSrc?: string;
-  imgAlt?: string;
+  imgComponent: ReactNode,
   ctaChildren: ReactNode,
   navLinks: NavLink[],
   className?: string
@@ -35,7 +29,7 @@ const Header = ({
 
   return (
     <HeaderLayout className={className}>
-      <LogoLink variant={logoLinkVariant} imgSrc={logoImgSrc} imgAlt={imgAlt} text={logoText} className={className}/>
+      <LogoLink variant="image" imgComponent={imgComponent}/>
       <Navigation navLinks={navLinks} className={className} />
       <HeaderButton className={className} ctaChildren={ctaChildren} />
       <HamburgerIcon isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} className={className} />
@@ -93,7 +87,7 @@ const MobileMenu = ({ navLinks, isMenuOpen, ctaChildren, className }: { navLinks
           className
         )}
       >
-        <div className="pt-24 pb-6">
+        <div className="pb-6 pt-24">
           <Navigation navLinks={navLinks} className='flex md:hidden [&_li]:text-xl [&_ul]:flex-col [&_ul]:items-start [&_ul]:space-x-0 [&_ul]:space-y-4'/>
           <div className="mt-6">
             <HeaderButton ctaChildren={ctaChildren} className='block'/>
