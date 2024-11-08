@@ -42,8 +42,8 @@ const Navigation = forwardRef<HTMLElement, NavigationMenuProps>(
         ref={ref}
       >
         <NavigationMenuList className="flex justify-start space-x-4">
-          {navLinks.map((navLink, index) => (
-            <NavigationMenuItem key={index}>
+          {navLinks.map((navLink) => (
+            <NavigationMenuItem key={navLink.label}>
               <Link
                 to={navLink.href}
                 className="relative pb-1 transition duration-1000 ease-in-out after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-all after:duration-300 after:content-[''] hover:after:w-full"
