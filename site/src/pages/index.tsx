@@ -8,6 +8,7 @@ import { AnchorButton } from '../components/Button/Button'
 import { Download } from 'lucide-react';
 import {
   Card,
+  CardImage,
   CardContent,
   CardTitle,
   CardDescription
@@ -125,7 +126,7 @@ const testimonials = [
     name: "株式会社A",
     title: "導入後に効率が飛躍的に向上しました",
     imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    alt: "株式会社Aのイメージ画像",
+    imgAlt: "株式会社Aのイメージ画像",
     description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
   },
   {
@@ -133,7 +134,7 @@ const testimonials = [
     name: "株式会社B",
     title: "導入後に効率が飛躍的に向上しました",
     imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    alt: "株式会社Aのイメージ画像",
+    imgAlt: "株式会社Aのイメージ画像",
     description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
   },
   {
@@ -141,7 +142,7 @@ const testimonials = [
     name: "株式会社C",
     title: "導入後に効率が飛躍的に向上しました",
     imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    alt: "株式会社Aのイメージ画像",
+    imgAlt: "株式会社Aのイメージ画像",
     description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
   },
 ];
@@ -262,8 +263,8 @@ const IndexPage: React.FC<PageProps> = () => {
                     size="none"
                     state="hover"
                     link={information.link}
-                    imgSrc={information.imgSrc}
                   >
+                    <CardImage imgSrc={information.imgSrc} imgAlt={information.imgAlt} className="md:max-w-60"/>
                     <CardContent>
                       <CardTitle>{information.title}</CardTitle>
                       <CardDescription>{information.description}</CardDescription>
@@ -309,8 +310,8 @@ const IndexPage: React.FC<PageProps> = () => {
                   <Card
                     state="hover"
                     link={testimonial.link}
-                    imgSrc={testimonial.imgSrc}
                   >
+                    <CardImage imgSrc={testimonial.imgSrc} imgAlt={testimonial.imgAlt}/>
                     <CardContent>
                       <CardTitle>{testimonial.title}</CardTitle>
                       <CardDescription>{testimonial.description}</CardDescription>
