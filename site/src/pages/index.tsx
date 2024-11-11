@@ -1,11 +1,19 @@
 import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
-import { Card } from '../components/Card/Card'
+// import { Card } from '../components/Card/Card'
 import  Layout  from '../components/layout'
 import  SectionInner  from '../components/SectionInner'
 import { ContactForm } from '../components/Form/ContactForm'
 import { AnchorButton } from '../components/Button/Button'
 import { Download } from 'lucide-react';
+import {
+  Card,
+  CardContent,
+  CardTitle,
+  CardDescription
+} from '../components/Card/Card';
+import { Badge } from '../components/Badge/Badge';
+import { Badgelist } from '../components/Badge/Badgelist';
 
 const clients = [
   {
@@ -227,7 +235,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="py-20">
           <SectionInner>
             <SectionTitle shape="widthSubtitle" className="text-center" subtitle="information">最新情報</SectionTitle>
-            <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
+            {/* <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
               {informations.map((information, index) => (
                 <li key={index} className="pt-4">
                   <Card
@@ -244,6 +252,30 @@ const IndexPage: React.FC<PageProps> = () => {
                   />
                 </li>
               ))}
+            </ul> */}
+            <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
+              {informations.map((information, index) => (
+                <li key={index} className="pt-4">
+                  <Card
+                    variant="row"
+                    style="none"
+                    size="none"
+                    state="hover"
+                    link={information.link}
+                    imgSrc={information.imgSrc}
+                  >
+                    <CardContent>
+                      <CardTitle>{information.title}</CardTitle>
+                      <CardDescription>{information.description}</CardDescription>
+                      <Badgelist>
+                        {information.badge?.map((badge) => (
+                          <Badge key={badge.label} variant="primary" shape="sm" className={badge.className}>{badge.label}</Badge>
+                        ))}
+                      </Badgelist>
+                    </CardContent>
+                  </Card>
+                </li>
+              ))}
             </ul>
 
             <div className="mt-10 flex justify-end">
@@ -256,7 +288,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="bg-gray-100 py-20 ">
           <SectionInner>
             <SectionTitle shape="widthSubtitle" className="text-center" subtitle="voice">お客様の声</SectionTitle>
-            <ul className="mt-8 grid gap-8 md:grid-cols-3">
+            {/* <ul className="mt-8 grid gap-8 md:grid-cols-3">
               {testimonials.map((testimonial, index) => (
                 <li key={index} className="text-center">
                   <Card
@@ -268,6 +300,22 @@ const IndexPage: React.FC<PageProps> = () => {
                     title={testimonial.title}
                     description={testimonial.description}
                   />
+                </li>
+              ))}
+            </ul> */}
+            <ul className="mt-8 grid gap-8 md:grid-cols-3">
+              {testimonials.map((testimonial, index) => (
+                <li key={index}>
+                  <Card
+                    state="hover"
+                    link={testimonial.link}
+                    imgSrc={testimonial.imgSrc}
+                  >
+                    <CardContent>
+                      <CardTitle>{testimonial.title}</CardTitle>
+                      <CardDescription>{testimonial.description}</CardDescription>
+                    </CardContent>
+                  </Card>
                 </li>
               ))}
             </ul>
