@@ -100,7 +100,7 @@ const Card: React.FC<CardProps> = ({
           <img src={imgSrc} alt={imgAlt} className="size-full rounded-lg object-cover object-center transition-transform duration-1000 group-hover:scale-125" />
         </div>
       )}
-      <UICardContent className="flex grow flex-col gap-2 p-0">
+      <CardContent>
         {/* ↓コンポーネント化不要 */}
         {date && (
           <p className="text-sm text-zinc-600">{date}</p>
@@ -110,7 +110,7 @@ const Card: React.FC<CardProps> = ({
         )}
         {/* ↑コンポーネント化不要 */}
         {title && (
-          <UICardTitle className="text-lg font-semibold group-hover:underline">{title}</UICardTitle>
+          <CardTitle>{title}</CardTitle>
         )}
         {description && <p className="text-sm">{description}</p>}
         {badge && (
@@ -122,11 +122,12 @@ const Card: React.FC<CardProps> = ({
             ))}
           </ul>
         )}
-      </UICardContent>
+      </CardContent>
     </UICard>
   );
 };
 
+// CardContent
 type CardContentProps = ComponentProps<typeof UICardContent> & {
   children?: React.ReactNode;
 };
@@ -146,8 +147,29 @@ const CardContent = forwardRef<HTMLDivElement, CardContentProps>(({ className, c
   }
 );
 
+// CardTitle
+type CardTitleProps = ComponentProps<typeof UICardTitle> & {
+  children?: React.ReactNode;
+};
+
+const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(({ className, children, ...others }, ref) => {
+    const baseCn = 'text-lg font-semibold'
+
+    return (
+      <UICardTitle
+        className={twMerge(baseCn, className)}
+        {...others}
+        ref={ref}
+      >
+        {children}
+      </UICardTitle>
+    );
+  }
+);
+
 
 Card.displayName = 'Card';
 CardContent.displayName = 'CardContent';
+CardTitle.displayName = 'CardTitle';
 
-export { Card, CardContent };
+export { Card, CardContent, CardTitle };
