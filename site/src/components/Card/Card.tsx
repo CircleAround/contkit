@@ -4,6 +4,7 @@ import {
   Card as UICard,
   CardContent as UICardContent,
   CardTitle as UICardTitle,
+  CardDescription as UICardDescription,
 } from '@/components/ui/card';
 import { Link } from 'gatsby';
 import { twMerge } from 'tailwind-merge';
@@ -112,7 +113,7 @@ const Card: React.FC<CardProps> = ({
         {title && (
           <CardTitle>{title}</CardTitle>
         )}
-        {description && <p className="text-sm">{description}</p>}
+        {description && <CardDescription>{description}</CardDescription>}
         {badge && (
           <ul className="flex gap-2">
             {badge.map((item, index) => (
@@ -153,7 +154,7 @@ type CardTitleProps = ComponentProps<typeof UICardTitle> & {
 };
 
 const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(({ className, children, ...others }, ref) => {
-    const baseCn = 'text-lg font-semibold'
+    const baseCn = 'text-zinc-900 text-lg font-semibold'
 
     return (
       <UICardTitle
@@ -167,9 +168,31 @@ const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(({ className, c
   }
 );
 
+// CardDescription
+type CardDescriptionProps = ComponentProps<typeof UICardDescription> & {
+  children?: React.ReactNode;
+};
+
+const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionProps>(({ className, children, ...others }, ref) => {
+    const baseCn = 'text-zinc-900 text-sm'
+
+    return (
+      <UICardDescription
+        className={twMerge(baseCn, className)}
+        {...others}
+        ref={ref}
+      >
+        {children}
+      </UICardDescription>
+    );
+  }
+);
+
+
 
 Card.displayName = 'Card';
 CardContent.displayName = 'CardContent';
 CardTitle.displayName = 'CardTitle';
+CardDescription.displayName = 'CardDescription';
 
-export { Card, CardContent, CardTitle };
+export { Card, CardContent, CardTitle, CardDescription };
