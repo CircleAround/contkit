@@ -266,6 +266,7 @@ const IndexPage: React.FC<PageProps> = () => {
                   >
                     <CardImage imgSrc={information.imgSrc} imgAlt={information.imgAlt} className="md:max-w-60"/>
                     <CardContent>
+                      <small className="text-zinc-600">{information.date}</small>
                       <CardTitle>{information.title}</CardTitle>
                       <CardDescription>{information.description}</CardDescription>
                       <Badgelist>
@@ -313,6 +314,7 @@ const IndexPage: React.FC<PageProps> = () => {
                   >
                     <CardImage imgSrc={testimonial.imgSrc} imgAlt={testimonial.imgAlt}/>
                     <CardContent>
+                      <p className="text-zinc-600">{testimonial.name}</p>
                       <CardTitle>{testimonial.title}</CardTitle>
                       <CardDescription>{testimonial.description}</CardDescription>
                     </CardContent>
