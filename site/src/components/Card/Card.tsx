@@ -15,7 +15,7 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        row: 'flex-col md:flex-row',
+        row: 'flex-col md:flex-row md:items-start',
         col: 'flex-col',
       },
       style: {
@@ -49,31 +49,14 @@ const cardVariants = cva(
   }
 );
 
-const imageVariants = cva(
-  'aspect-video overflow-hidden rounded-lg',
-  {
-    variants: {
-      variant: {
-        row: 'w-full md:max-w-60',
-        col: 'w-full',
-      },
-    },
-    defaultVariants: {
-      variant: 'col',
-    },
-  }
-);
-
 // Card
 type CardProps = ComponentProps<typeof UICard> & {
   className?: string;
   link?: string;
-  imgSrc?: string;
-  imgAlt?: string;
   children?: React.ReactNode;
 } & VariantProps<typeof cardVariants>
 
-const Card = forwardRef<HTMLDivElement, CardProps>(({ variant, style, state, size, shape, link, imgSrc, imgAlt, className, children, ...others }, ref) => {
+const Card = forwardRef<HTMLDivElement, CardProps>(({ variant, style, state, size, shape, link, className, children, ...others }, ref) => {
 
     return (
       <UICard
@@ -82,13 +65,29 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ variant, style, state, siz
         ref={ref}
       >
         {link && <Link to={link} className="absolute left-0 top-0 z-10 size-full" />}
-        {imgSrc && (
-          <div className={twMerge(imageVariants({ variant }))}>
-            <img src={imgSrc} alt={imgAlt} className="size-full rounded-lg object-cover object-center transition-transform duration-1000 group-hover:scale-125" />
-          </div>
-        )}
         {children}
       </UICard>
+    );
+  }
+);
+
+// CardImage
+type CardImageProps = ComponentProps<'div'> & {
+  imgSrc?: string;
+  imgAlt?: string;
+}
+
+const CardImage = forwardRef<HTMLDivElement, CardImageProps>(({ className, imgSrc, imgAlt, ...others }, ref) => {
+    const baseCn = 'shrink-0 aspect-video overflow-hidden rounded-lg [&>img]:transition-transform [&>img]:duration-1000 [&>img]:group-hover:scale-125'
+
+    return (
+      <div
+        className={twMerge(baseCn, className)}
+        {...others}
+        ref={ref}
+      >
+        <img src={imgSrc} alt={imgAlt} className="size-full object-cover object-center" />
+      </div>
     );
   }
 );
@@ -154,11 +153,12 @@ const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionProps>((
 );
 
 Card.displayName = 'Card';
+CardImage.displayName = 'CardImage';
 CardContent.displayName = 'CardContent';
 CardTitle.displayName = 'CardTitle';
 CardDescription.displayName = 'CardDescription';
 
-export { Card, CardContent, CardTitle, CardDescription };
+export { Card, CardImage, CardContent, CardTitle, CardDescription };
 
 
 // import React from 'react';
