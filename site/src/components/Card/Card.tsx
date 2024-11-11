@@ -8,6 +8,7 @@ import {
 import { Link } from 'gatsby';
 import { twMerge } from 'tailwind-merge';
 import { Badge } from '../Badge/Badge';
+import { forwardRef, ComponentProps } from 'react';
 
 const cardVariants = cva(
   'relative flex size-full gap-4 bg-white text-zinc-900',
@@ -100,12 +101,14 @@ const Card: React.FC<CardProps> = ({
         </div>
       )}
       <UICardContent className="flex grow flex-col gap-2 p-0">
+        {/* ↓コンポーネント化不要 */}
         {date && (
           <p className="text-sm text-zinc-600">{date}</p>
         )}
         {name && (
           <p className="text-base font-semibold">{name}</p>
         )}
+        {/* ↑コンポーネント化不要 */}
         {title && (
           <UICardTitle className="text-lg font-semibold group-hover:underline">{title}</UICardTitle>
         )}
@@ -124,6 +127,27 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-Card.displayName = 'Card';
+type CardContentProps = ComponentProps<typeof UICardContent> & {
+  children?: React.ReactNode;
+};
 
-export { Card };
+const CardContent = forwardRef<HTMLDivElement, CardContentProps>(({ className, children, ...others }, ref) => {
+    const baseCn = 'flex grow flex-col gap-2 p-0'
+
+    return (
+      <UICardContent
+        className={twMerge(baseCn, className)}
+        {...others}
+        ref={ref}
+      >
+        {children}
+      </UICardContent>
+    );
+  }
+);
+
+
+Card.displayName = 'Card';
+CardContent.displayName = 'CardContent';
+
+export { Card, CardContent };
