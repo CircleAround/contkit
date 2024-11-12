@@ -14,7 +14,7 @@ import {
   CardDescription
 } from '../components/Card/Card';
 import { Badge } from '../components/Badge/Badge';
-import { Badgelist } from '../components/Badge/Badgelist';
+import { BadgeList } from '../components/Badge/BadgeList';
 
 const clients = [
   {
@@ -269,11 +269,11 @@ const IndexPage: React.FC<PageProps> = () => {
                       <small className="text-zinc-600">{information.date}</small>
                       <CardTitle>{information.title}</CardTitle>
                       <CardDescription>{information.description}</CardDescription>
-                      <Badgelist>
+                      <BadgeList>
                         {information.badge?.map((badge) => (
                           <Badge key={badge.label} variant="primary" shape="sm" className={badge.className}>{badge.label}</Badge>
                         ))}
-                      </Badgelist>
+                      </BadgeList>
                     </CardContent>
                   </Card>
                 </li>
