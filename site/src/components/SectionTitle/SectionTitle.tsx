@@ -54,7 +54,7 @@ type SectionSubTitleProps = ComponentProps< 'p' > & {
 
 const SectionSubTitle = forwardRef<HTMLParagraphElement, SectionSubTitleProps>(
   ({ className, children, ...others }, ref) => {
-    const baseCn = 'mb-2 text-sm text-zinc-500'
+    const baseCn = 'text-sm text-zinc-500'
 
     return (
       <p
