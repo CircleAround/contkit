@@ -202,7 +202,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="py-20">
           <SectionInner>
             <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle>service</SectionSubTitle>
+              <SectionSubTitle className="mb-2">service</SectionSubTitle>
               サービスの特長
             </SectionTitle>
             <ul className="mt-8 grid gap-6 md:grid-cols-3">
@@ -225,7 +225,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <div className="bg-gray-100 py-20">
           <SectionInner>
             <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle>function</SectionSubTitle>
+              <SectionSubTitle className="mb-2">function</SectionSubTitle>
               機能紹介
             </SectionTitle>
             <ul className="mt-8 grid gap-6 md:grid-cols-3 lg:grid-cols-3">
@@ -244,7 +244,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="py-20">
           <SectionInner>
             <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle>information</SectionSubTitle>
+              <SectionSubTitle className="mb-2">information</SectionSubTitle>
               最新情報
             </SectionTitle>
             <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
@@ -283,7 +283,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="bg-gray-100 py-20 ">
           <SectionInner>
             <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle>voice</SectionSubTitle>
+              <SectionSubTitle className="mb-2">voice</SectionSubTitle>
               お客様の声
             </SectionTitle>
             <ul className="mt-8 grid gap-8 md:grid-cols-3">
@@ -313,7 +313,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="py-20">
           <SectionInner>
             <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle>contact</SectionSubTitle>
+              <SectionSubTitle className="mb-2">contact</SectionSubTitle>
               お問い合わせ
             </SectionTitle>
             <div className="mx-auto mt-10 w-full max-w-2xl">
