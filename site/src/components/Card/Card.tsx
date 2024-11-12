@@ -64,6 +64,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ variant, style, state, siz
         {...others}
         ref={ref}
       >
+        {/* カード全体を囲むリンクを設定する必要がある場合に使用 */}
         {link && <Link to={link} className="absolute left-0 top-0 z-10 size-full" />}
         {children}
       </UICard>
