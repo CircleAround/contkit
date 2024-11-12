@@ -153,64 +153,10 @@ const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionProps>((
   }
 );
 
-// stotybook用のコンポーネント
-type StoryBookCardProps = VariantProps<typeof cardVariants> & {
-  imgSrc?: string;
-  imgAlt?: string;
-  title?: string;
-  description?: string;
-  link?: string;
-  className?: string;
-  children?: React.ReactNode;
-};
-
-const StoryBookCard = forwardRef<HTMLDivElement, StoryBookCardProps>(
-  (
-    {
-      imgSrc,
-      imgAlt,
-      title,
-      description,
-      link,
-      variant,
-      style,
-      state,
-      size,
-      shape,
-      className,
-      children,
-      ...others
-    },
-    ref
-  ) => {
-    return (
-      <Card
-        variant={variant}
-        style={style || undefined}
-        state={state}
-        size={size}
-        shape={shape}
-        link={link}
-        className={className}
-        ref={ref}
-        {...others}
-      >
-        {imgSrc && <CardImage imgSrc={imgSrc} imgAlt={imgAlt} />}
-        <CardContent>
-          {title && <CardTitle>{title}</CardTitle>}
-          {description && <CardDescription>{description}</CardDescription>}
-          {children}
-        </CardContent>
-      </Card>
-    );
-  }
-);
-
 Card.displayName = 'Card';
 CardImage.displayName = 'CardImage';
 CardContent.displayName = 'CardContent';
 CardTitle.displayName = 'CardTitle';
 CardDescription.displayName = 'CardDescription';
-StoryBookCard.displayName = 'StoryBookCard';
 
-export { Card, CardImage, CardContent, CardTitle, CardDescription, StoryBookCard };
+export { Card, CardImage, CardContent, CardTitle, CardDescription };
