@@ -1,6 +1,5 @@
 import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
-// import { Card } from '../components/Card/Card'
 import  Layout  from '../components/layout'
 import  SectionInner  from '../components/SectionInner'
 import { ContactForm } from '../components/Form/ContactForm'
@@ -236,24 +235,6 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="py-20">
           <SectionInner>
             <SectionTitle shape="widthSubtitle" className="text-center" subtitle="information">最新情報</SectionTitle>
-            {/* <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
-              {informations.map((information, index) => (
-                <li key={index} className="pt-4">
-                  <Card
-                    variant="row"
-                    style="none"
-                    size="none"
-                    state="hover"
-                    link={information.link}
-                    imgSrc={information.imgSrc}
-                    date={information.date}
-                    title={information.title}
-                    description={information.description}
-                    badge={information.badge}
-                  />
-                </li>
-              ))}
-            </ul> */}
             <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
               {informations.map((information, index) => (
                 <li key={index} className="pt-4">
@@ -290,21 +271,6 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="bg-gray-100 py-20 ">
           <SectionInner>
             <SectionTitle shape="widthSubtitle" className="text-center" subtitle="voice">お客様の声</SectionTitle>
-            {/* <ul className="mt-8 grid gap-8 md:grid-cols-3">
-              {testimonials.map((testimonial, index) => (
-                <li key={index} className="text-center">
-                  <Card
-                    state="hover"
-                    link={testimonial.link}
-                    imgSrc={testimonial.imgSrc}
-                    imgAlt={testimonial.alt}
-                    name={testimonial.name}
-                    title={testimonial.title}
-                    description={testimonial.description}
-                  />
-                </li>
-              ))}
-            </ul> */}
             <ul className="mt-8 grid gap-8 md:grid-cols-3">
               {testimonials.map((testimonial, index) => (
                 <li key={index}>
