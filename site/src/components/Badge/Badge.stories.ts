@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 // ストーリーのメタ情報を定義
 const badgeMeta = {
-  title: "Components/Badge", // ストーリーのタイトル
+  title: "Components/Badge/Badge", // ストーリーのタイトル
   component: Badge, // ストーリーで使用するコンポーネント
   argTypes: {
     variant: { control: 'select', options: ['primary', 'secondary'] },
