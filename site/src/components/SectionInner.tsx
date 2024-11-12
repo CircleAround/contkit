@@ -1,11 +1,24 @@
-import { FC, PropsWithChildren } from 'react'
+import { forwardRef, ComponentProps } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-const SectionInner:FC<PropsWithChildren> = ({ children }) => {
+type SectionInnerProps = ComponentProps<'div'> & {
+  children: React.ReactNode;
+};
+
+const SectionInner = forwardRef<HTMLDivElement, SectionInnerProps>(({ className, children, ...others }, ref) => {
+  const baseCn = 'container mx-auto px-6 md:px-10'
+
   return (
-    <div className='container mx-auto px-6 md:px-10'>
+    <div
+      className={twMerge(baseCn, className)}
+      {...others}
+      ref={ref}
+    >
       {children}
     </div>
   )
-}
+})
 
-export default SectionInner
+SectionInner.displayName = 'SectionInner';
+
+export default SectionInner;
