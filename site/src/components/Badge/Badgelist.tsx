@@ -2,11 +2,11 @@ import * as React from "react"
 import { twMerge } from 'tailwind-merge';
 import { forwardRef, ComponentProps } from 'react';
 
-type BadgelistProps = ComponentProps<'ul'> & {
+type BadgeListProps = ComponentProps<'ul'> & {
   children?: React.ReactNode;
 };
 
-const Badgelist = forwardRef<HTMLUListElement, BadgelistProps>(({ className, children, ...others }, ref) => {
+const BadgeList = forwardRef<HTMLUListElement, BadgeListProps>(({ className, children, ...others }, ref) => {
   const baseCn = 'flex flex-wrap gap-1'
 
   return (
@@ -21,6 +21,6 @@ const Badgelist = forwardRef<HTMLUListElement, BadgelistProps>(({ className, chi
 });
 
 
-Badgelist.displayName = 'Badgelist';
+BadgeList.displayName = 'BadgeList';
 
-export { Badgelist }
+export { BadgeList }
