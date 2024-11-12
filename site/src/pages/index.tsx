@@ -13,7 +13,7 @@ import {
   CardDescription
 } from '../components/Card/Card';
 import { Badge } from '../components/Badge/Badge';
-import { BadgeList } from '../components/Badge/BadgeList';
+import { BadgeList } from '@/components/Badge/BadgeList';
 
 const clients = [
   {
