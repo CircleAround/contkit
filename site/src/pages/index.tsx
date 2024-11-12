@@ -1,5 +1,8 @@
 import type { HeadFC, PageProps } from "gatsby"
-import { SectionTitle } from '../components/SectionTitle/SectionTitle'
+import {
+  SectionTitle,
+  SectionSubTitle
+} from '../components/SectionTitle/SectionTitle'
 import  Layout  from '../components/layout'
 import  SectionInner  from '../components/SectionInner'
 import { ContactForm } from '../components/Form/ContactForm'
@@ -198,7 +201,10 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* 特長セクション */}
         <section className="py-20">
           <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="service">サービスの特長</SectionTitle>
+            <SectionTitle shape="widthSubtitle" className="text-center">
+              <SectionSubTitle>service</SectionSubTitle>
+              サービスの特長
+            </SectionTitle>
             <ul className="mt-8 grid gap-6 md:grid-cols-3">
               {features.map((feature, index) => (
                 <li key={index} className="flex flex-col items-center">
@@ -218,7 +224,10 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* サービスの機能紹介セクション */}
         <div className="bg-gray-100 py-20">
           <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="function">機能紹介</SectionTitle>
+            <SectionTitle shape="widthSubtitle" className="text-center">
+              <SectionSubTitle>function</SectionSubTitle>
+              機能紹介
+            </SectionTitle>
             <ul className="mt-8 grid gap-6 md:grid-cols-3 lg:grid-cols-3">
               {functionLists.map((functionList, index) => (
                 <li key={index} className="rounded bg-white p-6 text-center shadow">
@@ -234,7 +243,10 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* ニュースセクション */}
         <section className="py-20">
           <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="information">最新情報</SectionTitle>
+            <SectionTitle shape="widthSubtitle" className="text-center">
+              <SectionSubTitle>information</SectionSubTitle>
+              最新情報
+            </SectionTitle>
             <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
               {informations.map((information, index) => (
                 <li key={index} className="pt-4">
@@ -270,7 +282,10 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* お客様の声セクション */}
         <section className="bg-gray-100 py-20 ">
           <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="voice">お客様の声</SectionTitle>
+            <SectionTitle shape="widthSubtitle" className="text-center">
+              <SectionSubTitle>voice</SectionSubTitle>
+              お客様の声
+            </SectionTitle>
             <ul className="mt-8 grid gap-8 md:grid-cols-3">
               {testimonials.map((testimonial, index) => (
                 <li key={index}>
@@ -297,7 +312,10 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* お問い合わせセクション */}
         <section className="py-20">
           <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center" subtitle="contact">お問い合わせ</SectionTitle>
+            <SectionTitle shape="widthSubtitle" className="text-center">
+              <SectionSubTitle>contact</SectionSubTitle>
+              お問い合わせ
+            </SectionTitle>
             <div className="mx-auto mt-10 w-full max-w-2xl">
               <ContactForm/>
             </div>

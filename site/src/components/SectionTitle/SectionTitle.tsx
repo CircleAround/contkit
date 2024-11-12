@@ -1,7 +1,7 @@
 import * as React from "react"
-import { ReactNode } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
+import { ComponentProps, forwardRef } from 'react';
 
 const sectionTitleVariants = cva(
   'text-xl font-bold leading-none tracking-tight text-zinc-900',
@@ -27,23 +27,49 @@ const sectionTitleVariants = cva(
   }
 );
 
-type SectionTitleProps = {
-  children: ReactNode;
-  subtitle?: string;
+type SectionTitleProps = ComponentProps< 'h2' > & {
+  children: React.ReactNode;
   className?: string;
 } & VariantProps<typeof sectionTitleVariants>;
 
-const SectionTitle = ({ subtitle, children, shape, size, className }: SectionTitleProps) => {
-  return (
-    <h2 className={twMerge(sectionTitleVariants({ shape, size }), className)}>
-      { shape === 'widthSubtitle' && (
-        <p className="mb-2 text-sm text-zinc-500">{subtitle}</p>
-      )}
-      {children}
-    </h2>
-  );
-};
+const SectionTitle = forwardRef<HTMLHeadingElement, SectionTitleProps>(
+  ({ shape, size, className, children, ...others }, ref) => {
+
+    return (
+      <h2
+        className={twMerge(sectionTitleVariants({ shape, size }), className)}
+        {...others}
+        ref={ref}
+      >
+        {children}
+      </h2>
+    )
+  },
+)
+
+type SectionSubTitleProps = ComponentProps< 'p' > & {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const SectionSubTitle = forwardRef<HTMLParagraphElement, SectionSubTitleProps>(
+  ({ className, children, ...others }, ref) => {
+    const baseCn = 'mb-2 text-sm text-zinc-500'
+
+    return (
+      <p
+        className={twMerge(baseCn, className)}
+        {...others}
+        ref={ref}
+      >
+        {children}
+      </p>
+    )
+  },
+)
+
 
 SectionTitle.displayName = 'SectionTitle';
+SectionSubTitle.displayName = 'SectionSubTitle';
 
-export { SectionTitle };
+export { SectionTitle, SectionSubTitle };
