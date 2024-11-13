@@ -1,9 +1,31 @@
-import { FC, PropsWithChildren } from 'react';
-import { Header } from '../components/Header/Header';
+import { FC, PropsWithChildren, useState } from 'react';
+import {
+  Header,
+  HeaderInner,
+} from '../components/Header/Header';
 import { Footer } from './Footer';
-import  SectionInner from '../components/SectionInner';
+import { SectionInner } from '../components/SectionInner';
 import { LogoLink } from '../components/LogoLink';
-import { Navigation } from '../components/Navigation/Navigation';
+import {
+  Navigation,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationLink
+} from '../components/Navigation/Navigation';
+import {
+  NavigationDrawer,
+  NavigationDrawerButton,
+  HamburgerIcon
+} from '../components/NavigationDrawer/NavigationDrawer';
+import { MobileMenu } from '../components/MobileMenu/MobileMenu';
+import { AnchorButton } from '../components/Button/Button';
+import { twMerge } from 'tailwind-merge';
+
+const logoLink = {
+  href: '/',
+  imgSrc: 'https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image',
+  imgAlt: ''
+};
 
 const navLinks = [
   { label: 'About', href: '/' },
@@ -13,16 +35,67 @@ const navLinks = [
 ];
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const baseAnimationCn = 'relative pb-1 duration-1000 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full';
+
   return (
     <>
-      <Header
-        href='/'
-        imgComponent={<img src="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image" alt="" className='h-auto w-full object-cover object-center' />}
-        navLinks={navLinks}
-        navClassName='hidden md:block'
-        ctaChildren="お問い合わせ"
-        className='text-zinc-900'
-      />
+      <Header>
+        <HeaderInner>
+          <LogoLink href={logoLink.href}>
+            <img
+              src={logoLink.imgSrc}
+              alt={logoLink.imgAlt}
+              className='h-auto w-full object-cover object-center'
+            />
+          </LogoLink>
+
+          {/* PC */}
+          <Navigation className='hidden md:block'>
+            <NavigationMenuList>
+            {navLinks.map((navLink) => (
+              <NavigationMenuItem>
+                <NavigationLink
+                  href={navLink.href}
+                  className={twMerge(baseAnimationCn)}
+                >
+                  {navLink.label}
+                </NavigationLink>
+              </NavigationMenuItem>
+            ))}
+            </NavigationMenuList>
+          </Navigation>
+          <AnchorButton variant="primary" href='/' className='hidden md:block'>お問い合わせ</AnchorButton>
+
+          {/* SP */}
+          <NavigationDrawer>
+            <NavigationDrawerButton isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}>
+              <HamburgerIcon isMenuOpen={isMenuOpen} />
+            </NavigationDrawerButton>
+          </NavigationDrawer>
+          <MobileMenu isMenuOpen={isMenuOpen}>
+            <Navigation className='md:hidden'>
+              <NavigationMenuList>
+              {navLinks.map((navLink) => (
+                <NavigationMenuItem>
+                  <NavigationLink
+                    href={navLink.href}
+                    className={twMerge(baseAnimationCn, 'text-xl')}
+                  >
+                    {navLink.label}
+                  </NavigationLink>
+                </NavigationMenuItem>
+              ))}
+              </NavigationMenuList>
+            </Navigation>
+          </MobileMenu>
+        </HeaderInner>
+      </Header>
+
 
       <main>
         {children}
@@ -31,13 +104,23 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
       <Footer>
         <SectionInner>
           <div className="flex flex-col justify-between space-y-6 md:flex-row md:space-y-0">
-            <LogoLink href='/'>
-              <img src="https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image" alt="" className='h-auto w-full object-cover object-center' />
+            <LogoLink href={logoLink.href}>
+              <img src={logoLink.imgSrc} alt={logoLink.imgAlt} className='h-auto w-full object-cover object-center' />
             </LogoLink>
-            <Navigation
-              navLinks={navLinks}
-              className='text-zinc-400 [&_li]:text-xl [&_li]:md:text-sm [&_ul]:flex [&_ul]:flex-col [&_ul]:items-start [&_ul]:space-x-0 [&_ul]:space-y-4 [&_ul]:md:flex-row [&_ul]:md:space-x-4 [&_ul]:md:space-y-0'
-            />
+            <Navigation>
+              <NavigationMenuList>
+              {navLinks.map((navLink) => (
+                <NavigationMenuItem>
+                  <NavigationLink
+                    href={navLink.href}
+                    className={twMerge(baseAnimationCn, 'text-zinc-400 text-xl md:text-sm')}
+                  >
+                    {navLink.label}
+                  </NavigationLink>
+                </NavigationMenuItem>
+              ))}
+              </NavigationMenuList>
+            </Navigation>
           </div>
 
           <div className="mt-6 text-center">
