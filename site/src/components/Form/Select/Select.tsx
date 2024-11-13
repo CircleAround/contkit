@@ -3,8 +3,8 @@ import { ComponentProps, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import {
   Select as UISelect,
-  SelectContent,
-  SelectItem,
+  SelectContent as UISelectContent,
+  SelectItem as UISelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
@@ -12,36 +12,74 @@ import {
 type SelectProps = ComponentProps<typeof UISelect> & {
   onValueChange?: (value: string) => void;
   className?: string;
-  selects?: { value: string, name: string }[];
+  placeholder: string;
 }
 
-const Select = forwardRef<HTMLButtonElement, SelectProps>(({ onValueChange, selects = [], className, ...others }, ref) => {
-  const baseCn = 'border-zinc-300 h-11 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2';
+const Select = forwardRef<HTMLButtonElement, SelectProps>(({ onValueChange, className, placeholder, children, ...others }, ref) => {
+  const baseCn = 'border-zinc-300 h-11 text-zinc-900 placeholder:text-zinc-400';
+  const focusCn = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2';
 
     return (
       <UISelect onValueChange={onValueChange}>
         <SelectTrigger
-          className={twMerge(baseCn, className)}
+          className={twMerge(baseCn, focusCn, className)}
           {...others}
           ref={ref}
         >
-          <SelectValue placeholder="選択してください" />
+          <SelectValue placeholder={placeholder} />
         </SelectTrigger>
-        <SelectContent className='border-zinc-300 text-zinc-900'>
-          {selects.map((select, index) => (
-            <SelectItem
-              key={index}
-              value={select.value}
-            >
-              {select.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </UISelect>
+        {children}
+        </UISelect>
+    )
+  },
+)
+
+type SelectContentProps = ComponentProps<typeof UISelectContent> & {
+  className?: string;
+}
+
+const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(({ className, children, ...others }, ref) => {
+  const baseCn = 'border-zinc-300';
+
+    return (
+      <UISelectContent
+        className={twMerge(baseCn, className)}
+        {...others}
+        ref={ref}
+      >
+        {children}
+      </UISelectContent>
+    )
+  },
+)
+
+type SelectItemProps = ComponentProps<typeof UISelectItem> & {
+  selects?: { value: string, name: string }[];
+  className?: string;
+}
+
+const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(({ selects = [], className }, ref) => {
+  const baseCn = 'text-zinc-900';
+
+    return (
+      <>
+        {selects.map((select) => (
+          <UISelectItem
+            key={select.name}
+            value={select.value}
+            className={twMerge(baseCn, className)}
+            ref={ref}
+          >
+            {select.name}
+          </UISelectItem>
+        ))}
+      </>
     )
   },
 )
 
 Select.displayName = 'Select'
+SelectContent.displayName = 'SelectContent'
+SelectItem.displayName = 'SelectItem'
 
-export { Select }
+export { Select, SelectContent, SelectItem }
