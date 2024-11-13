@@ -58,7 +58,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
           <Navigation className='hidden md:block'>
             <NavigationMenuList>
             {navLinks.map((navLink) => (
-              <NavigationMenuItem>
+              <NavigationMenuItem key={navLink.label}>
                 <NavigationLink
                   href={navLink.href}
                   className={twMerge(baseAnimationCn)}
@@ -69,7 +69,13 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
             ))}
             </NavigationMenuList>
           </Navigation>
-          <AnchorButton variant="primary" href='/' className='hidden md:block'>お問い合わせ</AnchorButton>
+          <AnchorButton
+            variant="primary"
+            href='/'
+            className='hidden md:block'
+          >
+            お問い合わせ
+          </AnchorButton>
 
           {/* SP */}
           <NavigationDrawer>
@@ -77,11 +83,11 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
               <HamburgerIcon isMenuOpen={isMenuOpen} />
             </NavigationDrawerButton>
           </NavigationDrawer>
-          <MobileMenu isMenuOpen={isMenuOpen}>
-            <Navigation className='md:hidden'>
+          <MobileMenu isMenuOpen={isMenuOpen} className='md:hidden'>
+            <Navigation>
               <NavigationMenuList>
               {navLinks.map((navLink) => (
-                <NavigationMenuItem>
+                <NavigationMenuItem key={navLink.label}>
                   <NavigationLink
                     href={navLink.href}
                     className={twMerge(baseAnimationCn, 'text-xl')}
@@ -92,6 +98,9 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
               ))}
               </NavigationMenuList>
             </Navigation>
+            <div className="mt-4">
+              <AnchorButton variant="primary" href='/'>お問い合わせ</AnchorButton>
+            </div>
           </MobileMenu>
         </HeaderInner>
       </Header>
@@ -110,7 +119,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
             <Navigation>
               <NavigationMenuList>
               {navLinks.map((navLink) => (
-                <NavigationMenuItem>
+                <NavigationMenuItem key={navLink.label}>
                   <NavigationLink
                     href={navLink.href}
                     className={twMerge(baseAnimationCn, 'text-zinc-400 text-xl md:text-sm')}
