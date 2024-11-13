@@ -56,7 +56,7 @@ type HamburgerIconProps = ComponentProps<'div'> & {
 }
 
 const HamburgerIcon = forwardRef<HTMLDivElement, HamburgerIconProps>(
-  ({ isMenuOpen, className }) => {
+  ({ isMenuOpen, className, ...others }, ref) => {
     const baseCn = 'h-1 w-6 bg-white transition-transform duration-300 ease-in-out';
     const bars = [
       isMenuOpen ? 'translate-y-2 rotate-45' : '',
@@ -67,7 +67,12 @@ const HamburgerIcon = forwardRef<HTMLDivElement, HamburgerIconProps>(
     return (
       <>
         {bars.map((bar, index) => (
-          <div key={index} className={twMerge(baseCn, bar, className)}></div>
+          <div
+            key={index}
+            className={twMerge(baseCn, bar, className)}
+            {...others}
+            ref={ref}
+          ></div>
         ))}
       </>
     );
