@@ -11,7 +11,11 @@ import { FormLabel } from "@/components/Form/FormLabel/FormLabel"
 import { Input } from "@/components/Form/Input/Input"
 import { Textarea } from "@/components/Form/Textarea/Textarea"
 import { FormMessage } from "@/components/Form/FormMessage/FormMessage"
-import { Select } from "@/components/Form/Select/Select"
+import {
+  Select,
+  SelectContent,
+  SelectItem
+} from "@/components/Form/Select/Select"
 import { Checkbox } from "@/components/Form/Checkbox/Checkbox"
 import { Button } from "@/components/Button/Button"
 import { ExternalLink } from 'lucide-react';
@@ -150,10 +154,13 @@ export function ContactForm() {
                 <FormControl>
                   <Select
                     aria-required="true"
-                    selects={selects}
                     onValueChange={field.onChange}
-                    value={field.value}
-                  />
+                    placeholder="選択してください"
+                  >
+                    <SelectContent>
+                      <SelectItem selects={selects} value={field.value}/>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage state="danger"/>
               </FormItem>
