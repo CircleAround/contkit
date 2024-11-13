@@ -32,7 +32,7 @@ type NavigationDrawerButtonProps = ComponentProps<'header'> & {
 
 const NavigationDrawerButton = forwardRef<HTMLButtonElement, NavigationDrawerButtonProps>(
   ({ toggleMenu, isMenuOpen, className, children, ...others }, ref) => {
-    const baseCn = 'flex size-12 flex-col items-center justify-center rounded-full bg-zinc-900';
+    const baseCn = 'size-12 rounded-full bg-zinc-900';
 
     return (
       <button
@@ -59,22 +59,21 @@ const HamburgerIcon = forwardRef<HTMLDivElement, HamburgerIconProps>(
   ({ isMenuOpen, className, ...others }, ref) => {
     const baseCn = 'h-1 w-6 bg-white transition-transform duration-300 ease-in-out';
     const bars = [
-      isMenuOpen ? 'translate-y-2 rotate-45' : '',
+      isMenuOpen ? 'translate-y-1 rotate-45' : '',
       isMenuOpen ? 'opacity-0' : 'my-1',
-      isMenuOpen ? '-translate-y-2 -rotate-45' : '',
+      isMenuOpen ? '-translate-y-1 -rotate-45' : '',
     ];
 
     return (
-      <>
+      <div
+        className='flex flex-col items-center justify-center '
+        {...others}
+        ref={ref}
+      >
         {bars.map((bar, index) => (
-          <div
-            key={index}
-            className={twMerge(baseCn, bar, className)}
-            {...others}
-            ref={ref}
-          ></div>
+          <div key={index} className={twMerge(baseCn, bar, className)}></div>
         ))}
-      </>
+      </div>
     );
   }
 );
