@@ -12,7 +12,7 @@ type NavigationMenuProps = ComponentProps<typeof UINavigationMenu>
 
 const Navigation = forwardRef<HTMLElement, NavigationMenuProps>(
   ({ className, children, ...others }, ref) => {
-    const baseCn = 'text-sm font-semibold';
+    const baseCn = 'flex-none text-sm font-semibold';
 
     return (
       <UINavigationMenu
@@ -31,7 +31,7 @@ type NavigationMenuListProps = ComponentProps<typeof UINavigationMenuList>
 
 const NavigationMenuList = forwardRef<HTMLUListElement, NavigationMenuListProps>(
   ({ className, children, ...others }, ref) => {
-    const baseCn = 'flex flex-col items-start space-x-0 space-y-4 md:flex-row md:space-x-4 md:space-y-0';
+    const baseCn = 'flex flex-col flex-none items-start space-x-0 space-y-4 md:flex-row md:space-x-4 md:space-y-0';
 
     return (
       <UINavigationMenuList
