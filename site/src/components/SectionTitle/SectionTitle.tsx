@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import { ComponentProps, forwardRef } from 'react';
 
 const sectionTitleVariants = cva(
-  'text-xl font-bold leading-none tracking-tight text-zinc-900',
+  'text-xl font-bold leading-none tracking-tight text-zinc-900 lg:text-2xl lg:leading-none',
   {
     variants: {
       shape: {
@@ -15,29 +15,23 @@ const sectionTitleVariants = cva(
         solid: 'inline-block bg-gray-300 px-4 py-2',
         widthSubtitle: 'flex flex-col justify-center',
       },
-      size: {
-        xxl: 'lg:text-2xl lg:leading-none',
-        xxxxl: 'lg:text-4xl lg:leading-none',
-      },
     },
     defaultVariants: {
       shape: 'plain',
-      size: 'xxl',
     },
   }
 );
 
 type SectionTitleProps = ComponentProps< 'h2' > & {
-  children: React.ReactNode;
   className?: string;
 } & VariantProps<typeof sectionTitleVariants>;
 
 const SectionTitle = forwardRef<HTMLHeadingElement, SectionTitleProps>(
-  ({ shape, size, className, children, ...others }, ref) => {
+  ({ shape, className, children, ...others }, ref) => {
 
     return (
       <h2
-        className={twMerge(sectionTitleVariants({ shape, size }), className)}
+        className={twMerge(sectionTitleVariants({ shape }), className)}
         {...others}
         ref={ref}
       >
@@ -48,7 +42,6 @@ const SectionTitle = forwardRef<HTMLHeadingElement, SectionTitleProps>(
 )
 
 type SectionSubTitleProps = ComponentProps< 'p' > & {
-  children: React.ReactNode;
   className?: string;
 }
 
