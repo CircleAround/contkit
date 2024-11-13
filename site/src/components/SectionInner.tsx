@@ -21,4 +21,4 @@ const SectionInner = forwardRef<HTMLDivElement, SectionInnerProps>(({ className,
 
 SectionInner.displayName = 'SectionInner';
 
-export default SectionInner;
+export { SectionInner };

@@ -4,7 +4,7 @@ import {
   SectionSubTitle
 } from '../components/SectionTitle/SectionTitle'
 import  Layout  from '../components/layout'
-import  SectionInner  from '../components/SectionInner'
+import { SectionInner } from '../components/SectionInner';
 import { ContactForm } from '../components/Form/ContactForm'
 import { AnchorButton } from '../components/Button/Button'
 import { Download } from 'lucide-react';
