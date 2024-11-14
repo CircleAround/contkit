@@ -27,7 +27,7 @@ const FormAlert = forwardRef<HTMLDivElement, FormAlertProps>(({ formAlertclassNa
         ref={ref}
       >
         <AlertIcon className={iconClassName}/>
-        <FormMessage id={formMessageId} className={messageClassName}/>
+        <FormMessage id={formMessageId} className={messageClassName}>{body}</FormMessage>
       </div>
     )
   },
