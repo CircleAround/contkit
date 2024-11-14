@@ -33,6 +33,7 @@ const Select = forwardRef<HTMLButtonElement, SelectProps>(({ onValueChange, clas
     )
   },
 )
+Select.displayName = 'Select'
 
 type SelectContentProps = ComponentProps<typeof UISelectContent> & {
   className?: string;
@@ -52,6 +53,7 @@ const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(({ classNam
     )
   },
 )
+SelectContent.displayName = 'SelectContent'
 
 type SelectItemProps = ComponentProps<typeof UISelectItem> & {
   selects?: { value: string, name: string }[];
@@ -77,9 +79,6 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(({ selects = [], 
     )
   },
 )
-
-Select.displayName = 'Select'
-SelectContent.displayName = 'SelectContent'
 SelectItem.displayName = 'SelectItem'
 
 export { Select, SelectContent, SelectItem }
