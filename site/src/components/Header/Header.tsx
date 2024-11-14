@@ -22,6 +22,7 @@ const Header = forwardRef<HTMLElement, HeaderProps>(
     );
   }
 );
+Header.displayName = 'Header';
 
 // HeaderInner
 type HeaderInnerProps = ComponentProps<'header'> & {
@@ -43,8 +44,6 @@ const HeaderInner = forwardRef<HTMLDivElement, HeaderInnerProps>(
     );
   }
 );
-
-Header.displayName = 'Header';
 HeaderInner.displayName = 'HeaderInner';
 
 export { Header, HeaderInner };
