@@ -9,7 +9,7 @@ type HeaderProps = ComponentProps<'header'> & {
 
 const Header = forwardRef<HTMLElement, HeaderProps>(
   ({ className, children, ...others }, ref) => {
-    const baseCn = 'fixed top-6 left-0 z-40 px-6 w-full md:px-10';
+    const baseCn = 'fixed top-6 left-0 z-40 w-full';
 
     return (
       <header
@@ -30,7 +30,7 @@ type HeaderInnerProps = ComponentProps<'header'> & {
 
 const HeaderInner = forwardRef<HTMLDivElement, HeaderInnerProps>(
   ({ className, children, ...others }, ref) => {
-    const baseCn = 'flex items-center justify-between';
+    const baseCn = 'flex items-center justify-between px-6 md:px-10';
 
     return (
       <div
