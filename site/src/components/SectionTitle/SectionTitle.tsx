@@ -40,6 +40,7 @@ const SectionTitle = forwardRef<HTMLHeadingElement, SectionTitleProps>(
     )
   },
 )
+SectionTitle.displayName = 'SectionTitle';
 
 type SectionSubTitleProps = ComponentProps< 'p' > & {
   className?: string;
@@ -60,9 +61,6 @@ const SectionSubTitle = forwardRef<HTMLParagraphElement, SectionSubTitleProps>(
     )
   },
 )
-
-
-SectionTitle.displayName = 'SectionTitle';
 SectionSubTitle.displayName = 'SectionSubTitle';
 
 export { SectionTitle, SectionSubTitle };

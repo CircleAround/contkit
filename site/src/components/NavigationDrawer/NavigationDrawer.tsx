@@ -22,6 +22,7 @@ const NavigationDrawer = forwardRef<HTMLDivElement, NavigationDrawerProps>(
     );
   }
 );
+NavigationDrawer.displayName = 'NavigationDrawer';
 
 // NavigationDrawerButton
 type NavigationDrawerButtonProps = ComponentProps<'header'> & {
@@ -48,6 +49,7 @@ const NavigationDrawerButton = forwardRef<HTMLButtonElement, NavigationDrawerBut
     );
   }
 );
+NavigationDrawerButton.displayName = 'NavigationDrawerButton';
 
 // HamburgerIcon
 type HamburgerIconProps = ComponentProps<'div'> & {
@@ -77,9 +79,6 @@ const HamburgerIcon = forwardRef<HTMLDivElement, HamburgerIconProps>(
     );
   }
 );
-
-NavigationDrawer.displayName = 'NavigationDrawer';
-NavigationDrawerButton.displayName = 'NavigationDrawerButton';
 HamburgerIcon.displayName = 'HamburgerIcon';
 
 export { NavigationDrawer, NavigationDrawerButton, HamburgerIcon };
