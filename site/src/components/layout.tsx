@@ -17,7 +17,7 @@ import {
   NavigationDrawerButton,
   HamburgerIcon
 } from '../components/NavigationDrawer/NavigationDrawer';
-import { MobileMenu } from '../components/MobileMenu/MobileMenu';
+import { MobileMenu } from './MobileMenu';
 import { AnchorButton } from '../components/Button/Button';
 import { twMerge } from 'tailwind-merge';
 
