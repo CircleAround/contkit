@@ -1,7 +1,7 @@
+import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { SectionTitle } from './SectionTitle';
+import { SectionTitle, SectionSubTitle } from './SectionTitle';
 
-// Storybookのメタ情報
 const meta: Meta<typeof SectionTitle> = {
   title: 'Components/SectionTitle',
   component: SectionTitle,
@@ -9,18 +9,16 @@ const meta: Meta<typeof SectionTitle> = {
     shape: {
       control: { type: 'select' },
       options: ['plain', 'underLine', 'sideLine', 'speechBubble', 'solid', 'widthSubtitle'],
-    },
-    size: {
-      control: { type: 'select' },
-      options: ['xxl', 'xxxxl'],
-    },
-    subtitle: {
-      control: 'text',
-      description: 'サブタイトルとして表示するテキスト',
+      description: 'Section Titleの形状スタイル',
     },
     children: {
       control: 'text',
+      description: 'タイトルとして表示するテキスト',
       defaultValue: 'セクションタイトル',
+    },
+    className: {
+      control: 'text',
+      description: 'カスタムクラス名',
     },
   },
 };
@@ -29,12 +27,9 @@ export default meta;
 
 type Story = StoryObj<typeof SectionTitle>;
 
-// 各バリエーションのストーリー
-
 export const Plain: Story = {
   args: {
     shape: 'plain',
-    size: 'xxl',
     children: 'Plain Section Title',
   },
 };
@@ -42,7 +37,6 @@ export const Plain: Story = {
 export const UnderLine: Story = {
   args: {
     shape: 'underLine',
-    size: 'xxl',
     children: 'UnderLine Section Title',
   },
 };
@@ -50,7 +44,6 @@ export const UnderLine: Story = {
 export const SideLine: Story = {
   args: {
     shape: 'sideLine',
-    size: 'xxl',
     children: 'SideLine Section Title',
   },
 };
@@ -58,7 +51,6 @@ export const SideLine: Story = {
 export const SpeechBubble: Story = {
   args: {
     shape: 'speechBubble',
-    size: 'xxl',
     children: 'SpeechBubble Section Title',
   },
 };
@@ -66,16 +58,32 @@ export const SpeechBubble: Story = {
 export const Solid: Story = {
   args: {
     shape: 'solid',
-    size: 'xxl',
     children: 'Solid Section Title',
   },
 };
 
-export const WidthSubtitle: Story = {
+export const WidthSubtitleTop: Story = {
+  render: (args) => (
+    <>
+      <SectionTitle {...args}>Section Title with Subtitle</SectionTitle>
+      <SectionSubTitle>This is a subtitle</SectionSubTitle>
+    </>
+  ),
   args: {
     shape: 'widthSubtitle',
-    size: 'xxl',
     children: 'Section Title with Subtitle',
-    subtitle: 'This is a subtitle',
+  },
+};
+
+export const WidthSubtitleBottom: Story = {
+  render: (args) => (
+    <>
+      <SectionSubTitle>This is a subtitle</SectionSubTitle>
+      <SectionTitle {...args}>Section Title with Subtitle</SectionTitle>
+    </>
+  ),
+  args: {
+    shape: 'widthSubtitle',
+    children: 'Section Title with Subtitle',
   },
 };
