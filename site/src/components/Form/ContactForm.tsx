@@ -10,7 +10,7 @@ import {
 import { FormLabel } from "@/components/Form/FormLabel/FormLabel"
 import { Input } from "@/components/Form/Input/Input"
 import { Textarea } from "@/components/Form/Textarea/Textarea"
-import { FormMessage } from "@/components/Form/FormMessage/FormMessage"
+import { FormAlert } from "@/components/Form/FormAlert/FormAlert"
 import {
   Select,
   SelectContent,
@@ -126,7 +126,7 @@ export function ContactForm() {
                 <FormControl>
                   <Input aria-required="true" placeholder="田中 太郎" {...field} />
                 </FormControl>
-                <FormMessage state="danger"/>
+                <FormAlert />
               </FormItem>
             )}
           />
@@ -140,7 +140,7 @@ export function ContactForm() {
                 <FormControl>
                   <Input aria-required="true"  placeholder="example@example.com" {...field} />
                 </FormControl>
-                <FormMessage state="danger"/>
+                <FormAlert />
               </FormItem>
             )}
           />
@@ -162,7 +162,7 @@ export function ContactForm() {
                     </SelectContent>
                   </Select>
                 </FormControl>
-                <FormMessage state="danger"/>
+                <FormAlert />
               </FormItem>
             )}
           />
@@ -218,7 +218,7 @@ export function ContactForm() {
                     }}
                   />
                 ))}
-                <FormMessage state="danger" />
+                <FormAlert />
               </FormItem>
             )}
           />
@@ -252,7 +252,7 @@ export function ContactForm() {
                   </FormControl>
                   <FormLabel>同意する</FormLabel>
                 </div>
-                <FormMessage state="danger" />
+                <FormAlert />
               </FormItem>
             )}
           />
