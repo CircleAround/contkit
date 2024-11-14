@@ -1,3 +1,4 @@
+import React from 'react';
 import { forwardRef, ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
