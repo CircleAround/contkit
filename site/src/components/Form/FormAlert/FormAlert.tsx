@@ -37,18 +37,11 @@ FormAlert.displayName = 'FormAlert'
 type FormMessageProps = ComponentProps<typeof UIFormMessage>
 
 const FormMessage = forwardRef<HTMLParagraphElement, FormMessageProps>(({ className, children, ...others }, ref) => {
-  const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message) : children
   const baseCn = 'text-red-500'
-
-  if (!body) {
-    return null
-  }
 
   return (
       <UIFormMessage
       className={twMerge(baseCn, className)}
-        id={formMessageId}
         {...others}
         ref={ref}
       >
