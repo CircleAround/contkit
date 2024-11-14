@@ -25,6 +25,7 @@ const Navigation = forwardRef<HTMLElement, NavigationMenuProps>(
     );
   }
 );
+Navigation.displayName = 'Navigation';
 
 // NavigationMenuList
 type NavigationMenuListProps = ComponentProps<typeof UINavigationMenuList>
@@ -44,6 +45,7 @@ const NavigationMenuList = forwardRef<HTMLUListElement, NavigationMenuListProps>
     );
   }
 );
+NavigationMenuList.displayName = 'NavigationMenuList';
 
 // NavigationMenuItem
 type NavigationMenuItemProps = ComponentProps<typeof UINavigationMenuItem>
@@ -61,6 +63,7 @@ const NavigationMenuItem = forwardRef<HTMLLIElement, NavigationMenuItemProps>(
     );
   }
 );
+NavigationMenuItem.displayName = 'NavigationMenuItem';
 
 // NavigationLink
 type NavigationLinkProps = ComponentProps<typeof UINavigationMenuLink> & {
@@ -85,10 +88,6 @@ const NavigationLink = forwardRef<HTMLAnchorElement, NavigationLinkProps>(
     );
   }
 );
-
-Navigation.displayName = 'Navigation';
-NavigationMenuList.displayName = 'NavigationMenuList';
-NavigationMenuItem.displayName = 'NavigationMenuItem';
 NavigationLink.displayName = 'NavigationLink';
 
 export { Navigation, NavigationMenuList, NavigationMenuItem, NavigationLink };

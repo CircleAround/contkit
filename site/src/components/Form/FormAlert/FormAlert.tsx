@@ -32,6 +32,7 @@ const FormAlert = forwardRef<HTMLDivElement, FormAlertProps>(({ formAlertclassNa
     )
   },
 )
+FormAlert.displayName = 'FormAlert'
 
 type FormMessageProps = ComponentProps<typeof UIFormMessage>
 
@@ -55,6 +56,7 @@ const FormMessage = forwardRef<HTMLParagraphElement, FormMessageProps>(({ classN
       </UIFormMessage>
   )
 })
+FormMessage.displayName = 'FormMessage'
 
 type AlertIconProps = ComponentProps<'svg'>
 
@@ -69,9 +71,6 @@ const AlertIcon = forwardRef<SVGSVGElement, AlertIconProps>(({ className, ...oth
     />
   )
 })
-
-FormAlert.displayName = 'FormAlert'
-FormMessage.displayName = 'FormMessage'
 AlertIcon.displayName = 'AlertIcon'
 
 export { FormAlert, FormMessage, AlertIcon }
