@@ -43,86 +43,26 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
   const baseAnimationCn = 'relative pb-1 duration-1000 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full';
 
   return (
-    <>
-      <Header>
-        <HeaderInner>
-          <LogoLink href={logoLink.href}>
-            <img
-              src={logoLink.imgSrc}
-              alt={logoLink.imgAlt}
-              className='h-auto w-full object-cover object-center'
-            />
-          </LogoLink>
-
-          {/* PC */}
-          <Navigation className='hidden md:block'>
-            <NavigationMenuList>
-            {navLinks.map((navLink) => (
-              <NavigationMenuItem key={navLink.label}>
-                <NavigationLink
-                  href={navLink.href}
-                  className={twMerge(baseAnimationCn)}
-                >
-                  {navLink.label}
-                </NavigationLink>
-              </NavigationMenuItem>
-            ))}
-            </NavigationMenuList>
-          </Navigation>
-          <AnchorButton
-            variant="primary"
-            href='/'
-            className='hidden md:block'
-          >
-            お問い合わせ
-          </AnchorButton>
-
-          {/* SP */}
-          <NavigationDrawer>
-            <NavigationDrawerButton isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}>
-              <HamburgerIcon isMenuOpen={isMenuOpen} />
-            </NavigationDrawerButton>
-          </NavigationDrawer>
-          <MobileMenu isMenuOpen={isMenuOpen} className='md:hidden'>
-            <Navigation>
-              <NavigationMenuList>
-              {navLinks.map((navLink) => (
-                <NavigationMenuItem key={navLink.label}>
-                  <NavigationLink
-                    href={navLink.href}
-                    className={twMerge(baseAnimationCn, 'text-xl')}
-                  >
-                    {navLink.label}
-                  </NavigationLink>
-                </NavigationMenuItem>
-              ))}
-              </NavigationMenuList>
-            </Navigation>
-            <div className="mt-4">
-              <AnchorButton variant="primary" href='/'>お問い合わせ</AnchorButton>
-            </div>
-          </MobileMenu>
-        </HeaderInner>
-      </Header>
-
-
-      <main>
-        {children}
-      </main>
-
-      <Footer>
-        <SectionInner>
-          <div className="flex flex-col justify-between space-y-6 md:flex-row md:space-y-0">
+    <div className='bg-stone-100'>
+      <div className='mx-auto max-w-6xl w-full'>
+        <Header className='bg-white'>
+          <HeaderInner>
             <LogoLink href={logoLink.href}>
-              <img src={logoLink.imgSrc} alt={logoLink.imgAlt} className='h-auto w-full object-cover object-center' />
+              <img
+                src={logoLink.imgSrc}
+                alt={logoLink.imgAlt}
+                className='h-auto w-full object-cover object-center'
+              />
             </LogoLink>
-            <Navigation>
+
+            {/* PC */}
+            <Navigation className='hidden md:block'>
               <NavigationMenuList>
               {navLinks.map((navLink) => (
                 <NavigationMenuItem key={navLink.label}>
                   <NavigationLink
                     href={navLink.href}
-                    className={twMerge(baseAnimationCn, 'text-zinc-400 text-xl md:text-sm')}
+                    className={twMerge(baseAnimationCn)}
                   >
                     {navLink.label}
                   </NavigationLink>
@@ -130,14 +70,76 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
               ))}
               </NavigationMenuList>
             </Navigation>
-          </div>
+            <AnchorButton
+              variant="primary"
+              href='/'
+              className='hidden md:block'
+            >
+              お問い合わせ
+            </AnchorButton>
 
-          <div className="mt-6 text-center">
-            <small className='text-zinc-400'>© 2024 CIRCLE AROUND Inc.</small>
-          </div>
-        </SectionInner>
-      </Footer>
-    </>
+            {/* SP */}
+            <NavigationDrawer>
+              <NavigationDrawerButton isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}>
+                <HamburgerIcon isMenuOpen={isMenuOpen} />
+              </NavigationDrawerButton>
+            </NavigationDrawer>
+            <MobileMenu isMenuOpen={isMenuOpen} className='md:hidden'>
+              <Navigation>
+                <NavigationMenuList>
+                {navLinks.map((navLink) => (
+                  <NavigationMenuItem key={navLink.label}>
+                    <NavigationLink
+                      href={navLink.href}
+                      className={twMerge(baseAnimationCn, 'text-xl')}
+                    >
+                      {navLink.label}
+                    </NavigationLink>
+                  </NavigationMenuItem>
+                ))}
+                </NavigationMenuList>
+              </Navigation>
+              <div className="mt-4">
+                <AnchorButton variant="primary" href='/'>お問い合わせ</AnchorButton>
+              </div>
+            </MobileMenu>
+          </HeaderInner>
+        </Header>
+
+
+        <main className='bg-white'>
+          {children}
+        </main>
+
+        <Footer className=''>
+          <SectionInner>
+            <div className="flex flex-col justify-between space-y-6 md:flex-row md:space-y-0">
+              <LogoLink href={logoLink.href}>
+                <img src={logoLink.imgSrc} alt={logoLink.imgAlt} className='h-auto w-full object-cover object-center' />
+              </LogoLink>
+              <Navigation>
+                <NavigationMenuList>
+                {navLinks.map((navLink) => (
+                  <NavigationMenuItem key={navLink.label}>
+                    <NavigationLink
+                      href={navLink.href}
+                      className={twMerge(baseAnimationCn, 'text-zinc-400 text-xl md:text-sm')}
+                    >
+                      {navLink.label}
+                    </NavigationLink>
+                  </NavigationMenuItem>
+                ))}
+                </NavigationMenuList>
+              </Navigation>
+            </div>
+
+            <div className="mt-6 text-center">
+              <small className='text-zinc-400'>© 2024 CIRCLE AROUND Inc.</small>
+            </div>
+          </SectionInner>
+        </Footer>
+      </div>
+    </div>
   );
 };
 
