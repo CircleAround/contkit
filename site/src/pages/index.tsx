@@ -47,7 +47,7 @@ const contents = [
   },
 ];
 
-{/* タグ一覧確認ようのための仮 */}
+// タグ一覧確認ようのための仮
 const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -78,8 +78,8 @@ const IndexPage: React.FC<PageProps> = () => {
             {/* 新着コンテンツセクション */}
             <section className="md:col-span-9">
               <SectionTitle
-                className="relative border-b border-gray-300 pb-3 pl-8 text-blue-950 font-medium text-3xl leading-relaxed	 lg:text-3xl lg:leading-relaxed
-                before:top-0 before:absolute before:left-0 before:h-full before:w-4 before:bg-blue-700"
+                className="relative border-b border-gray-300 pb-3 pl-8 text-3xl font-medium leading-relaxed text-blue-950	 before:absolute before:left-0
+                before:top-0 before:h-full before:w-4 before:bg-blue-700 lg:text-3xl lg:leading-relaxed"
               >
                 新着コンテンツ
               </SectionTitle>
@@ -106,7 +106,7 @@ const IndexPage: React.FC<PageProps> = () => {
                           className="rounded-none"
                         />
                       </a>
-                      <CardContent className="flex flex-col flex-1 p-4 bg-gray-50">
+                      <CardContent className="flex flex-1 flex-col bg-gray-50 p-4">
                         <BadgeList>
                           {content.badge?.map((badge) => (
                             <a
@@ -116,7 +116,7 @@ const IndexPage: React.FC<PageProps> = () => {
                               <Badge
                                 variant="primary"
                                 shape="sm"
-                                className="py-0.5 bg-palePurple-600 text-[10px]"
+                                className="bg-palePurple-600 py-0.5 text-[10px]"
                               >
                                 {badge.label}
                               </Badge>
@@ -124,7 +124,7 @@ const IndexPage: React.FC<PageProps> = () => {
                           ))}
                         </BadgeList>
                         <a href={content.link}>
-                          <CardTitle className=" font-medium text-base">{content.title}</CardTitle>
+                          <CardTitle className="text-base font-medium">{content.title}</CardTitle>
                         </a>
                         <small className="mt-auto text-zinc-600">{content.date}</small>
                       </CardContent>
@@ -145,7 +145,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
             <aside className="md:col-span-3 md:pl-4">
               <SectionTitle
-                className="text-blue-950 font-medium text-3xl leading-relaxed	 lg:text-3xl lg:leading-relaxed"
+                className="text-3xl font-medium leading-relaxed text-blue-950	 lg:text-3xl lg:leading-relaxed"
               >
                 タグ一覧
               </SectionTitle>
@@ -161,7 +161,7 @@ const IndexPage: React.FC<PageProps> = () => {
                       <Badge
                         variant="primary"
                         shape="sm"
-                        className="py-0.5 bg-palePurple-600 text-[10px]"
+                        className="bg-palePurple-600 py-0.5 text-[10px]"
                       >
                         {tag.label}
                       </Badge>
