@@ -48,6 +48,9 @@ const contents = [
   },
 ];
 
+{/* タグ一覧確認ようのための仮 */}
+const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
+
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
@@ -75,7 +78,6 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="py-20">
           <SectionInner>
             <SectionTitle
-              shape="widthSubtitle"
               className="relative border-b border-gray-300 pb-3 pl-8 text-blue-950 font-medium text-3xl leading-relaxed	 lg:text-3xl lg:leading-relaxed
               before:top-0 before:absolute before:left-0 before:h-full before:w-4 before:bg-blue-700"
             >
@@ -141,6 +143,34 @@ const IndexPage: React.FC<PageProps> = () => {
             </div>
           </SectionInner>
         </section>
+
+        <aside>
+          <SectionTitle
+            className="text-blue-950 font-medium text-3xl leading-relaxed	 lg:text-3xl lg:leading-relaxed"
+          >
+            タグ一覧
+          </SectionTitle>
+
+          {/* タグ一覧 ※後日実装のため仮置き */}
+          <ul className="mt-4">
+            <BadgeList>
+              {tags?.map((tag) => (
+                <a
+                  key={tag.label}
+                  href={tag.link}
+                >
+                  <Badge
+                    variant="primary"
+                    shape="sm"
+                    className="py-0.5 bg-palePurple-600 text-[10px]"
+                  >
+                    {tag.label}
+                  </Badge>
+                </a>
+              ))}
+            </BadgeList>
+          </ul>
+        </aside>
       </Layout>
     </>
   )
