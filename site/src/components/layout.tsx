@@ -12,7 +12,6 @@ import {
   NavigationMenuItem,
   NavigationLink
 } from '../components/Navigation/Navigation';
-import { twMerge } from 'tailwind-merge';
 
 const headerLogoLink = {
   href: '/',
@@ -21,13 +20,20 @@ const headerLogoLink = {
 };
 
 const footerLogoLink = {
-  href: '/',
-  imgSrc: '../images/',
-  imgAlt: 'Tech lib'
+  href: 'https://circlearound.co.jp/',
+  imgSrc: '../images/logo_white.png',
+  imgAlt: 'サークルアラウンド株式会社'
 };
 
-const navLinks = [
+const headerNavLinks = [
   { label: '一覧へ', href: '/entries' },
+];
+
+const footerNavLinks = [
+  { label: 'このサイトについて', href: '/about' },
+  { label: '利用規約', href: '/terms_of_use' },
+  { label: 'プライバシーポリシー', href: 'https://circlearound.co.jp/privacy/', target: '_blank' },
+  { label: '運営会社', href: 'https://circlearound.co.jp/', target: '_blank' },
 ];
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
@@ -37,7 +43,9 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
       <div className='mx-auto w-full max-w-6xl'>
         <Header className='static'>
           <HeaderInner className='bg-white py-9'>
-            <LogoLink href={headerLogoLink.href} className='aspect-auto w-32'>
+            <LogoLink
+              href={headerLogoLink.href}
+              className='aspect-auto w-32'>
               <img
                 src={headerLogoLink.imgSrc}
                 alt={headerLogoLink.imgAlt}
@@ -47,13 +55,13 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 
             <Navigation>
               <NavigationMenuList>
-              {navLinks.map((navLink) => (
-                <NavigationMenuItem key={navLink.label}>
+              {headerNavLinks.map((headerNavLink) => (
+                <NavigationMenuItem key={headerNavLink.label}>
                   <NavigationLink
-                    href={navLink.href}
-                    className='underline text-xl font-medium'
+                    href={headerNavLink.href}
+                    className='text-xl font-medium underline'
                   >
-                    {navLink.label}
+                    {headerNavLink.label}
                   </NavigationLink>
                 </NavigationMenuItem>
               ))}
@@ -67,31 +75,44 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
           {children}
         </main>
 
-        <Footer className=''>
-          <SectionInner>
-            <div className="flex flex-col justify-between space-y-6 md:flex-row md:space-y-0">
-              <LogoLink href={footerLogoLink.href}>
-                <img src={footerLogoLink.imgSrc} alt={footerLogoLink.imgAlt} className='h-auto w-full object-cover object-center' />
-              </LogoLink>
+        <Footer className='bg-blue-600 py-8'>
+          <SectionInner className='px-4'>
+            <div className="flex flex-col items-center">
               <Navigation>
-                <NavigationMenuList>
-                {navLinks.map((navLink) => (
-                  <NavigationMenuItem key={navLink.label}>
-                    <NavigationLink
-                      href={navLink.href}
-                      className='text-zinc-400 text-xl md:text-sm'
+                  <NavigationMenuList className='flex-row flex-wrap gap-2 space-y-0 divide-x-2'>
+                  {footerNavLinks.map((footerNavLink) => (
+                    <NavigationMenuItem
+                      key={footerNavLink.label}
+                      className='pl-4 first:pl-0'
                     >
-                      {navLink.label}
-                    </NavigationLink>
-                  </NavigationMenuItem>
-                ))}
+                      <NavigationLink
+                        href={footerNavLink.href}
+                        target={footerNavLink.target}
+                        rel={footerNavLink.target === '_blank' ? 'noopener noreferrer' : undefined}
+                        className='text-sm text-white'
+                      >
+                        {footerNavLink.label}
+                      </NavigationLink>
+                    </NavigationMenuItem>
+                  ))}
                 </NavigationMenuList>
               </Navigation>
-            </div>
-
-            <div className="mt-6 text-center">
-              <small className='text-zinc-400'>© 2024 CIRCLE AROUND Inc.</small>
-            </div>
+              <div className="mt-1 text-center">
+                <small className='text-white'>© CIRCLE AROUND Inc.</small>
+              </div>
+              <LogoLink
+                  href={footerLogoLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className='mt-4 block w-16'
+                >
+                  <img
+                    src={footerLogoLink.imgSrc}
+                    alt={footerLogoLink.imgAlt}
+                    className='h-auto w-full object-cover object-center'
+                  />
+                </LogoLink>
+              </div>
           </SectionInner>
         </Footer>
       </div>
