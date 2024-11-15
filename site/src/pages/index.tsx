@@ -17,80 +17,6 @@ import {
 import { Badge } from '../components/Badge/Badge';
 import { BadgeList } from '@/components/Badge/BadgeList';
 
-const clients = [
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントA",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントB",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントC",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントD",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントE",
-  },
-];
-
-const features = [
-  {
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    title: "コスト削減",
-    description: "弊社のサービスで作業効率が上がり、経費が削減されます。"
-  },
-  {
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    title: "高い導入実績",
-    description: "多くの企業に採用されており、確かな信頼性があります。"
-  },
-  {
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    title: "カスタマイズ可能",
-    description: "お客様のニーズに合わせて柔軟に対応します。"
-  },
-];
-
-const functionLists = [
-  {
-    icon: <Download className="size-10 text-4xl text-blue-500" />,
-    title: "高いカスタマイズ性",
-    description: "お客様のニーズに合わせて、柔軟にカスタマイズ可能な機能を提供します。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-green-500" />,
-    title: "パフォーマンス向上",
-    description: "高速な処理性能で業務効率を向上し、最大限のパフォーマンスを発揮します。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-red-500" />,
-    title: "高度なセキュリティ",
-    description: "最新のセキュリティ基準を満たし、安心してご利用いただけます。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-purple-500" />,
-    title: "ユーザープロテクション",
-    description: "ユーザー情報を保護し、安全な環境を提供します。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-teal-500" />,
-    title: "モバイル対応",
-    description: "モバイルデバイスに最適化されたUIで、どこでもアクセス可能です。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-orange-500" />,
-    title: "優れたサポート",
-    description: "専任のサポートチームが導入から運用までをサポートします。"
-  }
-];
-
 const informations = [
   {
     link: '/',
@@ -117,7 +43,7 @@ const informations = [
     date: '2023/10/22',
     title: '書籍「ステップアップJavaScript」を執筆いたしました',
     description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております',
-    badge: [{ label: 'book' }, { label: 'JavaScript' }, { label: 'training' }],
+    badge: [{ label: 'book', className: '' }, { label: 'JavaScript', className: '' }, { label: 'training', className: '' }],
   },
 ];
 
