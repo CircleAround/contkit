@@ -3,7 +3,6 @@ import {
   SectionTitle,
 } from '../components/SectionTitle/SectionTitle'
 import  Layout  from '../components/layout'
-import { SectionInner } from '../components/SectionInner';
 import {
   Card,
   CardImage,
@@ -74,103 +73,105 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         </section>
 
-        {/* 新着コンテンツセクション */}
-        <section className="py-20">
-          <SectionInner>
-            <SectionTitle
-              className="relative border-b border-gray-300 pb-3 pl-8 text-blue-950 font-medium text-3xl leading-relaxed	 lg:text-3xl lg:leading-relaxed
-              before:top-0 before:absolute before:left-0 before:h-full before:w-4 before:bg-blue-700"
-            >
-              新着コンテンツ
-            </SectionTitle>
-
-            {/* 検索欄 ※後日実装 */}
-            <div className="mt-12"></div>
-
-            <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
-              {contents.map((content, index) => (
-                <li
-                  key={index}
-                  className="pt-4"
-                >
-                  <Card
-                    variant="col"
-                    style="none"
-                    size="none"
-                    shape="none"
-                  >
-                    <a href={content.link}>
-                      <CardImage
-                        imgSrc={content.imgSrc}
-                        imgAlt={content.imgAlt}
-                        className="rounded-none"
-                      />
-                    </a>
-                    <CardContent className="flex flex-col flex-1 p-4 bg-gray-50">
-                      <BadgeList>
-                        {content.badge?.map((badge) => (
-                          <a
-                            key={badge.label}
-                            href={badge.link}
-                          >
-                            <Badge
-                              variant="primary"
-                              shape="sm"
-                              className="py-0.5 bg-palePurple-600 text-[10px]"
-                            >
-                              {badge.label}
-                            </Badge>
-                          </a>
-                        ))}
-                      </BadgeList>
-                      <a href={content.link}>
-                        <CardTitle className=" font-medium text-base">{content.title}</CardTitle>
-                      </a>
-                      <small className="mt-auto text-zinc-600">{content.date}</small>
-                    </CardContent>
-                  </Card>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 flex justify-end">
-              <a
-                href="/entries"
-                className="text-blue-600 underline"
+        <div className="py-8">
+          <div className="grid grid-cols-1 gap-8 px-8 md:grid-cols-12 md:divide-x md:divide-gray-300">
+            {/* 新着コンテンツセクション */}
+            <section className="md:col-span-9">
+              <SectionTitle
+                className="relative border-b border-gray-300 pb-3 pl-8 text-blue-950 font-medium text-3xl leading-relaxed	 lg:text-3xl lg:leading-relaxed
+                before:top-0 before:absolute before:left-0 before:h-full before:w-4 before:bg-blue-700"
               >
-                もっと見る...
-              </a>
-            </div>
-          </SectionInner>
-        </section>
+                新着コンテンツ
+              </SectionTitle>
 
-        <aside>
-          <SectionTitle
-            className="text-blue-950 font-medium text-3xl leading-relaxed	 lg:text-3xl lg:leading-relaxed"
-          >
-            タグ一覧
-          </SectionTitle>
+              {/* 検索欄 ※後日実装 */}
+              <div className="mt-12"></div>
 
-          {/* タグ一覧 ※後日実装のため仮置き */}
-          <ul className="mt-4">
-            <BadgeList>
-              {tags?.map((tag) => (
-                <a
-                  key={tag.label}
-                  href={tag.link}
-                >
-                  <Badge
-                    variant="primary"
-                    shape="sm"
-                    className="py-0.5 bg-palePurple-600 text-[10px]"
+              <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
+                {contents.map((content, index) => (
+                  <li
+                    key={index}
+                    className="pt-4"
                   >
-                    {tag.label}
-                  </Badge>
+                    <Card
+                      variant="col"
+                      style="none"
+                      size="none"
+                      shape="none"
+                    >
+                      <a href={content.link}>
+                        <CardImage
+                          imgSrc={content.imgSrc}
+                          imgAlt={content.imgAlt}
+                          className="rounded-none"
+                        />
+                      </a>
+                      <CardContent className="flex flex-col flex-1 p-4 bg-gray-50">
+                        <BadgeList>
+                          {content.badge?.map((badge) => (
+                            <a
+                              key={badge.label}
+                              href={badge.link}
+                            >
+                              <Badge
+                                variant="primary"
+                                shape="sm"
+                                className="py-0.5 bg-palePurple-600 text-[10px]"
+                              >
+                                {badge.label}
+                              </Badge>
+                            </a>
+                          ))}
+                        </BadgeList>
+                        <a href={content.link}>
+                          <CardTitle className=" font-medium text-base">{content.title}</CardTitle>
+                        </a>
+                        <small className="mt-auto text-zinc-600">{content.date}</small>
+                      </CardContent>
+                    </Card>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10 flex justify-end">
+                <a
+                  href="/entries"
+                  className="text-blue-600 underline"
+                >
+                  もっと見る...
                 </a>
-              ))}
-            </BadgeList>
-          </ul>
-        </aside>
+              </div>
+            </section>
+
+            <aside className="md:col-span-3 md:pl-4">
+              <SectionTitle
+                className="text-blue-950 font-medium text-3xl leading-relaxed	 lg:text-3xl lg:leading-relaxed"
+              >
+                タグ一覧
+              </SectionTitle>
+
+              {/* タグ一覧 ※後日実装のため仮置き */}
+              <ul className="mt-4">
+                <BadgeList>
+                  {tags?.map((tag) => (
+                    <a
+                      key={tag.label}
+                      href={tag.link}
+                    >
+                      <Badge
+                        variant="primary"
+                        shape="sm"
+                        className="py-0.5 bg-palePurple-600 text-[10px]"
+                      >
+                        {tag.label}
+                      </Badge>
+                    </a>
+                  ))}
+                </BadgeList>
+              </ul>
+            </aside>
+          </div>
+        </div>
       </Layout>
     </>
   )
