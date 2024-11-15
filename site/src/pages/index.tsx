@@ -50,15 +50,14 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <Layout>
-        <section className="pt-24">
-          <div className="relative">
-            <div className="h-[60vh] max-h-[300px] md:max-h-[400px] lg:max-h-[500px]">
-              <img src="../images/hero_bg.jpg" alt="" className="size-full object-cover object-center" />
-            </div>
-            <div className="absolute left-1/2 top-1/2 flex w-full max-w-[580px] -translate-x-1/2 -translate-y-1/2 flex-col space-y-6 bg-purple-950/40 p-3 px-6">
-              <SectionTitle shape="plain" className="text-5xl text-white lg:text-6xl">Tech lib</SectionTitle>
-              <p className="text-2xl text-white">WEBプログラミング基礎の動画解説をここに集約</p>
-            </div>
+        {/* heroセクション */}
+        <section className="relative">
+          <div className="h-[60vh] max-h-[300px] md:max-h-[400px] lg:max-h-[500px]">
+            <img src="../images/hero_bg.jpg" alt="" className="size-full object-cover object-center" />
+          </div>
+          <div className="absolute left-1/2 top-1/2 flex w-full max-w-[580px] -translate-x-1/2 -translate-y-1/2 flex-col space-y-6 bg-purple-950/40 p-3 px-6">
+            <SectionTitle shape="plain" className="text-5xl text-white lg:text-6xl">Tech lib</SectionTitle>
+            <p className="text-2xl text-white">WEBプログラミング基礎の動画解説をここに集約</p>
           </div>
         </section>
 

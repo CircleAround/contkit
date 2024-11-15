@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useState } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import {
   Header,
   HeaderInner,
@@ -12,57 +12,46 @@ import {
   NavigationMenuItem,
   NavigationLink
 } from '../components/Navigation/Navigation';
-import {
-  NavigationDrawer,
-  NavigationDrawerButton,
-  HamburgerIcon
-} from '../components/NavigationDrawer/NavigationDrawer';
-import { MobileMenu } from './MobileMenu';
-import { AnchorButton } from '../components/Button/Button';
 import { twMerge } from 'tailwind-merge';
 
-const logoLink = {
+const headerLogoLink = {
   href: '/',
-  imgSrc: 'https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image',
-  imgAlt: ''
+  imgSrc: '../images/logo.png',
+  imgAlt: 'Tech lib'
+};
+
+const footerLogoLink = {
+  href: '/',
+  imgSrc: '../images/',
+  imgAlt: 'Tech lib'
 };
 
 const navLinks = [
-  { label: 'About', href: '/' },
-  { label: 'Service', href: '/' },
-  { label: 'Company', href: '/' },
-  { label: 'Blog', href: '/blogs/test1' },
+  { label: '一覧へ', href: '/entries' },
 ];
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const baseAnimationCn = 'relative pb-1 duration-1000 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full';
 
   return (
     <div className='bg-stone-100'>
-      <div className='mx-auto max-w-6xl w-full'>
-        <Header className='bg-white'>
-          <HeaderInner>
-            <LogoLink href={logoLink.href}>
+      <div className='mx-auto w-full max-w-6xl'>
+        <Header className='static'>
+          <HeaderInner className='bg-white py-9'>
+            <LogoLink href={headerLogoLink.href} className='aspect-auto w-32'>
               <img
-                src={logoLink.imgSrc}
-                alt={logoLink.imgAlt}
+                src={headerLogoLink.imgSrc}
+                alt={headerLogoLink.imgAlt}
                 className='h-auto w-full object-cover object-center'
               />
             </LogoLink>
 
-            {/* PC */}
-            <Navigation className='hidden md:block'>
+            <Navigation>
               <NavigationMenuList>
               {navLinks.map((navLink) => (
                 <NavigationMenuItem key={navLink.label}>
                   <NavigationLink
                     href={navLink.href}
-                    className={twMerge(baseAnimationCn)}
+                    className='underline text-xl font-medium'
                   >
                     {navLink.label}
                   </NavigationLink>
@@ -70,39 +59,6 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
               ))}
               </NavigationMenuList>
             </Navigation>
-            <AnchorButton
-              variant="primary"
-              href='/'
-              className='hidden md:block'
-            >
-              お問い合わせ
-            </AnchorButton>
-
-            {/* SP */}
-            <NavigationDrawer>
-              <NavigationDrawerButton isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}>
-                <HamburgerIcon isMenuOpen={isMenuOpen} />
-              </NavigationDrawerButton>
-            </NavigationDrawer>
-            <MobileMenu isMenuOpen={isMenuOpen} className='md:hidden'>
-              <Navigation>
-                <NavigationMenuList>
-                {navLinks.map((navLink) => (
-                  <NavigationMenuItem key={navLink.label}>
-                    <NavigationLink
-                      href={navLink.href}
-                      className={twMerge(baseAnimationCn, 'text-xl')}
-                    >
-                      {navLink.label}
-                    </NavigationLink>
-                  </NavigationMenuItem>
-                ))}
-                </NavigationMenuList>
-              </Navigation>
-              <div className="mt-4">
-                <AnchorButton variant="primary" href='/'>お問い合わせ</AnchorButton>
-              </div>
-            </MobileMenu>
           </HeaderInner>
         </Header>
 
@@ -114,8 +70,8 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
         <Footer className=''>
           <SectionInner>
             <div className="flex flex-col justify-between space-y-6 md:flex-row md:space-y-0">
-              <LogoLink href={logoLink.href}>
-                <img src={logoLink.imgSrc} alt={logoLink.imgAlt} className='h-auto w-full object-cover object-center' />
+              <LogoLink href={footerLogoLink.href}>
+                <img src={footerLogoLink.imgSrc} alt={footerLogoLink.imgAlt} className='h-auto w-full object-cover object-center' />
               </LogoLink>
               <Navigation>
                 <NavigationMenuList>
@@ -123,7 +79,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
                   <NavigationMenuItem key={navLink.label}>
                     <NavigationLink
                       href={navLink.href}
-                      className={twMerge(baseAnimationCn, 'text-zinc-400 text-xl md:text-sm')}
+                      className='text-zinc-400 text-xl md:text-sm'
                     >
                       {navLink.label}
                     </NavigationLink>
