@@ -1,48 +1,50 @@
 import type { HeadFC, PageProps } from "gatsby"
 import {
   SectionTitle,
-  SectionSubTitle
 } from '../components/SectionTitle/SectionTitle'
 import  Layout  from '../components/layout'
 import { SectionInner } from '../components/SectionInner';
-import { AnchorButton } from '../components/Button/Button'
 import {
   Card,
   CardImage,
   CardContent,
   CardTitle,
-  CardDescription
 } from '../components/Card/Card';
 import { Badge } from '../components/Badge/Badge';
 import { BadgeList } from '@/components/Badge/BadgeList';
 
-const informations = [
+const contents = [
   {
     link: '/',
     imgSrc: '../images/ogp_bg.jpg',
-    imgAlt: '',
-    date: '2023/10/22',
-    title: '会社紹介の AI ガイドを作成しました',
-    description: '先日発表された Open AI 社の GPTs に大変可能性を感じたので、とりあえず何か作ってみるべく弊社の会社紹介用の オリジナル GPT を作成しました。',
-    badge: [{ label: 'web', className: '' }],
+    imgAlt: 'ざっくりRedis入門 セッション情報を管理する',
+    date: '2022/02/05 11:30',
+    title: 'ざっくりRedis入門 セッション情報を管理する',
+    badge: [{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }],
   },
   {
     link: '/blogs/test1',
     imgSrc: '../images/ogp_bg.jpg',
-    imgAlt: '',
-    date: '2023/10/22',
-    title: '2023年新年のご挨拶',
-    description: '代表の佐藤です。謹んで新年のお慶びを申し上げます。',
-    badge: [{ label: 'web', className: '' }],
+    imgAlt: 'HTTPレスポンス',
+    date: '2022/01/19 09:00',
+    title: 'HTTPレスポンス',
+    badge: [{ label: '基礎', link: '/tags' }, { label: 'Webシステム', link: '/tags' }],
   },
   {
     link: '/blogs/test1',
     imgSrc: '../images/ogp_bg.jpg',
-    imgAlt: '',
-    date: '2023/10/22',
-    title: '書籍「ステップアップJavaScript」を執筆いたしました',
-    description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております',
-    badge: [{ label: 'book', className: '' }, { label: 'JavaScript', className: '' }, { label: 'training', className: '' }],
+    imgAlt: 'Babelの入門',
+    date: '2022/01/11 15:00',
+    title: 'Babelの入門',
+    badge: [{ label: 'JavaScript', link: '/tags' }, { label: '実演', link: '/tags' }, { label: 'ステップアップJavaScript補足', link: '/tags' }],
+  },
+  {
+    link: '/blogs/test1',
+    imgSrc: '../images/ogp_bg.jpg',
+    imgAlt: 'Node.jsとnpmの入門',
+    date: '2022/01/11 14:30',
+    title: 'Node.jsとnpmの入門',
+    badge: [{ label: 'JavaScript', link: '/tags' }, { label: '実演', link: '/tags' }],
   },
 ];
 
@@ -53,41 +55,76 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* heroセクション */}
         <section className="relative">
           <div className="h-[60vh] max-h-[300px] md:max-h-[400px] lg:max-h-[500px]">
-            <img src="../images/hero_bg.jpg" alt="" className="size-full object-cover object-center" />
+            <img
+              src="../images/hero_bg.jpg"
+              alt="" className="size-full object-cover object-center"
+            />
           </div>
           <div className="absolute left-1/2 top-1/2 flex w-full max-w-[580px] -translate-x-1/2 -translate-y-1/2 flex-col space-y-6 bg-purple-950/40 p-3 px-6">
-            <SectionTitle shape="plain" className="text-5xl text-white lg:text-6xl">Tech lib</SectionTitle>
+            <SectionTitle
+              shape="plain"
+              className="text-5xl text-white lg:text-6xl"
+            >
+              Tech lib
+            </SectionTitle>
             <p className="text-2xl text-white">WEBプログラミング基礎の動画解説をここに集約</p>
           </div>
         </section>
 
-        {/* ニュースセクション */}
+        {/* 新着コンテンツセクション */}
         <section className="py-20">
           <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle className="mb-2">information</SectionSubTitle>
-              最新情報
+            <SectionTitle
+              shape="widthSubtitle"
+              className="relative border-b border-gray-300 pb-3 pl-8 text-blue-950 font-medium text-3xl leading-relaxed	 lg:text-3xl lg:leading-relaxed
+              before:top-0 before:absolute before:left-0 before:h-full before:w-4 before:bg-blue-700"
+            >
+              新着コンテンツ
             </SectionTitle>
-            <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
-              {informations.map((information, index) => (
-                <li key={index} className="pt-4">
+
+            {/* 検索欄 ※後日実装 */}
+            <div className="mt-12"></div>
+
+            <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
+              {contents.map((content, index) => (
+                <li
+                  key={index}
+                  className="pt-4"
+                >
                   <Card
                     variant="col"
                     style="none"
                     size="none"
-                    state="hover"
-                    link={information.link}
+                    shape="none"
                   >
-                    <CardImage imgSrc={information.imgSrc} imgAlt={information.imgAlt} className="md:max-w-60"/>
-                    <CardContent>
-                      <small className="text-zinc-600">{information.date}</small>
-                      <CardTitle>{information.title}</CardTitle>
-                      <CardDescription>{information.description}</CardDescription>
+                    <a href={content.link}>
+                      <CardImage
+                        imgSrc={content.imgSrc}
+                        imgAlt={content.imgAlt}
+                        className="rounded-none"
+                      />
+                    </a>
+                    <CardContent className="flex flex-col flex-1 p-4 bg-gray-50">
                       <BadgeList>
-                        {information.badge?.map((badge) => (
-                          <Badge key={badge.label} variant="primary" shape="sm" className={badge.className}>{badge.label}</Badge>
+                        {content.badge?.map((badge) => (
+                          <a
+                            key={badge.label}
+                            href={badge.link}
+                          >
+                            <Badge
+                              variant="primary"
+                              shape="sm"
+                              className="py-0.5 bg-palePurple-600 text-[10px]"
+                            >
+                              {badge.label}
+                            </Badge>
+                          </a>
                         ))}
                       </BadgeList>
+                      <a href={content.link}>
+                        <CardTitle className=" font-medium text-base">{content.title}</CardTitle>
+                      </a>
+                      <small className="mt-auto text-zinc-600">{content.date}</small>
                     </CardContent>
                   </Card>
                 </li>
@@ -95,7 +132,12 @@ const IndexPage: React.FC<PageProps> = () => {
             </ul>
 
             <div className="mt-10 flex justify-end">
-              <AnchorButton href="/">全て見る</AnchorButton>
+              <a
+                href="/entries"
+                className="text-blue-600 underline"
+              >
+                もっと見る...
+              </a>
             </div>
           </SectionInner>
         </section>
