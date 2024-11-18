@@ -41,7 +41,7 @@ const footerNavLinks = [
 const Layout: FC<PropsWithChildren> = ({ children }) => {
 
   return (
-    <div className='h-screen bg-stone-100'>
+    <div className='bg-stone-100'>
       <div className='mx-auto w-full max-w-6xl'>
         <Header className='static'>
           <HeaderInner className='bg-white py-9'>
