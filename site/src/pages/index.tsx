@@ -157,12 +157,12 @@ const IndexPage: React.FC<PageProps> = () => {
                     <a
                       key={tag.label}
                       href={tag.link}
-                      className="md:pb-1 md:border-b md:border-palePurple-600"
+                      className="md:border-b md:border-palePurple-600 md:pb-1"
                     >
                       <Badge
                         variant="primary"
                         shape="sm"
-                        className="bg-palePurple-600 py-0.5 text-[10px] md:px-0 md:bg-transparent md:text-palePurple-600 md:font-bold md:text-base"
+                        className="bg-palePurple-600 py-0.5 text-[10px] md:bg-transparent md:px-0 md:text-base md:font-bold md:text-palePurple-600"
                       >
                         {tag.label}
                       </Badge>
