@@ -1,213 +1,180 @@
 import type { HeadFC, PageProps } from "gatsby"
 import {
   SectionTitle,
-  SectionSubTitle
 } from '../components/SectionTitle/SectionTitle'
 import  Layout  from '../components/layout'
-import { SectionInner } from '../components/SectionInner';
-import { ContactForm } from '../components/Form/ContactForm'
-import { AnchorButton } from '../components/Button/Button'
-import { Download } from 'lucide-react';
 import {
   Card,
   CardImage,
   CardContent,
   CardTitle,
-  CardDescription
 } from '../components/Card/Card';
 import { Badge } from '../components/Badge/Badge';
 import { BadgeList } from '@/components/Badge/BadgeList';
+import heroBg from "../images/hero_bg.jpg"
+import ogpBg from "../images/ogp_bg.jpg"
 
-const clients = [
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントA",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントB",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントC",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントD",
-  },
-  {
-    imgSrc: "https://placehold.jp/120x85.png",
-    alt: "クライアントE",
-  },
-];
-
-const features = [
-  {
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    title: "コスト削減",
-    description: "弊社のサービスで作業効率が上がり、経費が削減されます。"
-  },
-  {
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    title: "高い導入実績",
-    description: "多くの企業に採用されており、確かな信頼性があります。"
-  },
-  {
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    title: "カスタマイズ可能",
-    description: "お客様のニーズに合わせて柔軟に対応します。"
-  },
-];
-
-const functionLists = [
-  {
-    icon: <Download className="size-10 text-4xl text-blue-500" />,
-    title: "高いカスタマイズ性",
-    description: "お客様のニーズに合わせて、柔軟にカスタマイズ可能な機能を提供します。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-green-500" />,
-    title: "パフォーマンス向上",
-    description: "高速な処理性能で業務効率を向上し、最大限のパフォーマンスを発揮します。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-red-500" />,
-    title: "高度なセキュリティ",
-    description: "最新のセキュリティ基準を満たし、安心してご利用いただけます。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-purple-500" />,
-    title: "ユーザープロテクション",
-    description: "ユーザー情報を保護し、安全な環境を提供します。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-teal-500" />,
-    title: "モバイル対応",
-    description: "モバイルデバイスに最適化されたUIで、どこでもアクセス可能です。"
-  },
-  {
-    icon: <Download className="size-10 text-4xl text-orange-500" />,
-    title: "優れたサポート",
-    description: "専任のサポートチームが導入から運用までをサポートします。"
-  }
-];
-
-const informations = [
+const contents = [
   {
     link: '/',
-    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
-    imgAlt: '',
-    date: '2023/10/22',
-    title: '会社紹介の AI ガイドを作成しました',
-    description: '先日発表された Open AI 社の GPTs に大変可能性を感じたので、とりあえず何か作ってみるべく弊社の会社紹介用の オリジナル GPT を作成しました。',
-    badge: [{ label: 'web', className: '' }],
+    imgSrc: ogpBg,
+    imgAlt: 'ざっくりRedis入門 セッション情報を管理する',
+    date: '2022/02/05 11:30',
+    title: 'ざっくりRedis入門 セッション情報を管理する',
+    badge: [{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }],
   },
   {
     link: '/blogs/test1',
-    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
-    imgAlt: '',
-    date: '2023/10/22',
-    title: '2023年新年のご挨拶',
-    description: '代表の佐藤です。謹んで新年のお慶びを申し上げます。',
-    badge: [{ label: 'web', className: '' }],
+    imgSrc: ogpBg,
+    imgAlt: 'HTTPレスポンス',
+    date: '2022/01/19 09:00',
+    title: 'HTTPレスポンス',
+    badge: [{ label: '基礎', link: '/tags' }, { label: 'Webシステム', link: '/tags' }],
   },
   {
     link: '/blogs/test1',
-    imgSrc: 'https://placehold.jp/3d4070/ffffff/150x150.png',
-    imgAlt: '',
-    date: '2023/10/22',
-    title: '書籍「ステップアップJavaScript」を執筆いたしました',
-    description: 'これまで弊社ではトレーニングで得た知見や、トレーニングで利用できる教材を単体のコンテンツとしてもアウトプットすることを続けております',
-    badge: [{ label: 'book' }, { label: 'JavaScript', className: 'bg-yellow-600' }, { label: 'training' }],
+    imgSrc: ogpBg,
+    imgAlt: 'Babelの入門',
+    date: '2022/01/11 15:00',
+    title: 'Babelの入門',
+    badge: [{ label: 'JavaScript', link: '/tags' }, { label: '実演', link: '/tags' }, { label: 'ステップアップJavaScript補足', link: '/tags' }],
+  },
+  {
+    link: '/blogs/test1',
+    imgSrc: ogpBg,
+    imgAlt: 'Node.jsとnpmの入門',
+    date: '2022/01/11 14:30',
+    title: 'Node.jsとnpmの入門',
+    badge: [{ label: 'JavaScript', link: '/tags' }, { label: '実演', link: '/tags' }],
   },
 ];
 
-const testimonials = [
-  {
-    link: '/',
-    name: "株式会社A",
-    title: "導入後に効率が飛躍的に向上しました",
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    imgAlt: "株式会社Aのイメージ画像",
-    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
-  },
-  {
-    link: '/',
-    name: "株式会社B",
-    title: "導入後に効率が飛躍的に向上しました",
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    imgAlt: "株式会社Aのイメージ画像",
-    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
-  },
-  {
-    link: '/',
-    name: "株式会社C",
-    title: "導入後に効率が飛躍的に向上しました",
-    imgSrc: "https://placehold.jp/3d4070/ffffff/150x150.png",
-    imgAlt: "株式会社Aのイメージ画像",
-    description: "弊社はこのサービスを導入したことで作業効率が飛躍的に向上し、大幅なコスト削減も実現しました。今後もこのような革新的なサービスを期待しています。",
-  },
-];
+// タグ一覧確認ようのための仮
+const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <Layout>
-        <section className="bg-white pb-20 pt-40">
-          <SectionInner>
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:space-x-10">
-              <div className="lg:w-1/2">
-                <div className="flex flex-col space-y-6">
-                  <h1 className="text-4xl font-bold leading-tight text-zinc-900 md:text-5xl">成果につながる<br/>Webサイト制作</h1>
-                  <p className="mt-6 text-base text-zinc-900">コンバージョン率の向上を実現するBtoBサイト・コーポレートサイト制作</p>
-                </div>
-              </div>
-
-              <div className="mt-8 lg:mt-0 lg:w-1/2">
-                <img src="https://placehold.jp/320x240.png" alt="" className="size-full rounded-lg object-cover object-center" />
-              </div>
-            </div>
-          </SectionInner>
-        </section>
-
-        {/* ニュースセクション */}
-        <section className="py-20">
-          <SectionInner>
-            <SectionTitle shape="widthSubtitle" className="text-center">
-              <SectionSubTitle className="mb-2">information</SectionSubTitle>
-              最新情報
+        {/* heroセクション */}
+        <section className="relative">
+          <div className="h-[60vh] max-h-[300px] md:max-h-[400px] lg:max-h-[500px]">
+            <img
+              src={heroBg}
+              alt="" className="size-full object-cover object-center"
+            />
+          </div>
+          <div className="absolute left-1/2 top-1/2 flex w-full max-w-[580px] -translate-x-1/2 -translate-y-1/2 flex-col space-y-6 bg-purple-950/40 p-3 px-6">
+            <SectionTitle
+              shape="plain"
+              className="text-5xl text-white lg:text-6xl"
+            >
+              Tech lib
             </SectionTitle>
-            <ul className="mt-8 flex flex-col justify-between gap-y-4 divide-y divide-zinc-200">
-              {informations.map((information, index) => (
-                <li key={index} className="pt-4">
-                  <Card
-                    variant="col"
-                    style="border"
-                    size="md"
-                    state="hover"
-                    link={information.link}
-                  >
-                    <CardImage imgSrc={information.imgSrc} imgAlt={information.imgAlt} className="md:max-w-60"/>
-                    <CardContent>
-                      <small className="text-zinc-600">{information.date}</small>
-                      <CardTitle>{information.title}</CardTitle>
-                      <CardDescription>{information.description}</CardDescription>
-                      <BadgeList>
-                        {information.badge?.map((badge) => (
-                          <Badge key={badge.label} variant="primary" shape="sm" className={badge.className}>{badge.label}</Badge>
-                        ))}
-                      </BadgeList>
-                    </CardContent>
-                  </Card>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 flex justify-end">
-              <AnchorButton href="/">全て見る</AnchorButton>
-            </div>
-          </SectionInner>
+            <p className="text-2xl text-white">WEBプログラミング基礎の動画解説をここに集約</p>
+          </div>
         </section>
+
+        <div className="py-8">
+          <div className="grid grid-cols-1 gap-8 px-8 md:grid-cols-12 md:divide-x md:divide-gray-300">
+            {/* 新着コンテンツセクション */}
+            <section className="md:col-span-9">
+              <SectionTitle
+                className="relative border-b border-gray-300 pb-3 pl-8 text-3xl font-medium leading-relaxed text-blue-950	 before:absolute before:left-0
+                before:top-0 before:h-full before:w-4 before:bg-blue-700 lg:text-3xl lg:leading-relaxed"
+              >
+                新着コンテンツ
+              </SectionTitle>
+
+              {/* 検索欄 ※後日実装 */}
+              <div className="mt-12"></div>
+
+              <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
+                {contents.map((content, index) => (
+                  <li
+                    key={index}
+                    className="pt-4"
+                  >
+                    <Card
+                      variant="col"
+                      style="none"
+                      size="none"
+                      shape="none"
+                    >
+                      <a href={content.link}>
+                        <CardImage
+                          imgSrc={content.imgSrc}
+                          imgAlt={content.imgAlt}
+                          className="rounded-none"
+                        />
+                      </a>
+                      <CardContent className="flex flex-1 flex-col bg-gray-50 p-4">
+                        <BadgeList>
+                          {content.badge?.map((badge) => (
+                            <a
+                              key={badge.label}
+                              href={badge.link}
+                            >
+                              <Badge
+                                variant="primary"
+                                shape="sm"
+                                className="bg-palePurple-600 py-0.5 text-[10px]"
+                              >
+                                {badge.label}
+                              </Badge>
+                            </a>
+                          ))}
+                        </BadgeList>
+                        <a href={content.link}>
+                          <CardTitle className="text-base font-medium">{content.title}</CardTitle>
+                        </a>
+                        <small className="mt-auto text-zinc-600">{content.date}</small>
+                      </CardContent>
+                    </Card>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10 flex justify-end">
+                <a
+                  href="/entries"
+                  className="text-blue-600 underline"
+                >
+                  もっと見る...
+                </a>
+              </div>
+            </section>
+
+            <aside className="md:col-span-3 md:pl-4">
+              <SectionTitle
+                className="text-3xl font-medium leading-relaxed text-blue-950	 lg:text-3xl lg:leading-relaxed"
+              >
+                タグ一覧
+              </SectionTitle>
+
+              {/* タグ一覧 ※後日実装のため仮置き */}
+              <ul className="mt-4">
+                <BadgeList className="md:flex-col md:gap-y-2.5">
+                  {tags?.map((tag) => (
+                    <a
+                      key={tag.label}
+                      href={tag.link}
+                      className="md:border-b md:border-palePurple-600 md:pb-1"
+                    >
+                      <Badge
+                        variant="primary"
+                        shape="sm"
+                        className="bg-palePurple-600 py-0.5 text-[10px] md:bg-transparent md:px-0 md:text-base md:font-bold md:text-palePurple-600"
+                      >
+                        {tag.label}
+                      </Badge>
+                    </a>
+                  ))}
+                </BadgeList>
+              </ul>
+            </aside>
+          </div>
+        </div>
       </Layout>
     </>
   )

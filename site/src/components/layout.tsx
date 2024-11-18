@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useState } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import {
   Header,
   HeaderInner,
@@ -12,132 +12,113 @@ import {
   NavigationMenuItem,
   NavigationLink
 } from '../components/Navigation/Navigation';
-import {
-  NavigationDrawer,
-  NavigationDrawerButton,
-  HamburgerIcon
-} from '../components/NavigationDrawer/NavigationDrawer';
-import { MobileMenu } from './MobileMenu';
-import { AnchorButton } from '../components/Button/Button';
-import { twMerge } from 'tailwind-merge';
+import logo from "../images/logo.png"
+import logoWhite from "../images/logo_white.png"
 
-const logoLink = {
+const headerLogoLink = {
   href: '/',
-  imgSrc: 'https://placehold.jp/30/333333/ffffff/300x150.png?text=logo+image',
-  imgAlt: ''
+  imgSrc: logo,
+  imgAlt: 'Tech lib'
 };
 
-const navLinks = [
-  { label: 'About', href: '/' },
-  { label: 'Service', href: '/' },
-  { label: 'Company', href: '/' },
-  { label: 'Blog', href: '/blogs/test1' },
+const footerLogoLink = {
+  href: 'https://circlearound.co.jp/',
+  imgSrc: logoWhite,
+  imgAlt: 'サークルアラウンド株式会社'
+};
+
+const headerNavLinks = [
+  { label: '一覧へ', href: '/entries' },
+];
+
+const footerNavLinks = [
+  { label: 'このサイトについて', href: '/about' },
+  { label: '利用規約', href: '/terms_of_use' },
+  { label: 'プライバシーポリシー', href: 'https://circlearound.co.jp/privacy/', target: '_blank' },
+  { label: '運営会社', href: 'https://circlearound.co.jp/', target: '_blank' },
 ];
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const baseAnimationCn = 'relative pb-1 duration-1000 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full';
 
   return (
-    <>
-      <Header>
-        <HeaderInner>
-          <LogoLink href={logoLink.href}>
-            <img
-              src={logoLink.imgSrc}
-              alt={logoLink.imgAlt}
-              className='h-auto w-full object-cover object-center'
-            />
-          </LogoLink>
-
-          {/* PC */}
-          <Navigation className='hidden md:block'>
-            <NavigationMenuList>
-            {navLinks.map((navLink) => (
-              <NavigationMenuItem key={navLink.label}>
-                <NavigationLink
-                  href={navLink.href}
-                  className={twMerge(baseAnimationCn)}
-                >
-                  {navLink.label}
-                </NavigationLink>
-              </NavigationMenuItem>
-            ))}
-            </NavigationMenuList>
-          </Navigation>
-          <AnchorButton
-            variant="primary"
-            href='/'
-            className='hidden md:block'
-          >
-            お問い合わせ
-          </AnchorButton>
-
-          {/* SP */}
-          <NavigationDrawer>
-            <NavigationDrawerButton isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}>
-              <HamburgerIcon isMenuOpen={isMenuOpen} />
-            </NavigationDrawerButton>
-          </NavigationDrawer>
-          <MobileMenu isMenuOpen={isMenuOpen} className='md:hidden'>
-            <Navigation>
-              <NavigationMenuList>
-              {navLinks.map((navLink) => (
-                <NavigationMenuItem key={navLink.label}>
-                  <NavigationLink
-                    href={navLink.href}
-                    className={twMerge(baseAnimationCn, 'text-xl')}
-                  >
-                    {navLink.label}
-                  </NavigationLink>
-                </NavigationMenuItem>
-              ))}
-              </NavigationMenuList>
-            </Navigation>
-            <div className="mt-4">
-              <AnchorButton variant="primary" href='/'>お問い合わせ</AnchorButton>
-            </div>
-          </MobileMenu>
-        </HeaderInner>
-      </Header>
-
-
-      <main>
-        {children}
-      </main>
-
-      <Footer>
-        <SectionInner>
-          <div className="flex flex-col justify-between space-y-6 md:flex-row md:space-y-0">
-            <LogoLink href={logoLink.href}>
-              <img src={logoLink.imgSrc} alt={logoLink.imgAlt} className='h-auto w-full object-cover object-center' />
+    <div className='bg-stone-100'>
+      <div className='mx-auto w-full max-w-6xl'>
+        <Header className='static'>
+          <HeaderInner className='bg-white py-9'>
+            <LogoLink
+              href={headerLogoLink.href}
+              className='aspect-auto w-32'>
+              <img
+                src={headerLogoLink.imgSrc}
+                alt={headerLogoLink.imgAlt}
+                className='h-auto w-full object-cover object-center'
+              />
             </LogoLink>
+
             <Navigation>
               <NavigationMenuList>
-              {navLinks.map((navLink) => (
-                <NavigationMenuItem key={navLink.label}>
+              {headerNavLinks.map((headerNavLink) => (
+                <NavigationMenuItem key={headerNavLink.label}>
                   <NavigationLink
-                    href={navLink.href}
-                    className={twMerge(baseAnimationCn, 'text-zinc-400 text-xl md:text-sm')}
+                    href={headerNavLink.href}
+                    className='text-xl font-medium underline'
                   >
-                    {navLink.label}
+                    {headerNavLink.label}
                   </NavigationLink>
                 </NavigationMenuItem>
               ))}
               </NavigationMenuList>
             </Navigation>
-          </div>
+          </HeaderInner>
+        </Header>
 
-          <div className="mt-6 text-center">
-            <small className='text-zinc-400'>© 2024 CIRCLE AROUND Inc.</small>
-          </div>
-        </SectionInner>
-      </Footer>
-    </>
+
+        <main className='bg-white'>
+          {children}
+        </main>
+
+        <Footer className='bg-blue-600 py-8'>
+          <SectionInner className='px-4'>
+            <div className="flex flex-col items-center">
+              <Navigation>
+                  <NavigationMenuList className='flex-row flex-wrap gap-2 space-y-0 divide-x-2 md:space-x-0'>
+                  {footerNavLinks.map((footerNavLink) => (
+                    <NavigationMenuItem
+                      key={footerNavLink.label}
+                      className='pl-2 first:pl-0'
+                    >
+                      <NavigationLink
+                        href={footerNavLink.href}
+                        target={footerNavLink.target}
+                        rel={footerNavLink.target === '_blank' ? 'noopener noreferrer' : undefined}
+                        className='text-sm text-white'
+                      >
+                        {footerNavLink.label}
+                      </NavigationLink>
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </Navigation>
+              <div className="mt-1 text-center">
+                <small className='text-white'>© CIRCLE AROUND Inc.</small>
+              </div>
+              <LogoLink
+                  href={footerLogoLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className='mt-4 block w-16'
+                >
+                  <img
+                    src={footerLogoLink.imgSrc}
+                    alt={footerLogoLink.imgAlt}
+                    className='h-auto w-full object-cover object-center'
+                  />
+                </LogoLink>
+              </div>
+          </SectionInner>
+        </Footer>
+      </div>
+    </div>
   );
 };
 
