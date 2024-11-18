@@ -16,7 +16,7 @@ const AboutPage: React.FC<PageProps> = () => {
       <Layout>
         <div className="py-8">
           <div className="px-8">
-            <Breadcrumb/>
+            <Breadcrumb className="[&_a]:text-blue-600 [&_a]:underline"/>
 
             <section className="mt-4 [&_p]:mt-4">
               <SectionTitle className="text-3xl font-bold leading-relaxed text-blue-600 lg:text-3xl">Tech libについて</SectionTitle>
