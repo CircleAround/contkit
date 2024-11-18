@@ -79,11 +79,11 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
           <SectionInner className='px-4'>
             <div className="flex flex-col items-center">
               <Navigation>
-                  <NavigationMenuList className='flex-row flex-wrap gap-2 space-y-0 divide-x-2'>
+                  <NavigationMenuList className='flex-row flex-wrap gap-2 space-y-0 divide-x-2 md:space-x-0'>
                   {footerNavLinks.map((footerNavLink) => (
                     <NavigationMenuItem
                       key={footerNavLink.label}
-                      className='pl-4 first:pl-0'
+                      className='pl-2 first:pl-0'
                     >
                       <NavigationLink
                         href={footerNavLink.href}
