@@ -39,7 +39,7 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/images/icon.png',
+        icon: 'src/images/favicon.ico',
       },
     },
     'gatsby-plugin-sharp',
@@ -79,13 +79,6 @@ const config: GatsbyConfig = {
       },
     },
     'gatsby-plugin-postcss',
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/static`,
-        name: 'static',
-      },
-    }
   ],
 }
 
