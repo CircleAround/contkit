@@ -12,16 +12,18 @@ import {
   NavigationMenuItem,
   NavigationLink
 } from '../components/Navigation/Navigation';
+import logo from "../images/logo.png"
+import logoWhite from "../images/logo_white.png"
 
 const headerLogoLink = {
   href: '/',
-  imgSrc: '../images/logo.png',
+  imgSrc: logo,
   imgAlt: 'Tech lib'
 };
 
 const footerLogoLink = {
   href: 'https://circlearound.co.jp/',
-  imgSrc: '../images/logo_white.png',
+  imgSrc: logoWhite,
   imgAlt: 'サークルアラウンド株式会社'
 };
 

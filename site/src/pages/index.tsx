@@ -11,11 +11,13 @@ import {
 } from '../components/Card/Card';
 import { Badge } from '../components/Badge/Badge';
 import { BadgeList } from '@/components/Badge/BadgeList';
+import heroBg from "../images/hero_bg.jpg"
+import ogpBg from "../images/ogp_bg.jpg"
 
 const contents = [
   {
     link: '/',
-    imgSrc: '../images/ogp_bg.jpg',
+    imgSrc: ogpBg,
     imgAlt: 'ざっくりRedis入門 セッション情報を管理する',
     date: '2022/02/05 11:30',
     title: 'ざっくりRedis入門 セッション情報を管理する',
@@ -23,7 +25,7 @@ const contents = [
   },
   {
     link: '/blogs/test1',
-    imgSrc: '../images/ogp_bg.jpg',
+    imgSrc: ogpBg,
     imgAlt: 'HTTPレスポンス',
     date: '2022/01/19 09:00',
     title: 'HTTPレスポンス',
@@ -31,7 +33,7 @@ const contents = [
   },
   {
     link: '/blogs/test1',
-    imgSrc: '../images/ogp_bg.jpg',
+    imgSrc: ogpBg,
     imgAlt: 'Babelの入門',
     date: '2022/01/11 15:00',
     title: 'Babelの入門',
@@ -39,7 +41,7 @@ const contents = [
   },
   {
     link: '/blogs/test1',
-    imgSrc: '../images/ogp_bg.jpg',
+    imgSrc: ogpBg,
     imgAlt: 'Node.jsとnpmの入門',
     date: '2022/01/11 14:30',
     title: 'Node.jsとnpmの入門',
@@ -58,7 +60,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <section className="relative">
           <div className="h-[60vh] max-h-[300px] md:max-h-[400px] lg:max-h-[500px]">
             <img
-              src="../images/hero_bg.jpg"
+              src={heroBg}
               alt="" className="size-full object-cover object-center"
             />
           </div>
