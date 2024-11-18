@@ -39,7 +39,7 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/images/favicon.ico',
+        icon: 'src/images/logo_white.png',
       },
     },
     'gatsby-plugin-sharp',
