@@ -118,5 +118,6 @@ export default TermsOfUse
 export const Head: HeadFC = () => (
   <Seo
     title="利用規約"
+    description="Tech lib（以下、「本サービス」といいます）はサークルアラウンド株式会社（以下、「当社」といいます）が提供するサービスです。 本規約は、当社がWebサイト「Tech lib（ techlib.circlearound.co.jp ）」において提供するサービスを利用される方すべて（以下、「ユーザー」）について、本サービスの利用を開始した時点で適用されます。"
   />
 );
