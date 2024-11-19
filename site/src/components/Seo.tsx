@@ -27,7 +27,7 @@ export function Seo ({
   const customTitle = title ? `${title} | ${metaTitle}` : metaTitle
 
   const metaDescription = data.site.siteMetadata.description
-  const customDescription = description ? description : metaDescription
+  const customDescription = description || metaDescription
 
   const metaAuthor = data.site.siteMetadata.author
 
