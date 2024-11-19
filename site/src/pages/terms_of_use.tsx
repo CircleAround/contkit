@@ -2,6 +2,7 @@ import type { HeadFC, PageProps } from "gatsby"
 import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import  Layout  from '../components/layout'
 import { twMerge } from 'tailwind-merge';
+import { Seo } from "@/components/Seo";
 
 const TermsOfUse: React.FC<PageProps> = () => {
   const headingBaseCn = 'relative pb-4 text-center font-bold text-2xl border-b'
@@ -114,4 +115,8 @@ const List = ({items} : {items: string[]}) => {
 
 export default TermsOfUse
 
-export const Head: HeadFC = () => <title>Terms Of Use Page</title>
+export const Head: HeadFC = () => (
+  <Seo
+    title="利用規約 | Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜"
+  />
+);

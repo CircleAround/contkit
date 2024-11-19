@@ -3,6 +3,7 @@ import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import  Layout  from '../components/layout'
 import { twMerge } from 'tailwind-merge';
 import { Breadcrumb } from '../components/Breadcrumb/Breadcrumb'
+import { Seo } from "@/components/Seo";
 
 const AboutPage: React.FC<PageProps> = () => {
   const headingBaseCn = 'relative pb-4 text-center font-bold text-2xl border-b'
@@ -51,4 +52,8 @@ const AboutPage: React.FC<PageProps> = () => {
 }
 export default AboutPage
 
-export const Head: HeadFC = () => <title>About Page</title>
+export const Head: HeadFC = () => (
+  <Seo
+    title="Tech libについて | Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜"
+  />
+);
