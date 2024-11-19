@@ -54,6 +54,6 @@ export default AboutPage
 
 export const Head: HeadFC = () => (
   <Seo
-    title="Tech libについて | Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜"
+    title="Tech libについて"
   />
 );
