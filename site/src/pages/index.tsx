@@ -183,8 +183,6 @@ const IndexPage: React.FC<PageProps> = () => {
 export default IndexPage
 
 export const Head: HeadFC = () => (
-  <Seo
-    title="Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜"
-  />
+  <Seo />
 );
 
