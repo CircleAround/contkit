@@ -1,7 +1,7 @@
 import React from "react";
 
 const Seo = ({ title, children } : { title: string, children?: React.ReactNode }) => (
-  
+
   <>
     <title>{title}</title>
     <meta charSet="utf-8" />
