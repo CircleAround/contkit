@@ -11,6 +11,7 @@ import {
 } from '../components/Card/Card';
 import { Badge } from '../components/Badge/Badge';
 import { BadgeList } from '@/components/Badge/BadgeList';
+import { Seo } from '@/components/Seo';
 import heroBg from "../images/hero_bg.jpg"
 import ogpBg from "../images/ogp_bg.jpg"
 
@@ -181,4 +182,9 @@ const IndexPage: React.FC<PageProps> = () => {
 }
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => (
+  <Seo
+    title="Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜"
+  />
+);
+
