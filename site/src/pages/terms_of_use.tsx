@@ -117,6 +117,6 @@ export default TermsOfUse
 
 export const Head: HeadFC = () => (
   <Seo
-    title="利用規約 | Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜"
+    title="利用規約"
   />
 );

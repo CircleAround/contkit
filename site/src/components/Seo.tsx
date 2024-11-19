@@ -1,9 +1,14 @@
 import React from "react";
 
-export function Seo({ title, children } : { title: string, children?: React.ReactNode }) {
+export function Seo({ title, children } : { title?: string, children?: React.ReactNode }) {
+  const defaultTitle = "Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜"
+  const customTitle = title ? `${title} | ${defaultTitle}` : defaultTitle
+
   return (
     <>
-      <title>{title}</title>
+      <title>
+        {customTitle}
+      </title>
       <meta charSet="utf-8" />
       <meta
         name="viewport"
@@ -15,7 +20,7 @@ export function Seo({ title, children } : { title: string, children?: React.Reac
       />
       <meta
         property="og:title"
-        content="Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜"
+        content={customTitle}
       />
       <meta
         property="og:description"
@@ -39,7 +44,7 @@ export function Seo({ title, children } : { title: string, children?: React.Reac
       />
       <meta
         name="twitter:title"
-        content={title}
+        content={customTitle}
       />
       {children}
     </>
