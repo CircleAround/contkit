@@ -55,5 +55,6 @@ export default AboutPage
 export const Head: HeadFC = () => (
   <Seo
     title="Tech libについて"
+    description="Tech libは「WEB開発の現場で求められる基本的な知識を集約する場所を学習者の方に向けて作りたい」という想いからスタートしたWEBサイトです。"
   />
 );
