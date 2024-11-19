@@ -1,14 +1,31 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
-export function Seo({ title, children } : { title?: string, children?: React.ReactNode }) {
-  const defaultTitle = "Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜"
-  const customTitle = title ? `${title} | ${defaultTitle}` : defaultTitle
+export function Seo ({ title, children } : { title?: string, children?: React.ReactNode }) {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          host
+          tagline
+          description
+          author
+        }
+      }
+    }
+  `)
+  const metaTitle = `${data.site.siteMetadata.title} 〜 ${data.site.siteMetadata.tagline} 〜`
+  const customTitle = title ? `${title} | ${metaTitle}` : metaTitle
+  const metaDescription = data.site.siteMetadata.description
+  const metaAuthor = data.site.siteMetadata.author
+  const host = process.env.HOST || data.site.siteMetadata.host
+  const protcol = process.env.PROTCOL || 'https'
+  const ogpImgUrl = `${protcol}://${host}/images/ogp_image.jpg`
 
   return (
     <>
-      <title>
-        {customTitle}
-      </title>
+      <title>{customTitle}</title>
       <meta charSet="utf-8" />
       <meta
         name="viewport"
@@ -16,7 +33,7 @@ export function Seo({ title, children } : { title?: string, children?: React.Rea
       />
       <meta
         name="description"
-        content="WEBプログラミングの基礎を動画でわかりやすく解説してここに集約します。「ここに来ればWEBシステム開発の基礎がわかる」という場所を作っています。"
+        content={metaDescription}
       />
       <meta
         property="og:title"
@@ -24,11 +41,11 @@ export function Seo({ title, children } : { title?: string, children?: React.Rea
       />
       <meta
         property="og:description"
-        content="WEBプログラミングの基礎を動画でわかりやすく解説してここに集約します。「ここに来ればWEBシステム開発の基礎がわかる」という場所を作っています。"
+        content={metaDescription}
       />
       <meta
         property="og:image"
-        content="https://techlib.circlearound.co.jp/images/ogp_image.jpg"
+        content={ogpImgUrl}
       />
       <meta
         property="og:type"
@@ -40,7 +57,7 @@ export function Seo({ title, children } : { title?: string, children?: React.Rea
       />
       <meta
         name="twitter:site"
-        content="@CircleAroundCo"
+        content={metaAuthor}
       />
       <meta
         name="twitter:title"
