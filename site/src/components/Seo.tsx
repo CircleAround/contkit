@@ -1,7 +1,15 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
-export function Seo ({ title, children } : { title?: string, children?: React.ReactNode }) {
+export function Seo ({
+  title,
+  description,
+  children
+} : {
+  title?: string,
+  description?: string,
+  children?: React.ReactNode
+}) {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -17,8 +25,12 @@ export function Seo ({ title, children } : { title?: string, children?: React.Re
   `)
   const metaTitle = `${data.site.siteMetadata.title} 〜 ${data.site.siteMetadata.tagline} 〜`
   const customTitle = title ? `${title} | ${metaTitle}` : metaTitle
+
   const metaDescription = data.site.siteMetadata.description
+  const customDescription = description ? description : metaDescription
+
   const metaAuthor = data.site.siteMetadata.author
+
   const host = process.env.HOST || data.site.siteMetadata.host
   const protcol = process.env.PROTCOL || 'https'
   const ogpImgUrl = `${protcol}://${host}/images/ogp_image.jpg`
@@ -33,7 +45,7 @@ export function Seo ({ title, children } : { title?: string, children?: React.Re
       />
       <meta
         name="description"
-        content={metaDescription}
+        content={customDescription}
       />
       <meta
         property="og:title"
@@ -41,7 +53,7 @@ export function Seo ({ title, children } : { title?: string, children?: React.Re
       />
       <meta
         property="og:description"
-        content={metaDescription}
+        content={customDescription}
       />
       <meta
         property="og:image"
