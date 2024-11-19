@@ -13,7 +13,7 @@ const Seo = ({ title, children } : { title: string, children?: React.ReactNode }
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@CircleAroundCo" />
-    <meta name="twitter:title" content="Tech lib 〜 WEBプログラミング基礎の動画解説をここに集約 〜" />
+    <meta name="twitter:title" content={title} />
     {children}
   </>
 );
