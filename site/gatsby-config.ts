@@ -5,8 +5,12 @@ const config: GatsbyConfig = {
   // @see https://www.gatsbyjs.com/docs/reference/release-notes/v4.1/#jsx-runtime-options-in-gatsby-configjs
   jsxRuntime: 'automatic',
   siteMetadata: {
-    title: `Starter gatsby firebase site`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: "https://techlib.circlearound.co.jp/",
+    title: "Tech lib",
+    host: "techlib.circlearound.co.jp",
+    tagline: "WEBプログラミング基礎の動画解説をここに集約",
+    description: "WEBプログラミングの基礎を動画でわかりやすく解説してここに集約します。「ここに来ればWEBシステム開発の基礎がわかる」という場所を作っています。",
+    author: "@CircleAroundCo"
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
