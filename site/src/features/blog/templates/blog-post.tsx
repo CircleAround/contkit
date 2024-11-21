@@ -103,7 +103,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
 
 const ShareButtonList = ({ title, url } : { title: string, url: string }) => {
   return (
-    <div className='mt-4 flex flex-wrap space-x-2'>
+    <div className='mt-4 flex flex-wrap gap-2'>
       <FacebookShareButton
         title={title}
         url={url}
