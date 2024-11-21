@@ -12,8 +12,7 @@
 
 .container {
   margin: 0 auto;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding: 30px 32px;
 }
 
 .article {
