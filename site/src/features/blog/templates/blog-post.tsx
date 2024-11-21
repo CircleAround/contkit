@@ -51,7 +51,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
           <h1 className="mt-4 text-3xl font-bold text-blue-600">{title}</h1>
           <ShareButtonList
             title={title}
-            url={`https://techlib.circlearound.co.jp/${slug}`}
+            url={`https://techlib.circlearound.co.jp/entries/${slug}`}
           />
           <p>{publishDate}</p>
           <p>{description}</p>
@@ -67,14 +67,14 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
               >
               {previous && (
                 <li>
-                  <Link to={`/blogs/${previous.slug}`} rel='prev'>
+                  <Link to={`/entries/${previous.slug}`} rel='prev'>
                     ← {previous.title}
                   </Link>
                 </li>
               )}
               {next && (
                 <li className='flex justify-end'>
-                  <Link to={`/blogs/${next.slug}`} rel='next'>
+                  <Link to={`/entries/${next.slug}`} rel='next'>
                     {next.title} →
                   </Link>
                 </li>
