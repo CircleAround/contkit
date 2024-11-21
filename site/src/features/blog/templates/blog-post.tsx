@@ -45,6 +45,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
               <a
                 key={tag.label}
                 href={tag.link}
+                className="no-underline"
               >
                 <Badge
                   variant="primary"
