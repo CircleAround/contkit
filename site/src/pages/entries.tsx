@@ -9,7 +9,7 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data }) =>
         {data.allBlog.edges.map(({ node: { id, title, slug, createdAt } }) => (
           <li>
             <div>
-              <a href={`/blogs/${slug}`}>{title} ({id})</a>
+              <a href={`/entries/${slug}`}>{title} ({id})</a>
               <div>
                 {createdAt}
               </div>
