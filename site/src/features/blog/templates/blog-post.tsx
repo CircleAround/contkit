@@ -5,6 +5,12 @@ import { Markdown } from '@/components/Markdown'
 import * as styles from './blog-post.module.css'
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb'
 import { Badge } from '@/components/Badge/Badge';
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  XIcon,
+  TwitterShareButton
+} from 'react-share'
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   data: { blog: post, previous, next }
@@ -43,6 +49,10 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
             ))}
           </div>
           <h1 className="mt-4 text-3xl font-bold text-blue-600">{title}</h1>
+          <ShareButtonList
+            title={title}
+            url={`https://techlib.circlearound.co.jp/${slug}`}
+          />
           <p>{publishDate}</p>
           <p>{description}</p>
           <div className={styles.body}>{body && <Markdown text={body} />}</div>
@@ -76,6 +86,42 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
     </Layout>
   )
 }
+
+const ShareButtonList = ({ title, url } : { title: string, url: string }) => {
+  return (
+    <div className='mt-4 flex flex-wrap space-x-2'>
+      <FacebookShareButton
+        title={title}
+        url={url}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 12px 0 2px',
+          backgroundColor: '#0965FE',
+          borderRadius: 5
+        }}
+      >
+        <FacebookIcon size={40} round/>
+        <span className='text-white'>Facebook</span>
+      </FacebookShareButton>
+
+      <TwitterShareButton
+        title={title}
+        url={url}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 12px 0 2px',
+          backgroundColor: '#000000',
+          borderRadius: 5
+        }}
+      >
+        <XIcon size={40} round/>
+        <span className='text-white'>X（旧Twitter）</span>
+      </TwitterShareButton>
+    </div>
+  );
+};
 
 export default BlogPostTemplate
 
