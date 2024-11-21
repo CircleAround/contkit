@@ -10,21 +10,22 @@
   top: -1em;
 }
 
+.container {
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
 .article {
-  display: grid;
   font-size: var(--text-prose);
-  gap: var(--space-xl);
   letter-spacing: var(--text-prose-tracking);
   line-height: var(--loose);
   padding: var(--size-gutter) var(--size-gutter) calc(var(--size-gutter) * 2);
 }
 
-.body {
-  max-width: 48rem;
-}
-
 .article a {
-  border-bottom: 1.5px solid currentColor;
+  border-bottom: 1.5px solid ;
+  color: #00589d;
   font-weight: var(--medium);
 }
 
@@ -34,11 +35,10 @@
 }
 
 .article p {
-  margin-bottom: 1.5em;
-  margin-top: 0;
+  margin-bottom: 0;
+  margin-top: 1rem;
 }
 
-.article h1,
 .article h2 {
   font-size: var(--text-2xl);
   margin-top: var(--space-3xl);
@@ -56,6 +56,7 @@
 
 .article h2 {
   position: relative;
+  margin-top: 2.75rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #01589d;
   background-image: linear-gradient(to top, rgba(191, 219, 254, 0.5), transparent);
@@ -85,16 +86,22 @@
 .article ul {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   margin-top: 1rem;
-  padding: 1rem  0.5rem 1rem 2.25rem;
+  padding: 0.5rem;
+  padding-left: 2rem;
   border-radius: 0.375rem;
   background-color: #dff2fc;
   list-style-type: disc;
 }
 
 .article li {
-  margin-bottom: 0.5em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-size: 0.875rem;
+}
+
+.article li:first-child {
+  margin-top: 0;
 }
 
 .articleNavigation {
@@ -105,9 +112,26 @@
   padding: 0;
 }
 
+.article table {
+  margin-top: 1rem;
+  border-collapse: collapse;
+  border: 1px solid rgb(207 207 207);
+  width: 100%
+}
+
+.article td,
+.article th {
+  border: 1px solid rgb(207 207 207);
+  padding: 0.5em 1em
+}
+
+.article th {
+  background-color: #dff2fc
+}
+
 @media (min-width: 768px) {
   .container {
-    max-width: var(--size-max-width);
+    max-width: 64rem;
     margin: 0 auto;
   }
 
@@ -125,10 +149,6 @@
     width: calc(85% - var(--size-gutter));
   }
 
-  .article ul {
-    padding-left: 5px;
-  }
-  
   .article ol {
     padding-left: 5px;
   }
