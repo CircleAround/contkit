@@ -11,6 +11,7 @@ import {
   XIcon,
   TwitterShareButton
 } from 'react-share'
+import moment from 'moment'
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   data: { blog: post, previous, next }
@@ -19,6 +20,9 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   const title = post?.title ?? ''
   const slug = post?.slug ?? ''
 
+  // publishは無いがcreatedAtは取得できたのでこちらを代用
+  const createdAt = post?.createdAt ?? ''
+
   // ダミー
   const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
   const tags = [
@@ -26,7 +30,6 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
     { label: 'Gatsby', link: '/tags/gatsby' },
   ]
   const description = 'REST（Representational state transfer）について、話者が最初に出会った体験や、基本的な考え方についてお伝えしました。導入で20分、より丁寧なRESTだけの掘り下げを30分程度の動画で行いました。'
-  const publishDate = '2021/10/15 15:00'
 
   return (
     <Layout>
@@ -62,7 +65,9 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
             title={title}
             url={`https://techlib.circlearound.co.jp/entries/${slug}`}
           />
-          <p>{publishDate}</p>
+          <p>
+            {moment(createdAt).local().format('YYYY/MM/DD HH:mm')}
+          </p>
           <p>{description}</p>
           <div className={styles.body}>{body && <Markdown text={body} />}</div>
         </div>
@@ -144,6 +149,7 @@ export const pageQuery = graphql`
       slug
       title
       body
+      createdAt
     }
     previous: blog(slug: { eq: $previousPostSlug }) {
       slug
