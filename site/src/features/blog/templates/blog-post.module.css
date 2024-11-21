@@ -23,13 +23,12 @@
 }
 
 .article a {
-  border-bottom: 1.5px solid ;
   color: #00589d;
   font-weight: var(--medium);
+  text-decoration: underline;
 }
 
 .article a:hover {
-  border-bottom-color: transparent;
   color: var(--primary);
 }
 
