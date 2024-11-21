@@ -20,6 +20,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   const slug = post?.slug ?? ''
 
   // ダミー
+  const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
   const tags = [
     { label: 'React', link: '/tags/react' },
     { label: 'Gatsby', link: '/tags/gatsby' },
@@ -29,6 +30,13 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
 
   return (
     <Layout>
+      <div>
+        <img
+          src={imgsrc}
+          alt=''
+          className='w-full h-auto object-cover object-center'
+        />
+      </div>
       <div className={styles.container}>
         <Breadcrumb className="ml-0 mt-auto [&_a]:text-blue-600 [&_a]:underline"/>
         <div className={styles.article}>
