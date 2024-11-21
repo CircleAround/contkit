@@ -34,7 +34,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
         <img
           src={imgsrc}
           alt=''
-          className='w-full h-auto object-cover object-center'
+          className='h-auto w-full object-cover object-center'
         />
       </div>
       <div className={styles.container}>
