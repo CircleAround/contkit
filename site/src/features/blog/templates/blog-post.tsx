@@ -45,7 +45,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
           className='h-auto w-full object-cover object-center'
         />
       </div>
-      <div className={styles.container}>
+      <div className="mx-auto px-8 py-7 max-w-6xl">
         <Breadcrumb className="ml-0 mt-auto [&_a]:text-blue-600 [&_a]:underline"/>
         <div className={styles.article}>
           <div className='mt-4 flex flex-wrap gap-1'>
