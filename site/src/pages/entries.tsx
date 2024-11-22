@@ -3,6 +3,7 @@ import Layout from '@/components/layout'
 import { BadgeList } from '@/components/Badge/BadgeList'
 import { Badge } from '@/components/Badge/Badge'
 import { SectionTitle } from '@/components/SectionTitle/SectionTitle'
+import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb'
 
 // タグ一覧確認ようのための仮
 const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
@@ -29,12 +30,15 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data }) =>
         <div className="grid grid-cols-1 gap-8 px-8 md:grid-cols-12 md:divide-x md:divide-gray-300">
 
           <section className="md:col-span-9">
+            <Breadcrumb className="ml-0 mt-auto [&_a]:text-blue-600 [&_a]:underline"/>
+
             <SectionTitle
-              className="relative border-b border-gray-300 pb-3 pl-8 text-3xl font-medium leading-relaxed text-blue-950	 before:absolute before:left-0
+              className="relative mt-4 border-b border-gray-300 pb-3 pl-8 text-3xl font-medium leading-relaxed text-blue-950	 before:absolute before:left-0
               before:top-0 before:h-full before:w-4 before:bg-blue-700 lg:text-3xl lg:leading-relaxed"
             >
               コンテンツ一覧
             </SectionTitle>
+
             {/* 検索欄 ※後日実装 */}
             <div className="mt-12"></div>
             <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
