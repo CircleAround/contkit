@@ -4,6 +4,7 @@ import { BadgeList } from '@/components/Badge/BadgeList'
 import { Badge } from '@/components/Badge/Badge'
 import { SectionTitle } from '@/components/SectionTitle/SectionTitle'
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb'
+import { Seo } from '@/components/Seo'
 
 // タグ一覧確認ようのための仮
 const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
@@ -98,10 +99,10 @@ export const query = graphql`
     }
   }
 `
-
-export const Head: HeadFC = () => <>
-  <title>Blog index</title>
-  <meta name="description" content="Blog index" />
-</>
+export const Head: HeadFC = () => (
+  <Seo
+    title='コンテンツ一覧'
+  />
+);
 
 export default BlogIndexPage
