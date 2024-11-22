@@ -32,6 +32,8 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
     { label: 'Gatsby', link: '/tags/gatsby' },
   ]
   const description = 'REST（Representational state transfer）について、話者が最初に出会った体験や、基本的な考え方についてお伝えしました。導入で20分、より丁寧なRESTだけの掘り下げを30分程度の動画で行いました。'
+  const youtubeUrl = 'https://www.youtube.com/embed/7sbi6NE2f_g?si=k6V1AmyDWLY9DZKU'
+  const youtubeUrl2 = 'https://www.youtube.com/embed/mLWD-LBAUME?si=HeS0hkm5pVPzLe4i'
 
   return (
     <Layout>
@@ -71,6 +73,14 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
             {moment(createdAt).local().format('YYYY/MM/DD HH:mm')}
           </p>
           <p>{description}</p>
+          <div className="flex  flex-wrap mt-4 bg-black">
+            {youtubeUrl &&
+              <Youtube key={youtubeUrl} src={youtubeUrl} />
+            }
+            {youtubeUrl2 &&
+              <Youtube key={youtubeUrl2} src={youtubeUrl2} />
+            }
+          </div>
           <div className={styles.body}>{body && <Markdown text={body} />}</div>
         </div>
 
@@ -138,6 +148,20 @@ const ShareButtonList = ({ title, url } : { title: string, url: string }) => {
     </div>
   );
 };
+
+function Youtube( { src } : { src: string }) {
+  return (
+    <iframe
+      className='block mx-auto'
+      title="youtube"
+      width="500"
+      height="315"
+      src={src}
+      frameBorder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen></iframe>
+  )
+}
 
 export default BlogPostTemplate
 
