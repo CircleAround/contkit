@@ -14,11 +14,13 @@ import {
 import moment from 'moment'
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
-  data: { blog: post, previous, next }
+  data: { blog: post, site, previous, next }
 }) => {
   const body = post?.body ?? ''
   const title = post?.title ?? ''
   const slug = post?.slug ?? ''
+  const siteUrl = site?.siteMetadata?.siteUrl ?? 'https://techlib.circlearound.co.jp/'
+  const postUrl = `${siteUrl}/entries/${slug}`
 
   // publishは無いがcreatedAtは取得できたのでこちらを代用
   const createdAt = post?.createdAt ?? ''
@@ -63,7 +65,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
           <h1 className="mt-4 text-3xl font-bold text-blue-600">{title}</h1>
           <ShareButtonList
             title={title}
-            url={`https://techlib.circlearound.co.jp/entries/${slug}`}
+            url={postUrl}
           />
           <p>
             {moment(createdAt).local().format('YYYY/MM/DD HH:mm')}
@@ -145,6 +147,11 @@ export const pageQuery = graphql`
     $previousPostSlug: String
     $nextPostSlug: String
   ) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     blog(slug: { eq: $slug }) {
       slug
       title
