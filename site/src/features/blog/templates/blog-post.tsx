@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Link, PageProps, graphql } from 'gatsby'
+import { HeadFC, Link, PageProps, graphql } from 'gatsby'
 import Layout from '@/components/layout'
 import { Markdown } from '@/components/Markdown'
 import * as styles from './blog-post.module.css'
@@ -12,6 +12,7 @@ import {
   TwitterShareButton
 } from 'react-share'
 import moment from 'moment'
+import { Seo } from '@/components/Seo';
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   data: { blog: post, site, previous, next }
@@ -164,6 +165,17 @@ function Youtube( { src } : { src: string }) {
 }
 
 export default BlogPostTemplate
+
+export const Head: HeadFC<PageProps<Queries.BlogPostBySlugQuery>> = ({ data }) => {
+  const post = data.blog;
+  const description = 'REST（Representational state transfer）について、話者が最初に出会った体験や、基本的な考え方についてお伝えしました。導入で20分、より丁寧なRESTだけの掘り下げを30分程度の動画で行いました。'
+  return (
+    <Seo
+      title={post.title}
+      description={description}
+    />
+  )
+};
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
