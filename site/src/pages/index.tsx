@@ -157,19 +157,20 @@ const IndexPage: React.FC<PageProps> = () => {
               <ul className="mt-4">
                 <BadgeList className="md:flex-col md:gap-y-2.5">
                   {tags?.map((tag) => (
-                    <a
+                    <li
                       key={tag.label}
-                      href={tag.link}
                       className="md:border-b md:border-palePurple-600 md:pb-1"
                     >
-                      <Badge
-                        variant="primary"
-                        shape="sm"
-                        className="bg-palePurple-600 py-0.5 text-[10px] md:bg-transparent md:px-0 md:text-base md:font-bold md:text-palePurple-600"
-                      >
-                        {tag.label}
-                      </Badge>
-                    </a>
+                      <a href={tag.link}>
+                        <Badge
+                          variant="primary"
+                          shape="sm"
+                          className="bg-palePurple-600 py-0.5 text-[10px] md:bg-transparent md:px-0 md:text-base md:font-bold md:text-palePurple-600"
+                        >
+                          {tag.label}
+                        </Badge>
+                      </a>
+                    </li>
                   ))}
                 </BadgeList>
               </ul>
