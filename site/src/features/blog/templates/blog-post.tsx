@@ -73,7 +73,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
             {moment(createdAt).local().format('YYYY/MM/DD HH:mm')}
           </p>
           <p>{description}</p>
-          <div className="flex  flex-wrap mt-4 bg-black">
+          <div className="mt-4 flex flex-wrap bg-black">
             {youtubeUrl &&
               <Youtube key={youtubeUrl} src={youtubeUrl} />
             }
@@ -152,9 +152,9 @@ const ShareButtonList = ({ title, url } : { title: string, url: string }) => {
 function Youtube( { src } : { src: string }) {
   return (
     <iframe
-      className='block mx-auto'
+      className='mx-auto block max-w-[500px]'
       title="youtube"
-      width="500"
+      width="560"
       height="315"
       src={src}
       frameBorder="0"
