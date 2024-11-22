@@ -21,7 +21,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   const body = post?.body ?? ''
   const title = post?.title ?? ''
   const slug = post?.slug ?? ''
-  const siteUrl = site?.siteMetadata?.siteUrl ?? 'https://techlib.circlearound.co.jp/'
+  const siteUrl = site?.siteMetadata?.siteUrl ?? ''
   const postUrl = `${siteUrl}/entries/${slug}`
 
   // publishは無いがcreatedAtは取得できたのでこちらを代用
