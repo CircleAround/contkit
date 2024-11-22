@@ -150,7 +150,7 @@
 
 @media (min-width: 768px) {
   .container {
-    max-width: 64rem;
+    max-width: 68rem;
     margin: 0 auto;
   }
 
@@ -161,7 +161,6 @@
 
 @media (min-width: 1024px) {
   .article {
-    gap: var(--space-3xl);
     margin: 0 var(--size-gutter) 0 auto;
     padding-left: 0;
     padding-right: 0;
