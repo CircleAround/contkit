@@ -13,6 +13,7 @@ import {
 } from 'react-share'
 import moment from 'moment'
 import { Seo } from '@/components/Seo';
+import { CircleArrowRight } from 'lucide-react';
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   data: { blog: post, site, previous, next }
@@ -94,15 +95,17 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
               >
               {previous && (
                 <li>
-                  <Link to={`/entries/${previous.slug}`} rel='prev'>
-                    ← {previous.title}
+                  <Link to={`/entries/${previous.slug}`} rel='prev' className='flex items-center space-x-2'>
+                    <CircleArrowRight className='stroke-blue-600 rotate-180'/>
+                    <span>{previous.title}</span>
                   </Link>
                 </li>
               )}
               {next && (
                 <li className='flex justify-end'>
-                  <Link to={`/entries/${next.slug}`} rel='next'>
-                    {next.title} →
+                  <Link to={`/entries/${next.slug}`} rel='next' className='flex items-center space-x-2'>
+                    <span>{next.title}</span>
+                    <CircleArrowRight className='stroke-blue-600'/>
                   </Link>
                 </li>
               )}
