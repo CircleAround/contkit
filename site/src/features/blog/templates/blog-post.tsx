@@ -39,12 +39,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
     throw new Error('site.siteMetadata.siteUrl is required')
   }
   const blogUrl = `${siteUrl}/entries/${slug}`
-
-  // const body = blog?.body ?? ''
-  // const title = blog?.title ?? ''
-  // const slug = blog?.slug ?? ''
-
-  // publishは無いがcreatedAtは取得できたのでこちらを代用
+  const publishedAtStr = createdAt ? moment(createdAt).local().format('YYYY/MM/DD HH:mm') : ''
 
   // ダミー
   const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
@@ -90,9 +85,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
             title={title}
             url={blogUrl}
           />
-          <p>
-            {moment(createdAt).local().format('YYYY/MM/DD HH:mm')}
-          </p>
+          <p>{publishedAtStr}</p>
           <p>{description}</p>
           <div className="mt-4 flex flex-wrap bg-black">
             {youtubeUrl &&
