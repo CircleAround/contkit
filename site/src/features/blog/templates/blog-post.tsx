@@ -16,16 +16,16 @@ import { Seo } from '@/components/Seo';
 import { CircleArrowRight } from 'lucide-react';
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
-  data: { blog: post, site, previous, next }
+  data: { blog, site, previous, next }
 }) => {
-  const body = post?.body ?? ''
-  const title = post?.title ?? ''
-  const slug = post?.slug ?? ''
+  const body = blog?.body ?? ''
+  const title = blog?.title ?? ''
+  const slug = blog?.slug ?? ''
   const siteUrl = site?.siteMetadata?.siteUrl ?? ''
-  const postUrl = `${siteUrl}/entries/${slug}`
+  const blogUrl = `${siteUrl}/entries/${slug}`
 
   // publishは無いがcreatedAtは取得できたのでこちらを代用
-  const createdAt = post?.createdAt ?? ''
+  const createdAt = blog?.createdAt ?? ''
 
   // ダミー
   const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
@@ -69,7 +69,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
           <h1 className="mt-4 text-3xl font-bold text-blue-600">{title}</h1>
           <ShareButtonList
             title={title}
-            url={postUrl}
+            url={blogUrl}
           />
           <p>
             {moment(createdAt).local().format('YYYY/MM/DD HH:mm')}
@@ -170,11 +170,10 @@ function Youtube( { src } : { src: string }) {
 export default BlogPostTemplate
 
 export const Head: HeadFC<PageProps<Queries.BlogPostBySlugQuery>> = ({ data }) => {
-  const post = data.blog;
   const description = 'REST（Representational state transfer）について、話者が最初に出会った体験や、基本的な考え方についてお伝えしました。導入で20分、より丁寧なRESTだけの掘り下げを30分程度の動画で行いました。'
   return (
     <Seo
-      title={post.title}
+      title={data.blog.title}
       description={description}
     />
   )
