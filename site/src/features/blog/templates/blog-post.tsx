@@ -5,6 +5,7 @@ import { Markdown } from '@/components/Markdown'
 import * as styles from './blog-post.module.css'
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb'
 import { Badge } from '@/components/Badge/Badge';
+import { BadgeList } from '@/components/Badge/BadgeList';
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -62,31 +63,32 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
       </div>
       <div className="mx-auto px-8 py-7 max-w-6xl">
         <Breadcrumb className="ml-0 mt-auto [&_a]:text-blue-600 [&_a]:underline"/>
-        <div className={styles.article}>
-          <div className='mt-4 flex flex-wrap gap-1'>
+        <div>
+          <BadgeList className='mt-4'>
             {tags?.map((tag) => (
-              <a
-                key={tag.label}
-                href={tag.link}
-                className="no-underline"
-              >
-                <Badge
-                  variant="primary"
-                  shape="sm"
-                  className="bg-palePurple-600 py-0.5 text-[10px]"
+              <li key={tag.label}>
+                <Link
+                  to={tag.link}
+                  className="no-underline"
                 >
-                  {tag.label}
-                </Badge>
-              </a>
+                  <Badge
+                    variant="primary"
+                    shape="sm"
+                    className="bg-palePurple-600 py-0.5 text-[10px]"
+                  >
+                    {tag.label}
+                  </Badge>
+                </Link>
+              </li>
             ))}
-          </div>
+          </BadgeList>
           <h1 className="mt-4 text-3xl font-bold text-blue-600">{title}</h1>
           <ShareButtonList
             title={title}
             url={blogUrl}
           />
-          <p>{publishedAtStr}</p>
-          <p>{description}</p>
+          <p className='mt-4 text-base'>{publishedAtStr}</p>
+          <p className='mt-4 text-base'>{description}</p>
           <div className="mt-4 flex flex-wrap bg-black">
             {youtubeUrl &&
               <Youtube key={youtubeUrl} src={youtubeUrl} />
@@ -95,7 +97,9 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
               <Youtube key={youtubeUrl2} src={youtubeUrl2} />
             }
           </div>
-          <div className={styles.body}>{body && <Markdown text={body} />}</div>
+          {body &&
+            <MarkdownContent body={body}/>
+          }
         </div>
 
         {(previous || next) && (
@@ -179,6 +183,14 @@ function Youtube( { src } : { src: string }) {
       allowFullScreen></iframe>
   )
 }
+
+const MarkdownContent = ({ body } : { body: string }) => {
+  return (
+    <div className={styles.article}>
+      <Markdown text={body} />
+    </div>
+  );
+};
 
 export default BlogPostTemplate
 
