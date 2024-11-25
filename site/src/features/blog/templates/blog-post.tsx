@@ -19,14 +19,32 @@ import { twMerge } from 'tailwind-merge';
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   data: { blog, site, previous, next }
 }) => {
-  const body = blog?.body ?? ''
-  const title = blog?.title ?? ''
-  const slug = blog?.slug ?? ''
-  const siteUrl = site?.siteMetadata?.siteUrl ?? ''
+  if(!blog) {
+    throw new Error('post is required')
+  }
+
+  const {body, title, slug, createdAt} = blog
+  if(!slug) {
+    throw new Error('slug is required')
+  }
+  if(!title) {
+    throw new Error(`title is required on blog: ${slug}`)
+  }
+  if(!createdAt) {
+    throw new Error(`createdAt is required on blog: ${slug}`)
+  }
+
+  const siteUrl = site?.siteMetadata?.siteUrl
+  if(!siteUrl) {
+    throw new Error('site.siteMetadata.siteUrl is required')
+  }
   const blogUrl = `${siteUrl}/entries/${slug}`
 
+  // const body = blog?.body ?? ''
+  // const title = blog?.title ?? ''
+  // const slug = blog?.slug ?? ''
+
   // publishは無いがcreatedAtは取得できたのでこちらを代用
-  const createdAt = blog?.createdAt ?? ''
 
   // ダミー
   const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
