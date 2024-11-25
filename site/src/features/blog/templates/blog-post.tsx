@@ -184,7 +184,7 @@ function Youtube( { src } : { src: string }) {
   )
 }
 
-const MarkdownContent = ({ body } : { body: string }) => {
+const MarkdownContent = ({ body = '' } : { body: string }) => {
   return (
     <div className={styles.article}>
       <Markdown text={body} />
