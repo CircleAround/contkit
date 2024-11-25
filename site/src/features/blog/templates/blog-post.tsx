@@ -1,8 +1,6 @@
 import { FC } from 'react'
 import { HeadFC, Link, PageProps, graphql } from 'gatsby'
 import Layout from '@/components/layout'
-import { Markdown } from '@/components/Markdown'
-import * as styles from './blog-post.module.css'
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb'
 import { Badge } from '@/components/Badge/Badge';
 import { BadgeList } from '@/components/Badge/BadgeList';
@@ -16,6 +14,7 @@ import moment from 'moment'
 import { Seo } from '@/components/Seo';
 import { CircleArrowRight } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
+import MarkdownContent from './MarkdownContent';
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   data: { blog, site, previous, next }
@@ -184,13 +183,6 @@ function Youtube( { src } : { src: string }) {
   )
 }
 
-const MarkdownContent = ({ body = '' } : { body: string }) => {
-  return (
-    <div className={styles.article}>
-      <Markdown text={body} />
-    </div>
-  );
-};
 
 export default BlogPostTemplate
 
