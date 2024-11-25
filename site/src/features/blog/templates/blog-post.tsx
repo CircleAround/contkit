@@ -14,6 +14,7 @@ import {
 import moment from 'moment'
 import { Seo } from '@/components/Seo';
 import { CircleArrowRight } from 'lucide-react';
+import { twMerge } from 'tailwind-merge';
 
 const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   data: { blog, site, previous, next }
@@ -89,10 +90,11 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
         {(previous || next) && (
           <nav className='mt-4'>
             <ul
-              className={`flex list-none flex-wrap p-0 ${
+              className={twMerge(
+                'flex list-none flex-wrap p-0',
                 (previous && next && 'justify-between') || (previous && 'justify-start') || 'justify-end'
-              }`}
-              >
+              )}
+            >
               {previous && (
                 <li>
                   <Link to={`/entries/${previous.slug}`} rel='prev' className='flex items-center space-x-2'>
