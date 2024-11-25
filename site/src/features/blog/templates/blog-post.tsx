@@ -34,6 +34,9 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
   if(!createdAt) {
     throw new Error(`createdAt is required on blog: ${slug}`)
   }
+  if (!body) {
+    throw new Error(`body is  required on blog: ${slug}`)
+  }
 
   const siteUrl = site?.siteMetadata?.siteUrl
   if(!siteUrl) {
