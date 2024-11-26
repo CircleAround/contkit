@@ -1,30 +1,22 @@
-import { HeadFC, PageProps, graphql } from 'gatsby'
+import { HeadFC, Link, PageProps, graphql } from 'gatsby'
 import Layout from '@/components/layout'
 import { SectionTitle } from '@/components/SectionTitle/SectionTitle'
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb'
 import { Seo } from '@/components/Seo'
 import { Sidebar } from '@/components/Sidebar'
+import { Card, CardImage, CardContent, CardTitle } from '@/components/Card/Card'
+import { BadgeList } from '@/components/Badge/BadgeList'
+import { Badge } from '@/components/Badge/Badge'
 
-// タグ一覧確認ようのための仮
-const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
 
 const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data }) => {
 
+  // ダミー
+  const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
+
   return (
     <Layout>
-      {/* <h2>{data.site?.siteMetadata?.title}</h2>
-      <ul>
-        {data.allBlog.edges.map(({ node: { id, title, slug, createdAt } }) => (
-          <li key={id}>
-            <div>
-              <a href={`/entries/${slug}`}>{title} ({id})</a>
-              <div>
-                {createdAt}
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul> */}
+      <h2>{data.site?.siteMetadata?.title}</h2>
 
       <div className="py-8">
         <div className="grid grid-cols-1 gap-8 px-8 md:grid-cols-12 md:divide-x md:divide-gray-300">
@@ -41,7 +33,40 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data }) =>
 
             {/* 検索欄 ※後日実装 */}
             <div className="mt-12"></div>
+
             <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
+              {data.allBlog.edges.map(({ node: { id, title, slug, createdAt } }) => (
+                <li key={id}>
+                  <Card
+                    style="none"
+                    size="none"
+                  >
+                    <Link to={`/entries/${slug}`}>
+                      <CardImage
+                        imgSrc={imgsrc}
+                        imgAlt=''
+                        className="rounded-none"
+                      />
+                    </Link>
+                    <CardContent className='bg-gray-50 p-4'>
+                      <BadgeList>
+                        <li>
+                          <Link to=''>
+                            <Badge
+                              shape="sm"
+                              className="bg-palePurple-600 py-0.5 text-[10px]"
+                            ></Badge>
+                          </Link>
+                        </li>
+                      </BadgeList>
+                      <Link to={`/entries/${slug}`}>
+                        <CardTitle>{title}</CardTitle>
+                      </Link>
+                      <small className="mt-auto text-zinc-600">{createdAt}</small>
+                    </CardContent>
+                  </Card>
+                </li>
+              ))}
             </ul>
           </section>
 
