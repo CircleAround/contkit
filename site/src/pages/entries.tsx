@@ -13,6 +13,10 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data }) =>
 
   // ダミー
   const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
+  const tags = [
+    { label: 'React', link: '/tags/react' },
+    { label: 'Gatsby', link: '/tags/gatsby' },
+  ]
 
   return (
     <Layout>
@@ -50,14 +54,18 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data }) =>
                     </Link>
                     <CardContent className='bg-gray-50 p-4'>
                       <BadgeList>
-                        <li>
-                          <Link to=''>
-                            <Badge
-                              shape="sm"
-                              className="bg-palePurple-600 py-0.5 text-[10px]"
-                            ></Badge>
-                          </Link>
-                        </li>
+                        {tags?.map((tag) => (
+                          <li key={tag.label}>
+                            <Link to={tag.link}>
+                              <Badge
+                                shape="sm"
+                                className="bg-palePurple-600 py-0.5 text-[10px]"
+                              >
+                                {tag.label}
+                              </Badge>
+                            </Link>
+                          </li>
+                        ))}
                       </BadgeList>
                       <Link to={`/entries/${slug}`}>
                         <CardTitle>{title}</CardTitle>
