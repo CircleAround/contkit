@@ -10,7 +10,7 @@ type SidebarProps = ComponentProps<'aside'> & {
 }
 
 // タグ一覧確認用のための仮
-const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
+const tags =[{ label: 'データベース', link: '/tags/database' }, { label: 'セッション', link: '/tags/session' }, { label: '開発者ツール', link: '/tags/developerTool' }, { label: '実演', link: '/tags/demonstration' }];
 
 const Sidebar = forwardRef<HTMLElement, SidebarProps>(
   ({ className, title, ...others }, ref) => {
