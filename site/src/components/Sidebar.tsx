@@ -30,7 +30,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(
         <BadgeList className="mt-4 md:flex-col md:gap-y-2.5">
           {tags?.map((tag) => (
             <li
-              key={tag.label}
+              key={tag.link}
               className="md:border-b md:border-palePurple-600 md:pb-1"
             >
               <Link to={tag.link}>

@@ -36,7 +36,7 @@ const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(({ blogUrl, title, im
       <CardContent className='bg-gray-50 p-4'>
         <BadgeList>
           {tags?.map((tag) => (
-            <li key={tag.label}>
+            <li key={tag.link}>
               <Link to={tag.link}>
                 <Badge
                   shape="sm"
