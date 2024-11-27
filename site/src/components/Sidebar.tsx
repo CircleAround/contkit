@@ -1,5 +1,4 @@
 import { forwardRef, ComponentProps } from 'react';
-import { twMerge } from 'tailwind-merge';
 import { BadgeList } from '@/components/Badge/BadgeList';
 import { Badge } from '@/components/Badge//Badge';
 import { SectionTitle } from '@/components/SectionTitle/SectionTitle';
@@ -11,11 +10,11 @@ type SidebarProps = ComponentProps<'aside'>
 const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
 
 const Sidebar = forwardRef<HTMLElement, SidebarProps>(
-  ({  className, ...others }, ref) => {
+  ({ className, ...others }, ref) => {
 
     return (
       <aside
-        className={twMerge(className)}
+        className={className}
         {...others}
         ref={ref}
       >
