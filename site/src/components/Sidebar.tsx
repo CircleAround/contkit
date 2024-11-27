@@ -27,26 +27,24 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(
           {title}
         </SectionTitle>
         {/* タグ一覧 ※後日実装のため仮置き */}
-        <ul className="mt-4">
-          <BadgeList className="md:flex-col md:gap-y-2.5">
-            {tags?.map((tag) => (
-              <li
-                key={tag.label}
-                className="md:border-b md:border-palePurple-600 md:pb-1"
-              >
-                <Link to={tag.link}>
-                  <Badge
-                    variant="primary"
-                    shape="sm"
-                    className="bg-palePurple-600 py-0.5 text-[10px] md:bg-transparent md:px-0 md:text-base md:font-bold md:text-palePurple-600"
-                  >
-                    {tag.label}
-                  </Badge>
-                </Link>
-              </li>
-            ))}
-          </BadgeList>
-        </ul>
+        <BadgeList className="mt-4 md:flex-col md:gap-y-2.5">
+          {tags?.map((tag) => (
+            <li
+              key={tag.label}
+              className="md:border-b md:border-palePurple-600 md:pb-1"
+            >
+              <Link to={tag.link}>
+                <Badge
+                  variant="primary"
+                  shape="sm"
+                  className="bg-palePurple-600 py-0.5 text-[10px] md:bg-transparent md:px-0 md:text-base md:font-bold md:text-palePurple-600"
+                >
+                  {tag.label}
+                </Badge>
+              </Link>
+            </li>
+          ))}
+        </BadgeList>
       </aside>
     );
   }
