@@ -14,7 +14,6 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { al
 
   return (
     <Layout>
-
       <div className="py-8">
         <div className="grid grid-cols-1 gap-8 px-8 md:grid-cols-12 md:divide-x md:divide-gray-300">
 
@@ -33,9 +32,11 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { al
 
             <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
               {allBlog.edges.map(({ node: { id, title, slug, createdAt } }) => {
-                return <li key={id}>
-                  <BlogCardWrap title={title} slug={slug} createdAt={createdAt} />
-                </li>
+                return (
+                  <li key={id}>
+                    <BlogCardWrap title={title} slug={slug} createdAt={createdAt} />
+                  </li>
+                )
               })}
             </ul>
           </section>
