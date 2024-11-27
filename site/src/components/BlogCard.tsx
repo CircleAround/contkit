@@ -34,22 +34,20 @@ const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(({ blogUrl, title, im
         />
       </Link>
       <CardContent className='bg-gray-50 p-4'>
-        {tags &&  (
-          <BadgeList>
-            {tags?.map((tag) => (
-              <li key={tag.label}>
-                <Link to={tag.link}>
-                  <Badge
-                    shape="sm"
-                    className="bg-palePurple-600 py-0.5 text-[10px]"
-                  >
-                    {tag.label}
-                  </Badge>
-                </Link>
-              </li>
-            ))}
-          </BadgeList>
-        )}
+        <BadgeList>
+          {tags?.map((tag) => (
+            <li key={tag.label}>
+              <Link to={tag.link}>
+                <Badge
+                  shape="sm"
+                  className="bg-palePurple-600 py-0.5 text-[10px]"
+                >
+                  {tag.label}
+                </Badge>
+              </Link>
+            </li>
+          ))}
+        </BadgeList>
         <Link to={blogUrl}>
           <CardTitle>{title}</CardTitle>
         </Link>
