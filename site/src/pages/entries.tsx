@@ -41,7 +41,10 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { al
             </ul>
           </section>
 
-          <Sidebar className='md:col-span-3 md:pl-4'/>
+          <Sidebar
+            title='タグ一覧'
+            className='md:col-span-3 md:pl-4'
+          />
         </div>
       </div>
     </Layout>

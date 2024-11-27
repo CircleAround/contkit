@@ -4,13 +4,16 @@ import { Badge } from '@/components/Badge//Badge';
 import { SectionTitle } from '@/components/SectionTitle/SectionTitle';
 import { Link } from 'gatsby';
 
-type SidebarProps = ComponentProps<'aside'>
+type SidebarProps = ComponentProps<'aside'> & {
+  className?: string;
+  title: string;
+}
 
 // タグ一覧確認用のための仮
 const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
 
 const Sidebar = forwardRef<HTMLElement, SidebarProps>(
-  ({ className, ...others }, ref) => {
+  ({ className, title, ...others }, ref) => {
 
     return (
       <aside
@@ -21,7 +24,7 @@ const Sidebar = forwardRef<HTMLElement, SidebarProps>(
         <SectionTitle
           className="text-3xl font-medium leading-relaxed text-blue-950	 lg:text-3xl lg:leading-relaxed"
         >
-          タグ一覧
+          {title}
         </SectionTitle>
         {/* タグ一覧 ※後日実装のため仮置き */}
         <ul className="mt-4">
