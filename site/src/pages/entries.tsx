@@ -58,12 +58,14 @@ const BlogCardWrap = ({ title, slug, createdAt }: {title: string|null, slug: str
     throw new Error(`createdAt is required on blog: ${slug}`)
   }
   const blogUrl = `/entries/${slug}`
+  const publishedAtStr = createdAt ? moment(createdAt).local().format('YYYY/MM/DD HH:mm') : ''
+
+  // ダミー
   const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
   const tags = [
     { label: 'React', link: '/tags/react' },
     { label: 'Gatsby', link: '/tags/gatsby' },
   ]
-  const publishedAtStr = createdAt ? moment(createdAt).local().format('YYYY/MM/DD HH:mm') : ''
   return (
     <BlogCard
       blogUrl={blogUrl}
