@@ -8,6 +8,9 @@ import { Sidebar } from '@/components/Sidebar'
 import { BlogCard } from '@/components/BlogCard'
 
 const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { allBlog } }) => {
+  if(!allBlog) {
+    throw new Error('post is required')
+  }
 
   return (
     <Layout>
@@ -30,36 +33,9 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { al
 
             <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
               {allBlog.edges.map(({ node: { id, title, slug, createdAt } }) => {
-                if(!allBlog) {
-                  throw new Error('post is required')
-                }
-                if(!slug) {
-                  throw new Error('slug is required')
-                }
-                if(!title) {
-                  throw new Error(`title is required on blog: ${slug}`)
-                }
-                if(!createdAt) {
-                  throw new Error(`createdAt is required on blog: ${slug}`)
-                }
-                const blogUrl = `/entries/${slug}`
-                const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
-                const tags = [
-                  { label: 'React', link: '/tags/react' },
-                  { label: 'Gatsby', link: '/tags/gatsby' },
-                ]
-                const publishedAtStr = createdAt ? moment(createdAt).local().format('YYYY/MM/DD HH:mm') : ''
-                return (
-                  <li key={id}>
-                    <BlogCard
-                      blogUrl={blogUrl}
-                      title={title}
-                      imgsrc={imgsrc}
-                      publishedAtStr={publishedAtStr}
-                      tags={tags}
-                    />
-                  </li>
-                )
+                return <li key={id}>
+                  <BlogCardWrap title={title} slug={slug} createdAt={createdAt} />
+                </li>
               })}
             </ul>
           </section>
@@ -71,8 +47,36 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { al
   )
 }
 
+const BlogCardWrap = ({ title, slug, createdAt }: {title: string|null, slug: string|null, createdAt: string|null}) => {
+  if(!slug) {
+    throw new Error('slug is required')
+  }
+  if(!title) {
+    throw new Error(`title is required on blog: ${slug}`)
+  }
+  if(!createdAt) {
+    throw new Error(`createdAt is required on blog: ${slug}`)
+  }
+  const blogUrl = `/entries/${slug}`
+  const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
+  const tags = [
+    { label: 'React', link: '/tags/react' },
+    { label: 'Gatsby', link: '/tags/gatsby' },
+  ]
+  const publishedAtStr = createdAt ? moment(createdAt).local().format('YYYY/MM/DD HH:mm') : ''
+  return (
+    <BlogCard
+      blogUrl={blogUrl}
+      title={title}
+      imgsrc={imgsrc}
+      publishedAtStr={publishedAtStr}
+      tags={tags}
+    />
+  )
+}
+
 export const query = graphql`
-  query BlogIndexQuery {
+  query BlogIndex {
     allBlog {
       edges {
         node {
