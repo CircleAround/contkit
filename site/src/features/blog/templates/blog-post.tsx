@@ -60,7 +60,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
           className='h-auto w-full object-cover object-center'
         />
       </div>
-      <div className="mx-auto px-8 py-7 max-w-6xl">
+      <div className="mx-auto max-w-6xl px-8 py-7">
         <Breadcrumb className="ml-0 mt-auto [&_a]:text-blue-600 [&_a]:underline"/>
         <div>
           <BadgeList className='mt-4'>
@@ -112,7 +112,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
               {previous && (
                 <li>
                   <Link to={`/entries/${previous.slug}`} rel='prev' className='flex items-center space-x-2'>
-                    <CircleArrowRight className='stroke-blue-600 rotate-180'/>
+                    <CircleArrowRight className='rotate-180 stroke-blue-600'/>
                     <span>{previous.title}</span>
                   </Link>
                 </li>

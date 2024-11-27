@@ -8,9 +8,6 @@ import { Sidebar } from '@/components/Sidebar'
 import { BlogCard } from '@/components/BlogCard'
 
 const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { allBlog } }) => {
-  if(!allBlog) {
-    throw new Error('post is required')
-  }
 
   return (
     <Layout>
@@ -33,6 +30,9 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { al
 
             <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
               {allBlog.edges.map(({ node: { id, title, slug, createdAt } }) => {
+                if(!allBlog) {
+                  throw new Error('post is required')
+                }
                 if(!slug) {
                   throw new Error('slug is required')
                 }
