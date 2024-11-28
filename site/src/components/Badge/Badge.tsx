@@ -1,10 +1,10 @@
 import * as React from "react"
 import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
-import { badgeVariants as UIBadgeVariants } from "@/components/ui/badge"
+import { badgeVariants as uiBadgeVariants } from "@/components/ui/badge"
 
-const BadgeVariants = cva(
-  UIBadgeVariants(), // 既存のバリエーションを継承
+const badgeVariants = cva(
+  uiBadgeVariants(), // 既存のバリエーションを継承
   {
     variants: {
       variant: {
@@ -33,11 +33,11 @@ const BadgeVariants = cva(
   }
 )
 
-type BadgeProps = React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof BadgeVariants>
+type BadgeProps = React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof badgeVariants>
 
 function Badge({ className, variant, state, shape,  children, ...others }: BadgeProps) {
   return (
-    <div className={twMerge(BadgeVariants({ variant, state, shape }), className)} {...others}>
+    <div className={twMerge(badgeVariants({ variant, state, shape }), className)} {...others}>
       {children}
     </div>
   )
