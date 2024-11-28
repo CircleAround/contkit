@@ -1,7 +1,6 @@
 import { Link, type HeadFC, type PageProps, graphql } from "gatsby"
-import {
-  SectionTitle,
-} from '../components/SectionTitle/SectionTitle'
+import moment from 'moment'
+import { SectionTitle } from '../components/SectionTitle/SectionTitle'
 import  Layout  from '../components/layout'
 import {
   Card,
@@ -12,6 +11,7 @@ import {
 import { Badge } from '../components/Badge/Badge';
 import { BadgeList } from '@/components/Badge/BadgeList';
 import { Sidebar } from '@/components/Sidebar';
+import { BlogCard } from '@/components/BlogCard';
 import { Seo } from '@/components/Seo';
 import heroBg from "../images/hero_bg.jpg"
 import ogpBg from "../images/ogp_bg.jpg"
@@ -154,6 +154,38 @@ const IndexPage: React.FC<PageProps<Queries.IndexQuery>> = ({ data: { allBlog } 
     </>
   )
 }
+
+
+const BlogCardWrapper = ({ title, slug, createdAt }: {title: string|null, slug: string|null, createdAt: string|null}) => {
+  if(!slug) {
+    throw new Error('slug is required')
+  }
+  if(!title) {
+    throw new Error(`title is required on blog: ${slug}`)
+  }
+  if(!createdAt) {
+    throw new Error(`createdAt is required on blog: ${slug}`)
+  }
+  const blogUrl = `/entries/${slug}`
+  const publishedAtStr = createdAt ? moment(createdAt).local().format('YYYY/MM/DD HH:mm') : ''
+
+  // ダミー
+  const imgsrc = 'https://techlib.circlearound.co.jp/static/28ba383fd275be0db126f951f18eae15/73f08/rest-history-and-foundation-knowledge.png'
+  const tags = [
+    { label: 'React', link: '/tags/react' },
+    { label: 'Gatsby', link: '/tags/gatsby' },
+  ]
+  return (
+    <BlogCard
+      blogUrl={blogUrl}
+      title={title}
+      imgsrc={imgsrc}
+      publishedAtStr={publishedAtStr}
+      tags={tags}
+    />
+  )
+}
+
 export default IndexPage
 
 export const query = graphql`
