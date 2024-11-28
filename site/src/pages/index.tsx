@@ -51,9 +51,6 @@ const contents = [
   },
 ];
 
-// タグ一覧確認ようのための仮
-const tags =[{ label: 'データベース', link: '/tags' }, { label: 'セッション', link: '/tags' }, { label: '開発者ツール', link: '/tags' }, { label: '実演', link: '/tags' }];
-
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
