@@ -51,7 +51,7 @@ const contents = [
   },
 ];
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage: React.FC<PageProps<Queries.IndexQuery>> = ({ data: { allBlog } }) => {
   return (
     <>
       <Layout>
@@ -157,7 +157,7 @@ const IndexPage: React.FC<PageProps> = () => {
 export default IndexPage
 
 export const query = graphql`
-  query BlogIndex {
+  query Index {
     allBlog {
       edges {
         node {
