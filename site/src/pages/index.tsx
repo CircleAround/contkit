@@ -52,6 +52,10 @@ const contents = [
 ];
 
 const IndexPage: React.FC<PageProps<Queries.IndexQuery>> = ({ data: { allBlog } }) => {
+  if(!allBlog) {
+    throw new Error('allBlog is required')
+  }
+
   return (
     <>
       <Layout>
@@ -89,49 +93,13 @@ const IndexPage: React.FC<PageProps<Queries.IndexQuery>> = ({ data: { allBlog } 
               <div className="mt-12"></div>
 
               <ul className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[5vmin]">
-                {contents.map((content, index) => (
-                  <li
-                    key={index}
-                    className="pt-4"
-                  >
-                    <Card
-                      variant="col"
-                      style="none"
-                      size="none"
-                      shape="none"
-                    >
-                      <Link to={content.link}>
-                        <CardImage
-                          imgSrc={content.imgSrc}
-                          imgAlt={content.imgAlt}
-                          className="rounded-none"
-                        />
-                      </Link>
-                      <CardContent className="flex flex-1 flex-col bg-gray-50 p-4">
-                        <BadgeList>
-                          {content.badge?.map((badge) => (
-                            <Link
-                              key={badge.label}
-                              to={badge.link}
-                            >
-                              <Badge
-                                variant="primary"
-                                shape="sm"
-                                className="bg-palePurple-600 py-0.5 text-[10px]"
-                              >
-                                {badge.label}
-                              </Badge>
-                            </Link>
-                          ))}
-                        </BadgeList>
-                        <Link to={content.link}>
-                          <CardTitle className="text-base font-medium">{content.title}</CardTitle>
-                        </Link>
-                        <small className="mt-auto text-zinc-600">{content.date}</small>
-                      </CardContent>
-                    </Card>
-                  </li>
-                ))}
+                {allBlog.edges.map(({ node: { id, title, slug, createdAt }}) => {
+                  return (
+                    <li key={id}>
+                      <BlogCardWrapper title={title} slug={slug} createdAt={createdAt}/>
+                    </li>
+                  )
+                })}
               </ul>
 
               <div className="mt-10 flex justify-end">
