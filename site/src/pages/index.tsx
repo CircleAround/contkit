@@ -1,4 +1,4 @@
-import { Link, type HeadFC, type PageProps } from "gatsby"
+import { Link, type HeadFC, type PageProps, graphql } from "gatsby"
 import {
   SectionTitle,
 } from '../components/SectionTitle/SectionTitle'
@@ -155,6 +155,21 @@ const IndexPage: React.FC<PageProps> = () => {
   )
 }
 export default IndexPage
+
+export const query = graphql`
+  query BlogIndex {
+    allBlog {
+      edges {
+        node {
+          id
+          title
+          slug
+          createdAt
+        }
+      }
+    }
+  }
+`
 
 export const Head: HeadFC = () => (
   <Seo />
