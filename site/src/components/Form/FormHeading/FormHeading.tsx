@@ -4,7 +4,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 import { Badge } from '../../Badge/Badge'
 
-const FormHeadingVariants = cva(
+const formHeadingVariants = cva(
   'font-semibold text-zinc-900',
   {
     variants: {
@@ -25,13 +25,13 @@ const FormHeadingVariants = cva(
   }
 );
 
-type FormHeadingProps = ComponentProps<'h3'> & VariantProps<typeof FormHeadingVariants>
+type FormHeadingProps = ComponentProps<'h3'> & VariantProps<typeof formHeadingVariants>
 
 const FormHeading = forwardRef<HTMLHeadingElement, FormHeadingProps>(({ state, size, className, children, ...others }, ref) => {
 
     return (
       <h3
-        className={twMerge(FormHeadingVariants({ state, size }), className)}
+        className={twMerge(formHeadingVariants({ state, size }), className)}
         {...others}
         ref={ref}
       >
