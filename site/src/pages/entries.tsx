@@ -34,7 +34,7 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { al
               {allBlog.edges.map(({ node: { id, title, slug, createdAt } }) => {
                 return (
                   <li key={id}>
-                    <BlogCardWrap title={title} slug={slug} createdAt={createdAt} />
+                    <BlogCardWrapper title={title} slug={slug} createdAt={createdAt} />
                   </li>
                 )
               })}
@@ -51,7 +51,7 @@ const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { al
   )
 }
 
-const BlogCardWrap = ({ title, slug, createdAt }: {title: string|null, slug: string|null, createdAt: string|null}) => {
+const BlogCardWrapper = ({ title, slug, createdAt }: {title: string|null, slug: string|null, createdAt: string|null}) => {
   if(!slug) {
     throw new Error('slug is required')
   }
