@@ -65,7 +65,7 @@ const BlogPostTemplate: FC<PageProps<Queries.BlogPostBySlugQuery>> = ({
         <div>
           <BadgeList className='mt-4'>
             {tags?.map((tag) => (
-              <li key={tag.label}>
+              <li key={tag.link}>
                 <Link
                   to={tag.link}
                   className="no-underline"
