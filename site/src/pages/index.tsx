@@ -11,6 +11,7 @@ import {
 } from '../components/Card/Card';
 import { Badge } from '../components/Badge/Badge';
 import { BadgeList } from '@/components/Badge/BadgeList';
+import { Sidebar } from '@/components/Sidebar';
 import { Seo } from '@/components/Seo';
 import heroBg from "../images/hero_bg.jpg"
 import ogpBg from "../images/ogp_bg.jpg"
@@ -146,35 +147,10 @@ const IndexPage: React.FC<PageProps> = () => {
               </div>
             </section>
 
-            <aside className="md:col-span-3 md:pl-4">
-              <SectionTitle
-                className="text-3xl font-medium leading-relaxed text-blue-950	 lg:text-3xl lg:leading-relaxed"
-              >
-                タグ一覧
-              </SectionTitle>
-
-              {/* タグ一覧 ※後日実装のため仮置き */}
-              <ul className="mt-4">
-                <BadgeList className="md:flex-col md:gap-y-2.5">
-                  {tags?.map((tag) => (
-                    <li
-                      key={tag.label}
-                      className="md:border-b md:border-palePurple-600 md:pb-1"
-                    >
-                      <Link to={tag.link}>
-                        <Badge
-                          variant="primary"
-                          shape="sm"
-                          className="bg-palePurple-600 py-0.5 text-[10px] md:bg-transparent md:px-0 md:text-base md:font-bold md:text-palePurple-600"
-                        >
-                          {tag.label}
-                        </Badge>
-                      </Link>
-                    </li>
-                  ))}
-                </BadgeList>
-              </ul>
-            </aside>
+            <Sidebar
+              title='タグ一覧'
+              className='md:col-span-3 md:pl-4'
+            />
           </div>
         </div>
       </Layout>
