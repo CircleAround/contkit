@@ -9,7 +9,7 @@ import { BlogCard } from '@/components/BlogCard'
 
 const BlogIndexPage: React.FC<PageProps<Queries.BlogIndexQuery>> = ({ data: { allBlog } }) => {
   if(!allBlog) {
-    throw new Error('post is required')
+    throw new Error('allBlog is required')
   }
 
   return (
