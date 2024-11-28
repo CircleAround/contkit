@@ -1,11 +1,11 @@
 import { Link, type HeadFC, type PageProps, graphql } from "gatsby"
 import moment from 'moment'
-import { SectionTitle } from '../components/SectionTitle/SectionTitle'
-import  Layout  from '../components/layout'
+import { SectionTitle } from '@/components/SectionTitle/SectionTitle'
+import  Layout  from '@/components/layout'
 import { Sidebar } from '@/components/Sidebar';
 import { BlogCard } from '@/components/BlogCard';
 import { Seo } from '@/components/Seo';
-import heroBg from "../images/hero_bg.jpg"
+import heroBg from "@/images/hero_bg.jpg"
 
 const IndexPage: React.FC<PageProps<Queries.IndexQuery>> = ({ data: { allBlog } }) => {
   if(!allBlog) {
