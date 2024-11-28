@@ -1,4 +1,4 @@
-import type { HeadFC, PageProps } from "gatsby"
+import { Link, type HeadFC, type PageProps } from "gatsby"
 import {
   SectionTitle,
 } from '../components/SectionTitle/SectionTitle'
@@ -102,19 +102,19 @@ const IndexPage: React.FC<PageProps> = () => {
                       size="none"
                       shape="none"
                     >
-                      <a href={content.link}>
+                      <Link to={content.link}>
                         <CardImage
                           imgSrc={content.imgSrc}
                           imgAlt={content.imgAlt}
                           className="rounded-none"
                         />
-                      </a>
+                      </Link>
                       <CardContent className="flex flex-1 flex-col bg-gray-50 p-4">
                         <BadgeList>
                           {content.badge?.map((badge) => (
-                            <a
+                            <Link
                               key={badge.label}
-                              href={badge.link}
+                              to={badge.link}
                             >
                               <Badge
                                 variant="primary"
@@ -123,12 +123,12 @@ const IndexPage: React.FC<PageProps> = () => {
                               >
                                 {badge.label}
                               </Badge>
-                            </a>
+                            </Link>
                           ))}
                         </BadgeList>
-                        <a href={content.link}>
+                        <Link to={content.link}>
                           <CardTitle className="text-base font-medium">{content.title}</CardTitle>
-                        </a>
+                        </Link>
                         <small className="mt-auto text-zinc-600">{content.date}</small>
                       </CardContent>
                     </Card>
@@ -137,12 +137,12 @@ const IndexPage: React.FC<PageProps> = () => {
               </ul>
 
               <div className="mt-10 flex justify-end">
-                <a
-                  href="/entries"
+                <Link
+                  to="/entries"
                   className="text-blue-600 underline"
                 >
                   もっと見る...
-                </a>
+                </Link>
               </div>
             </section>
 
@@ -161,7 +161,7 @@ const IndexPage: React.FC<PageProps> = () => {
                       key={tag.label}
                       className="md:border-b md:border-palePurple-600 md:pb-1"
                     >
-                      <a href={tag.link}>
+                      <Link to={tag.link}>
                         <Badge
                           variant="primary"
                           shape="sm"
@@ -169,7 +169,7 @@ const IndexPage: React.FC<PageProps> = () => {
                         >
                           {tag.label}
                         </Badge>
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </BadgeList>
