@@ -112,7 +112,7 @@ export default IndexPage
 
 export const query = graphql`
   query Index {
-    allBlog {
+    allBlog(limit: 9) {
       edges {
         node {
           id
