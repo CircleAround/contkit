@@ -18,11 +18,17 @@ type BlogDoc = NodeInput & {
   createdAt: admin.firestore.Timestamp;
 };
 
-export default (doc: BlogDoc): Blog => ({
-  id: doc.id,
-  slug: doc.slug,
-  title: doc.title,
-  body: doc.body,
-  tags___NODE: doc.tagIds || [],
-  createdAt: doc.createdAt.toDate(),
-})
+export default function convertBlog(doc: BlogDoc): Blog | undefined {
+  try {
+    return {
+      id: doc.id,
+      slug: doc.slug,
+      title: doc.title,
+      body: doc.body,
+      tags___NODE: doc.tagIds || [],
+      createdAt: doc.createdAt.toDate(),
+    };
+  } catch (e) {
+    console.error("Failed to convert blog", doc, e);
+  }
+}
